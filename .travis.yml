@@ -2,5 +2,5 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
-install:
+script:
   - cd desapp-grupoe-backend && mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
