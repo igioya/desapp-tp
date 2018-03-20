@@ -72,6 +72,16 @@ public class User {
 	public void setCredit(Double credit) {
 		this.credit = credit;
 	}
+	
+	public void addCredit(Double moreCredit) {
+		this.credit += moreCredit;
+	}
+	
+	public void useCredit(Double lessCredit) {
+		if(lessCredit <= this.credit) {
+			this.credit -= lessCredit;
+		} 
+	}
 
 	public Set<Vehicle> getMyVehicles() {
 		return myVehicles;
