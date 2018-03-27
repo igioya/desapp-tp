@@ -12,6 +12,7 @@ public class User {
 	private String email;
 	private Double credit;
 	private Set<Vehicle> myVehicles;
+	private Set<Publication> myPublications;
 	private Rating rating;
 	
 	public User() {}
@@ -24,6 +25,7 @@ public class User {
 		this.email = email;
 		this.credit = 0.0;
 		this.myVehicles = new HashSet<Vehicle>();
+		this.myPublications = new HashSet<Publication>();
 		this.rating = new Rating();
 	}
 
@@ -95,6 +97,18 @@ public class User {
 	
 	public void addVehicle(Vehicle newVehicle) {
 		this.myVehicles.add(newVehicle);
+	}
+	
+	public Set<Publication> getMyPublications() {
+		return myPublications;
+	}
+
+	public void setMyPublications(Set<Publication> myPublications) {
+		this.myPublications = myPublications;
+	}
+	
+	public void addPublication(Publication newPublication) {
+		this.myPublications.add(newPublication);
 	}
 
 	public Rating getRating() {
