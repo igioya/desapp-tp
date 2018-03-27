@@ -1,6 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class Publication {
@@ -12,12 +14,14 @@ public class Publication {
 	private String telephone;
 	private Set<LocalDate> datesAvailable;
 	private Double cost;
+	private List<Reservation> reservations;
+	private User owner;
 
 	public Publication() {
 	}
 
 	public Publication(Vehicle vehicle, String city, Ubication retireAddress, Set<Ubication> returnAddress,
-			String description, String telephone, Set<LocalDate> datesAvailable, Double cost) {
+			String description, String telephone, Set<LocalDate> datesAvailable, Double cost, User owner) {
 		this.vehicle = vehicle;
 		this.city = city;
 		this.retireAddress = retireAddress;
@@ -25,6 +29,13 @@ public class Publication {
 		this.telephone = telephone;
 		this.datesAvailable = datesAvailable;
 		this.cost = cost;
+		this.reservations = new ArrayList<Reservation>();
+		this.owner = owner;
+	}
+	
+	public void makeReservation(User client, LocalDate fromDate, LocalDate toDate){
+		Reservation newReservation = new Reservation(this.owner, client, toDate, toDate);
+		this.reservations.add(newReservation);
 	}
 
 	public Vehicle getVehicle() {
