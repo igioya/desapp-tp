@@ -12,6 +12,7 @@ public class User {
 	private String email;
 	private Double credit;
 	private Set<Vehicle> myVehicles;
+	private Rating rating;
 	
 	public User() {}
 	
@@ -23,6 +24,7 @@ public class User {
 		this.email = email;
 		this.credit = 0.0;
 		this.myVehicles = new HashSet<Vehicle>();
+		this.rating = new Rating();
 	}
 
 	public String getCuil() {
@@ -95,4 +97,12 @@ public class User {
 		this.myVehicles.add(newVehicle);
 	}
 
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+	
 }
