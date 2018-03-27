@@ -1,15 +1,13 @@
 package model;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDateTime;
 
 public class Reservation {
-	private User ownerPublication;
 	private User client;
-	private LocalDate fromDate;
-	private LocalDate toDate;
+	private LocalDateTime fromDate;
+	private LocalDateTime toDate;
 	
-	public Reservation(User ownerPublication, User client, LocalDate fromDate, LocalDate toDate){	
-		this.ownerPublication = ownerPublication;
+	public Reservation(User client, LocalDateTime fromDate, LocalDateTime toDate){	
 		this.client = client;	
 		this.fromDate = fromDate;
 		this.toDate = toDate;
