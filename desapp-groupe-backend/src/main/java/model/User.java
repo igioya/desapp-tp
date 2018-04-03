@@ -1,7 +1,11 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.joda.time.LocalDateTime;
 
 public class User {
 	
@@ -12,10 +16,13 @@ public class User {
 	private String email;
 	private Double credit;
 	private Set<Vehicle> myVehicles;
-	private Set<Publication> myPublications;
+	private List<Publication> myPublications;
 	private RatingCalculator rating;
+	private List<Reservation> myReservations;
 	
-	public User() {}
+	public User() {
+		this.myReservations = new ArrayList<Reservation>();
+	}
 	
 	public User(String cuil, String name, String surname, String address, String email) {
 		this.cuil = cuil;
@@ -25,8 +32,9 @@ public class User {
 		this.email = email;
 		this.credit = 0.0;
 		this.myVehicles = new HashSet<Vehicle>();
-		this.myPublications = new HashSet<Publication>();
+		this.myPublications = new ArrayList<Publication>();
 		this.rating = new RatingCalculator();
+		this.myReservations = new ArrayList<Reservation>();
 	}
 
 	public String getCuil() {
@@ -99,11 +107,11 @@ public class User {
 		this.myVehicles.add(newVehicle);
 	}
 	
-	public Set<Publication> getMyPublications() {
+	public List<Publication> getMyPublications() {
 		return myPublications;
 	}
 
-	public void setMyPublications(Set<Publication> myPublications) {
+	public void setMyPublications(List<Publication> myPublications) {
 		this.myPublications = myPublications;
 	}
 	
@@ -113,6 +121,19 @@ public class User {
 
 	public Double getRating() {
 		return rating.getCurrentRating();
+	}
+
+	public List<Reservation> getReservations() {
+		return this.myReservations;
+	}
+
+	public void addReservation(Reservation newReservation) {
+		this.myReservations.add(newReservation);
+		
+	}
+
+	public List<Reservation> getMyReservations() {
+		return this.myReservations;
 	}
 	
 }

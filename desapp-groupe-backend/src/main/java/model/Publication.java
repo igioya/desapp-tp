@@ -38,10 +38,12 @@ public class Publication {
 		this.owner = owner;
 	}
 	
-	public void makeReservation(User client, LocalDateTime fromDate, LocalDateTime toDate) throws DateNotAvailableException{
+	public Reservation makeReservation(User client, LocalDateTime fromDate, LocalDateTime toDate) throws DateNotAvailableException{
 		this.validateReservationDate(fromDate, toDate);
 		Reservation newReservation = new Reservation(client, fromDate, toDate);		
 		this.reservations.add(newReservation);
+		client.addReservation(newReservation);
+		return newReservation;
 	}
 	
 	private void validateReservationDate(LocalDateTime fromDate, LocalDateTime toDate) throws DateNotAvailableException {

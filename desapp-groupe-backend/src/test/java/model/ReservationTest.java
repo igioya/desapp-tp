@@ -22,33 +22,89 @@ public class ReservationTest {
 	public void tearDown() throws Exception {
 	}
 
+	
+	
 	@Test
-	public void test_dadaUnaPublicacionUnUsuarioRealizaUnaReserva() throws DateNotAvailableException {
-		LocalDateTime fromDate = new LocalDateTime();
-		LocalDateTime toDate = new LocalDateTime();
-		
-		Publication publication = new Publication();
-		
+	public void test_dadaUnaReservaCuandoElOwnerConfirmaLaReservaQuedaEnEstadoWaitingForRetireState() throws DateNotAvailableException{
 		User client = new User();
 		
-		publication.makeReservation(client, fromDate, toDate);
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		
-		assertEquals(publication.getReservations().size(), 1);
+//		changeStateToWaitingForRetire
+		newReservation.changeStateToNext();
+		
+		assertEquals(newReservation.getState().getClass(), WaitingForRetireState.class);		
 	}
 	
-	@Test(expected = DateNotAvailableException.class)
-	public void test_dadaUnaPublicacionConUnaReservaCuandoSeIntentaHacerOtraReservaQueSeSuperponeNoLoPermite() throws DateNotAvailableException{
-		LocalDateTime fromDate1 = new LocalDateTime(2018, 3, 22, 16, 30); // 22-03-2018 a las 16:30 hs
-		LocalDateTime toDate1 = new LocalDateTime(2018, 3, 29, 16, 30);   // 29-03-2018 a las 16:30 hs
-		LocalDateTime fromDate2 = new LocalDateTime(2018, 3, 25, 15, 00);   // 25-03-2018 a las 15:00 hs
-		LocalDateTime toDate2 = new LocalDateTime(2018, 4, 1, 15, 00);   // 1-04-2018 a las 15:00 hs
+	@Test
+	public void test_dadaUnaReservaConfirmadaCuandoElClienteConfirmaElRetiroQuedaEnEstadoConfirmedByClientState() throws DateNotAvailableException{ //test_dadaUnaPublicacionConUnaReservaEnEstadoWaitingForRetireCuandoElClienteConfirmaElRetiroQuedaEnEstadoConfirmedByClientState
+		User client = new User();
 		
-		Publication publication = new Publication();
-		User client = new User();		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		
-		publication.makeReservation(client, fromDate1, toDate1);
-		publication.makeReservation(client, fromDate2, toDate2);
+//		changeStateToWaitingForRetire
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedRetireByClient
+		newReservation.changeStateToNext();
+		
+		assertEquals(newReservation.getState().getClass(), ConfirmedRetireByClientState.class);		
 	}
+	
+	@Test
+	public void test_dadaUnaReservaConfirmadaPorElClienteCuandoConfirmaElOwnerQuedaEnEstadoWaitingForReturnState() throws DateNotAvailableException{ //test_dadaUnaPublicacionConUnaReservaEnEstadoWaitingForRetireCuandoElClienteConfirmaElRetiroQuedaEnEstadoConfirmedByClientState
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
+//		changeStateToWaitingForRetire
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedRetireByClient
+		newReservation.changeStateToNext();
+//		changeStateToWaitingForReturn
+		newReservation.changeStateToNext();
+		
+		assertEquals(newReservation.getState().getClass(), WaitingForReturnState.class);		
+	}
+	
+	@Test
+	public void test_dadaUnaReservaEnEstadoWaitingForReturnStateCuandoClienteConfirmaRetornoQuedaEnEstadoConfirmedReturnByClientState() throws DateNotAvailableException{ //test_dadaUnaPublicacionConUnaReservaEnEstadoWaitingForRetireCuandoElClienteConfirmaElRetiroQuedaEnEstadoConfirmedByClientState
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
+//		changeStateToWaitingForRetire
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedRetireByClient
+		newReservation.changeStateToNext();
+//		changeStateToWaitingForReturn
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedReturnByClient
+		newReservation.changeStateToNext();
+		
+		assertEquals(newReservation.getState().getClass(), ConfirmedReturnByClientState.class);		
+	}
+	
+	@Test
+	public void test_dadaUnaReservaEnEstadoConfirmedReturnByClientStateCuandoOwnerConfirmaRetornoQuedaEnEstadoConfirmedReturnByOwnerState() throws DateNotAvailableException{ //test_dadaUnaPublicacionConUnaReservaEnEstadoWaitingForRetireCuandoElClienteConfirmaElRetiroQuedaEnEstadoConfirmedByClientState
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
+//		changeStateToWaitingForRetire
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedRetireByClient
+		newReservation.changeStateToNext();
+//		changeStateToWaitingForReturn
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedReturnByClient
+		newReservation.changeStateToNext();
+//		changeStateToConfirmedReturnByOwner
+		newReservation.changeStateToNext();
+		
+		assertEquals(newReservation.getState().getClass(), ConfirmedReturnByOwnerState.class);		
+	}
+	
+	
 	
 	
 	
