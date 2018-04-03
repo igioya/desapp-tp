@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.joda.time.LocalDateTime;
+import model.exceptions.IlegalOperationException;
 
 public class User {
 	
@@ -14,7 +15,7 @@ public class User {
 	private String surname;
 	private String address;
 	private String email;
-	private Double credit;
+	private CurrentAccount currentAccount;
 	private Set<Vehicle> myVehicles;
 	private List<Publication> myPublications;
 	private RatingCalculator rating;
@@ -30,7 +31,7 @@ public class User {
 		this.surname = surname;
 		this.address = address;
 		this.email = email;
-		this.credit = 0.0;
+		this.currentAccount = new CurrentAccount();
 		this.myVehicles = new HashSet<Vehicle>();
 		this.myPublications = new ArrayList<Publication>();
 		this.rating = new RatingCalculator();
@@ -77,24 +78,6 @@ public class User {
 		this.email = email;
 	}
 
-	public Double getCredit() {
-		return credit;
-	}
-
-	public void setCredit(Double credit) {
-		this.credit = credit;
-	}
-	
-	public void addCredit(Double moreCredit) {
-		this.credit += moreCredit;
-	}
-	
-	public void useCredit(Double lessCredit) {
-		if(lessCredit <= this.credit) {
-			this.credit -= lessCredit;
-		} 
-	}
-
 	public Set<Vehicle> getMyVehicles() {
 		return myVehicles;
 	}
@@ -132,8 +115,17 @@ public class User {
 		
 	}
 
-	public List<Reservation> getMyReservations() {
-		return this.myReservations;
+	public void addCredit(Double credit) {
+		this.currentAccount.addCredit(credit);
+	}
+	
+	public void trasnferCreditTo(Double transfer, User vehicleOwner) {
+		try {
+			this.currentAccount.transferCreditTo(transfer, vehicleOwner);
+		} catch (IlegalOperationException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 	}
 	
 }
