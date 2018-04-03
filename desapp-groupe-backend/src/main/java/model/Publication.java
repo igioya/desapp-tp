@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.joda.time.LocalDateTime;
@@ -49,13 +48,13 @@ public class Publication {
 		DateRange datesToValidate = new DateRange(fromDate, toDate);
 		for(Reservation reservation: this.reservations){
 			DateRange datesForCompare = new DateRange(reservation.getFromDate(), reservation.getToDate());
-			if(this.areMixed(datesToValidate, datesForCompare)){
+			if(this.areOverlapped(datesToValidate, datesForCompare)){
 				throw new DateNotAvailableException();
 			}
 		}
 	}
 
-	private boolean areMixed(DateRange aRange, DateRange otherRange) {
+	private boolean areOverlapped(DateRange aRange, DateRange otherRange) {
 		LocalDateTime fromDate1 = aRange.getFromDate();
 		LocalDateTime toDate1 = aRange.getToDate();
 		
