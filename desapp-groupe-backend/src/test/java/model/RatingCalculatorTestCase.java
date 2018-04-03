@@ -24,7 +24,6 @@ public class RatingCalculatorTestCase {
 		calculator.setWeightedAverage(map);
 		
 		calculator.calculateRating();
-		System.out.println(calculator.getCurrentRating());
 		assertTrue(calculator.getCurrentRating().equals(4.11));
 
 	}
