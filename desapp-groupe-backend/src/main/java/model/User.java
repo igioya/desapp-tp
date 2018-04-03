@@ -3,6 +3,8 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.exceptions.IlegalOperationException;
+
 public class User {
 	
 	private String cuil;
@@ -23,7 +25,7 @@ public class User {
 		this.surname = surname;
 		this.address = address;
 		this.email = email;
-		this.currentAccount = new CurrentAccount(0.0);
+		this.currentAccount = new CurrentAccount();
 		this.myVehicles = new HashSet<Vehicle>();
 		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
@@ -95,6 +97,19 @@ public class User {
 
 	public Double getRating() {
 		return rating.getCurrentRating();
+	}
+
+	public void addCredit(Double credit) {
+		this.currentAccount.addCredit(credit);
+	}
+	
+	public void trasnferCreditTo(Double transfer, User vehicleOwner) {
+		try {
+			this.currentAccount.transferCreditTo(transfer, vehicleOwner);
+		} catch (IlegalOperationException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 	}
 	
 }
