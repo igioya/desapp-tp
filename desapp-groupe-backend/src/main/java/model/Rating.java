@@ -3,6 +3,7 @@ package model;
 public class Rating {
 	
 	private Integer value;
+	private String description;
 
 	public Rating() {
 		this.value = 0;
