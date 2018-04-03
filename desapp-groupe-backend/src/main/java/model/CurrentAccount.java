@@ -14,6 +14,14 @@ public class CurrentAccount {
 		this.credit = 0.0;
 		this.movements = new ArrayList<String>();
 	}
+	
+	public Double getCredit() {
+		return credit;
+	}
+
+	public List<String> getMovements() {
+		return movements;
+	}
 
 	public void addCredit(Double moreCredit) {
 		this.credit += moreCredit;
@@ -21,12 +29,12 @@ public class CurrentAccount {
 		this.movements.add(movement);
 	}
 
-	public void transferCreditTo(Double transfer, User user) throws IlegalOperationException {
+	public void transferCreditTo(Double transfer, User vehicleOwner) throws IlegalOperationException {
 		if (transfer <= this.credit) {
 			this.credit -= transfer;
-			String movement = "Se debitaron de tu cuenta $" + transfer + ", como pago a ";
+			String movement = "Se debitaron $" + transfer + " de tu cuenta";
 			this.movements.add(movement);
-			user.addCredit(transfer);
+			vehicleOwner.addCredit(transfer);
 		} else
 			throw new IlegalOperationException();
 	}

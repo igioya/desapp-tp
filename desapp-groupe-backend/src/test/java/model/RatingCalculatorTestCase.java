@@ -11,7 +11,7 @@ public class RatingCalculatorTestCase {
 	
 
 	@Test
-	public void test() {
+	public void CheckThatARatingIsProperlyCalculated() {
 		
 		RatingCalculator calculator = new RatingCalculator();
 		
