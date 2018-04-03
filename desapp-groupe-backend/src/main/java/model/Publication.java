@@ -2,9 +2,13 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.joda.time.LocalDateTime;
+
+import model.exceptions.DateNotAvailableException;
+import utils.DateRange;
 
 public class Publication {
 
@@ -35,11 +39,37 @@ public class Publication {
 		this.owner = owner;
 	}
 	
-	public void makeReservation(User client, LocalDateTime fromDate, LocalDateTime toDate){
-		Reservation newReservation = new Reservation(client, fromDate, toDate);
+	public void makeReservation(User client, LocalDateTime fromDate, LocalDateTime toDate) throws DateNotAvailableException{
+		this.validateReservationDate(fromDate, toDate);
+		Reservation newReservation = new Reservation(client, fromDate, toDate);		
 		this.reservations.add(newReservation);
 	}
 	
+	private void validateReservationDate(LocalDateTime fromDate, LocalDateTime toDate) throws DateNotAvailableException {
+		DateRange datesToValidate = new DateRange(fromDate, toDate);
+		for(Reservation reservation: this.reservations){
+			DateRange datesForCompare = new DateRange(reservation.getFromDate(), reservation.getToDate());
+			if(this.areMixed(datesToValidate, datesForCompare)){
+				throw new DateNotAvailableException();
+			}
+		}
+	}
+
+	private boolean areMixed(DateRange aRange, DateRange otherRange) {
+		LocalDateTime fromDate1 = aRange.getFromDate();
+		LocalDateTime toDate1 = aRange.getToDate();
+		
+		LocalDateTime fromDate2 = otherRange.getFromDate();
+		LocalDateTime toDate2 = otherRange.getToDate();
+		
+		//fromDate1 >= fromDate2 && fromDate1 <= toDate2 || toDate1 >= fromDate2 && toDate1 <= toDate2
+		Boolean a = fromDate1.compareTo(fromDate2) > -1 && fromDate1.compareTo(toDate2) < 1;
+		
+		Boolean b = toDate1.compareTo(fromDate2) > -1 && toDate1.compareTo(toDate2) < 1;
+		
+		return a || b;
+	}
+
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
