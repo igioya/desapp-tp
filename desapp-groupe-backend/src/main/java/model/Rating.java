@@ -3,6 +3,7 @@ package model;
 public class Rating {
 	
 	private Integer value;
+	private String description;
 
 	public Rating() {
 		this.value = 0;
@@ -18,6 +19,14 @@ public class Rating {
 
 	public void setValue(Integer value) {
 		this.value = value;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

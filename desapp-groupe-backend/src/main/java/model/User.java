@@ -13,7 +13,7 @@ public class User {
 	private Double credit;
 	private Set<Vehicle> myVehicles;
 	private Set<Publication> myPublications;
-	private Rating rating;
+	private RatingCalculator rating;
 	
 	public User() {}
 	
@@ -26,7 +26,7 @@ public class User {
 		this.credit = 0.0;
 		this.myVehicles = new HashSet<Vehicle>();
 		this.myPublications = new HashSet<Publication>();
-		this.rating = new Rating();
+		this.rating = new RatingCalculator();
 	}
 
 	public String getCuil() {
@@ -111,12 +111,8 @@ public class User {
 		this.myPublications.add(newPublication);
 	}
 
-	public Rating getRating() {
-		return rating;
-	}
-
-	public void setRating(Rating rating) {
-		this.rating = rating;
+	public Double getRating() {
+		return rating.getCurrentRating();
 	}
 	
 }
