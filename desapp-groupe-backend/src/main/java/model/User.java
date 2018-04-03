@@ -10,7 +10,7 @@ public class User {
 	private String surname;
 	private String address;
 	private String email;
-	private Double credit;
+	private CurrentAccount currentAccount;
 	private Set<Vehicle> myVehicles;
 	private Set<Publication> myPublications;
 	private RatingCalculator rating;
@@ -23,7 +23,7 @@ public class User {
 		this.surname = surname;
 		this.address = address;
 		this.email = email;
-		this.credit = 0.0;
+		this.currentAccount = new CurrentAccount(0.0);
 		this.myVehicles = new HashSet<Vehicle>();
 		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
@@ -67,24 +67,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Double getCredit() {
-		return credit;
-	}
-
-	public void setCredit(Double credit) {
-		this.credit = credit;
-	}
-	
-	public void addCredit(Double moreCredit) {
-		this.credit += moreCredit;
-	}
-	
-	public void useCredit(Double lessCredit) {
-		if(lessCredit <= this.credit) {
-			this.credit -= lessCredit;
-		} 
 	}
 
 	public Set<Vehicle> getMyVehicles() {
