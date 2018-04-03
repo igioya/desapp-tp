@@ -23,7 +23,7 @@ public class ReservationTest {
 	}
 
 	@Test
-	public void test_dadaUnaPublicacionUnUsuarioRealizaUnaReserva() {
+	public void test_dadaUnaPublicacionUnUsuarioRealizaUnaReserva() throws DateNotAvailableException {
 		LocalDateTime fromDate = new LocalDateTime();
 		LocalDateTime toDate = new LocalDateTime();
 		
@@ -31,11 +31,7 @@ public class ReservationTest {
 		
 		User client = new User();
 		
-		try {
-			publication.makeReservation(client, fromDate, toDate);
-		} catch (DateNotAvailableException e) {
-			e.printStackTrace();
-		}
+		publication.makeReservation(client, fromDate, toDate);
 		
 		assertEquals(publication.getReservations().size(), 1);
 	}
