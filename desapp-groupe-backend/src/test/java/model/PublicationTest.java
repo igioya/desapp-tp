@@ -2,10 +2,14 @@ package model;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.joda.time.LocalDateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import model.exceptions.DateNotAvailableException;
 
@@ -16,6 +20,16 @@ public class PublicationTest {
 
 	@After
 	public void tearDown() throws Exception {
+	}
+	
+	@Test
+	public void test_cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
+		User publicationOwner = new User();
+		List<Ubication> returnAdress = new ArrayList<Ubication>();
+		
+		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), new Ubication(),returnAdress, "", "", 100.00, publicationOwner);
+		
+		assertEquals(publicationOwner.getMyPublications().get(0), newPublication);
 	}
 	
 	@Test

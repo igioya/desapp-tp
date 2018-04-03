@@ -12,12 +12,11 @@ import utils.DateRange;
 public class Publication {
 
 	private Vehicle vehicle;
-	private String city;
 	private Ubication retireAddress;
-	private Set<Ubication> returnAddress;
+	private List<Ubication> returnAddress;
 	private String telephone;
 	private Set<LocalDateTime> datesAvailable;
-	private Double cost;
+	private Double costPerHour;
 	private List<Reservation> reservations;
 	private User owner;
 
@@ -25,15 +24,14 @@ public class Publication {
 		this.reservations = new ArrayList<Reservation>();
 	}
 
-	public Publication(Vehicle vehicle, String city, Ubication retireAddress, Set<Ubication> returnAddress,
-			String description, String telephone, Set<LocalDateTime> datesAvailable, Double cost, User owner) {
+	public Publication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress,
+			String description, String telephone, Double costPerHour, User owner) {
 		this.vehicle = vehicle;
-		this.city = city;
 		this.retireAddress = retireAddress;
 		this.returnAddress = returnAddress;
 		this.telephone = telephone;
 		this.datesAvailable = datesAvailable;
-		this.cost = cost;
+		this.costPerHour = costPerHour;
 		this.reservations = new ArrayList<Reservation>();
 		this.owner = owner;
 	}
@@ -91,13 +89,6 @@ public class Publication {
 		this.vehicle = vehicle;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
 
 	public Ubication getRetireAddress() {
 		return retireAddress;
@@ -105,14 +96,6 @@ public class Publication {
 
 	public void setRetireAddress(Ubication retireAddress) {
 		this.retireAddress = retireAddress;
-	}
-
-	public Set<Ubication> getReturnAddress() {
-		return returnAddress;
-	}
-
-	public void setReturnAddress(Set<Ubication> returnAddress) {
-		this.returnAddress = returnAddress;
 	}
 
 	public String getTelephone() {
@@ -132,11 +115,11 @@ public class Publication {
 	}
 
 	public Double getCost() {
-		return cost;
+		return costPerHour;
 	}
 
 	public void setCost(Double cost) {
-		this.cost = cost;
+		this.costPerHour = cost;
 	}
 
 }

@@ -1,11 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import org.joda.time.LocalDateTime;
 import model.exceptions.IlegalOperationException;
 
 public class User {
@@ -16,13 +13,14 @@ public class User {
 	private String address;
 	private String email;
 	private CurrentAccount currentAccount;
-	private Set<Vehicle> myVehicles;
+	private List<Vehicle> myVehicles;
 	private List<Publication> myPublications;
 	private RatingCalculator rating;
 	private List<Reservation> myReservations;
 	
 	public User() {
 		this.myReservations = new ArrayList<Reservation>();
+		this.myPublications = new ArrayList<Publication>();
 	}
 	
 	public User(String cuil, String name, String surname, String address, String email) {
@@ -32,7 +30,7 @@ public class User {
 		this.address = address;
 		this.email = email;
 		this.currentAccount = new CurrentAccount();
-		this.myVehicles = new HashSet<Vehicle>();
+		this.myVehicles = new ArrayList<Vehicle>();
 		this.myPublications = new ArrayList<Publication>();
 		this.rating = new RatingCalculator();
 		this.myReservations = new ArrayList<Reservation>();
@@ -78,11 +76,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Set<Vehicle> getMyVehicles() {
+	public List<Vehicle> getMyVehicles() {
 		return myVehicles;
 	}
 
-	public void setMyVehicles(Set<Vehicle> myVehicles) {
+	public void setMyVehicles(List<Vehicle> myVehicles) {
 		this.myVehicles = myVehicles;
 	}
 	
@@ -126,6 +124,14 @@ public class User {
 			e.getMessage();
 			e.printStackTrace();
 		}
+	}
+
+	public Publication createNewPublication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress,
+			String description, String telephone, Double costPerHour, User owner) {
+		
+		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, description, telephone, costPerHour, owner);
+		this.myPublications.add(newPublication);		
+		return newPublication;
 	}
 	
 }
