@@ -8,16 +8,46 @@ public class ValidatorTestCase {
 	
 	Validator validator = new Validator();
 
-//	@Test
-//	public void checkIfACuilIsValid() {
-//		String cuil = "20379541217";
-//		assertTrue(validator.isValidEmailAddress(cuil));
-//	}
+	@Test
+	public void checkIfACuilIsValid() {
+		String cuil = "20317359692";
+		assertTrue(validator.isValidCuil(cuil));
+	}
 	
 	@Test
 	public void checkIfACuilIsInvalid() {
 		String cuil = "11111111111";
-		assertFalse(validator.isValidEmailAddress(cuil));
+		assertFalse(validator.isValidCuil(cuil));
+	}
+	
+	@Test
+	public void checkIfANameOrSurnameIsValid() {
+		String name = "Pedro";
+		assertTrue(validator.isValidNameOrSurname(name));
+	}
+	
+	@Test
+	public void checkIfANameOrSurnameIsInvalidWhenIsEmpty() {
+		String name = "";
+		assertFalse(validator.isValidNameOrSurname(name));
+	}
+	
+	@Test
+	public void checkIfANameOrSurnameIsInvalidWhenIsNull() {
+		String name = null;
+		assertFalse(validator.isValidNameOrSurname(name));
+	}
+	
+	@Test
+	public void checkIfANameOrSurnameIsInvalidWhenIsLessThanFour() {
+		String name = "foo";
+		assertFalse(validator.isValidNameOrSurname(name));
+	}
+	
+	@Test
+	public void checkIfANameOrSurnameIsInvalidWhenIsMoreThanFifty() {
+		String name = "ggggggggggggggggggggggggggggggggggggggggggggggggggggggg"; //55
+		assertFalse(validator.isValidNameOrSurname(name));
 	}
 	
 	@Test
@@ -43,7 +73,4 @@ public class ValidatorTestCase {
 		String telephone = "485";
 		assertFalse(validator.isValidTelephone(telephone));
 	}
-	
-	
-
 }
