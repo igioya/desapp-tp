@@ -3,6 +3,8 @@ package model;
 
 import org.joda.time.LocalDateTime;
 
+import model.reservationStates.InitialState;
+import model.reservationStates.State;
 import utils.DateRange;
 
 public class Reservation {

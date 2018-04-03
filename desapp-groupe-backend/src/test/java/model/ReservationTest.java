@@ -7,6 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.exceptions.DateNotAvailableException;
+import model.reservationStates.ConfirmedRetireByClientState;
+import model.reservationStates.ConfirmedReturnByClientState;
+import model.reservationStates.ConfirmedReturnByOwnerState;
+import model.reservationStates.WaitingForRetireState;
+import model.reservationStates.WaitingForReturnState;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package model;
+package model.reservationStates;
 
 public abstract class State {
 
