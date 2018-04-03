@@ -19,7 +19,7 @@ public class PublicationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaPublicacionUnUsuarioRealizaUnaReserva() throws DateNotAvailableException {
+	public void test_dadaUnaPublicacionCuandoUnUsuarioRealizaUnaReservaQuedaGuardadaEnLaListaDeReservasDeLaPublicacion() throws DateNotAvailableException {
 		LocalDateTime fromDate = new LocalDateTime();
 		LocalDateTime toDate = new LocalDateTime();
 		
