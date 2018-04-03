@@ -20,5 +20,13 @@ public class Rating {
 	public void setValue(Integer value) {
 		this.value = value;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 }
