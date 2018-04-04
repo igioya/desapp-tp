@@ -25,6 +25,10 @@ public class RatingCalculator {
 		return this.currentRating;
 	}
 
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
 	public void setWeightedAverage(Map<Integer, Integer> weightedAverage) {
 		this.weightedAverage = weightedAverage;
 	}

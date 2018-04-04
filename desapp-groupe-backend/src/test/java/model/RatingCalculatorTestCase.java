@@ -1,6 +1,6 @@
 package model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,5 +27,23 @@ public class RatingCalculatorTestCase {
 		assertTrue(calculator.getCurrentRating().equals(4.11));
 
 	}
+	
+	@Test
+	public void CheckThatARatingIsProperlyAdded() {
+		
+		RatingCalculator calculator = new RatingCalculator();
+		
+		Rating rating = new Rating(3);
+		calculator.addNewRating(rating);
 
+		assertTrue(calculator.getRatings().contains(rating));
+	}
+	
+	@Test
+	public void CheckThatIfAnEmptyRatingsAreZeroAsDefault () {
+		
+		RatingCalculator calculator = new RatingCalculator();
+
+		assertTrue(calculator.getCurrentRating().equals(0.0));
+	}
 }
