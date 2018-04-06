@@ -83,11 +83,6 @@ public class Reservation {
 				new RetireConfirmedState(), 
 				new RetireConfirmedByClientState()
 		);
-//		if(this.state.retireConfirmedByOwner()){
-//			this.state = new RetireConfirmedState();
-//		} else {
-//			this.state = new RetireConfirmedByClientState();
-//		}		
 	}
 
 	public void confirmRetireByOwner() {
@@ -96,11 +91,6 @@ public class Reservation {
 				new RetireConfirmedState(), 
 				new RetireConfirmedByOwnerState()
 		);
-//		if(this.state.retireConfirmedByClient()){
-//			this.state = new RetireConfirmedState(); 
-//		} else {
-//			this.state = new RetireConfirmedByOwnerState();
-//		}		
 	}
 
 	public void confirmReturnByOwner() {
@@ -109,11 +99,6 @@ public class Reservation {
 				new ReturnConfirmedState(), 
 				new ReturnConfirmedByOwnerState()
 		);
-//		if(this.state.returnConfirmedByClient()){
-//			this.state = new ReturnConfirmedState();
-//		} else {
-//			this.state = new ReturnConfirmedByOwnerState();
-//		}		
 	}
 
 	public void confirmReturnByClient() {
@@ -122,11 +107,6 @@ public class Reservation {
 				new ReturnConfirmedState(), 
 				new ReturnConfirmedByClientState()
 		);
-//		if(this.state.returnConfirmedByOwner()){
-//			this.state = new ReturnConfirmedState();
-//		} else {
-//			this.state = new ReturnConfirmedByClientState();
-//		}		
 	}
 	
 	private void confirmAction(Supplier<Boolean> methodToRun, State stateToSet, State defaultStateToSet){
