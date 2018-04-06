@@ -58,10 +58,10 @@ public class PublicationTest {
 	
 	@Test(expected = DateNotAvailableException.class)
 	public void test_dadaUnaPublicacionConUnaReservaCuandoSeIntentaHacerOtraReservaQueSeSuperponeNoLoPermite() throws DateNotAvailableException{
-		LocalDateTime fromDate1 = new LocalDateTime(2018, 3, 22, 16, 30); // 22-03-2018 a las 16:30 hs
-		LocalDateTime toDate1 = new LocalDateTime(2018, 3, 29, 16, 30);   // 29-03-2018 a las 16:30 hs
-		LocalDateTime fromDate2 = new LocalDateTime(2018, 3, 25, 15, 00);   // 25-03-2018 a las 15:00 hs
-		LocalDateTime toDate2 = new LocalDateTime(2018, 4, 1, 15, 00);   // 1-04-2018 a las 15:00 hs
+		LocalDateTime fromDate1 = new LocalDateTime().minusDays(2);
+		LocalDateTime toDate1 = fromDate1.plusDays(5);   				  
+		LocalDateTime fromDate2 = new LocalDateTime(); 
+		LocalDateTime toDate2 = fromDate2.plusDays(5);   				  
 		
 		Publication publication = new Publication();
 		User client = new User();		
@@ -69,4 +69,5 @@ public class PublicationTest {
 		publication.makeReservation(client, fromDate1, toDate1);
 		publication.makeReservation(client, fromDate2, toDate2);
 	}
+	
 }
