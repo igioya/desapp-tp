@@ -168,7 +168,7 @@ public class ReservationTest {
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		newReservation.confirmRetireByOwner();
-		newReservation.setMINUTES(3.00);
+		newReservation.setMINUTES(3.00 * 0.0166667);//For testing
 		
 		TimeUnit.SECONDS.sleep(5);
 		
@@ -181,7 +181,7 @@ public class ReservationTest {
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		newReservation.confirmRetireByClient();
-		newReservation.setMINUTES(3.00);
+		newReservation.setMINUTES(3.00 * 0.0166667);//For testing
 		
 		TimeUnit.SECONDS.sleep(5);
 		

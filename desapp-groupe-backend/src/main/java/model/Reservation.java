@@ -107,7 +107,7 @@ public class Reservation {
 		this.timer.schedule(new TimerTask() {
 			Integer seconds = 0;
 	        public void run(){
-	        	if(seconds >= MINUTES){
+	        	if(seconds * 0.0166667 >= MINUTES){
 	        		setState(state);
 	        		this.cancel();
 	        	}
