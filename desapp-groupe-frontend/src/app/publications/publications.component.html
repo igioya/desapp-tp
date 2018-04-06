@@ -1,0 +1,9 @@
+<h2>&Uacute;LTIMAS PUBLICACIONES:</h2>
+
+<ul class="publications">
+  <li *ngFor="let publication of publications">
+	<img class="card-img-top" src="{{publication.image}}" alt="Card image cap" height="150px" width="250px">
+    <h4 class="card-subtitle mb-2 text-muted">{{publication.owner}}</h4>
+    <h3 class="card-subtitle mb-2 text-muted">{{publication.description}}</h3>
+  </li>
+</ul>
