@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import model.Data;
 import model.Publication;
 
 @CrossOrigin
@@ -20,16 +21,15 @@ import model.Publication;
 public class PublicationController {
 
 	//@Autowired
-	//PostService postService;
-
+	Data data;
 	
 	@RequestMapping(value = "/publications", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Publication>> getAll() {
-		List<Post> posts = this.postService.getAll();
-		if (posts.isEmpty() || posts == null) {
-			return new ResponseEntity<List<Post>>(HttpStatus.NOT_FOUND);
+		List<Publication> publications = this.data.getPublications();
+		if (publications.isEmpty() || publications == null) {
+			return new ResponseEntity<List<Publication>>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
+		return new ResponseEntity<List<Publication>>(publications, HttpStatus.OK);
 	}
 
 }

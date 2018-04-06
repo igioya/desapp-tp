@@ -30,7 +30,7 @@ public class Publication {
 		this.retireAddress = retireAddress;
 		this.returnAddress = returnAddress;
 		this.telephone = telephone;
-		this.datesAvailable = datesAvailable;
+		//this.datesAvailable = datesAvailable;
 		this.costPerHour = costPerHour;
 		this.reservations = new ArrayList<Reservation>();
 		this.owner = owner;
@@ -73,53 +73,4 @@ public class Publication {
 		return reservations;
 	}
 	
-	public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-
-	public Vehicle getVehicle() {
-		return vehicle;
-	}
-
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
-
-
-	public Ubication getRetireAddress() {
-		return retireAddress;
-	}
-
-	public void setRetireAddress(Ubication retireAddress) {
-		this.retireAddress = retireAddress;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public Set<LocalDateTime> getDatesAvailable() {
-		return datesAvailable;
-	}
-
-	public void setDatesAvailable(Set<LocalDateTime> datesAvailable) {
-		this.datesAvailable = datesAvailable;
-	}
-
-	public Double getCost() {
-		return costPerHour;
-	}
-
-	public void setCost(Double cost) {
-		this.costPerHour = cost;
-	}
-
 }
