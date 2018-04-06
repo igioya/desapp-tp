@@ -10,8 +10,8 @@ import java.util.function.Supplier;
 
 import org.joda.time.LocalDateTime;
 
-import model.reservationStates.ConfirmedByOwnerState;
-import model.reservationStates.NotConfirmedState;
+import model.reservationStates.ReservationConfirmedState;
+import model.reservationStates.ReservationNotConfirmedState;
 import model.reservationStates.RetireConfirmedByClientState;
 import model.reservationStates.RetireConfirmedByOwnerState;
 import model.reservationStates.RetireConfirmedState;
@@ -51,7 +51,7 @@ public class Reservation {
 		this.client = client;	
 		this.fromDate = fromDate;
 		this.toDate = toDate;
-		this.state = new NotConfirmedState();
+		this.state = new ReservationNotConfirmedState();
 		this.timer = new Timer();
 	}
 	
@@ -81,7 +81,7 @@ public class Reservation {
 	}
 	
 	public void confirmReservationByOwner() {
-		this.state = new ConfirmedByOwnerState();		
+		this.state = new ReservationConfirmedState();		
 	}
 
 	public void confirmRetireByClient() {
@@ -91,7 +91,7 @@ public class Reservation {
 				new RetireConfirmedByClientState()
 		);
 		
-		this.startTimer(new ConfirmedByOwnerState());
+		this.startTimer(new ReservationConfirmedState());
 	}
 
 	public void confirmRetireByOwner() {

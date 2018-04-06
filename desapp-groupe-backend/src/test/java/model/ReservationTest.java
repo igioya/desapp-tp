@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.exceptions.DateNotAvailableException;
-import model.reservationStates.ConfirmedByOwnerState;
-import model.reservationStates.NotConfirmedState;
+import model.reservationStates.ReservationConfirmedState;
+import model.reservationStates.ReservationNotConfirmedState;
 import model.reservationStates.RetireConfirmedByClientState;
 import model.reservationStates.RetireConfirmedByOwnerState;
 import model.reservationStates.RetireConfirmedState;
@@ -39,27 +39,27 @@ public class ReservationTest {
 
 	
 	@Test
-	public void test_seCreaUnaReservaYComienzaEnNotConfirmedState() throws DateNotAvailableException{
+	public void test_seCreaUnaReservaYComienzaEnReservationNotConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		
-		assertEquals(newReservation.getState().getClass(), NotConfirmedState.class);		
+		assertEquals(newReservation.getState().getClass(), ReservationNotConfirmedState.class);		
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnNotConfirmedStateCuandoElOwnerConfirmaQuedaEnConfirmedState() throws DateNotAvailableException{
+	public void test_dadaUnaReservaEnReservationNotConfirmedStateCuandoElOwnerConfirmaQuedaEnReservationConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
 		
 		newReservation.confirmReservationByOwner();
 		
-		assertEquals(newReservation.getState().getClass(), ConfirmedByOwnerState.class);		
+		assertEquals(newReservation.getState().getClass(), ReservationConfirmedState.class);		
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnConfirmedStateCuandoElClienteConfirmaElRetiroQuedaEnRetireConfirmedByClient() throws DateNotAvailableException{
+	public void test_dadaUnaReservaEnReservationConfirmedStateCuandoElClienteConfirmaElRetiroQuedaEnRetireConfirmedByClient() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -70,7 +70,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnConfirmedStateCuandoElOwnerConfirmaElRetiroQuedaEnRetireConfirmedByOwner() throws DateNotAvailableException{
+	public void test_dadaUnaReservaEnReservationConfirmedStateCuandoElOwnerConfirmaElRetiroQuedaEnRetireConfirmedByOwner() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -176,7 +176,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedByClientCuandoPasan30minQuedaEnConfirmedByOwnerState() throws DateNotAvailableException, InterruptedException{
+	public void test_dadaUnaReservaEnRetireConfirmedByClientCuandoPasan30minQuedaEnReservationConfirmedState() throws DateNotAvailableException, InterruptedException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -185,6 +185,6 @@ public class ReservationTest {
 		
 		TimeUnit.SECONDS.sleep(5);
 		
-		assertEquals(ConfirmedByOwnerState.class, newReservation.getState().getClass());		
+		assertEquals(ReservationConfirmedState.class, newReservation.getState().getClass());		
 	}
 }
