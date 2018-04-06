@@ -1,4 +1,8 @@
 package model;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 import javax.swing.Timer;
 
 import org.joda.time.LocalDateTime;
@@ -74,34 +78,62 @@ public class Reservation {
 	}
 
 	public void confirmRetireByClient() {
-		if(this.state.retireConfirmedByOwner()){
-			this.state = new RetireConfirmedState();
-		} else {
-			this.state = new RetireConfirmedByClientState();
-		}		
+		this.confirmAction(
+				() -> this.state.retireConfirmedByOwner(), 
+				new RetireConfirmedState(), 
+				new RetireConfirmedByClientState()
+		);
+//		if(this.state.retireConfirmedByOwner()){
+//			this.state = new RetireConfirmedState();
+//		} else {
+//			this.state = new RetireConfirmedByClientState();
+//		}		
 	}
 
 	public void confirmRetireByOwner() {
-		if(this.state.retireConfirmedByClient()){
-			this.state = new RetireConfirmedState(); 
-		} else {
-			this.state = new RetireConfirmedByOwnerState();
-		}		
+		this.confirmAction(
+				() -> this.state.retireConfirmedByClient(), 
+				new RetireConfirmedState(), 
+				new RetireConfirmedByOwnerState()
+		);
+//		if(this.state.retireConfirmedByClient()){
+//			this.state = new RetireConfirmedState(); 
+//		} else {
+//			this.state = new RetireConfirmedByOwnerState();
+//		}		
 	}
 
 	public void confirmReturnByOwner() {
-		if(this.state.returnConfirmedByClient()){
-			this.state = new ReturnConfirmedState();
-		} else {
-			this.state = new ReturnConfirmedByOwnerState();
-		}		
+		this.confirmAction(
+				() -> this.state.returnConfirmedByClient(), 
+				new ReturnConfirmedState(), 
+				new ReturnConfirmedByOwnerState()
+		);
+//		if(this.state.returnConfirmedByClient()){
+//			this.state = new ReturnConfirmedState();
+//		} else {
+//			this.state = new ReturnConfirmedByOwnerState();
+//		}		
 	}
 
 	public void confirmReturnByClient() {
-		if(this.state.returnConfirmedByOwner()){
-			this.state = new ReturnConfirmedState();
+		this.confirmAction(
+				() -> this.state.returnConfirmedByOwner(), 
+				new ReturnConfirmedState(), 
+				new ReturnConfirmedByClientState()
+		);
+//		if(this.state.returnConfirmedByOwner()){
+//			this.state = new ReturnConfirmedState();
+//		} else {
+//			this.state = new ReturnConfirmedByClientState();
+//		}		
+	}
+	
+	private void confirmAction(Supplier<Boolean> methodToRun, State stateToSet, State defaultStateToSet){
+		if(methodToRun.get()){
+			this.state = stateToSet;
 		} else {
-			this.state = new ReturnConfirmedByClientState();
-		}		
+			this.state = defaultStateToSet;
+		}	
 	}
 }
