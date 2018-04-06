@@ -1,9 +1,12 @@
 package model;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import javax.swing.Timer;
 
 import org.joda.time.LocalDateTime;
 
@@ -41,15 +44,18 @@ public class Reservation {
 	private LocalDateTime toDate;
 	private State state;
 	private Timer timer;
+	private LocalDateTime timeRemaing;
+	private static Double MINUTES = 30.00;
 
 	public Reservation(User client, LocalDateTime fromDate, LocalDateTime toDate){	
 		this.client = client;	
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 		this.state = new NotConfirmedState();
-		this.timer = new Timer(1000, null);
+		this.timer = new Timer();
 	}
 	
+
 	public LocalDateTime getFromDate() {
 		return fromDate;
 	}
@@ -69,10 +75,11 @@ public class Reservation {
 	public void changeStateToNext() {
 		this.state = this.state.getNextState();			
 	}
+	
 	public Timer getTimer() {
 		return this.timer;
 	}
-
+	
 	public void confirmReservationByOwner() {
 		this.state = new ConfirmedByOwnerState();		
 	}
@@ -83,6 +90,8 @@ public class Reservation {
 				new RetireConfirmedState(), 
 				new RetireConfirmedByClientState()
 		);
+		
+		this.startTimer(new ConfirmedByOwnerState());
 	}
 
 	public void confirmRetireByOwner() {
@@ -91,6 +100,24 @@ public class Reservation {
 				new RetireConfirmedState(), 
 				new RetireConfirmedByOwnerState()
 		);
+		startTimer(new RetireConfirmedState());		
+	}
+
+	private void startTimer(State state) {
+		this.timer.schedule(new TimerTask() {
+			Integer seconds = 0;
+	        public void run(){
+	        	if(seconds >= MINUTES){
+	        		setState(state);
+	        		this.cancel();
+	        	}
+	        	seconds++;
+	        }
+	    }, 0, 1000);
+	}
+
+	private void setState(State state) {
+		this.state = state;		
 	}
 
 	public void confirmReturnByOwner() {
@@ -115,5 +142,11 @@ public class Reservation {
 		} else {
 			this.state = defaultStateToSet;
 		}	
+	}
+
+
+	public void setMINUTES(Double minutes) {
+		this.MINUTES = minutes;
+		
 	}
 }

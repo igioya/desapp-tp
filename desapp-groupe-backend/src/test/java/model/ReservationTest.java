@@ -18,6 +18,13 @@ import model.reservationStates.ReturnConfirmedState;
 
 import static org.junit.Assert.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.Timer;
+import javax.swing.plaf.SliderUI;
+
 
 public class ReservationTest {
 	
@@ -153,5 +160,31 @@ public class ReservationTest {
 		newReservation.confirmReturnByClient();
 		
 		assertEquals(ReturnConfirmedState.class, newReservation.getState().getClass());		
+	}
+	
+	@Test
+	public void test_dadaUnaReservaEnRetireConfirmedByOwnerStateCuandoPasan30MinQuedaEnRetireConfirmedState() throws DateNotAvailableException, InterruptedException{
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		newReservation.confirmRetireByOwner();
+		newReservation.setMINUTES(3.00);
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		assertEquals(RetireConfirmedState.class, newReservation.getState().getClass());		
+	}
+	
+	@Test
+	public void test_dadaUnaReservaEnRetireConfirmedByClientCuandoPasan30minQuedaEnConfirmedByOwnerState() throws DateNotAvailableException, InterruptedException{
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		newReservation.confirmRetireByClient();
+		newReservation.setMINUTES(3.00);
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		assertEquals(ConfirmedByOwnerState.class, newReservation.getState().getClass());		
 	}
 }
