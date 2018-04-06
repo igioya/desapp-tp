@@ -45,6 +45,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmReservationByOwner();
 		
 		assertEquals(newReservation.getState().getClass(), ConfirmedByOwnerState.class);		
@@ -55,6 +56,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByClient();
 		
 		assertEquals(newReservation.getState().getClass(), RetireConfirmedByClientState.class);		
@@ -65,6 +67,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		
 		assertEquals(newReservation.getState().getClass(), RetireConfirmedByOwnerState.class);		
@@ -75,6 +78,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByClient();
 		newReservation.confirmRetireByOwner();
 		
@@ -86,6 +90,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		newReservation.confirmRetireByClient();		
 		
@@ -97,6 +102,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		newReservation.confirmRetireByClient();
 		
@@ -110,6 +116,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		newReservation.confirmRetireByClient();
 		
@@ -123,6 +130,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		newReservation.confirmRetireByClient();
 		
@@ -137,6 +145,7 @@ public class ReservationTest {
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		
 		newReservation.confirmRetireByOwner();
 		newReservation.confirmRetireByClient();
 		
