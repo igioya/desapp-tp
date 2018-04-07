@@ -18,12 +18,7 @@ import model.reservationStates.ReturnConfirmedState;
 
 import static org.junit.Assert.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.Timer;
-import javax.swing.plaf.SliderUI;
 
 
 public class ReservationTest {
