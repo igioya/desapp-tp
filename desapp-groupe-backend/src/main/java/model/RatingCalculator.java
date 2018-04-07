@@ -20,8 +20,7 @@ public class RatingCalculator {
 		this.weightedAverage.put(1, 0);
 	}
 	
-	public Double getCurrentRating()
-	{
+	public Double getCurrentRating() {
 		return this.currentRating;
 	}
 
@@ -40,18 +39,17 @@ public class RatingCalculator {
 		this.calculateRating();
 	}
 	
-	public void calculateRating()
-	{
+	public void calculateRating() {
 		if(weightedAverage.isEmpty())
 			currentRating = 0.00;
 		else {
-		Integer one = this.weightedAverage.get(1);
-		Integer two = this.weightedAverage.get(2);
-		Integer three = this.weightedAverage.get(3);
-		Integer four = this.weightedAverage.get(4);
-		Integer five = this.weightedAverage.get(5);
-		
-		currentRating =  Math.floor((double) (5*five + 4*four + 3*three + 2*two + 1*one) / (double) (one+two+three+four+five) * 100) / 100;
+			Integer one = this.weightedAverage.get(1);
+			Integer two = this.weightedAverage.get(2);
+			Integer three = this.weightedAverage.get(3);
+			Integer four = this.weightedAverage.get(4);
+			Integer five = this.weightedAverage.get(5);
+			
+			currentRating =  Math.floor((double) (5*five + 4*four + 3*three + 2*two + 1*one) / (double) (one+two+three+four+five) * 100) / 100;
 		}
 	}
 
