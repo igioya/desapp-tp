@@ -8,8 +8,8 @@ public class EmailSenderServiceTestCase {
 	public void test() {
 		EmailSenderService sender = new EmailSenderService();
 		
-		sender.sendEmail("Probando", "Hola","ignaciolamandia@gmail.com");
-		sender.sendEmail("Probando", "Hola Ioia","ignacio.gioya@gmail.com");
+//		sender.sendEmail("Probando", "Hola","ignaciolamandia@gmail.com");
+//		sender.sendEmail("Probando", "Hola Ioia","ignacio.gioya@gmail.com");
 	}
 
 }
