@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.exceptions.IlegalOperationException;
-import model.userStates.ActiveState;
-import model.userStates.BannedState;
-import model.userStates.UserState;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
+import model.states.user.UserState;
 
 public class User {
 	

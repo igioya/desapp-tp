@@ -8,8 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.userStates.ActiveState;
-import model.userStates.BannedState;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
 
 
 public class UserTest {

@@ -1,4 +1,4 @@
-package model.reservationStates;
+package model.states.reservation;
 
 public class RetireConfirmedByClientState extends State {
 	public Boolean retireConfirmedByClient() {

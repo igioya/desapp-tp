@@ -6,15 +6,15 @@ import java.util.function.Supplier;
 
 import org.joda.time.LocalDateTime;
 
-import model.reservationStates.ReservationConfirmedState;
-import model.reservationStates.ReservationNotConfirmedState;
-import model.reservationStates.RetireConfirmedByClientState;
-import model.reservationStates.RetireConfirmedByOwnerState;
-import model.reservationStates.RetireConfirmedState;
-import model.reservationStates.ReturnConfirmedByClientState;
-import model.reservationStates.ReturnConfirmedByOwnerState;
-import model.reservationStates.ReturnConfirmedState;
-import model.reservationStates.State;
+import model.states.reservation.ReservationConfirmedState;
+import model.states.reservation.ReservationNotConfirmedState;
+import model.states.reservation.RetireConfirmedByClientState;
+import model.states.reservation.RetireConfirmedByOwnerState;
+import model.states.reservation.RetireConfirmedState;
+import model.states.reservation.ReturnConfirmedByClientState;
+import model.states.reservation.ReturnConfirmedByOwnerState;
+import model.states.reservation.ReturnConfirmedState;
+import model.states.reservation.State;
 import utils.DateRange;
 
 /**
