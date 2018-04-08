@@ -68,10 +68,6 @@ public class Reservation {
 		return this.state;
 	}
 
-	public void changeStateToNext() {
-		this.state = this.state.getNextState();			
-	}
-	
 	public Timer getTimer() {
 		return this.timer;
 	}

@@ -2,8 +2,6 @@ package model.states.reservation;
 
 public abstract class State {
 
-	public State getNextState() {return null;}
-
 	public Boolean retireConfirmedByOwner() {
 		return false;
 	}
