@@ -1,9 +1,10 @@
 # desapp-unq-grupo-e-012018
 
-![Build Status](https://travis-ci.org/IgnacioLamandia/desapp-unq-grupo-e-012018.svg?branch=master)
+Travis CI: ![Build Status](https://travis-ci.org/IgnacioLamandia/desapp-unq-grupo-e-012018.svg?branch=master)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/72f42d276256492dbcc2589aa987aae2)](https://app.codacy.com/app/IgnacioLamandia/desapp-unq-grupo-e-012018/dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/46f5a83a42144e2fb756df050931ac88)](https://www.codacy.com/app/IgnacioLamandia/desapp-unq-grupo-e-012018?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=IgnacioLamandia/desapp-unq-grupo-e-012018&amp;utm_campaign=Badge_Grade)
 
-https://desapp-unq-groupe-backend.herokuapp.com/
-
-https://desapp-unq-groupe-frontend.herokuapp.com/
+Deploy:
+  * https://desapp-unq-groupe-backend.herokuapp.com/
+  
+  * https://desapp-unq-groupe-frontend.herokuapp.com/
