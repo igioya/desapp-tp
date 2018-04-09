@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.exceptions.IlegalOperationException;
+import model.exceptions.UnableToDoTransactionException;
 
 public class CurrentAccount {
 
@@ -29,13 +29,13 @@ public class CurrentAccount {
 		this.movements.add(movement);
 	}
 
-	public void transferCreditTo(Double transfer, User vehicleOwner) throws IlegalOperationException {
+	public void transferCreditTo(Double transfer, User vehicleOwner) throws UnableToDoTransactionException {
 		if (transfer <= this.credit) {
 			this.credit -= transfer;
 			String movement = "Se debitaron $" + transfer + " de tu cuenta";
 			this.movements.add(movement);
 			vehicleOwner.addCredit(transfer);
 		} else
-			throw new IlegalOperationException();
+			throw new UnableToDoTransactionException();
 	}
 }

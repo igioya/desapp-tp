@@ -7,7 +7,7 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
 
-import model.exceptions.IlegalOperationException;
+import model.exceptions.UnableToDoTransactionException;
 
 public class CurrentAccountTestCase {
 
@@ -22,7 +22,7 @@ public class CurrentAccountTestCase {
 	}
 
 	@Test
-	public void whenIDoATransferToAVehicleOwnerCheckThatTheOperationIsDone() throws IlegalOperationException {
+	public void whenIDoATransferToAVehicleOwnerCheckThatTheOperationIsDone() throws UnableToDoTransactionException {
 
 		User vehicleOwner = mock(User.class);
 		CurrentAccount account = new CurrentAccount();
@@ -36,9 +36,9 @@ public class CurrentAccountTestCase {
 		assertTrue(account.getMovements().contains("Se debitaron $250.3 de tu cuenta"));
 	}
 
-	@Test(expected = IlegalOperationException.class)
+	@Test(expected = UnableToDoTransactionException.class)
 	public void whenIDoATransferToAVehicleOwnerAndIDontHaveEnoughMoneyCheckThatTheOperationIsNotDone()
-			throws IlegalOperationException {
+			throws UnableToDoTransactionException {
 
 		User vehicleOwner = mock(User.class);
 		CurrentAccount account = new CurrentAccount();

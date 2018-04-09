@@ -1,7 +1,5 @@
 package model;
 
-
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -13,7 +11,7 @@ import model.states.user.BannedState;
 public class UserTest {
 	
 	@Test
-	public void test_dadoUnUsuarioConPromedio4CuandoSeLoPuntuaYSuPromedioBajaDe4QuedaEnBannedState(){
+	public void dadoUnUsuarioConPromedio4CuandoSeLoPuntuaYSuPromedioBajaDe4QuedaEnBannedState(){
 		User user = new User();
 		user.giveScore(4);
 		user.giveScore(4);
@@ -23,7 +21,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void test_dadoUnUsuarioConPromedio3CuandoSeLoPuntuaYSuPromedioSubeA4QuedaEnActiveState(){
+	public void dadoUnUsuarioConPromedio3CuandoSeLoPuntuaYSuPromedioSubeA4QuedaEnActiveState(){
 		User user = new User();
 		user.giveScore(3);
 		user.giveScore(5);

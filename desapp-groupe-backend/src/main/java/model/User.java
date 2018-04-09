@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.exceptions.IlegalOperationException;
+import model.exceptions.UnableToDoTransactionException;
 import model.states.user.ActiveState;
 import model.states.user.BannedState;
 import model.states.user.UserState;
@@ -127,7 +127,7 @@ public class User {
 	public void trasnferCreditTo(Double transfer, User vehicleOwner) {
 		try {
 			this.currentAccount.transferCreditTo(transfer, vehicleOwner);
-		} catch (IlegalOperationException e) {
+		} catch (UnableToDoTransactionException e) {
 			e.getMessage();
 			e.printStackTrace();
 		}
