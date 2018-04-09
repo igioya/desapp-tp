@@ -1,9 +1,11 @@
 package model;
 
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.TimeUnit;
+
 import org.joda.time.LocalDateTime;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import model.exceptions.DateNotAvailableException;
@@ -16,25 +18,11 @@ import model.states.reservation.ReturnConfirmedByClientState;
 import model.states.reservation.ReturnConfirmedByOwnerState;
 import model.states.reservation.ReturnConfirmedState;
 
-import static org.junit.Assert.*;
-
-import java.util.concurrent.TimeUnit;
-
 
 public class ReservationTest {
 	
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	
 	@Test
-	public void test_seCreaUnaReservaYComienzaEnReservationNotConfirmedState() throws DateNotAvailableException{
+	public void seCreaUnaReservaYComienzaEnReservationNotConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -43,7 +31,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnReservationNotConfirmedStateCuandoElOwnerConfirmaQuedaEnReservationConfirmedState() throws DateNotAvailableException{
+	public void dadaUnaReservaEnReservationNotConfirmedStateCuandoElOwnerConfirmaQuedaEnReservationConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -54,7 +42,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnReservationConfirmedStateCuandoElClienteConfirmaElRetiroQuedaEnRetireConfirmedByClient() throws DateNotAvailableException{
+	public void dadaUnaReservaEnReservationConfirmedStateCuandoElClienteConfirmaElRetiroQuedaEnRetireConfirmedByClient() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -65,7 +53,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnReservationConfirmedStateCuandoElOwnerConfirmaElRetiroQuedaEnRetireConfirmedByOwner() throws DateNotAvailableException{
+	public void dadaUnaReservaEnReservationConfirmedStateCuandoElOwnerConfirmaElRetiroQuedaEnRetireConfirmedByOwner() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -76,7 +64,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedByClientCuandoElOwnerConfirmaQuedaEnRetireConfirmedState() throws DateNotAvailableException{
+	public void dadaUnaReservaEnRetireConfirmedByClientCuandoElOwnerConfirmaQuedaEnRetireConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -88,7 +76,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedByOwnerCuandoElClientConfirmaQuedaEnRetireConfirmedState() throws DateNotAvailableException{
+	public void dadaUnaReservaEnRetireConfirmedByOwnerCuandoElClientConfirmaQuedaEnRetireConfirmedState() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -100,7 +88,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedCuandoElOwnerConfirmaElRetornoQuedaEnReturnConfirmedByOwner() throws DateNotAvailableException{
+	public void dadaUnaReservaEnRetireConfirmedCuandoElOwnerConfirmaElRetornoQuedaEnReturnConfirmedByOwner() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -114,7 +102,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedCuandoElClientConfirmaElRetornoQuedaEnReturnConfirmedByClient() throws DateNotAvailableException{
+	public void dadaUnaReservaEnRetireConfirmedCuandoElClientConfirmaElRetornoQuedaEnReturnConfirmedByClient() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -128,7 +116,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnReturnConfirmedByClientCuandoElOwnerConfirmaElRetornoQuedaEnReturnConfirmed() throws DateNotAvailableException{
+	public void dadaUnaReservaEnReturnConfirmedByClientCuandoElOwnerConfirmaElRetornoQuedaEnReturnConfirmed() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -143,7 +131,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnReturnConfirmedByOwnerCuandoElClientConfirmaElRetornoQuedaEnReturnConfirmed() throws DateNotAvailableException{
+	public void dadaUnaReservaEnReturnConfirmedByOwnerCuandoElClientConfirmaElRetornoQuedaEnReturnConfirmed() throws DateNotAvailableException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -158,7 +146,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedByOwnerStateCuandoPasan30MinQuedaEnRetireConfirmedState() throws DateNotAvailableException, InterruptedException{
+	public void dadaUnaReservaEnRetireConfirmedByOwnerStateCuandoPasan30MinQuedaEnRetireConfirmedState() throws DateNotAvailableException, InterruptedException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
@@ -171,7 +159,7 @@ public class ReservationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaReservaEnRetireConfirmedByClientCuandoPasan30minQuedaEnReservationConfirmedState() throws DateNotAvailableException, InterruptedException{
+	public void dadaUnaReservaEnRetireConfirmedByClientCuandoPasan30minQuedaEnReservationConfirmedState() throws DateNotAvailableException, InterruptedException{
 		User client = new User();
 		
 		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());

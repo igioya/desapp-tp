@@ -47,7 +47,7 @@ public class ValidatorTestCase {
 	
 	@Test
 	public void checkIfANameOrSurnameIsInvalidWhenIsMoreThanFifty() {
-		String name = "ggggggggggggggggggggggggggggggggggggggggggggggggggggggg"; //55
+		String name = "ggggggggggggggggggggggggggggggggggggggggggggggggggggggg"; //55 chars
 		assertFalse(validator.isValidNameOrSurname(name));
 	}
 	

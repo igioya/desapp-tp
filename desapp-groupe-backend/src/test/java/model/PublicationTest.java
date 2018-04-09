@@ -6,23 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.LocalDateTime;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import model.exceptions.DateNotAvailableException;
 
 public class PublicationTest {
-	@Before
-	public void setUp() throws Exception {
-	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-	
 	@Test
-	public void test_cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
+	public void cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
 		User publicationOwner = new User();
 		List<Ubication> returnAdress = new ArrayList<Ubication>();
 		
@@ -32,7 +23,7 @@ public class PublicationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaPublicacionCuandoUnUsuarioRealizaUnaReservaQuedaGuardadaEnLaListaDeReservasDeLaPublicacion() throws DateNotAvailableException {
+	public void dadaUnaPublicacionCuandoUnUsuarioRealizaUnaReservaQuedaGuardadaEnLaListaDeReservasDeLaPublicacion() throws DateNotAvailableException {
 		LocalDateTime fromDate = new LocalDateTime();
 		LocalDateTime toDate = new LocalDateTime();
 		
@@ -46,7 +37,7 @@ public class PublicationTest {
 	}
 	
 	@Test
-	public void test_dadaUnaPublicacionCuandoUnClienteHaceUnaReservaSeAgregaEsaReservaASuListaDeReservas() throws DateNotAvailableException{
+	public void dadaUnaPublicacionCuandoUnClienteHaceUnaReservaSeAgregaEsaReservaASuListaDeReservas() throws DateNotAvailableException{
 		Publication publication = new Publication();
 		User client = new User();
 		
@@ -56,7 +47,7 @@ public class PublicationTest {
 	}
 	
 	@Test(expected = DateNotAvailableException.class)
-	public void test_dadaUnaPublicacionConUnaReservaCuandoSeIntentaHacerOtraReservaQueSeSuperponeNoLoPermite() throws DateNotAvailableException{
+	public void dadaUnaPublicacionConUnaReservaCuandoSeIntentaHacerOtraReservaQueSeSuperponeNoLoPermite() throws DateNotAvailableException{
 		LocalDateTime fromDate1 = new LocalDateTime().minusDays(2);
 		LocalDateTime toDate1 = fromDate1.plusDays(5);   				  
 		LocalDateTime fromDate2 = new LocalDateTime(); 

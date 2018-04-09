@@ -2,10 +2,8 @@ package model;
 
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import model.states.user.ActiveState;
@@ -13,13 +11,6 @@ import model.states.user.BannedState;
 
 
 public class UserTest {
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 	
 	@Test
 	public void test_dadoUnUsuarioConPromedio4CuandoSeLoPuntuaYSuPromedioBajaDe4QuedaEnBannedState(){
@@ -27,7 +18,7 @@ public class UserTest {
 		user.giveScore(4);
 		user.giveScore(4);
 		user.giveScore(1);
-//		System.out.println(user.getRating());
+
 		assertEquals(BannedState.class,user.getState().getClass());
 	}
 	

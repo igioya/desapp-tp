@@ -11,7 +11,7 @@ public class RatingCalculatorTestCase {
 	
 
 	@Test
-	public void CheckThatARatingIsProperlyCalculated() {
+	public void checkThatARatingIsProperlyCalculated() {
 		
 		RatingCalculator calculator = new RatingCalculator();
 		
@@ -29,7 +29,7 @@ public class RatingCalculatorTestCase {
 	}
 	
 	@Test
-	public void CheckThatARatingIsProperlyAdded() {
+	public void checkThatARatingIsProperlyAdded() {
 		
 		RatingCalculator calculator = new RatingCalculator();
 		
@@ -40,7 +40,7 @@ public class RatingCalculatorTestCase {
 	}
 	
 	@Test
-	public void CheckThatIfAnEmptyRatingsAreZeroAsDefault () {
+	public void checkThatIfAnEmptyRatingsAreZeroAsDefault () {
 		
 		RatingCalculator calculator = new RatingCalculator();
 
