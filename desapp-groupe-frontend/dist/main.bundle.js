@@ -27,7 +27,7 @@ module.exports = "h1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-se
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n  <h1>\n    ¡Bienvenido a {{ title }}!\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n  <app-publications></app-publications>\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n  <h1>\n    {{ title }}  - Pick and Drive\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n  <app-publications></app-publications>\n</div>\n"
 
 /***/ }),
 
@@ -110,10 +110,10 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PUBLICATIONS; });
 var PUBLICATIONS = [
-    { id: 11, owner: 'Mr. Nice', description: 'Fiat 500', image: 'https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114__340.jpg' },
-    { id: 12, owner: 'Ioia', description: 'Deportivo de lujo', image: 'https://cdn.pixabay.com/photo/2017/04/06/22/11/auto-2209439__340.png' },
-    { id: 13, owner: 'Bombasto', description: 'Camion para transporte', image: 'https://cdn.pixabay.com/photo/2018/03/08/14/58/usa-3208827__340.jpg' },
-    { id: 14, owner: 'Celeritas', description: 'Moto Honda Crf100f', image: 'https://cdn.pixabay.com/photo/2018/04/03/08/15/motorbike-3286222__340.jpg' },
+    { id: 11, owner: 'Mr. Nice', description: 'Fiat 500', image: 'https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114__340.jpg', city: 'Buenos Aires', price: 100 },
+    { id: 12, owner: 'Ioia', description: 'Deportivo de lujo', image: 'https://cdn.pixabay.com/photo/2017/04/06/22/11/auto-2209439__340.png', city: 'Quilmes', price: 200 },
+    { id: 13, owner: 'Bombasto', description: 'Camion para transporte', image: 'https://cdn.pixabay.com/photo/2018/03/08/14/58/usa-3208827__340.jpg', city: 'Varela', price: 300 },
+    { id: 14, owner: 'Celeritas', description: 'Moto Honda Crf100f', image: 'https://cdn.pixabay.com/photo/2018/04/03/08/15/motorbike-3286222__340.jpg', city: 'Berazategui', price: 50 },
 ];
 
 
@@ -129,7 +129,7 @@ module.exports = ""
 /***/ "./src/app/publications/publications.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>&Uacute;LTIMAS PUBLICACIONES:</h2>\n\n<ul class=\"publications\">\n  <li *ngFor=\"let publication of publications\">\n\t<img class=\"card-img-top\" src=\"{{publication.image}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\n    <h4 class=\"card-subtitle mb-2 text-muted\">{{publication.owner}}</h4>\n    <h3 class=\"card-subtitle mb-2 text-muted\">{{publication.description}}</h3>\n  </li>\n</ul>\n"
+module.exports = "<br>\n<div class=\"col-md-3\">\n  <h3 class=\"title\"> &Uacute;ltimas Publicaciones:</h3>\n</div>\n<ul class=\"list-inline\" >\n  <div class=\"row\">\n    <li class=\"list-group-item\" *ngFor=\"let publication of publications\">\n      <div class=\"card\">\n\t       <img class=\"card-img-top\" src=\"{{publication.image}}\" alt=\"Card image cap\" height=\"150px\" width=\"250px\">\n            <div class=\"card-body\">\n              <p class=\"card-text\"><small class=\"text-muted\">{{publication.owner}}</small></p>\n              <h4 class=\"card-title\">${{publication.price}} por hora</h4>\n              <p class=\"card-text\"> {{publication.description}}</p>\n              <p class=\"card-text\"><small class=\"text-muted\">{{publication.city}}</small></p>\n              <a href=\"#\" class=\"btn btn-primary\">Ver m&aacute;s</a>\n            </div>\n      </div>\n    </li>\n  </div>\n</ul>\n"
 
 /***/ }),
 

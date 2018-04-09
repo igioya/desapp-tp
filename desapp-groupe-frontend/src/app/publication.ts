@@ -3,4 +3,6 @@ export class Publication {
   owner: string;
   description: string;
   image: string;
+  city: string;
+  price: number;
 }
