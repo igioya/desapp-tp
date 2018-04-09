@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.exceptions.IlegalOperationException;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
+import model.states.user.UserState;
 
 public class User {
 	
@@ -17,10 +20,13 @@ public class User {
 	private List<Publication> myPublications;
 	private RatingCalculator rating;
 	private List<Reservation> myReservations;
+	private UserState state;
 	
 	public User() {
 		this.myReservations = new ArrayList<Reservation>();
 		this.myPublications = new ArrayList<Publication>();
+		this.rating = new RatingCalculator();
+		this.state = new ActiveState();
 	}
 	
 	public User(String cuil, String name, String surname, String address, String email) {
@@ -34,6 +40,7 @@ public class User {
 		this.myPublications = new ArrayList<Publication>();
 		this.rating = new RatingCalculator();
 		this.myReservations = new ArrayList<Reservation>();
+		this.state = new ActiveState();
 	}
 
 	public String getCuil() {
@@ -132,6 +139,24 @@ public class User {
 		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, description, telephone, costPerHour, owner);
 		this.myPublications.add(newPublication);		
 		return newPublication;
+	}
+
+	public void giveScore(Integer score) {
+		Rating newRating = new Rating(score);
+		this.rating.addNewRating(newRating);
+		this.updateState();
+	}
+
+	private void updateState() {
+		if(this.rating.getCurrentRating() < 4){
+			this.state = new BannedState();		
+		} else {
+			this.state = new ActiveState();
+		}		
+	}
+
+	public UserState getState() {
+		return this.state;
 	}
 	
 }

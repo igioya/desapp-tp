@@ -7,23 +7,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.exceptions.DateNotAvailableException;
-import model.reservationStates.ReservationConfirmedState;
-import model.reservationStates.ReservationNotConfirmedState;
-import model.reservationStates.RetireConfirmedByClientState;
-import model.reservationStates.RetireConfirmedByOwnerState;
-import model.reservationStates.RetireConfirmedState;
-import model.reservationStates.ReturnConfirmedByClientState;
-import model.reservationStates.ReturnConfirmedByOwnerState;
-import model.reservationStates.ReturnConfirmedState;
+import model.states.reservation.ReservationConfirmedState;
+import model.states.reservation.ReservationNotConfirmedState;
+import model.states.reservation.RetireConfirmedByClientState;
+import model.states.reservation.RetireConfirmedByOwnerState;
+import model.states.reservation.RetireConfirmedState;
+import model.states.reservation.ReturnConfirmedByClientState;
+import model.states.reservation.ReturnConfirmedByOwnerState;
+import model.states.reservation.ReturnConfirmedState;
 
 import static org.junit.Assert.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.Timer;
-import javax.swing.plaf.SliderUI;
 
 
 public class ReservationTest {

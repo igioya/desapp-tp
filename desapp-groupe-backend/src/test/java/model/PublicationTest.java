@@ -9,7 +9,6 @@ import org.joda.time.LocalDateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 import model.exceptions.DateNotAvailableException;
 
