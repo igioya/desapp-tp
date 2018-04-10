@@ -20,18 +20,21 @@ import utils.DateRange;
 /**
  * States management:
  * 
- * 			NotConfirmedState: when the client requested a reservation. 
+ * 	  ReservationNotConfirmedState: when the client requested a reservation. 
  * 				 |
- * 		WaitingForRetireState: when publication owner accepted the reservation. 
+ * 		ReservationConfirmedState: when publication owner accepted the reservation. 
  * 				 |
- * 	ConfirmedRetireByClientState: when the client confirmed that the vehicle has been retired.
+ * 	   RetireConfirmedByClientState: when the client confirmed that the vehicle has been retired, but not the owner.
+ * 				 o
+ * 	    RetireConfirmedByOwnerState: when the publication owner confirmed that the vehicle has been retired, but not the client.
  * 				 |
- * 		WaitingForReturnState: when the publication owner confirmed that the vehicle has been retired.
+ * 	      RetireConfirmedState: when the client and the owner confirmed that the vehicle has been retired.
  * 				 |
- * 	ConfirmedReturnByClientState when the client confirmed that return the vehicle.
+ * 	 ConfirmedReturnByOwnerState: when publication owner confirmed that the client return the vehicle, but not the client.
+ * 				 o
+ * 	 ConfirmedReturnByClientState: when client confirmed that returned the vehicle,but not the owner
  * 				 |
- * 	 ConfirmedReturnByOwnerState: when publication owner confirmed that the client return the vehicle.	
- * 
+ * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
  **/
 
 public class Reservation {
