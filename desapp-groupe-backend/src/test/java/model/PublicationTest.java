@@ -17,7 +17,7 @@ public class PublicationTest {
 		User publicationOwner = new User();
 		List<Ubication> returnAdress = new ArrayList<Ubication>();
 		
-		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), new Ubication(),returnAdress, "", "", 100.00, publicationOwner);
+		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), new Ubication(),returnAdress, "", 100.00, publicationOwner);
 		
 		assertEquals(publicationOwner.getMyPublications().get(0), newPublication);
 	}

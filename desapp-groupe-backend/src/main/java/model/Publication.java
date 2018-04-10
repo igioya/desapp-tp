@@ -24,8 +24,7 @@ public class Publication {
 		this.reservations = new ArrayList<Reservation>();
 	}
 
-	public Publication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress,
-			String description, String telephone, Double costPerHour, User owner) {
+	public Publication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress, String telephone, Double costPerHour, User owner) {
 		this.vehicle = vehicle;
 		this.retireAddress = retireAddress;
 		this.returnAddress = returnAddress;

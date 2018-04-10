@@ -133,10 +133,9 @@ public class User {
 		}
 	}
 
-	public Publication createNewPublication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress,
-			String description, String telephone, Double costPerHour, User owner) {
+	public Publication createNewPublication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress, String telephone, Double costPerHour, User owner) {
 		
-		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, description, telephone, costPerHour, owner);
+		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, telephone, costPerHour, owner);
 		this.myPublications.add(newPublication);		
 		return newPublication;
 	}

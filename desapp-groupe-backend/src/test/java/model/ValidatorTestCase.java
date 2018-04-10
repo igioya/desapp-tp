@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class ValidatorTestCase {
 	
-	Validator validator = new Validator();
+	private Validator validator = new Validator();
 
 	@Test
 	public void checkIfACuilIsValid() {

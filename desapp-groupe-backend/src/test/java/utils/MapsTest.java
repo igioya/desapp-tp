@@ -1,6 +1,6 @@
 package utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,22 +10,13 @@ import java.net.URL;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 
 public class MapsTest {
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 	
 	@Test
-	public void test() throws IOException, JSONException{
+	public void testToProveGoogleMapsAPI() throws IOException, JSONException{
 		String fromAddress = "Quilmes, Gaboto 649, Quilmes, Buenos Aires";
 		String toAddress = "Berazategui Municipalidad, Av. 14 3150, B1884CTS Gran Buenos Aires, Buenos Aires";
 		String API_KEY = "AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70";
