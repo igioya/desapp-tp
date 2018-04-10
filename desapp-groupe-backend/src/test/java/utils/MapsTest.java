@@ -1,5 +1,7 @@
 package utils;
 
+import static org.junit.Assert.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,7 +48,6 @@ public class MapsTest {
 		while ((inputLine = in.readLine()) != null) {
 		    resp.append(inputLine);
 		}
-		System.out.println(resp);
 		in.close();
 		con.disconnect();
 		
@@ -58,9 +59,8 @@ public class MapsTest {
 		String distance = elements.getJSONObject("distance").get("text").toString();
 		String duration =  elements.getJSONObject("duration").get("text").toString();
 																					
-				
-		System.out.println(distance);
-		System.out.println(duration);
+		assertEquals("7.0 km", distance);
+		assertEquals("19 mins", duration);
 		
 	}
 }
