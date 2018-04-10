@@ -159,4 +159,13 @@ public class User {
 		return this.state;
 	}
 	
+	public Boolean validateUserAttributes(String cuil, String name, String surname, String email) { 
+		Validator validator = new Validator();
+		
+		return (validator.isValidCuil(cuil) &&
+				validator.isValidNameOrSurname(name) &&
+				validator.isValidNameOrSurname(surname) &&
+				validator.isValidEmailAddress(email));
+	}
+	
 }
