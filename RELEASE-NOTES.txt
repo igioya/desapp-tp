@@ -1,0 +1,21 @@
+				Carpnd - Pick and Drive
+----------------------------------------------------------------------------------------------------------------------
+Release 1.0 - Tag Entrega1
+----------------------------------------------------------------------------------------------------------------------
+NEW FEATURES:
+* Creación de repositorio (GitHub) - https://github.com/IgnacioLamandia/desapp-unq-grupo-e-012018
+* Configuración de integración continua (Travis) - https://travis-ci.org/IgnacioLamandia/desapp-unq-grupo-e-012018
+* Análisis de código (Codacy) - https://app.codacy.com/app/IgnacioLamandia/desapp-unq-grupo-e-012018/dashboard
+* Build corriendo (Heroku) - https://desapp-unq-groupe-backend.herokuapp.com/
+* Deploy automático (Heroku) - https://desapp-unq-groupe-frontend.herokuapp.com/
+* Layout de la solución 
+* Implementación completa del modelo
+* Uso de API de gmaps
+* Tests unitarios
+
+NOTES:
+* Pantalla prototipo del uso de la API de gmaps
+* Algunos nombres de test estan en español
+
+KNOWN ISSUES:
+* Validator - metodo isValidTelephone() 

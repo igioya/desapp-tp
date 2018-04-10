@@ -46,17 +46,21 @@ public class MapsTest {
 		while ((inputLine = in.readLine()) != null) {
 		    resp.append(inputLine);
 		}
-		
+		System.out.println(resp);
 		in.close();
 		con.disconnect();
 		
-		JSONObject json = new JSONObject(resp.toString()).getJSONArray("rows")
- 														 .getJSONObject(0)
-														 .getJSONArray ("elements")
-														 .getJSONObject(0)
-														 .getJSONObject("distance");
-														 //.getJSONObject("duration");
+		JSONObject elements = new JSONObject(resp.toString()).getJSONArray("rows")
+ 														 	 .getJSONObject(0)
+ 														 	 .getJSONArray ("elements")
+ 														 	 .getJSONObject(0);
+		
+		String distance = elements.getJSONObject("distance").get("text").toString();
+		String duration =  elements.getJSONObject("duration").get("text").toString();
+																					
 				
-		System.out.println(json.get("text").toString());
+		System.out.println(distance);
+		System.out.println(duration);
+		
 	}
 }
