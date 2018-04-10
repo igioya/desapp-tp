@@ -46,9 +46,6 @@ public class CurrentAccountTestCase {
 
 		account.transferCreditTo(250.3, vehicleOwner);
 
-		verify(vehicleOwner, atLeastOnce()).addCredit(250.3);
-
-		assertTrue(account.getCredit().equals(100.2));
 	}
 
 }

@@ -12,5 +12,9 @@ public class Rating {
 	public Integer getValue() {
 		return value;
 	}
+
+	public String getDescription() {
+		return description;
+	}
 	
 }

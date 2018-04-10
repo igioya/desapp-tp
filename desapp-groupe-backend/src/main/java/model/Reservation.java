@@ -51,6 +51,17 @@ public class Reservation {
 		this.timer = new Timer();
 	}
 	
+	public User getClient() {
+		return client;
+	}
+
+	public LocalDateTime getTimeRemaing() {
+		return timeRemaing;
+	}
+
+	public static Double getMINUTES() {
+		return MINUTES;
+	}
 
 	public LocalDateTime getFromDate() {
 		return fromDate;
@@ -138,7 +149,7 @@ public class Reservation {
 
 
 	public void setMINUTES(Double minutes) {
-		this.MINUTES = minutes;
+		Reservation.MINUTES = minutes;
 		
 	}
 }

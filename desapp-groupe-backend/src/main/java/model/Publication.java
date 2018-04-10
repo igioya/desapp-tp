@@ -72,5 +72,33 @@ public class Publication {
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public Ubication getRetireAddress() {
+		return retireAddress;
+	}
+
+	public List<Ubication> getReturnAddress() {
+		return returnAddress;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public Set<LocalDateTime> getDatesAvailable() {
+		return datesAvailable;
+	}
+
+	public Double getCostPerHour() {
+		return costPerHour;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
 	
 }
