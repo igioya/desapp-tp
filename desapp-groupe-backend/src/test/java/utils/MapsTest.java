@@ -55,6 +55,7 @@ public class MapsTest {
 														 .getJSONArray ("elements")
 														 .getJSONObject(0)
 														 .getJSONObject("distance");
+														 //.getJSONObject("duration");
 				
 		System.out.println(json.get("text").toString());
 	}
