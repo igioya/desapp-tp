@@ -20,47 +20,12 @@
 	</properties>
   
   <dependencies>
-	<dependency>
-   		<groupId>org.springframework</groupId>
-   		<artifactId>spring-core</artifactId>
-   		<version>${spring.version}</version>
-  	</dependency>
   	<dependency>
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-mail</artifactId>
     	<version>1.5.7.RELEASE</version>
 	</dependency>
-  	<dependency>
-  		 <groupId>org.springframework</groupId>
- 		 <artifactId>spring-webmvc</artifactId>
-  		 <version>${spring.version}</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fasterxml.jackson.core</groupId>
-   		<artifactId>jackson-databind</artifactId>
-   		<version>2.7.2</version>
-  	</dependency>
-  	<dependency>
-    <groupId>com.fasterxml.jackson.module</groupId>
-    <artifactId>jackson-module-parameter-names</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.datatype</groupId>
-    <artifactId>jackson-datatype-jdk8</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.fasterxml.jackson.datatype</groupId>
-    <artifactId>jackson-datatype-jsr310</artifactId>
-</dependency>
   	
-  	  <!-- Spring ORM -->
-  <dependency>
-   <groupId>org.springframework</groupId>
-   <artifactId>spring-orm</artifactId>
-   <version>${spring.version}</version>
-  </dependency>
-  	
-
 	<dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
@@ -74,24 +39,12 @@
 		<scope>test</scope>
     </dependency>
     
-    <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>servlet-api</artifactId>
-    	<version>2.5</version>
-	</dependency>
-	
 	<dependency>
 	  <groupId>joda-time</groupId>
 	  <artifactId>joda-time</artifactId>
 	  <version>2.9.9</version>
 	</dependency>
 	
-	<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-all</artifactId>
-    <version>1.9.5</version>
-    <scope>test</scope>
-	</dependency>
   </dependencies>
   
   <build>
