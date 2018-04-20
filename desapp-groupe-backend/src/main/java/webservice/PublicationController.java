@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import model.Publication;
 
 
-@Path("/publication")
+@Path("/publications")
 public class PublicationController {
 	public static final int NUMBER_OF_PUBLICATIONS = 10;
 	
