@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import model.Entity;
 import org.joda.time.LocalDateTime;
 
 import model.exceptions.DateNotAvailableException;
 import utils.DateRange;
 
-public class Publication {
 
+public class Publication extends Entity{
 	private Vehicle vehicle;
 	private Ubication retireAddress;
 	private List<Ubication> returnAddress;
