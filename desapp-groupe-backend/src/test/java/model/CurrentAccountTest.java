@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import model.exceptions.UnableToDoTransactionException;
 
-public class CurrentAccountTestCase {
+public class CurrentAccountTest {
 
 	@Test
 	public void whenIAddCreditToAnAccountCheckThatTheOperationIsDone() {

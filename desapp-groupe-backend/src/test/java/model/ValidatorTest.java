@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class ValidatorTestCase {
+public class ValidatorTest {
 	
 	private Validator validator = new Validator();
 

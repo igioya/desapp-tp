@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-public class RatingCalculatorTestCase {
+public class RatingCalculatorTest {
 	
 
 	@Test
