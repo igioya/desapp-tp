@@ -23,6 +23,10 @@
 	<bean id="services.publication" class="service.PublicationService">
 		<property name="repository" ref="persistence.publicationRepository" />
 	</bean>
+	
+	<bean id="services.user" class="service.UserService">
+		<property name="repository" ref="persistence.userRepository" />
+	</bean>
 
 
 </beans>

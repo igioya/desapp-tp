@@ -8,7 +8,7 @@ import model.states.user.ActiveState;
 import model.states.user.BannedState;
 import model.states.user.UserState;
 
-public class User {
+public class User extends Entity{
 	
 	private String cuil;
 	private String name;
