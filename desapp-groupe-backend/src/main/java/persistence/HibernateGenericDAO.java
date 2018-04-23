@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  */
 public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport implements GenericRepository<T>, Serializable {
 
-	public static Logger log = Logger.getLogger(PublicationRepository.class);
+	public static Logger log = Logger.getLogger(HibernatePublicationDAO.class);
 	private static final long serialVersionUID = 5058950102420892922L;
 
 	protected Class<T> persistentClass = this.getDomainClass();

@@ -114,7 +114,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>-->
 	
-	<bean id="persistence.publicationRepository" class="persistence.PublicationRepository" >
+	<bean id="persistence.publicationRepository" class="persistence.HibernatePublicationDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
