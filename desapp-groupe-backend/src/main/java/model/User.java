@@ -23,10 +23,12 @@ public class User extends Entity{
 	private UserState state;
 	
 	public User() {
-		this.myReservations = new ArrayList<Reservation>();
+		this.currentAccount = new CurrentAccount();
+		this.myVehicles = new ArrayList<Vehicle>();
 		this.myPublications = new ArrayList<Publication>();
 		this.rating = new RatingCalculator();
-		this.state = new ActiveState();
+		this.myReservations = new ArrayList<Reservation>();
+		this.state = new ActiveState();		
 	}
 	
 	public User(String cuil, String name, String surname, String address, String email) {
@@ -41,6 +43,10 @@ public class User extends Entity{
 		this.rating = new RatingCalculator();
 		this.myReservations = new ArrayList<Reservation>();
 		this.state = new ActiveState();
+	}
+
+	public CurrentAccount getCurrentAccount() {
+		return currentAccount;
 	}
 
 	public String getCuil() {
