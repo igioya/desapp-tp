@@ -1,7 +1,15 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Vehicle {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	protected int id;
 	private String model;
 	private VehicleType type;
 	private Integer numberOfPassengers;

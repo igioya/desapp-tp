@@ -1,5 +1,8 @@
 package model.states.reservation;
 
-public class RetireConfirmedState extends State {
+import javax.persistence.Entity;
 
+@Entity
+public class RetireConfirmedState extends State {
+	public RetireConfirmedState(){}
 }

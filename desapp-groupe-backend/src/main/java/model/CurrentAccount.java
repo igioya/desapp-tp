@@ -3,11 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import model.exceptions.UnableToDoTransactionException;
 
+@Entity
 public class CurrentAccount {
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private Double credit;
+	@ElementCollection
 	private List<String> movements;
 
 	public CurrentAccount() {

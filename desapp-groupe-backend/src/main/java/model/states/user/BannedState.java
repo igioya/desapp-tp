@@ -1,5 +1,8 @@
 package model.states.user;
 
-public class BannedState extends UserState {
+import javax.persistence.Entity;
 
+@Entity
+public class BannedState extends UserState {
+	public BannedState(){}
 }

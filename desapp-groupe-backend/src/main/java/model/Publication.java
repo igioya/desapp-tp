@@ -4,21 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import model.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.joda.time.LocalDateTime;
 
 import model.exceptions.DateNotAvailableException;
 import utils.DateRange;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 
-public class Publication extends Entity{
+@Entity
+public class Publication{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	protected int id;
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private Vehicle vehicle;
-	private Ubication retireAddress;
-	private List<Ubication> returnAddress;
+//	private Ubication retireAddress;
+//	private List<Ubication> returnAddress;
 	private String telephone;
-	private Set<LocalDateTime> datesAvailable;
 	private Double costPerHour;
+	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Reservation> reservations;
+	
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private User owner;
 
 	public Publication() {
@@ -27,10 +41,9 @@ public class Publication extends Entity{
 
 	public Publication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress, String telephone, Double costPerHour, User owner) {
 		this.vehicle = vehicle;
-		this.retireAddress = retireAddress;
-		this.returnAddress = returnAddress;
+//		this.retireAddress = retireAddress;
+//		this.returnAddress = returnAddress;
 		this.telephone = telephone;
-		//this.datesAvailable = datesAvailable;
 		this.costPerHour = costPerHour;
 		this.reservations = new ArrayList<Reservation>();
 		this.owner = owner;
@@ -77,20 +90,16 @@ public class Publication extends Entity{
 		return vehicle;
 	}
 
-	public Ubication getRetireAddress() {
-		return retireAddress;
-	}
-
-	public List<Ubication> getReturnAddress() {
-		return returnAddress;
-	}
+//	public Ubication getRetireAddress() {
+//		return retireAddress;
+//	}
+//
+//	public List<Ubication> getReturnAddress() {
+//		return returnAddress;
+//	}
 
 	public String getTelephone() {
 		return telephone;
-	}
-
-	public Set<LocalDateTime> getDatesAvailable() {
-		return datesAvailable;
 	}
 
 	public Double getCostPerHour() {

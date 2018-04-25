@@ -8,18 +8,39 @@ import model.states.user.ActiveState;
 import model.states.user.BannedState;
 import model.states.user.UserState;
 
-public class User extends Entity{
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	
 	private String cuil;
 	private String name;
 	private String surname;
 	private String address;
 	private String email;
-	private CurrentAccount currentAccount;
+	
+	@ManyToOne(cascade = {CascadeType.ALL})
+	private CurrentAccount currentAccount;	
+	@ManyToMany(cascade = {CascadeType.ALL})
 	private List<Vehicle> myVehicles;
+	@ManyToMany(cascade = {CascadeType.ALL})
 	private List<Publication> myPublications;
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
+	@ManyToMany(cascade = {CascadeType.ALL})
 	private List<Reservation> myReservations;
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private UserState state;
 	
 	public User() {

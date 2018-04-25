@@ -1,5 +1,8 @@
 package model.states.user;
 
-public class ActiveState extends UserState {
+import javax.persistence.Entity;
 
+@Entity
+public class ActiveState extends UserState {
+	public ActiveState(){}
 }

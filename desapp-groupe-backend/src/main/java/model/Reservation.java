@@ -3,7 +3,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Supplier;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
+import org.apache.cxf.jaxrs.model.wadl.ElementClass;
 import org.joda.time.LocalDateTime;
 
 import model.states.reservation.ReservationConfirmedState;
@@ -36,12 +47,19 @@ import utils.DateRange;
  * 				 |
  * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
  **/
-
+@Entity
 public class Reservation {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private User client;
 	private LocalDateTime fromDate;
 	private LocalDateTime toDate;
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private State state;
+	@Transient
 	private Timer timer;
 	private LocalDateTime timeRemaing;
 	private static Double MINUTES = 30.00;

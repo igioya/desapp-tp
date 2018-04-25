@@ -5,9 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
 public class RatingCalculator {
-	
-	private List<Rating> ratings = new ArrayList<Rating>();;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	@OneToMany(cascade = {CascadeType.ALL})
+	private List<Rating> ratings = new ArrayList<Rating>();
+	@ElementCollection
 	private Map<Integer,Integer> weightedAverage;
 	private Double currentRating = 0.00;
 	
