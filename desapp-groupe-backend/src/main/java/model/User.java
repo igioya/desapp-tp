@@ -160,7 +160,7 @@ public class User {
 		}
 	}
 
-	public Publication createNewPublication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress, String telephone, Double costPerHour) {
+	public Publication createNewPublication(Vehicle vehicle, String retireAddress, String returnAddress, String telephone, Double costPerHour) {
 		
 		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, telephone, costPerHour, this);
 		this.myPublications.add(newPublication);		
