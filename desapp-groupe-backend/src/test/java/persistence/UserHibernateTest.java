@@ -19,7 +19,7 @@ public class UserHibernateTest extends HibernateTest{
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
     	
     	userDAO.save(user);
-    	User userRetrieved = userDAO.findAll().get(0);
+    	User userRetrieved = userDAO.findById(1);
     	
         Assert.assertEquals(user.getCuil(), userRetrieved.getCuil());
         Assert.assertEquals(user.getName(), userRetrieved.getName());
@@ -36,7 +36,7 @@ public class UserHibernateTest extends HibernateTest{
     	user.createNewPublication(vehicle, "retireAddress", "returnAddress", "4250432244", 800.00);
     	userDAO.save(user);
     	
-    	User userRetrieved = userDAO.findAll().get(0); 
+    	User userRetrieved = userDAO.findById(1); 
     	Publication publication = userRetrieved.getMyPublications().get(0);
     	
     	Assert.assertEquals(1,userRetrieved.getMyPublications().size());
@@ -45,6 +45,21 @@ public class UserHibernateTest extends HibernateTest{
     	Assert.assertEquals(publication.getReturnAddress(), "returnAddress");
     	Assert.assertEquals(publication.getTelephone(), "4250432244");
     	Assert.assertEquals(publication.getCostPerHour(), (Double)800.00);
+    }
+    
+    @Test 
+    public void testDadoUnUsuarioConUnaPublicacionCuandoCreaOtraYLoPersistoQuedanLasDosGuardadasEnSuListaDePublicaciones(){
+    	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	Vehicle vehicle = new Vehicle();
+    	
+    	user.createNewPublication(vehicle, "retireAddress", "returnAddress", "4250432244", 800.00);
+    	userDAO.save(user);
+    	
+    	user.createNewPublication(vehicle, "retireAddress", "returnAddress", "4250432244", 800.00);
+    	
+    	userDAO.update(user);
+    	
+    	Assert.assertEquals(2,userDAO.findById(1).getMyPublications().size());
     }
     
     @Test 
@@ -57,8 +72,6 @@ public class UserHibernateTest extends HibernateTest{
     @Test 
     public void testDadoUnUsuarioBaneadoLoPersistoYCuandoLoRecuperoSuEstadoEsBannedState(){
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
-    	user.giveScore(1);
-    	user.giveScore(1);
     	user.giveScore(1);
     	userDAO.save(user);
     	Assert.assertEquals(BannedState.class, userDAO.findById(1).getState().getClass());
