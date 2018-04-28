@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Generic hibernate DAO
  *
  * @param <T>
  */
+@Transactional
 public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport implements GenericRepository<T>, Serializable {
 
 	public static Logger log = Logger.getLogger(HibernatePublicationDAO.class);

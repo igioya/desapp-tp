@@ -4,17 +4,44 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.Publication;
 import model.User;
-import service.UserService;
+import model.Vehicle;
 
 public class UserHibernateTest extends HibernateTest{
 	@Autowired	
-    private UserService userDAO;
+    private HibernateUserDAO userDAO;
 
     @Test
-    public void testSave() {
+    public void testDadoUnUsuarioLoPersistoYCuandoPidoTodosLosUsersMeDevuelveUnListadoConEseUser() {
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	
     	userDAO.save(user);
-        Assert.assertEquals(1, userDAO.retriveAll().size());
+    	User userRetrieved = userDAO.findAll().get(0);
+    	
+        Assert.assertEquals(user.getCuil(), userRetrieved.getCuil());
+        Assert.assertEquals(user.getName(), userRetrieved.getName());
+        Assert.assertEquals(user.getSurname(), userRetrieved.getSurname());
+        Assert.assertEquals(user.getAddress(), userRetrieved.getAddress());
+        Assert.assertEquals(user.getEmail(), userRetrieved.getEmail());
+    }
+    
+    @Test 
+    public void testDadoUnUsuarioCuandoCreaUnaPublicacioYLoPersistoQuedaGuardadaEnSuListaDePublicaciones(){
+    	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	Vehicle vehicle = new Vehicle();
+    	
+    	user.createNewPublication(vehicle, "retireAddress", "returnAddress", "4250432244", 800.00);
+    	userDAO.save(user);
+    	
+    	User userRetrieved = userDAO.findAll().get(0); 
+    	Publication publication = userRetrieved.getMyPublications().get(0);
+    	
+    	Assert.assertEquals(1,userRetrieved.getMyPublications().size());
+    	Assert.assertEquals(publication.getVehicle().getClass(), vehicle.getClass());
+    	Assert.assertEquals(publication.getRetireAddress(), "retireAddress");
+    	Assert.assertEquals(publication.getReturnAddress(), "returnAddress");
+    	Assert.assertEquals(publication.getTelephone(), "4250432244");
+    	Assert.assertEquals(publication.getCostPerHour(), (Double)800.00);
     }
 }

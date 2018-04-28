@@ -10,6 +10,7 @@ import model.states.user.UserState;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class User {
 	private CurrentAccount currentAccount;	
 	@ManyToMany(cascade = {CascadeType.ALL})
 	private List<Vehicle> myVehicles;
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
