@@ -15,9 +15,8 @@ public class PublicationTest {
 	@Test
 	public void cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
 		User publicationOwner = new User();
-		List<Ubication> returnAdress = new ArrayList<Ubication>();
 		
-		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), new Ubication(),returnAdress, "", 100.00, publicationOwner);
+		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), "retireAddress","returnAddress", "", 100.00);
 		
 		assertEquals(publicationOwner.getMyPublications().get(0), newPublication);
 	}
