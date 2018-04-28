@@ -25,8 +25,8 @@ public class Publication{
 	protected int id;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private Vehicle vehicle;
-//	private Ubication retireAddress;
-//	private List<Ubication> returnAddress;
+	private String retireAddress;
+	private String returnAddress;
 	private String telephone;
 	private Double costPerHour;
 	@OneToMany(cascade = {CascadeType.ALL})
@@ -39,10 +39,10 @@ public class Publication{
 		this.reservations = new ArrayList<Reservation>();
 	}
 
-	public Publication(Vehicle vehicle, Ubication retireAddress, List<Ubication> returnAddress, String telephone, Double costPerHour, User owner) {
+	public Publication(Vehicle vehicle, String retireAddress, String returnAddress, String telephone, Double costPerHour, User owner) {
 		this.vehicle = vehicle;
-//		this.retireAddress = retireAddress;
-//		this.returnAddress = returnAddress;
+		this.retireAddress = retireAddress;
+		this.returnAddress = returnAddress;
 		this.telephone = telephone;
 		this.costPerHour = costPerHour;
 		this.reservations = new ArrayList<Reservation>();
@@ -90,13 +90,13 @@ public class Publication{
 		return vehicle;
 	}
 
-//	public Ubication getRetireAddress() {
-//		return retireAddress;
-//	}
-//
-//	public List<Ubication> getReturnAddress() {
-//		return returnAddress;
-//	}
+	public String getRetireAddress() {
+		return retireAddress;
+	}
+
+	public String getReturnAddress() {
+		return returnAddress;
+	}
 
 	public String getTelephone() {
 		return telephone;
