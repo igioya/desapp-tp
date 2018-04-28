@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import model.Publication;
 import model.User;
 import model.Vehicle;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
 
 public class UserHibernateTest extends HibernateTest{
 	@Autowired	
@@ -43,5 +45,22 @@ public class UserHibernateTest extends HibernateTest{
     	Assert.assertEquals(publication.getReturnAddress(), "returnAddress");
     	Assert.assertEquals(publication.getTelephone(), "4250432244");
     	Assert.assertEquals(publication.getCostPerHour(), (Double)800.00);
+    }
+    
+    @Test 
+    public void testDadoUnUsuarioActivoLoPersistoYCuandoLoRecuperoSuEstadoEsActiveState(){
+    	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	userDAO.save(user);
+    	Assert.assertEquals(ActiveState.class, userDAO.findById(1).getState().getClass());
+    }
+    
+    @Test 
+    public void testDadoUnUsuarioBaneadoLoPersistoYCuandoLoRecuperoSuEstadoEsBannedState(){
+    	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	user.giveScore(1);
+    	user.giveScore(1);
+    	user.giveScore(1);
+    	userDAO.save(user);
+    	Assert.assertEquals(BannedState.class, userDAO.findById(1).getState().getClass());
     }
 }
