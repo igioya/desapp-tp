@@ -1,5 +1,6 @@
 package persistence;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ import model.states.user.BannedState;
 public class UserHibernateTest extends HibernateTest{
 	@Autowired	
     private HibernateUserDAO userDAO;
+	
+	@After
+	public static void tearDown() {
+        System.out.println("/////////////// AFTER ///////////////");
+    }
 
     @Test
     public void testDadoUnUsuarioLoPersistoYCuandoPidoTodosLosUsersMeDevuelveUnListadoConEseUser() {
@@ -36,15 +42,18 @@ public class UserHibernateTest extends HibernateTest{
     	user.createNewPublication(vehicle, "retireAddress", "returnAddress", "4250432244", 800.00);
     	userDAO.save(user);
     	
-    	User userRetrieved = userDAO.findById(1); 
+    	User userRetrieved = userDAO.findById(1);
+    	System.out.println("#################################################");
+    	System.out.println(userRetrieved.getMyPublications());
+    	System.out.println("#################################################");
     	Publication publication = userRetrieved.getMyPublications().get(0);
     	
     	Assert.assertEquals(1,userRetrieved.getMyPublications().size());
-    	Assert.assertEquals(publication.getVehicle().getClass(), vehicle.getClass());
-    	Assert.assertEquals(publication.getRetireAddress(), "retireAddress");
-    	Assert.assertEquals(publication.getReturnAddress(), "returnAddress");
-    	Assert.assertEquals(publication.getTelephone(), "4250432244");
-    	Assert.assertEquals(publication.getCostPerHour(), (Double)800.00);
+    	Assert.assertEquals(vehicle.getClass(), publication.getVehicle().getClass());
+    	Assert.assertEquals("retireAddress", publication.getRetireAddress());
+    	Assert.assertEquals("returnAddress", publication.getReturnAddress());
+    	Assert.assertEquals("4250432244", publication.getTelephone());
+    	Assert.assertEquals((Double)800.00, publication.getCostPerHour());
     }
     
     @Test 
@@ -75,5 +84,17 @@ public class UserHibernateTest extends HibernateTest{
     	user.giveScore(1);
     	userDAO.save(user);
     	Assert.assertEquals(BannedState.class, userDAO.findById(1).getState().getClass());
+    }
+    
+    @Test 
+    public void testDadoUnUsuarioVerificoQueSuCuentaCorrienteSePersistaCorrectamente(){
+    	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
+    	userDAO.save(user);
+    	
+    	User userRetrieved = userDAO.findById(1);
+    	userRetrieved.addCredit(50.00);
+    	userDAO.update(userRetrieved);
+    	
+    	Assert.assertEquals((Double)50.00, userDAO.findById(1).getCurrentAccount().getCredit());
     }
 }

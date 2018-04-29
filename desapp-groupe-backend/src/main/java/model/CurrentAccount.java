@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class CurrentAccount {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private Double credit;
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> movements;
 
 	public CurrentAccount() {
