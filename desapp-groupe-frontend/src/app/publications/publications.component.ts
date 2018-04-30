@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Publication } from '../publication';
-import { PUBLICATIONS } from '../publications';
+import { Publication } from '../../model/publication';
+import { PUBLICATIONS } from '../../model/publications';
 
 @Component({
   selector: 'app-publications',
@@ -15,6 +15,10 @@ export class PublicationsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  verMas(){
+
   }
 
 }
