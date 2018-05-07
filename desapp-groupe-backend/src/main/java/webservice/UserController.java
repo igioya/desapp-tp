@@ -20,10 +20,6 @@ public class UserController {
     @Produces("application/json")
 	@Consumes("application/json")
 	public Response newUser(User user){
-		System.out.println("################################################");
-		System.out.println(userService.getRepository());
-		System.out.println("################################################");
-		System.exit(0);
 		userService.save(user);
 		return Response.ok().build();
 	} 
