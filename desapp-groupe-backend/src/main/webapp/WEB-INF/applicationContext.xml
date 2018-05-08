@@ -28,7 +28,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
 	<jaxrs:server id="server" address="/"  > 
 		<jaxrs:serviceBeans>
-			<ref bean="publicationController" />
+			<ref bean="userController" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -43,10 +43,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 
-    <!-- <bean id="dao.publication" class="org.assembly.nornas.repository.PostDAO" /> -->
 	
-	<bean id="publicationController" class="webservice.PublicationController">
-		<!--<property name="postRepository" ref="dao.publication" />-->
+	<bean id="service.user" class="service.UserService" />
+	<bean id="userController" class="webservice.UserController">
+		<property name="userService" ref="service.user" />
 	</bean>
 
 </beans>

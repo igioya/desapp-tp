@@ -20,12 +20,8 @@
 		<property name="repository" ref="persistence.carrepository" />
 	</bean>-->
 	
-	<bean id="services.publication" class="service.PublicationService">
-		<property name="repository" ref="persistence.publicationRepository" />
-	</bean>
-	
-	<bean id="services.user" class="service.UserService">
-		<property name="repository" ref="persistence.userRepository" />
+	<bean id="service.user" class="service.UserService">
+		<property name="repository" ref="persistence.userrepository" />
 	</bean>
 
 
