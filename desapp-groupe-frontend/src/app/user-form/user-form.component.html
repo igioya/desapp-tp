@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="card">
+<h1>Registrarse</h1>
+
+<form [formGroup]="user">
+
+  <div class="form-group">
+    <label for="cuil">cuil</label>
+    <input type="text" class="form-control" id="cuil" formControlName="cuil" required >
+    <!-- [(ngModel)]="model.costPerHour" name="costPerHour" #costPerHour="ngModel"> 
+    <div [hidden]="costPerHour.valid || costPerHour.pristine"
+      class="alert alert-danger">
+      El precio es requerido
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <label for="name">name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" required >
+    <!--[(ngModel)]="model.retireAddress" name="retireAddress" #retireAddress="ngModel"> 
+    <div [hidden]="retireAddress.valid || retireAddress.pristine"
+      class="alert alert-danger">
+      La direccion de retiro es requerida
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <label for="surname">Apellido</label>
+    <input type="text" class="form-control" id="surname" formControlName="surname" required >
+    <!-- [(ngModel)]="model.returnAddress" name="returnAddress" #returnAddress="ngModel"> 
+    <div [hidden]="returnAddress.valid || returnAddress.pristine"
+      class="alert alert-danger">
+      La direccion de devolucion es requerida
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <label for="address"> Direccion </label>
+    <input type="text" class="form-control" id="address" formControlName="address" required >
+    <!-- [(ngModel)]="model.telephone" name="telephone" #telephone="ngModel"> 
+    <div [hidden]="telephone.valid || telephone.pristine"
+      class="alert alert-danger">
+      El telefono es requerido
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <label for="email"> email </label>
+    <input type="email" class="form-control" id="email" formControlName="email" required >
+    <!-- [(ngModel)]="model.telephone" name="telephone" #telephone="ngModel"> 
+    <div [hidden]="telephone.valid || telephone.pristine"
+      class="alert alert-danger">
+      El telefono es requerido
+    </div> -->
+  </div>
+
+  <div class="row">
+  <div class="col-md-6">
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+  </div>
+  <div class="col-md-6"> 
+      <button type="submit" class="btn btn-success" [disabled]="!user.valid" (click)="newUser()">Registrar</button>
+  </div>
+  </div>
+</form> 
+</div>
+</div>

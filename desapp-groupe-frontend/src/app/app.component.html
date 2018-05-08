@@ -15,9 +15,9 @@
           Agregar...
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/newUser">Usuario</a>
-          <a class="dropdown-item" href="/newVehicle">Vehiculo</a>
-          <a class="dropdown-item" href="/newPublication">Publicacion</a>
+          <a class="nav-link" routerLink="/newUser">Usuario</a>
+          <a class="nav-link" routerLink="/newVehicle">Vehiculo</a>
+          <a class="nav-link" routerLink="/newPublication">Publicacion</a>
         </div>
       </li>
     </ul>
@@ -33,12 +33,6 @@
   </h1>
   <img width="300" alt="Carpnd Logo" src="assets/logo_carpnd.png">
 
-  <br>
-  <app-publications></app-publications>
-  <br>
-  <app-vehicle-form></app-vehicle-form>
-  <br>
-  <app-publication-form></app-publication-form>
-  <br>
-
+  <router-outlet></router-outlet>
+  
 </div>

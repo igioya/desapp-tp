@@ -6,9 +6,11 @@ import { PublicationsComponent } from './publications/publications.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
 import { RouterModule } from '@angular/router';
+import { UserService } from './services/user.service';
 import { VehicleService } from './services/vehicle.service';
 import { PublicationService } from './services/publication.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     PublicationsComponent,
     VehicleFormComponent,
-    PublicationFormComponent
+    PublicationFormComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,19 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      { 
+        path: '', 
+        redirectTo: '/publications', 
+        pathMatch: 'full' 
+      },
+      {
+        path:'publications',
+        component:PublicationsComponent
+      },
+      {
+        path:'newUser',
+        component:UserFormComponent
+      },
       {
         path:'newVehicle',
         component:VehicleFormComponent
@@ -35,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     ]),
   ],
   providers: [
+    UserService,
     VehicleService,
     PublicationService,
   ],

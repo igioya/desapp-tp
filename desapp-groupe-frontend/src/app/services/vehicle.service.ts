@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class VehicleService {
 
-  url:string = 'http://localhost:8080/vehicles/';
+  url:string = 'http://localhost:8080/rest/vehicles/';
 
   constructor(private http: HttpClient) { }
 
@@ -18,11 +18,11 @@ export class VehicleService {
   }
 
   newVehicle(vehicle):Observable<any> {
-    return this.http.post(this.url,vehicle)
+    return this.http.post(this.url+'new',vehicle)
   }
 
   updateVehicle(id, vehicle):Observable<any> {
-    return this.http.put(this.url+id,vehicle)
+    return this.http.put(this.url+'edit/'+id,vehicle)
   }
 
   deleteVehicle(id, vehicle):Observable<any> {

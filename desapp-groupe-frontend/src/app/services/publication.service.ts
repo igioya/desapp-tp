@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PublicationService {
 
-  url:string = 'http://localhost:8080/publications/';
+  url:string = 'http://localhost:8080/rest/publications/';
 
   constructor(private http: HttpClient) { }
 
@@ -18,11 +18,11 @@ export class PublicationService {
   }
 
   newPublication(publication):Observable<any> {
-    return this.http.post(this.url,publication)
+    return this.http.post(this.url+'new',publication)
   }
 
   updatePublication(id, publication):Observable<any> {
-    return this.http.put(this.url+id,publication)
+    return this.http.put(this.url+'edit/'+id,publication)
   }
 
   deletePublication(id, publication):Observable<any> {
