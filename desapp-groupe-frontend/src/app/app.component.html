@@ -1,6 +1,6 @@
 <div style="text-align:center">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Carpnd</a>
+  <img width="20" height="20" src="favicon.ico"> <a class="navbar-brand" href="#">Carpnd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,9 +15,9 @@
           Agregar...
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Usuario</a>
-          <a class="dropdown-item" href="#">Vehiculo</a>
-          <a class="dropdown-item" href="#">Publicacion</a>
+          <a class="dropdown-item" href="/newUser">Usuario</a>
+          <a class="dropdown-item" href="/newVehicle">Vehiculo</a>
+          <a class="dropdown-item" href="/newPublication">Publicacion</a>
         </div>
       </li>
     </ul>
@@ -33,8 +33,12 @@
   </h1>
   <img width="300" alt="Carpnd Logo" src="assets/logo_carpnd.png">
 
+  <br>
   <app-publications></app-publications>
+  <br>
   <app-vehicle-form></app-vehicle-form>
-  
+  <br>
+  <app-publication-form></app-publication-form>
+  <br>
 
 </div>
