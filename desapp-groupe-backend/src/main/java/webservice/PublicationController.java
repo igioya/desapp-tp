@@ -21,15 +21,7 @@ public class PublicationController {
 	public static final int NUMBER_OF_PUBLICATIONS = 10;
 	
 	 private PublicationService service = new PublicationService();
-	/*
-	@GET
-    @Path("/")
-    @Produces("application/json")
-    public String getPublications() {
-        
-        return "{}";
-    }
-	*/
+
 	  @GET
 	   @Path("/")
 	   @Produces("application/json")
