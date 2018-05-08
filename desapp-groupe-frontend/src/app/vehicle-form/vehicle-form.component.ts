@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Vehicle, VehicleType } from '../../model/vehicle';
+import { VEHICLES } from '../../model/publications';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -8,18 +11,29 @@ import { Vehicle, VehicleType } from '../../model/vehicle';
 })
 export class VehicleFormComponent {
 
+  service: VehicleService;
+
   type = Object.keys(VehicleType);
   types = this.type.slice(this.type.length/2);
 
-  model = new Vehicle('', VehicleType.Car, 0, '', '');
+  vehicle : FormGroup = this.formBuilder.group({
+    model : new FormControl('',Validators.required),
+    type: new FormControl('',Validators.required),
+    numberOfPassengers: new FormControl('',Validators.required),
+    description: new FormControl('',Validators.required),
+    photo: new FormControl('',Validators.required),
+  });
 
-  submitted = false;
+  constructor(private formBuilder: FormBuilder, vehicleService: VehicleService) {
 
-  constructor() { }
-
-  onSubmit() { this.submitted = true; }
+    this.service = vehicleService;
+  
+  }
 
   newVehicle() {
-    this.model = new Vehicle('', VehicleType.Car, 0, '', '');
+    console.log(this.vehicle);
+    this.service.newVehicle(this.vehicle);
   }
+
+  cancel(){}
 }
