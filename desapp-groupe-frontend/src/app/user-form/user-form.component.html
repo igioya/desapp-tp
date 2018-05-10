@@ -1,57 +1,55 @@
 <div class="container">
   <div class="card">
-<h1>Registrarse</h1>
+    <h1>Registrarse</h1>
 
 <form [formGroup]="user">
 
   <div class="form-group">
-    <label for="cuil">cuil</label>
+    <label for="cuil">CUIL</label>
     <input type="text" class="form-control" id="cuil" formControlName="cuil" required >
-    <!-- [(ngModel)]="model.costPerHour" name="costPerHour" #costPerHour="ngModel"> 
-    <div [hidden]="costPerHour.valid || costPerHour.pristine"
-      class="alert alert-danger">
-      El precio es requerido
-    </div> -->
+    <div *ngIf="user.get('cuil').errors && user.get('cuil').dirty">
+        <p *ngIf="user.get('cuil').hasError('required')" style="white-space: normal; color:red">El CUIL es requerido.</p>
+        <p *ngIf="user.get('cuil').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 11.</p>
+        <p *ngIf="user.get('cuil').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 11.</p>
+      </div>  
   </div>
 
   <div class="form-group">
-    <label for="name">name</label>
+    <label for="name">Nombre</label>
     <input type="text" class="form-control" id="name" formControlName="name" required >
-    <!--[(ngModel)]="model.retireAddress" name="retireAddress" #retireAddress="ngModel"> 
-    <div [hidden]="retireAddress.valid || retireAddress.pristine"
-      class="alert alert-danger">
-      La direccion de retiro es requerida
-    </div> -->
+    <div *ngIf="user.get('name').errors && user.get('name').dirty">
+        <p *ngIf="user.get('name').hasError('required')" style="white-space: normal; color:red">El nombre es requerido.</p>
+        <p *ngIf="user.get('name').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 50.</p>
+        <p *ngIf="user.get('name').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 4.</p>
+    </div> 
   </div>
 
   <div class="form-group">
     <label for="surname">Apellido</label>
     <input type="text" class="form-control" id="surname" formControlName="surname" required >
-    <!-- [(ngModel)]="model.returnAddress" name="returnAddress" #returnAddress="ngModel"> 
-    <div [hidden]="returnAddress.valid || returnAddress.pristine"
-      class="alert alert-danger">
-      La direccion de devolucion es requerida
-    </div> -->
+    <div *ngIf="user.get('surname').errors && user.get('surname').dirty">
+        <p *ngIf="user.get('surname').hasError('required')" style="white-space: normal; color:red">El apellido es requerido.</p>
+        <p *ngIf="user.get('surname').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 50.</p>
+        <p *ngIf="user.get('surname').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 4.</p>
+      </div> 
   </div>
 
   <div class="form-group">
     <label for="address"> Direccion </label>
     <input type="text" class="form-control" id="address" formControlName="address" required >
-    <!-- [(ngModel)]="model.telephone" name="telephone" #telephone="ngModel"> 
-    <div [hidden]="telephone.valid || telephone.pristine"
-      class="alert alert-danger">
-      El telefono es requerido
-    </div> -->
+    <div *ngIf="user.get('address').errors && user.get('address').dirty">
+        <p *ngIf="user.get('address').hasError('required')" style="white-space: normal; color:red">La direccion es requerida.</p>
+        <p *ngIf="user.get('address').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 11.</p>
+        <p *ngIf="user.get('address').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 11.</p>
+      </div> 
   </div>
 
   <div class="form-group">
-    <label for="email"> email </label>
+    <label for="email"> Email </label>
     <input type="email" class="form-control" id="email" formControlName="email" required >
-    <!-- [(ngModel)]="model.telephone" name="telephone" #telephone="ngModel"> 
-    <div [hidden]="telephone.valid || telephone.pristine"
-      class="alert alert-danger">
-      El telefono es requerido
-    </div> -->
+    <div *ngIf="user.get('email').errors && user.get('email').dirty">
+        <p *ngIf="user.get('email').hasError('required')" style="white-space: normal; color:red">El email es requerido.</p>
+        <p *ngIf="user.get('email').hasError('email')" style="white-space: normal; color:red">El email indicado no es valido.</p></div> 
   </div>
 
   <div class="row">
@@ -62,6 +60,8 @@
       <button type="submit" class="btn btn-success" [disabled]="!user.valid" (click)="newUser()">Registrar</button>
   </div>
   </div>
+
 </form> 
+
 </div>
 </div>

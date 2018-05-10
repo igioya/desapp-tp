@@ -16,11 +16,11 @@ export class UserFormComponent  {
   service: UserService;
 
   user : FormGroup = this.formBuilder.group({
-    cuil : new FormControl('',Validators.required),
-    name: new FormControl('',Validators.required),
-    surname: new FormControl('',Validators.required),
+    cuil : new FormControl('',[Validators.required, Validators.minLength(11),Validators.maxLength(11)]),
+    name: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
+    surname: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
     address: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
+    email: new FormControl('',[Validators.required, Validators.email]),
   });
 
   constructor(private formBuilder: FormBuilder, private publicationService: UserService, private router: Router) { 
