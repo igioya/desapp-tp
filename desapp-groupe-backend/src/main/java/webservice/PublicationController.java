@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Publication;
 import service.PublicationService;
+import service.VehicleService;
 
 
 @Path("/publications")
 public class PublicationController {
 	public static final int NUMBER_OF_PUBLICATIONS = 10;
 	
-	 private PublicationService service = new PublicationService();
+	 private PublicationService service;
 
-	  @GET
+	   @GET
 	   @Path("/")
 	   @Produces("application/json")
 	   public List<Publication> getAllPublications() {
@@ -59,4 +60,7 @@ public class PublicationController {
 		   this.service.delete(vehicle);
 	   }
 	   
+	   public void setPublicationService(final PublicationService publicatioService) {
+		   this.service = publicatioService;
+	   }
 }

@@ -135,5 +135,13 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
+	<bean id="persistence.vehiclerepository" class="persistence.HibernateVehicleDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
+	<bean id="persistence.publicationrepository" class="persistence.HibernatePublicationDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
 
 </beans>

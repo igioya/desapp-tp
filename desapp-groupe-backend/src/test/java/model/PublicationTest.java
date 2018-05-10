@@ -2,9 +2,6 @@ package model;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.joda.time.LocalDateTime;
 import org.junit.Test;
 
