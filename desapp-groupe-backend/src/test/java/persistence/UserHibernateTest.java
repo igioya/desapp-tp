@@ -16,7 +16,7 @@ public class UserHibernateTest extends HibernateTest{
     private HibernateUserDAO userDAO;
 	
 	@After
-	public static void tearDown() {
+	public void tearDown() {
         System.out.println("/////////////// AFTER ///////////////");
     }
 

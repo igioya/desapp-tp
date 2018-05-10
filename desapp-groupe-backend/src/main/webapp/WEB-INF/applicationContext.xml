@@ -29,6 +29,8 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<jaxrs:server id="server" address="/"  > 
 		<jaxrs:serviceBeans>
 			<ref bean="userController" />
+			<ref bean="vehicleController" />
+			<ref bean="publicationController" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -47,6 +49,16 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="service.user" class="service.UserService" />
 	<bean id="userController" class="webservice.UserController">
 		<property name="userService" ref="service.user" />
+	</bean>
+	
+	<bean id="service.vehicle" class="service.VehicleService" />
+	<bean id="vehicleController" class="webservice.VehicleController">
+		<property name="vehicleService" ref="service.vehicle" />
+	</bean>
+	
+	<bean id="service.publication" class="service.PublicationService" />
+	<bean id="publicationController" class="webservice.PublicationController">
+		<property name="publicationService" ref="service.publication" />
 	</bean>
 
 </beans>
