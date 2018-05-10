@@ -16,7 +16,7 @@ import model.exceptions.UnableToDoTransactionException;
 public class CurrentAccount {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	public int id;
 	private Double credit;
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> movements;

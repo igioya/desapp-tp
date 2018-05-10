@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 public class RatingCalculator {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	public int id;
 	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Rating> ratings = new ArrayList<Rating>();
 	@ElementCollection
