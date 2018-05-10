@@ -19,11 +19,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	public int id;
 	
 	private String cuil;
 	private String name;
@@ -31,15 +34,15 @@ public class User {
 	private String address;
 	private String email;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private CurrentAccount currentAccount;	
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Vehicle> myVehicles;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<Reservation> myReservations;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private UserState state;
@@ -67,6 +70,10 @@ public class User {
 		this.state = new ActiveState();
 	}
 
+	public int getId() {
+		return id;
+	}
+	
 	public CurrentAccount getCurrentAccount() {
 		return currentAccount;
 	}

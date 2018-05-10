@@ -10,5 +10,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class UserState {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected int id;
+	public int id;
+	
+	public int getId(){return this.id;}
 }
