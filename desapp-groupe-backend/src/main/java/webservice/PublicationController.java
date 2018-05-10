@@ -14,20 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Publication;
 import service.PublicationService;
-import service.VehicleService;
 
 
 @Path("/publications")
 public class PublicationController {
 	public static final int NUMBER_OF_PUBLICATIONS = 10;
 	
-	 private PublicationService service;
+	 private PublicationService publicationService;
 
 	   @GET
 	   @Path("/")
 	   @Produces("application/json")
 	   public List<Publication> getAllPublications() {
-	       List<Publication> all = this.service.retriveAll();
+	       List<Publication> all = this.publicationService.retriveAll();
 	       return all;
 	   }
 	   
@@ -35,32 +34,32 @@ public class PublicationController {
 	   @Path("/{id}")
 	   @Produces("application/json")
 	   public Publication getPublication(@RequestParam("id") long id){
-		   return this.service.getById(id);
+		   return this.publicationService.findById(id);
 	   }
 	   
 	   @POST
-	   @Path("/")
+	   @Path("/new")
 	   @Produces("application/json")
 	   public void newPublication(@RequestBody Publication publication){
-		   this.service.save(publication);
+		   this.publicationService.save(publication);
 	   }
 	   
 	   @PUT
-	   @Path("/{id}")
+	   @Path("/edit/{id}")
 	   @Produces("application/json")
 	   public void updatePublication(@RequestParam("id") long id,@RequestBody Publication publication){
-		   this.service.update(publication);
+		   this.publicationService.update(publication);
 	   }
 	   
 	   @DELETE
 	   @Path("/{id}")
 	   @Produces("application/json")
 	   public void deletePublication(@RequestParam("id") long id){
-		   Publication vehicle = this.service.getById(id);
-		   this.service.delete(vehicle);
+		   Publication vehicle = this.publicationService.findById(id);
+		   this.publicationService.delete(vehicle);
 	   }
 	   
 	   public void setPublicationService(final PublicationService publicatioService) {
-		   this.service = publicatioService;
+		   this.publicationService = publicatioService;
 	   }
 }
