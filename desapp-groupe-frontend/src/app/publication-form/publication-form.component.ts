@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Publication } from '../../model/publication';
-import { VEHICLES, PUBLICATIONS } from '../../model/publications';
+import { VEHICLES, PUBLICATIONS } from '../../model/data';
 import { Vehicle } from '../../model/vehicle';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { PublicationService } from '../services/publication.service';

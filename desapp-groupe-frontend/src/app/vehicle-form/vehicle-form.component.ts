@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Vehicle, VehicleType } from '../../model/vehicle';
-import { VEHICLES } from '../../model/publications';
+import { VEHICLES } from '../../model/data';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { VehicleService } from '../services/vehicle.service';
 

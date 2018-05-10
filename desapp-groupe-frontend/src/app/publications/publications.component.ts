@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Publication } from '../../model/publication';
-import { PUBLICATIONS } from '../../model/publications';
+import { PUBLICATIONS } from '../../model/data';
 
 @Component({
   selector: 'app-publications',
