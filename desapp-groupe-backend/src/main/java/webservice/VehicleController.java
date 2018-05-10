@@ -36,7 +36,7 @@ public class VehicleController {
    @GET
    @Path("/{id}")
    @Produces("application/json")
-   public Vehicle getVehicle(@RequestParam("id") long id){
+   public Vehicle getVehicle(@RequestParam("id") int id){
 	   return this.vehicleService.findById(id);
    }
    
@@ -50,18 +50,19 @@ public class VehicleController {
    }
    
    @PUT
-   @Path("/edit/{id}")
+   @Path("/edit")
    @Produces("application/json")
-   public void updateVehicle(@RequestParam("id") long id,@RequestBody Vehicle vehicle){
+   public void updateVehicle(@RequestBody Vehicle vehicle){
 	   this.vehicleService.update(vehicle);
    }
    
    @DELETE
-   @Path("/{id}")
+   @Path("/delete")
    @Produces("application/json")
-   public void deleteVehicle(@RequestParam("id") long id){
-	   Vehicle vehicle = this.vehicleService.findById(id);
-	   this.vehicleService.delete(vehicle);
+   @Consumes("application/json")
+   public void deleteVehicle(Vehicle vehicle){
+	   Vehicle v = this.vehicleService.findById(vehicle.getId());
+	   this.vehicleService.delete(v);
    }
    
    public void setVehicleService(final VehicleService vehicleService) {
