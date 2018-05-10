@@ -27,7 +27,7 @@ module.exports = "h1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-se
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <img width=\"20\" height=\"20\" src=\"favicon.ico\"> <a class=\"navbar-brand\" href=\"#\">Carpnd</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Agregar...\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" href=\"/newUser\">Usuario</a>\n          <a class=\"dropdown-item\" href=\"/newVehicle\">Vehiculo</a>\n          <a class=\"dropdown-item\" href=\"/newPublication\">Publicacion</a>\n        </div>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>\n\n  <h1>\n    {{ title }}  - Pick and Drive\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n\n  <br>\n  <app-publications></app-publications>\n  <br>\n  <app-vehicle-form></app-vehicle-form>\n  <br>\n  <app-publication-form></app-publication-form>\n  <br>\n\n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <img width=\"20\" height=\"20\" src=\"favicon.ico\"> <a class=\"navbar-brand\" href=\"#\">Carpnd</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Agregar...\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"nav-link\" routerLink=\"/newUser\">Usuario</a>\n          <a class=\"nav-link\" routerLink=\"/newVehicle\">Vehiculo</a>\n          <a class=\"nav-link\" routerLink=\"/newPublication\">Publicacion</a>\n        </div>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>\n\n  <h1>\n    {{ title }}  - Pick and Drive\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n\n  <router-outlet></router-outlet>\n  \n</div>\n"
 
 /***/ }),
 
@@ -75,15 +75,19 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vehicle_form_vehicle_form_component__ = __webpack_require__("./src/app/vehicle-form/vehicle-form.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__publication_form_publication_form_component__ = __webpack_require__("./src/app/publication-form/publication-form.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_publication_service__ = __webpack_require__("./src/app/services/publication.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_publication_service__ = __webpack_require__("./src/app/services/publication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__user_form_user_form_component__ = __webpack_require__("./src/app/user-form/user-form.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -104,14 +108,28 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__publications_publications_component__["a" /* PublicationsComponent */],
                 __WEBPACK_IMPORTED_MODULE_5__vehicle_form_vehicle_form_component__["a" /* VehicleFormComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__publication_form_publication_form_component__["a" /* PublicationFormComponent */]
+                __WEBPACK_IMPORTED_MODULE_6__publication_form_publication_form_component__["a" /* PublicationFormComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__user_form_user_form_component__["a" /* UserFormComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* RouterModule */].forRoot([
+                __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* RouterModule */].forRoot([
+                    {
+                        path: '',
+                        redirectTo: '/publications',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'publications',
+                        component: __WEBPACK_IMPORTED_MODULE_4__publications_publications_component__["a" /* PublicationsComponent */]
+                    },
+                    {
+                        path: 'newUser',
+                        component: __WEBPACK_IMPORTED_MODULE_12__user_form_user_form_component__["a" /* UserFormComponent */]
+                    },
                     {
                         path: 'newVehicle',
                         component: __WEBPACK_IMPORTED_MODULE_5__vehicle_form_vehicle_form_component__["a" /* VehicleFormComponent */]
@@ -123,8 +141,9 @@ var AppModule = /** @class */ (function () {
                 ]),
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_8__services_vehicle_service__["a" /* VehicleService */],
-                __WEBPACK_IMPORTED_MODULE_9__services_publication_service__["a" /* PublicationService */],
+                __WEBPACK_IMPORTED_MODULE_8__services_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_9__services_vehicle_service__["a" /* VehicleService */],
+                __WEBPACK_IMPORTED_MODULE_10__services_publication_service__["a" /* PublicationService */],
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
         })
@@ -156,7 +175,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"card\">\n  <h1>Nue
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PublicationFormComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_publications__ = __webpack_require__("./src/model/publications.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_data__ = __webpack_require__("./src/model/data.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_vehicle__ = __webpack_require__("./src/model/vehicle.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_publication_service__ = __webpack_require__("./src/app/services/publication.service.ts");
@@ -178,7 +197,7 @@ var PublicationFormComponent = /** @class */ (function () {
     function PublicationFormComponent(formBuilder, publicationService) {
         this.formBuilder = formBuilder;
         this.vehicle = Object.keys(__WEBPACK_IMPORTED_MODULE_2__model_vehicle__["a" /* Vehicle */]);
-        this.vehicles = __WEBPACK_IMPORTED_MODULE_1__model_publications__["b" /* VEHICLES */].slice(this.vehicle.length / 2); //cambiar por getAll de vehiculos
+        this.vehicles = __WEBPACK_IMPORTED_MODULE_1__model_data__["b" /* VEHICLES */].slice(this.vehicle.length / 2); //cambiar por getAll de vehiculos
         this.publication = this.formBuilder.group({
             vehicle: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required),
             retireAddress: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required),
@@ -228,7 +247,7 @@ module.exports = "<br>\n<div class=\"col-md-3\">\n  <h3 class=\"title\"> &Uacute
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PublicationsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_publications__ = __webpack_require__("./src/model/publications.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_data__ = __webpack_require__("./src/model/data.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -242,7 +261,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var PublicationsComponent = /** @class */ (function () {
     function PublicationsComponent() {
-        this.publications = __WEBPACK_IMPORTED_MODULE_1__model_publications__["a" /* PUBLICATIONS */];
+        this.publications = __WEBPACK_IMPORTED_MODULE_1__model_data__["a" /* PUBLICATIONS */];
     }
     PublicationsComponent.prototype.ngOnInit = function () {
     };
@@ -284,7 +303,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PublicationService = /** @class */ (function () {
     function PublicationService(http) {
         this.http = http;
-        this.url = 'http://localhost:8080/publications/';
+        this.url = 'http://localhost:8080/rest/publications/';
     }
     PublicationService.prototype.getAllPublications = function () {
         return this.http.get(this.url);
@@ -293,10 +312,10 @@ var PublicationService = /** @class */ (function () {
         return this.http.get(this.url + id);
     };
     PublicationService.prototype.newPublication = function (publication) {
-        return this.http.post(this.url, publication);
+        return this.http.post(this.url + 'new', publication);
     };
     PublicationService.prototype.updatePublication = function (id, publication) {
-        return this.http.put(this.url + id, publication);
+        return this.http.put(this.url + 'edit/' + id, publication);
     };
     PublicationService.prototype.deletePublication = function (id, publication) {
         return this.http.delete(this.url + id, publication);
@@ -306,6 +325,55 @@ var PublicationService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], PublicationService);
     return PublicationService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserService = /** @class */ (function () {
+    function UserService(http) {
+        this.http = http;
+        this.url = 'http://localhost:8080/rest/vehicles/';
+    }
+    UserService.prototype.getAllUsers = function () {
+        return this.http.get(this.url);
+    };
+    UserService.prototype.getUser = function (id) {
+        return this.http.get(this.url + id);
+    };
+    UserService.prototype.newUser = function (user) {
+        return this.http.post(this.url + 'new', user);
+    };
+    UserService.prototype.updateUser = function (id, user) {
+        return this.http.put(this.url + 'edit/' + id, user);
+    };
+    UserService.prototype.deleteUser = function (id, user) {
+        return this.http.delete(this.url + id, user);
+    };
+    UserService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], UserService);
+    return UserService;
 }());
 
 
@@ -333,7 +401,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var VehicleService = /** @class */ (function () {
     function VehicleService(http) {
         this.http = http;
-        this.url = 'http://localhost:8080/vehicles/';
+        this.url = 'http://localhost:8080/rest/vehicles/';
     }
     VehicleService.prototype.getAllVehicles = function () {
         return this.http.get(this.url);
@@ -342,10 +410,10 @@ var VehicleService = /** @class */ (function () {
         return this.http.get(this.url + id);
     };
     VehicleService.prototype.newVehicle = function (vehicle) {
-        return this.http.post(this.url, vehicle);
+        return this.http.post(this.url + 'new', vehicle);
     };
     VehicleService.prototype.updateVehicle = function (id, vehicle) {
-        return this.http.put(this.url + id, vehicle);
+        return this.http.put(this.url + 'edit/' + id, vehicle);
     };
     VehicleService.prototype.deleteVehicle = function (id, vehicle) {
         return this.http.delete(this.url + id, vehicle);
@@ -355,6 +423,77 @@ var VehicleService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], VehicleService);
     return VehicleService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user-form/user-form.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/user-form/user-form.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"card\">\n<h1>Registrarse</h1>\n\n<form [formGroup]=\"user\">\n\n  <div class=\"form-group\">\n    <label for=\"cuil\">cuil</label>\n    <input type=\"text\" class=\"form-control\" id=\"cuil\" formControlName=\"cuil\" required >\n    <!-- [(ngModel)]=\"model.costPerHour\" name=\"costPerHour\" #costPerHour=\"ngModel\"> \n    <div [hidden]=\"costPerHour.valid || costPerHour.pristine\"\n      class=\"alert alert-danger\">\n      El precio es requerido\n    </div> -->\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"name\">name</label>\n    <input type=\"text\" class=\"form-control\" id=\"name\" formControlName=\"name\" required >\n    <!--[(ngModel)]=\"model.retireAddress\" name=\"retireAddress\" #retireAddress=\"ngModel\"> \n    <div [hidden]=\"retireAddress.valid || retireAddress.pristine\"\n      class=\"alert alert-danger\">\n      La direccion de retiro es requerida\n    </div> -->\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"surname\">Apellido</label>\n    <input type=\"text\" class=\"form-control\" id=\"surname\" formControlName=\"surname\" required >\n    <!-- [(ngModel)]=\"model.returnAddress\" name=\"returnAddress\" #returnAddress=\"ngModel\"> \n    <div [hidden]=\"returnAddress.valid || returnAddress.pristine\"\n      class=\"alert alert-danger\">\n      La direccion de devolucion es requerida\n    </div> -->\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"address\"> Direccion </label>\n    <input type=\"text\" class=\"form-control\" id=\"address\" formControlName=\"address\" required >\n    <!-- [(ngModel)]=\"model.telephone\" name=\"telephone\" #telephone=\"ngModel\"> \n    <div [hidden]=\"telephone.valid || telephone.pristine\"\n      class=\"alert alert-danger\">\n      El telefono es requerido\n    </div> -->\n  </div>\n\n  <div class=\"form-group\">\n    <label for=\"email\"> email </label>\n    <input type=\"email\" class=\"form-control\" id=\"email\" formControlName=\"email\" required >\n    <!-- [(ngModel)]=\"model.telephone\" name=\"telephone\" #telephone=\"ngModel\"> \n    <div [hidden]=\"telephone.valid || telephone.pristine\"\n      class=\"alert alert-danger\">\n      El telefono es requerido\n    </div> -->\n  </div>\n\n  <div class=\"row\">\n  <div class=\"col-md-6\">\n      <button type=\"button\" class=\"btn btn-danger\" (click)=\"cancel()\">Cancelar</button>\n  </div>\n  <div class=\"col-md-6\"> \n      <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!user.valid\" (click)=\"newUser()\">Registrar</button>\n  </div>\n  </div>\n</form> \n</div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/user-form/user-form.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserFormComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var UserFormComponent = /** @class */ (function () {
+    function UserFormComponent(formBuilder, publicationService, router) {
+        this.formBuilder = formBuilder;
+        this.publicationService = publicationService;
+        this.router = router;
+        this.user = this.formBuilder.group({
+            cuil: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            name: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            surname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            address: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+        });
+        this.service = publicationService;
+    }
+    UserFormComponent.prototype.newUser = function () {
+        console.log(this.user);
+        this.service.newUser(this.user);
+        this.router.navigate(['publications']);
+    };
+    UserFormComponent.prototype.cancel = function () { };
+    UserFormComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-user-form',
+            template: __webpack_require__("./src/app/user-form/user-form.component.html"),
+            styles: [__webpack_require__("./src/app/user-form/user-form.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+    ], UserFormComponent);
+    return UserFormComponent;
 }());
 
 
@@ -469,7 +608,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ "./src/model/publications.ts":
+/***/ "./src/model/data.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
