@@ -1,0 +1,28 @@
+<div class="user-table">
+  <table class="table">
+    <thead>
+      <th>ID</th>
+      <th>CUIL</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>DIRECCION</th>
+      <th>EMAIL</th>
+    </thead>
+    <tbody *ngIf="users">
+      <tr *ngFor="let user of users">
+        <td> {{user.id}} </td>
+        <td> {{user.cuil}} </td>
+        <td> {{user.name}} </td>
+        <td> {{user.surname}} </td>
+        <td> {{user.address}} </td>
+        <td> {{user.email}} </td>
+        <td> <a class="btn btn-success" (click)="edit(user)" >Editar</a> </td>
+      </tr>    
+    </tbody>
+  </table>1
+</div>
+
+
+
+
+
