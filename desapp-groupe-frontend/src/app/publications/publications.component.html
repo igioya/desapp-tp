@@ -1,6 +1,6 @@
 <br>
 <div class="col-md-3">
-  <h3 class="title"> &Uacute;ltimas Publicaciones:</h3>
+  <h3 class="title">Publicaciones</h3>
 </div>
 <ul class="list-inline" >
   <div class="row">
@@ -8,12 +8,15 @@
       <div class="card">
 	       <img class="card-img-top" src="{{publication.vehicle.photo}}" alt="Card image cap" height="150px" width="250px">
             <div class="card-body">
-              <p class="card-text"><small class="text-muted">{{publication.owner}}</small></p>
+              <p class="card-text"><small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}}</small></p>
               <h4 class="card-title">${{publication.costPerHour}} por hora</h4>
               <p class="card-text"> {{publication.vehicle.description}}</p>
               <p class="card-text"><small class="text-muted">{{publication.retireAddress}}</small></p>
-              <a href="#" class="btn btn-primary">Ver m&aacute;s</a>
             </div>
+          <div class="row">
+              <a class="btn btn-danger" >Eliminar</a>
+              <a class="btn btn-success">Editar</a>
+          </div>
       </div>
     </li>
   </div>
