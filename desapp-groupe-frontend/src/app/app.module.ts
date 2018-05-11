@@ -11,6 +11,8 @@ import { VehicleService } from './services/vehicle.service';
 import { PublicationService } from './services/publication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UsersComponent } from './users/users.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     PublicationsComponent,
     VehicleFormComponent,
     PublicationFormComponent,
-    UserFormComponent
+    UserFormComponent,
+    UsersComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,14 @@ import { UserFormComponent } from './user-form/user-form.component';
       {
         path:'publications',
         component:PublicationsComponent
+      },
+      {
+        path:'users',
+        component:UsersComponent
+      },
+      {
+        path:'vehicles',
+        component:VehiclesComponent
       },
       {
         path:'newUser',
