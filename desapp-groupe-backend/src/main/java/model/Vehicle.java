@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Vehicle {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected int id;
+	public int id;
 	private String model;
 	private VehicleType type;
 	private Integer numberOfPassengers;
@@ -25,6 +25,10 @@ public class Vehicle {
 		this.numberOfPassengers = numberOfPassengers;
 		this.description = description;
 		this.photo = photo;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public String getModel() {

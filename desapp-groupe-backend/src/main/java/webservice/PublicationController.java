@@ -33,7 +33,7 @@ public class PublicationController {
 	   @GET
 	   @Path("/{id}")
 	   @Produces("application/json")
-	   public Publication getPublication(@RequestParam("id") long id){
+	   public Publication getPublication(@RequestParam("id") int id){
 		   return this.publicationService.findById(id);
 	   }
 	   
@@ -47,14 +47,14 @@ public class PublicationController {
 	   @PUT
 	   @Path("/edit/{id}")
 	   @Produces("application/json")
-	   public void updatePublication(@RequestParam("id") long id,@RequestBody Publication publication){
+	   public void updatePublication(@RequestBody Publication publication){
 		   this.publicationService.update(publication);
 	   }
 	   
 	   @DELETE
 	   @Path("/{id}")
 	   @Produces("application/json")
-	   public void deletePublication(@RequestParam("id") long id){
+	   public void deletePublication(@RequestParam("id") int id){
 		   Publication vehicle = this.publicationService.findById(id);
 		   this.publicationService.delete(vehicle);
 	   }
