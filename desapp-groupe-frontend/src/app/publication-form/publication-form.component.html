@@ -7,53 +7,55 @@
     <div class="form-group">
       <label for="vehicle">Vehiculo</label>
       <select class="form-control" id="vehicle" formControlName="vehicle" required >
-      <!--[(ngModel)]="model.vehicle" name="vehicle" #vehicle="ngModel"> -->
         <option *ngFor="let v of vehicles" [value]="v">{{v.model}}</option>
       </select>
-     <!-- <div [hidden]="vehicle.valid || vehicle.pristine" class="alert alert-danger">
-        El vehiculo es requerido
-      </div>-->
+      <div *ngIf="publication.get('vehicle').errors && publication.get('vehicle').dirty">
+          <p *ngIf="publication.get('vehicle').hasError('required')" style="white-space: normal; color:red">El modelo es requerido.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="costPerHour">Precio</label>
-      <input type="number"  min="0" class="form-control" id="costPerHour" formControlName="costPerHour" required >
-      <!-- [(ngModel)]="model.costPerHour" name="costPerHour" #costPerHour="ngModel"> 
-      <div [hidden]="costPerHour.valid || costPerHour.pristine"
-        class="alert alert-danger">
-        El precio es requerido
-      </div> -->
+      <input type="number"  min="50" class="form-control" id="costPerHour" formControlName="costPerHour" required >
+      <div *ngIf="publication.get('costPerHour').errors && publication.get('costPerHour').dirty">
+          <p *ngIf="publication.get('costPerHour').hasError('required')" style="white-space: normal; color:red">El costo por hora es requerido.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="retireAddress">Direccion de retiro</label>
       <input type="text" class="form-control" id="retireAddress" formControlName="retireAddress" required >
-      <!--[(ngModel)]="model.retireAddress" name="retireAddress" #retireAddress="ngModel"> 
-      <div [hidden]="retireAddress.valid || retireAddress.pristine"
-        class="alert alert-danger">
-        La direccion de retiro es requerida
-      </div> -->
+      <div *ngIf="publication.get('retireAddress').errors && publication.get('retireAddress').dirty">
+          <p *ngIf="publication.get('retireAddress').hasError('required')" style="white-space: normal; color:red">La direccion de retiro es requerida.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="returnAddress">Direccion de devolucion</label>
       <input type="text" class="form-control" id="returnAddress" formControlName="returnAddress" required >
-      <!-- [(ngModel)]="model.returnAddress" name="returnAddress" #returnAddress="ngModel"> 
-      <div [hidden]="returnAddress.valid || returnAddress.pristine"
-        class="alert alert-danger">
-        La direccion de devolucion es requerida
-      </div> -->
+      <div *ngIf="publication.get('returnAddress').errors && publication.get('returnAddress').dirty">
+          <p *ngIf="publication.get('returnAddress').hasError('required')" style="white-space: normal; color:red">La direccion de devolucion es requerida.</p>
+          </div> 
     </div>
 
     <div class="form-group">
       <label for="telephone"> Telefono </label>
       <input type="text" class="form-control" id="telephone" formControlName="telephone" required >
-      <!-- [(ngModel)]="model.telephone" name="telephone" #telephone="ngModel"> 
-      <div [hidden]="telephone.valid || telephone.pristine"
-        class="alert alert-danger">
-        El telefono es requerido
-      </div> -->
+      <div *ngIf="publication.get('telephone').errors && publication.get('telephone').dirty">
+          <p *ngIf="publication.get('telephone').hasError('required')" style="white-space: normal; color:red">El telefono es requerido.</p>
+          <p *ngIf="publication.get('telephone').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 13.</p>
+          <p *ngIf="publication.get('telephone').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 6.</p>
+        </div> 
     </div>
+  <div>
+    <label for="owner">Dueño</label>
+    <select class="form-control" id="owner" formControlName="owner" required >
+      <option *ngFor="let owner of users" [value]="owner">{{owner.name}} {{owner.surname}}</option>
+    </select>
+    <div *ngIf="publication.get('owner').errors && publication.get('owner').dirty">
+        <p *ngIf="publication.get('owner').hasError('required')" style="white-space: normal; color:red">La descripcion es requerida.</p>
+    </div>
+  </div>
  
     <div class="row">
     <div class="col-md-6">
