@@ -1,5 +1,5 @@
 import { Vehicle } from './vehicle';
-//import { User } from './user';
+import { User } from './user';
 
 
 export class Publication {
@@ -10,7 +10,7 @@ export class Publication {
   telephone: string;
   costPerHour: number;
   //reservations : any[]; //no para esta entrega
-  owner: string; //cambiar por la clase User
+  owner: User;
 
   constructor(
     vehicle: Vehicle,
@@ -18,7 +18,7 @@ export class Publication {
     returnAddress: string,
     telephone: string,
     costPerHour: number,
-    owner: string, //cambiar por la clase User
+    owner: User,
   	id?:number)	{
 
       this.id = id,
