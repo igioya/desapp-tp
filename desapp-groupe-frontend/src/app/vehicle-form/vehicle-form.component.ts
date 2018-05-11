@@ -20,7 +20,7 @@ export class VehicleFormComponent {
     model : new FormControl('',Validators.required),
     type: new FormControl('',Validators.required),
     numberOfPassengers: new FormControl('',Validators.required),
-    description: new FormControl('',Validators.required),
+    description: new FormControl('',[Validators.required,Validators.minLength(30),Validators.maxLength(200)]),
     photo: new FormControl('',Validators.required),
   });
 
