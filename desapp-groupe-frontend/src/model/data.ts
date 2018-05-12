@@ -1,5 +1,12 @@
 import { Publication } from './publication';
 import { Vehicle, VehicleType } from './vehicle';
+import { User } from './user';
+
+
+export var USERS: User[] = [
+  { id: 11, cuil: '20111111119', name: 'Jose', surname: 'Ioia', address: 'Uriburu 500, Bernal', email:'ioia@gmail.com' },
+  { id: 12, cuil: '20222222228', name: 'Luis' , surname: 'Bombasto',address: 'Saenz Peña 600, Bernal', email:'bombasto@outlook.com' },
+  ];
 
 export var VEHICLES: Vehicle[] = [
   { id: 11, model: 'Fiat 500', type: VehicleType.Car, numberOfPassengers: 5, description: 'color rosa', photo:'https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114__340.jpg' },
@@ -9,10 +16,10 @@ export var VEHICLES: Vehicle[] = [
  ];
 
 export var PUBLICATIONS: Publication[] = [
-  { id: 11, vehicle: VEHICLES[0], retireAddress: 'Saenz Peña 500, Bernal', returnAddress: 'Saenz Peña 500, Bernal', telephone: '42243131', owner: 'Mr. Nice', costPerHour: 100 },
-  { id: 12, vehicle: VEHICLES[1], retireAddress: 'Saenz Peña 600, Bernal', returnAddress: 'Saenz Peña 600, Bernal', telephone: '42244141', owner: 'Ioia', costPerHour: 200 },
-  { id: 13, vehicle: VEHICLES[2], retireAddress: 'Saenz Peña 700, Bernal', returnAddress: 'Saenz Peña 700, Bernal', telephone: '42245151', owner: 'Bombasto', costPerHour: 300 },
-  { id: 14, vehicle: VEHICLES[3], retireAddress: 'Saenz Peña 800, Bernal', returnAddress: 'Saenz Peña 800, Bernal', telephone: '42246161', owner: 'Celeritas', costPerHour: 50}
+  { id: 11, vehicle: VEHICLES[0], retireAddress: 'Uriburu 500, Bernal', returnAddress: 'Uriburu 500, Bernal', telephone: '42243131', owner: USERS[0], costPerHour: 100 },
+  { id: 12, vehicle: VEHICLES[1], retireAddress: 'Saenz Peña 600, Bernal', returnAddress: 'Saenz Peña 600, Bernal', telephone: '42244141', owner: USERS[1], costPerHour: 200 },
+  { id: 13, vehicle: VEHICLES[2], retireAddress: 'Uriburu 500, Bernal', returnAddress: 'Uriburu 500, Bernal', telephone: '42245151', owner: USERS[0], costPerHour: 300 },
+  { id: 14, vehicle: VEHICLES[3], retireAddress: 'Saenz Peña 600, Bernal', returnAddress: 'Saenz Peña 600, Bernal', telephone: '42246161', owner: USERS[1], costPerHour: 50}
 ];
 
 

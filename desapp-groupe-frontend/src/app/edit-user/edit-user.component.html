@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card">
-    <h1 translate> Registrarse </h1>
+    <h1 translate> Editar Usuario </h1>
 
 <form [formGroup]="user">
 
@@ -57,7 +57,7 @@
       <button type="button" class="btn btn-danger" (click)="cancel()"> {{ 'Cancelar' | translate }} </button>
   </div>
   <div class="col-md-6"> 
-      <button type="submit" class="btn btn-success" [disabled]="!user.valid" (click)="newUser()"> {{ 'Registrar' | translate }} </button>
+      <button type="submit" class="btn btn-success" [disabled]="!user.valid" (click)="updateUser()"> {{ 'Guardar' | translate }} </button>
   </div>
   </div>
 

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Vehicle } from '../../model/vehicle';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 
 @Injectable()
 export class VehicleService {
 
-  url:string = 'http://localhost:8080/rest/vehicles/';
+  url:string = '/rest/vehicles/';
 
   constructor(private http: HttpClient) { }
 
   getAllVehicles():Observable<any> {
-    return this.http.get(this.url);
+    return this.http.get<Vehicle[]>(this.url);
   }
 
   getVehicle(id):Observable<any> {
@@ -18,15 +19,16 @@ export class VehicleService {
   }
 
   newVehicle(vehicle):Observable<any> {
+    console.log(vehicle);
     return this.http.post(this.url+'new',vehicle)
   }
 
   updateVehicle(id, vehicle):Observable<any> {
-    return this.http.put(this.url+'edit/'+id,vehicle)
+    return this.http.put(this.url+'edit/',vehicle)
   }
 
-  deleteVehicle(id, vehicle):Observable<any> {
-    return this.http.delete(this.url+id,vehicle)
+  deleteVehicle(id):Observable<any> {
+    return this.http.delete(this.url+id)
   }
 
 }
