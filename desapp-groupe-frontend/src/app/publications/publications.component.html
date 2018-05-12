@@ -1,5 +1,4 @@
-<br>
-<div class="col-md-3">
+<div>
   <h3 class="title">Publicaciones</h3>
 </div>
 <ul class="list-inline" >
@@ -14,8 +13,12 @@
               <p class="card-text"><small class="text-muted">{{publication.retireAddress}}</small></p>
             </div>
           <div class="row">
-              <a class="btn btn-danger" >Eliminar</a>
-              <a class="btn btn-success">Editar</a>
+            <div class="col-md-6">
+              <a class="btn btn-danger" (click)="deletePublication(publication.id)" >Eliminar</a>
+            </div>
+            <div class="col-md-6">
+              <a class="btn btn-success" (click)="editPublication(publication)" >Editar</a>
+            </div>
           </div>
       </div>
     </li>
