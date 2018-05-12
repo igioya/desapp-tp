@@ -24,7 +24,7 @@ export class PublicationFormComponent {
     vehicle : new FormControl('',Validators.required),
     retireAddress: new FormControl('',Validators.required),
     returnAddress: new FormControl('',Validators.required),
-    telephone: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(13)]),
+    telephone: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
     costPerHour: new FormControl('',Validators.required),
     owner: new FormControl('',Validators.required),
   });

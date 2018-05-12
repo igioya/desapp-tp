@@ -1,68 +1,68 @@
 <div class="container">
     <div class="card">
-  <h1>Nueva Publicacion</h1>
+  <h1 translate> Nueva Publicacion </h1>
 
   <form [formGroup]="publication">
 
     <div class="form-group">
-      <label for="vehicle">Vehiculo</label>
+      <label for="vehicle"> {{ 'Vehiculo' | translate }} </label>
       <select class="form-control" id="vehicle" formControlName="vehicle" required >
         <option *ngFor="let v of vehicles" [value]="v">{{v.model}}</option>
       </select>
       <div *ngIf="publication.get('vehicle').errors && publication.get('vehicle').dirty">
-          <p *ngIf="publication.get('vehicle').hasError('required')" style="white-space: normal; color:red">El modelo es requerido.</p>
+          <p *ngIf="publication.get('vehicle').hasError('required')" style="white-space: normal; color:red"> {{ 'El vehiculo es requerido.' | translate }} </p>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="costPerHour">Precio</label>
+      <label for="costPerHour"> {{ 'Precio' | translate }} </label>
       <input type="number"  min="50" class="form-control" id="costPerHour" formControlName="costPerHour" required >
       <div *ngIf="publication.get('costPerHour').errors && publication.get('costPerHour').dirty">
-          <p *ngIf="publication.get('costPerHour').hasError('required')" style="white-space: normal; color:red">El costo por hora es requerido.</p>
+          <p *ngIf="publication.get('costPerHour').hasError('required')" style="white-space: normal; color:red"> {{ 'El costo es requerido.' | translate }} </p>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="retireAddress">Direccion de retiro</label>
+      <label for="retireAddress"> {{ 'Direccion de retiro' | translate }} </label>
       <input type="text" class="form-control" id="retireAddress" formControlName="retireAddress" required >
       <div *ngIf="publication.get('retireAddress').errors && publication.get('retireAddress').dirty">
-          <p *ngIf="publication.get('retireAddress').hasError('required')" style="white-space: normal; color:red">La direccion de retiro es requerida.</p>
+          <p *ngIf="publication.get('retireAddress').hasError('required')" style="white-space: normal; color:red"> {{ 'La direccion de retiro es requerida.' | translate }} </p>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="returnAddress">Direccion de devolucion</label>
+      <label for="returnAddress"> {{ 'Direccion de devolucion' | translate }} </label>
       <input type="text" class="form-control" id="returnAddress" formControlName="returnAddress" required >
       <div *ngIf="publication.get('returnAddress').errors && publication.get('returnAddress').dirty">
-          <p *ngIf="publication.get('returnAddress').hasError('required')" style="white-space: normal; color:red">La direccion de devolucion es requerida.</p>
+          <p *ngIf="publication.get('returnAddress').hasError('required')" style="white-space: normal; color:red"> {{ 'La direccion de devolucion es requerida.' | translate }} </p>
           </div> 
     </div>
 
     <div class="form-group">
-      <label for="telephone"> Telefono </label>
+      <label for="telephone"> {{ 'Telefono' | translate }} </label>
       <input type="text" class="form-control" id="telephone" formControlName="telephone" required >
       <div *ngIf="publication.get('telephone').errors && publication.get('telephone').dirty">
-          <p *ngIf="publication.get('telephone').hasError('required')" style="white-space: normal; color:red">El telefono es requerido.</p>
-          <p *ngIf="publication.get('telephone').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 13.</p>
-          <p *ngIf="publication.get('telephone').hasError('minlength')" style="white-space: normal; color:red">El minimo de caracteres permitidos es 6.</p>
+          <p *ngIf="publication.get('telephone').hasError('required')" style="white-space: normal; color:red"> {{ 'El telefono es requerido.' | translate }} </p>
+          <p *ngIf="publication.get('telephone').hasError('maxlength')" style="white-space: normal; color:red"> {{ 'El maximo de caracteres permitidos es 10.' | translate }} </p>
+          <p *ngIf="publication.get('telephone').hasError('minlength')" style="white-space: normal; color:red"> {{ 'El minimo de caracteres permitidos es 6.' | translate }} </p>
         </div> 
     </div>
   <div>
-    <label for="owner">Dueño</label>
+    <label for="owner"> {{ 'Dueño' | translate }} </label>
     <select class="form-control" id="owner" formControlName="owner" required >
       <option *ngFor="let owner of users" [value]="owner">{{owner.name}} {{owner.surname}}</option>
     </select>
     <div *ngIf="publication.get('owner').errors && publication.get('owner').dirty">
-        <p *ngIf="publication.get('owner').hasError('required')" style="white-space: normal; color:red">La descripcion es requerida.</p>
+        <p *ngIf="publication.get('owner').hasError('required')" style="white-space: normal; color:red"> {{ 'El dueño es requerido.' | translate }} </p>
     </div>
   </div>
  
     <div class="row">
     <div class="col-md-6">
-        <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="cancel()"> {{ 'Cancelar' | translate }} </button>
     </div>
     <div class="col-md-6"> 
-        <button type="submit" class="btn btn-success" [disabled]="!publication.valid" (click)="newPublication()">Publicar</button>
+        <button type="submit" class="btn btn-success" [disabled]="!publication.valid" (click)="newPublication()"> {{ 'Publicar' | translate }} </button>
     </div>
     </div>
   </form> 

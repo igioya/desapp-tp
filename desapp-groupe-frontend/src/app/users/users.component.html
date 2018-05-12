@@ -1,15 +1,15 @@
 <div>
-  <h3 class="title">Usuarios</h3>
+  <h3 translate class="title">Usuarios</h3>
 </div>
 <div class="user-table">
   <table class="table">
     <thead>
-      <th>ID</th>
-      <th>CUIL</th>
-      <th>NOMBRE</th>
-      <th>APELLIDO</th>
-      <th>DIRECCION</th>
-      <th>EMAIL</th>
+      <th> ID </th>
+      <th> CUIL </th>
+      <th> {{ 'Nombre' | translate }} </th>
+      <th> {{ 'Apellido' | translate }} </th>
+      <th> {{ 'Direccion' | translate }} </th>
+      <th> Email </th>
     </thead>
     <tbody *ngIf="users">
       <tr *ngFor="let user of users">
@@ -19,7 +19,7 @@
         <td> {{user.surname}} </td>
         <td> {{user.address}} </td>
         <td> {{user.email}} </td>
-        <td> <a class="btn btn-success" (click)="editUser(user)" >Editar</a> </td>
+        <td> <a class="btn btn-success" (click)="editUser(user)" > {{ 'Editar' | translate }} </a> </td>
       </tr>    
     </tbody>
   </table>

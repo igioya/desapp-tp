@@ -38,5 +38,26 @@
 	"El minimo de caracteres permitidos es 30.": "The minimum allowed characters is 30.",
 	"El maximo de caracteres permitidos es 200.": "The maximun allowed characters is 200.",
 	"La imagen es requerida.": "The picture is required.",
-	"Guardar": "Save"
+	"Guardar": "Save",
+
+	"Nueva Publicacion": "New Publication",
+	"Precio": "Cost",
+	"Direccion de retiro": "Retire address",
+	"Direccion de devolucion": "Return address",
+	"Telefono": "Telephone",
+	"Dueño": "Owner",
+	"Publicar": "Publish",
+	"El vehiculo es requerido.": "The vehicle is required.",
+	"El costo es requerido.": "The cost is required.",
+	"La direccion de retiro es requerida.": "The retire address is required.",
+	"La direccion de devolucion es requerida.": "The return address is required.",
+	"El telefono es requerido.": "The telephone is required.",
+	"El minimo de caracteres permitidos es 6.": "The minimum allowed characters is 6.",
+	"El maximo de caracteres permitidos es 10": "The maximun allowed characters is 10.",
+	"El dueño es requerido.": "The owner is required.",
+
+	"por hora": "per hour",
+	"Eliminar": "Delete",
+	"Editar": "Edit"
+	
 }
