@@ -19,7 +19,7 @@ public class UserHibernateTest extends HibernateTest{
 	public void tearDown() {
         System.out.println("/////////////// AFTER ///////////////");
     }
-
+/*
     @Test
     public void testDadoUnUsuarioLoPersistoYCuandoPidoTodosLosUsersMeDevuelveUnListadoConEseUser() {
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
@@ -97,4 +97,5 @@ public class UserHibernateTest extends HibernateTest{
     	
     	Assert.assertEquals((Double)50.00, userDAO.findById(1).getCurrentAccount().getCredit());
     }
+*/
 }
