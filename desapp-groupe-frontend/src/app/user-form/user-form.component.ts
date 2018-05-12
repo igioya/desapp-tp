@@ -4,16 +4,12 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent  {
-
-  service: UserService;
 
   user : FormGroup = this.formBuilder.group({
     cuil : new FormControl('',[Validators.required, Validators.minLength(11),Validators.maxLength(11)]),
@@ -23,20 +19,19 @@ export class UserFormComponent  {
     email: new FormControl('',[Validators.required, Validators.email]),
   });
 
-  constructor(private formBuilder: FormBuilder, private publicationService: UserService, private router: Router) { 
-
-    this.service = publicationService;
-
-
-  }
+  constructor(private formBuilder: FormBuilder, 
+              private publicationService: UserService, 
+              private router: Router) 
+    { }
 
   newUser() {
     console.log(this.user);
-    this.service.newUser(this.user);
-    this.router.navigate(['publications']);
+    this.publicationService.newUser(this.user);
+    this.router.navigate(['']);
   }
 
-  cancel(){}
-
+  cancel(){
+    this.router.navigate(['users']);
+  }
 
 }
