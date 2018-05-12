@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UsersComponent } from './users/users.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { EditPublicationComponent } from './edit-publication/edit-publication.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
     PublicationFormComponent,
     UserFormComponent,
     UsersComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    EditPublicationComponent,
+    EditUserComponent,
+    EditVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,18 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
       {
         path:'newPublication',
         component:PublicationFormComponent
+      },
+      {
+        path:'editUser',
+        component:EditUserComponent
+      },
+      {
+        path:'editVehicle',
+        component:EditVehicleComponent
+      },
+      {
+        path:'editPublication',
+        component:EditPublicationComponent
       },
     ]),
   ],
