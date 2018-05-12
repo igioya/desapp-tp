@@ -20,13 +20,13 @@ export class UserFormComponent  {
   });
 
   constructor(private formBuilder: FormBuilder, 
-              private publicationService: UserService, 
+              private userService: UserService, 
               private router: Router) 
     { }
 
   newUser() {
     console.log(this.user);
-    this.publicationService.newUser(this.user);
+    this.userService.newUser(this.user);
     this.router.navigate(['']);
   }
 

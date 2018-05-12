@@ -58,6 +58,11 @@
 
 	"por hora": "per hour",
 	"Eliminar": "Delete",
-	"Editar": "Edit"
+	"Editar": "Edit",
+
+	"Editar Usuario": "Edit User",
+	"Editar Vehiculo": "Edit Vehicle",
+	"Editar Publicacion": "Edit Publication"
+
 	
 }
