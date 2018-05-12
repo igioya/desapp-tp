@@ -27,7 +27,7 @@ module.exports = "h1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-se
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\">\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <img width=\"20\" height=\"20\" src=\"favicon.ico\"> <a class=\"navbar-brand\" href=\"#\">Carpnd</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\"> <!--\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>-->\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          {{ 'Agregar...' | translate }}\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"nav-link\" routerLink=\"/newUser\"> {{ 'Usuario' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/newVehicle\"> {{ 'Vehiculo' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/newPublication\"> {{ 'Publicacion' | translate }} </a>\n        </div>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          {{ 'Ver...' | translate }} \n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"nav-link\" routerLink=\"/users\"> {{ 'Usuarios' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/vehicles\"> {{ 'Vehiculos' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/publications\"> {{ 'Publicaciones' | translate }} </a>\n        </div>\n      </li>\n    </ul>\n    <!-- BUSCADOR\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n    -->\n    <div>\n        <button (click)=\"switchLanguage('en')\">en</button>\n\n        <button (click)=\"switchLanguage('es')\">es</button>\n    </div>\n  </div>\n</nav>\n<!--\n  <h1>\n    {{ title }}  - Pick and Drive\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n-->\n  <router-outlet></router-outlet>\n  \n</div>\n"
+module.exports = "<div style=\"text-align:center\">\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <img width=\"20\" height=\"20\" src=\"favicon.ico\"> <a class=\"navbar-brand\" href=\"#\">Carpnd</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\"> <!--\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>-->\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          {{ 'Agregar...' | translate }}\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"nav-link\" routerLink=\"/newUser\"> {{ 'Usuario' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/newVehicle\"> {{ 'Vehiculo' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/newPublication\"> {{ 'Publicacion' | translate }} </a>\n        </div>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          {{ 'Ver...' | translate }} \n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"nav-link\" routerLink=\"/users\"> {{ 'Usuarios' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/vehicles\"> {{ 'Vehiculos' | translate }} </a>\n          <a class=\"nav-link\" routerLink=\"/publications\"> {{ 'Publicaciones' | translate }} </a>\n        </div>\n      </li>\n      <li>\n          <a class=\"nav-link\" routerLink=\"/googleMaps\"> Google Maps </a>\n      </li>\n    </ul>\n    <!-- BUSCADOR\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n    -->\n    <div>\n        <button (click)=\"switchLanguage('en')\">en</button>\n\n        <button (click)=\"switchLanguage('es')\">es</button>\n    </div>\n  </div>\n</nav>\n<!--\n  <h1>\n    {{ title }}  - Pick and Drive\n  </h1>\n  <img width=\"300\" alt=\"Carpnd Logo\" src=\"assets/logo_carpnd.png\">\n-->\n  <router-outlet></router-outlet>\n  \n</div>\n"
 
 /***/ }),
 
@@ -99,12 +99,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__edit_vehicle_edit_vehicle_component__ = __webpack_require__("./src/app/edit-vehicle/edit-vehicle.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ngx_translate_core__ = __webpack_require__("./node_modules/@ngx-translate/core/@ngx-translate/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ngx_translate_http_loader__ = __webpack_require__("./node_modules/@ngx-translate/http-loader/esm5/ngx-translate-http-loader.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__google_maps_google_maps_component__ = __webpack_require__("./src/app/google-maps/google-maps.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -143,7 +147,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_14__vehicles_vehicles_component__["a" /* VehiclesComponent */],
                 __WEBPACK_IMPORTED_MODULE_15__edit_publication_edit_publication_component__["a" /* EditPublicationComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__edit_user_edit_user_component__["a" /* EditUserComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__edit_vehicle_edit_vehicle_component__["a" /* EditVehicleComponent */]
+                __WEBPACK_IMPORTED_MODULE_17__edit_vehicle_edit_vehicle_component__["a" /* EditVehicleComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__google_maps_google_maps_component__["a" /* GoogleMapsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -192,6 +197,10 @@ var AppModule = /** @class */ (function () {
                         path: 'editPublication',
                         component: __WEBPACK_IMPORTED_MODULE_15__edit_publication_edit_publication_component__["a" /* EditPublicationComponent */]
                     },
+                    {
+                        path: 'googleMaps',
+                        component: __WEBPACK_IMPORTED_MODULE_20__google_maps_google_maps_component__["a" /* GoogleMapsComponent */]
+                    },
                 ]),
                 __WEBPACK_IMPORTED_MODULE_18__ngx_translate_core__["b" /* TranslateModule */].forRoot({
                     loader: {
@@ -200,6 +209,9 @@ var AppModule = /** @class */ (function () {
                         deps: [__WEBPACK_IMPORTED_MODULE_11__angular_common_http__["a" /* HttpClient */]]
                     }
                 }),
+                __WEBPACK_IMPORTED_MODULE_21__agm_core__["a" /* AgmCoreModule */].forRoot({
+                    apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM' //Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
+                })
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__services_user_service__["a" /* UserService */],
@@ -453,6 +465,59 @@ var EditVehicleComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
     ], EditVehicleComponent);
     return EditVehicleComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/google-maps/google-maps.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "agm-map {\n    height: 300px;\n  }"
+
+/***/ }),
+
+/***/ "./src/app/google-maps/google-maps.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1>{{ title }}</h1>\n\n<!-- this creates a google map on the page with the given lat/lng from -->\n<!-- the component as the initial center of the map: -->\n<agm-map [latitude]=\"lat\" [longitude]=\"lng\">\n  <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\n</agm-map>"
+
+/***/ }),
+
+/***/ "./src/app/google-maps/google-maps.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleMapsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var GoogleMapsComponent = /** @class */ (function () {
+    function GoogleMapsComponent() {
+        this.title = 'My first AGM project';
+        this.lat = 51.678418;
+        this.lng = 7.809007;
+    }
+    GoogleMapsComponent.prototype.ngOnInit = function () {
+    };
+    GoogleMapsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-google-maps',
+            template: __webpack_require__("./src/app/google-maps/google-maps.component.html"),
+            styles: [__webpack_require__("./src/app/google-maps/google-maps.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], GoogleMapsComponent);
+    return GoogleMapsComponent;
 }());
 
 
