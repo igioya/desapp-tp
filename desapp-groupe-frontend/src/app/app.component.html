@@ -12,10 +12,10 @@
       </li>-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Agregar...
+          {{ 'Agregar...' | translate }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="nav-link" routerLink="/newUser">Usuario</a>
+          <a class="nav-link" routerLink="/newUser"> {{ 'Usuario' | translate }} </a>
           <a class="nav-link" routerLink="/newVehicle">Vehiculo</a>
           <a class="nav-link" routerLink="/newPublication">Publicacion</a>
         </div>
@@ -37,6 +37,11 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     -->
+    <div>
+        <button (click)="switchLanguage('en')">en</button>
+
+        <button (click)="switchLanguage('es')">es</button>
+    </div>
   </div>
 </nav>
 <!--
