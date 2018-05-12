@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UserService {
 
-  url:string = 'http://localhost:8080/rest/vehicles/';
+  url:string = '/rest/users/';
 
   constructor(private http: HttpClient) { }
 
