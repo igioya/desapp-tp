@@ -18,6 +18,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { AgmCoreModule } from '@agm/core';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     VehiclesComponent,
     EditPublicationComponent,
     EditUserComponent,
-    EditVehicleComponent
+    EditVehicleComponent,
+    GoogleMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         path:'editPublication',
         component:EditPublicationComponent
       },
+      {
+        path:'googleMaps',
+        component:GoogleMapsComponent
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -91,6 +98,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM'//Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
+    })
   ],
   providers: [
     UserService,

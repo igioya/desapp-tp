@@ -57,11 +57,11 @@ public class VehicleController {
    }
    
    @DELETE
-   @Path("/delete")
+   @Path("/{id}")
    @Produces("application/json")
    @Consumes("application/json")
-   public void deleteVehicle(Vehicle vehicle){
-	   Vehicle v = this.vehicleService.findById(vehicle.getId());
+   public void deleteVehicle(@RequestParam("id") int id){
+	   Vehicle v = this.vehicleService.findById(id);
 	   this.vehicleService.delete(v);
    }
    
