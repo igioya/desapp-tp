@@ -10,33 +10,40 @@ import { VehicleService } from '../services/vehicle.service';
   templateUrl: './edit-vehicle.component.html',
   styleUrls: ['./edit-vehicle.component.css']
 })
-export class EditVehicleComponent {
+export class EditVehicleComponent implements OnInit{
 
   v: Vehicle;
+
 
   type = Object.keys(VehicleType);
   types = this.type.slice(this.type.length/2);
 
-  vehicle : FormGroup = this.formBuilder.group({
-    //id : new FormControl('v.id'), //VER SI ES NECESARIO ACA
-    model : new FormControl('v.model',Validators.required),
-    type: new FormControl('v.type',Validators.required),
-    numberOfPassengers: new FormControl('v.numberOfPassengers',Validators.required),
-    description: new FormControl('v.description',[Validators.required,Validators.minLength(30),Validators.maxLength(200)]),
-    photo: new FormControl('v.photo',Validators.required),
-  });
+  vehicle : FormGroup;
 
   constructor(private formBuilder: FormBuilder, 
               private vehicleService: VehicleService, 
               private router: Router) 
-    { 
-      //this.v = ; // VER COMO RECIBE EL PARAMETRO
-    }
+    { }
+
+  ngOnInit() {
+    this.v = this.vehicleService.getVehicleToEdit();
+    this.vehicle = this.formBuilder.group({
+      id : new FormControl(this.v.id),
+      model : new FormControl(this.v.model,Validators.required),
+      type: new FormControl(this.v.type,Validators.required),
+      numberOfPassengers: new FormControl(this.v.numberOfPassengers,Validators.required),
+      description: new FormControl(this.v.description,[Validators.required,Validators.minLength(30),Validators.maxLength(200)]),
+      photo: new FormControl(this.v.photo,Validators.required),
+    });
+  }
 
   updateVehicle() {
-    console.log(this.vehicle);
-    this.vehicleService.updateVehicle(this.v.id, this.vehicle);
-    this.router.navigate(['vehicles']);
+    let vehicleObj = this.vehicle.getRawValue();
+    this.vehicleService.updateVehicle(vehicleObj).subscribe(data => { 
+      this.router.navigate(['vehicles']);
+    err => console.error(err),
+      () => console.log(err)
+     );
   }
 
   cancel(){

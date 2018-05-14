@@ -29,9 +29,13 @@ export class VehicleFormComponent {
     { }
 
   newVehicle() {
-    console.log(this.vehicle);
-    this.vehicleService.newVehicle(this.vehicle);
-    this.router.navigate(['']);
+    let vehicleObj = this.vehicle.getRawValue();
+    this.vehicleService.newVehicle(vehicleObj).subscribe(data => { 
+      this.router.navigate(['vehicles']);
+    },err => console.error(err),
+       () => console.log('done loading vehicles')
+    );
+    
   }
 
   cancel(){

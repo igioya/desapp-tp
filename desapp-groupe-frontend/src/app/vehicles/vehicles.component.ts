@@ -12,18 +12,23 @@ import { VehicleService } from '../services/vehicle.service';
 })
 export class VehiclesComponent implements OnInit {
 
-  vehicles = VEHICLES;
+  vehicles;
+  vehicleService:VehicleService;
 
-  constructor( private vehicleService: VehicleService, 
+  constructor( private vService: VehicleService, 
                private router: Router) 
-  { }
+  {
+
+    this.vehicleService = vService;
+  }
 
   ngOnInit() {
-    //this.getAllVehicles();
+    this.getAllVehicles();
   }
 
   editVehicle(vehicle : Vehicle){
     //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
+    this.vehicleService.setVehicleToEdit(vehicle);
     this.router.navigate(['editVehicle']);
   }
 
