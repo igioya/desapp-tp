@@ -25,8 +25,11 @@ export class UserFormComponent  {
     { }
 
   newUser() {
-    console.log(this.user);
-    this.userService.newUser(this.user);
+    let userObj = this.user.getRawValue();
+    this.userService.newUser(userObj).subscribe(data => { 
+      this.router.navigate(['users']);
+    },err => console.error(err)
+    );
     this.router.navigate(['']);
   }
 

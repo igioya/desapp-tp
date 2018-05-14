@@ -12,12 +12,13 @@ import { UserService } from '../services/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  users = USERS
+  users;
 
   constructor(private userService: UserService, 
               private router: Router) { }
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
   getAllUsers() {
@@ -31,7 +32,7 @@ export class UsersComponent implements OnInit {
    }
 
   editUser(user : User){
-    //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
+    this.userService.setUserToEdit(user);
     this.router.navigate(['editUser']);
   }
 

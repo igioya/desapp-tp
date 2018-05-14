@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class UserService {
 
   url:string = '/rest/users/';
+  userToEdit:User;
 
   constructor(private http: HttpClient) { }
 
@@ -18,15 +19,25 @@ export class UserService {
   }
 
   newUser(user):Observable<any> {
-    return this.http.post(this.url+'new',user)
+    return this.http.post(this.url+'new',user);
   }
 
-  updateUser(id, user):Observable<any> {
-    return this.http.put(this.url+'edit/'+id,user)
+  updateUser(user):Observable<any> {
+    return this.http.put(this.url+'edit',user);
   }
 
   deleteUser(id, user):Observable<any> {
-    return this.http.delete(this.url+id,user)
+    return this.http.delete(this.url+id,user);
   }
+
+  //***************************************************************//
+  getUserToEdit():User{
+    return this.userToEdit;
+  }
+
+  setUserToEdit(user:User):void {
+    this.userToEdit = user;
+  }
+  //***************************************************************//
 
 }

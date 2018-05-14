@@ -13,26 +13,32 @@ export class EditUserComponent {
 
   u : User;
 
-  user : FormGroup = this.formBuilder.group({
-    //id : new FormControl('u.id'), //VER SI ES NECESARIO ACA
-    cuil : new FormControl('u.cuil',[Validators.required, Validators.minLength(11),Validators.maxLength(11)]),
-    name: new FormControl('u.name',[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
-    surname: new FormControl('u.surname',[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
-    address: new FormControl('u.address',Validators.required),
-    email: new FormControl('u.email',[Validators.required, Validators.email]),
-  });
+  user : FormGroup;
 
   constructor(private formBuilder: FormBuilder, 
               private userService: UserService, 
               private router: Router) 
-    { 
-      //this.u = ; // VER COMO RECIBE EL PARAMETRO
-    }
+    { }
+
+  ngOnInit(){
+    this.u = this.userService.getUserToEdit();
+    this.user = this.formBuilder.group({
+      id : new FormControl(this.u.id), //VER SI ES NECESARIO ACA
+      cuil : new FormControl(this.u.cuil,[Validators.required, Validators.minLength(11),Validators.maxLength(11)]),
+      name: new FormControl(this.u.name,[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
+      surname: new FormControl(this.u.surname,[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
+      address: new FormControl(this.u.address,Validators.required),
+      email: new FormControl(this.u.email,[Validators.required, Validators.email]),
+    });
+  }
 
   updateUser() {
-    console.log(this.user);
-    this.userService.updateUser(this.u.id, this.user);
-    this.router.navigate(['users']);
+    let userObj = this.user.getRawValue();
+    this.userService.updateUser(userObj).subscribe(data => { 
+      this.router.navigate(['users'])};
+    err => console.error(err),
+      () => console.log(err)
+    );
   }
 
   cancel(){
