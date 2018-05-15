@@ -1,2 +1,0 @@
-2018-05-12 17:00:56,137 INFO  org.springframework.web.context.ContextLoader (ContextLoader.java:285) - Root WebApplicationContext: initialization started
-2018-05-12 17:00:56,437 INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:510) - Refreshing Root WebApplicationContext: startup date [Sat May 12 17:00:56 ART 2018]; root of context hierarchy
