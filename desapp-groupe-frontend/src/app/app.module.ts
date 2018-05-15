@@ -75,11 +75,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         component:PublicationFormComponent
       },
       {
-        path:'editUser',
+        path:'editUser/:id',
         component:EditUserComponent
       },
       {
-        path:'editVehicle',
+        path:'editVehicle/:id',
         component:EditVehicleComponent
       },
       {
