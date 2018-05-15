@@ -34,10 +34,11 @@ export class EditUserComponent {
 
   updateUser() {
     let userObj = this.user.getRawValue();
-    this.userService.updateUser(userObj).subscribe(data => { 
-      this.router.navigate(['users'])};
+    this.userService.updateUser(userObj).subscribe(
+      data => { 
+      this.router.navigate(['users'])},
     err => console.error(err),
-      () => console.log(err)
+      () => console.log('()')
     );
   }
 
