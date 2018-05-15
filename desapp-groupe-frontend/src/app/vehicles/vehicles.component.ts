@@ -27,8 +27,6 @@ export class VehiclesComponent implements OnInit {
   }
 
   editVehicle(vehicle : Vehicle){
-    //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-    //this.vehicleService.setVehicleToEdit(vehicle);
     this.router.navigate(['editVehicle', vehicle.id]);
   }
 
