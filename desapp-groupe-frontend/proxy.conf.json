@@ -1,6 +1,6 @@
 {
     "/rest/*": {
-        "target":"http://localhost:8080",
+        "target":"https://desapp-unq-groupe-backend.herokuapp.com/",
         "secure":false,
         "changeOrigin":true,
         "logLevel":"debug"
