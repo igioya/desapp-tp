@@ -34,7 +34,13 @@ export class VehiclesComponent implements OnInit {
 
   deleteVehicle(id:number)
   {
-    this.vehicleService.deleteVehicle(id);
+    this.vehicleService.deleteVehicle(id).subscribe(
+       data => { 
+        this.getAllVehicles();
+        console.log(data)},
+       err => console.error(err),
+       () => console.log('done loading vehicles')
+     );
   }
 
   getAllVehicles() {
