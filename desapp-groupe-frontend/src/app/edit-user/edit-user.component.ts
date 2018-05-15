@@ -51,7 +51,6 @@ export class EditUserComponent {
 
   updateUser() {
     let userObj = this.user.getRawValue();
-    console.log("userEdited:" userObj);
     this.userService.updateUser(userObj).subscribe(
       data => { 
       this.router.navigate(['users'])},
