@@ -155,7 +155,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* RouterModule */].forRoot([
+                __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* RouterModule */].forRoot([
                     {
                         path: '',
                         redirectTo: '/publications',
@@ -186,11 +186,11 @@ var AppModule = /** @class */ (function () {
                         component: __WEBPACK_IMPORTED_MODULE_6__publication_form_publication_form_component__["a" /* PublicationFormComponent */]
                     },
                     {
-                        path: 'editUser',
+                        path: 'editUser/:id',
                         component: __WEBPACK_IMPORTED_MODULE_16__edit_user_edit_user_component__["a" /* EditUserComponent */]
                     },
                     {
-                        path: 'editVehicle',
+                        path: 'editVehicle/:id',
                         component: __WEBPACK_IMPORTED_MODULE_17__edit_vehicle_edit_vehicle_component__["a" /* EditVehicleComponent */]
                     },
                     {
@@ -306,7 +306,7 @@ var EditPublicationComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_6__services_publication_service__["a" /* PublicationService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], EditPublicationComponent);
     return EditPublicationComponent;
 }());
@@ -352,24 +352,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var EditUserComponent = /** @class */ (function () {
-    function EditUserComponent(formBuilder, userService, router) {
+    function EditUserComponent(formBuilder, userService, router, activatedRoute) {
         this.formBuilder = formBuilder;
         this.userService = userService;
         this.router = router;
+        this.activatedRoute = activatedRoute;
         this.user = this.formBuilder.group({
-            //id : new FormControl('u.id'), //VER SI ES NECESARIO ACA
-            cuil: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('u.cuil', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(11), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(11)]),
-            name: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('u.name', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(4), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(50)]),
-            surname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('u.surname', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(4), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(50)]),
-            address: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('u.address', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('u.email', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email]),
+            id: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](''),
+            cuil: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(11), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(11)]),
+            name: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(4), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(50)]),
+            surname: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(4), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(50)]),
+            address: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            email: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].email]),
         });
-        //this.u = ; // VER COMO RECIBE EL PARAMETRO
     }
+    EditUserComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activatedRoute.params.subscribe(function (params) {
+            var idUser = params.id;
+            _this.userService.getUser(idUser).subscribe(function (user) {
+                _this.u = user;
+                _this.setUserFrom();
+            });
+        });
+    };
+    EditUserComponent.prototype.setUserFrom = function () {
+        this.user.setValue({
+            id: this.u.id,
+            cuil: this.u.cuil,
+            name: this.u.name,
+            surname: this.u.surname,
+            address: this.u.address,
+            email: this.u.email
+        });
+    };
     EditUserComponent.prototype.updateUser = function () {
-        console.log(this.user);
-        this.userService.updateUser(this.u.id, this.user);
-        this.router.navigate(['users']);
+        var _this = this;
+        var userObj = this.user.getRawValue();
+        this.userService.updateUser(userObj).subscribe(function (data) {
+            _this.router.navigate(['users']);
+        }, function (err) { return console.error(err); }, function () { return console.log('()'); });
     };
     EditUserComponent.prototype.cancel = function () {
         this.router.navigate(['users']);
@@ -382,7 +404,8 @@ var EditUserComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], EditUserComponent);
     return EditUserComponent;
 }());
@@ -430,26 +453,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var EditVehicleComponent = /** @class */ (function () {
-    function EditVehicleComponent(formBuilder, vehicleService, router) {
+    function EditVehicleComponent(formBuilder, vehicleService, router, activatedRoute) {
         this.formBuilder = formBuilder;
         this.vehicleService = vehicleService;
         this.router = router;
+        this.activatedRoute = activatedRoute;
         this.type = Object.keys(__WEBPACK_IMPORTED_MODULE_3__model_vehicle__["b" /* VehicleType */]);
         this.types = this.type.slice(this.type.length / 2);
         this.vehicle = this.formBuilder.group({
-            //id : new FormControl('v.id'), //VER SI ES NECESARIO ACA
-            model: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('v.model', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            type: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('v.type', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            numberOfPassengers: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('v.numberOfPassengers', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
-            description: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('v.description', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(30), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(200)]),
-            photo: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('v.photo', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            id: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */](''),
+            model: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            type: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            numberOfPassengers: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
+            description: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].minLength(30), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].maxLength(200)]),
+            photo: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* Validators */].required),
         });
-        //this.v = ; // VER COMO RECIBE EL PARAMETRO
     }
+    EditVehicleComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activatedRoute.params.subscribe(function (params) {
+            var idVehicle = params.id;
+            _this.vehicleService.getVehicle(idVehicle).subscribe(function (vehicle) {
+                _this.v = vehicle;
+                _this.setVehicleFrom();
+            });
+        });
+    };
+    EditVehicleComponent.prototype.setVehicleFrom = function () {
+        this.vehicle.setValue({
+            id: this.v.id,
+            model: this.v.model,
+            type: this.v.type,
+            numberOfPassengers: this.v.numberOfPassengers,
+            description: this.v.description,
+            photo: this.v.photo
+        });
+    };
     EditVehicleComponent.prototype.updateVehicle = function () {
-        console.log(this.vehicle);
-        this.vehicleService.updateVehicle(this.v.id, this.vehicle);
-        this.router.navigate(['vehicles']);
+        var _this = this;
+        var vehicleObj = this.vehicle.getRawValue();
+        this.vehicleService.updateVehicle(vehicleObj).subscribe(function (data) {
+            _this.router.navigate(['vehicles']);
+        }, function (err) { return console.error(err); }, function () { return console.log('()'); });
     };
     EditVehicleComponent.prototype.cancel = function () {
         this.router.navigate(['vehicles']);
@@ -462,7 +507,8 @@ var EditVehicleComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_4__services_vehicle_service__["a" /* VehicleService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
     ], EditVehicleComponent);
     return EditVehicleComponent;
 }());
@@ -600,7 +646,7 @@ var PublicationFormComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_6__services_publication_service__["a" /* PublicationService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], PublicationFormComponent);
     return PublicationFormComponent;
 }());
@@ -675,7 +721,7 @@ var PublicationsComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/publications/publications.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_publication_service__["a" /* PublicationService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], PublicationsComponent);
     return PublicationsComponent;
 }());
@@ -765,8 +811,8 @@ var UserService = /** @class */ (function () {
     UserService.prototype.newUser = function (user) {
         return this.http.post(this.url + 'new', user);
     };
-    UserService.prototype.updateUser = function (id, user) {
-        return this.http.put(this.url + 'edit/' + id, user);
+    UserService.prototype.updateUser = function (user) {
+        return this.http.put(this.url + 'edit', user);
     };
     UserService.prototype.deleteUser = function (id, user) {
         return this.http.delete(this.url + id, user);
@@ -812,10 +858,10 @@ var VehicleService = /** @class */ (function () {
         return this.http.get(this.url + id);
     };
     VehicleService.prototype.newVehicle = function (vehicle) {
-        console.log(vehicle);
+        //console.log(vehicle);
         return this.http.post(this.url + 'new', vehicle);
     };
-    VehicleService.prototype.updateVehicle = function (id, vehicle) {
+    VehicleService.prototype.updateVehicle = function (vehicle) {
         return this.http.put(this.url + 'edit/', vehicle);
     };
     VehicleService.prototype.deleteVehicle = function (id) {
@@ -882,8 +928,11 @@ var UserFormComponent = /** @class */ (function () {
         });
     }
     UserFormComponent.prototype.newUser = function () {
-        console.log(this.user);
-        this.userService.newUser(this.user);
+        var _this = this;
+        var userObj = this.user.getRawValue();
+        this.userService.newUser(userObj).subscribe(function (data) {
+            _this.router.navigate(['users']);
+        }, function (err) { return console.error(err); });
         this.router.navigate(['']);
     };
     UserFormComponent.prototype.cancel = function () {
@@ -897,7 +946,7 @@ var UserFormComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], UserFormComponent);
     return UserFormComponent;
 }());
@@ -927,8 +976,7 @@ module.exports = "<div>\n  <h3 translate class=\"title\">Usuarios</h3>\n</div>\n
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsersComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_data__ = __webpack_require__("./src/model/data.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -941,14 +989,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var UsersComponent = /** @class */ (function () {
     function UsersComponent(userService, router) {
         this.userService = userService;
         this.router = router;
-        this.users = __WEBPACK_IMPORTED_MODULE_2__model_data__["b" /* USERS */];
     }
     UsersComponent.prototype.ngOnInit = function () {
+        this.getAllUsers();
     };
     UsersComponent.prototype.getAllUsers = function () {
         var _this = this;
@@ -958,8 +1005,7 @@ var UsersComponent = /** @class */ (function () {
         }, function (err) { return console.error(err); }, function () { return console.log('done loading vehicles'); });
     };
     UsersComponent.prototype.editUser = function (user) {
-        //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-        this.router.navigate(['editUser']);
+        this.router.navigate(['editUser', user.id]);
     };
     UsersComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -967,8 +1013,8 @@ var UsersComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/users/users.component.html"),
             styles: [__webpack_require__("./src/app/users/users.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], UsersComponent);
     return UsersComponent;
 }());
@@ -1031,9 +1077,11 @@ var VehicleFormComponent = /** @class */ (function () {
         });
     }
     VehicleFormComponent.prototype.newVehicle = function () {
-        console.log(this.vehicle);
-        this.vehicleService.newVehicle(this.vehicle);
-        this.router.navigate(['']);
+        var _this = this;
+        var vehicleObj = this.vehicle.getRawValue();
+        this.vehicleService.newVehicle(vehicleObj).subscribe(function (data) {
+            _this.router.navigate(['vehicles']);
+        }, function (err) { return console.error(err); }, function () { return console.log('done loading vehicles'); });
     };
     VehicleFormComponent.prototype.cancel = function () {
         this.router.navigate(['vehicles']);
@@ -1046,7 +1094,7 @@ var VehicleFormComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_4__services_vehicle_service__["a" /* VehicleService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], VehicleFormComponent);
     return VehicleFormComponent;
 }());
@@ -1076,8 +1124,7 @@ module.exports = "<div>\n  <h3 translate class=\"title\">Vehiculos</h3>\n</div>\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VehiclesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_data__ = __webpack_require__("./src/model/data.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_vehicle_service__ = __webpack_require__("./src/app/services/vehicle.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1090,22 +1137,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var VehiclesComponent = /** @class */ (function () {
-    function VehiclesComponent(vehicleService, router) {
-        this.vehicleService = vehicleService;
+    function VehiclesComponent(vService, router) {
+        this.vService = vService;
         this.router = router;
-        this.vehicles = __WEBPACK_IMPORTED_MODULE_2__model_data__["c" /* VEHICLES */];
+        this.vehicleService = vService;
     }
     VehiclesComponent.prototype.ngOnInit = function () {
-        //this.getAllVehicles();
+        this.getAllVehicles();
     };
     VehiclesComponent.prototype.editVehicle = function (vehicle) {
-        //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-        this.router.navigate(['editVehicle']);
+        this.router.navigate(['editVehicle', vehicle.id]);
     };
     VehiclesComponent.prototype.deleteVehicle = function (id) {
-        this.vehicleService.deleteVehicle(id);
+        var _this = this;
+        this.vehicleService.deleteVehicle(id).subscribe(function (data) {
+            _this.getAllVehicles();
+            console.log(data);
+        }, function (err) { return console.error(err); }, function () { return console.log('done loading vehicles'); });
     };
     VehiclesComponent.prototype.getAllVehicles = function () {
         var _this = this;
@@ -1120,8 +1169,8 @@ var VehiclesComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/vehicles/vehicles.component.html"),
             styles: [__webpack_require__("./src/app/vehicles/vehicles.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_vehicle_service__["a" /* VehicleService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_vehicle_service__["a" /* VehicleService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], VehiclesComponent);
     return VehiclesComponent;
 }());
