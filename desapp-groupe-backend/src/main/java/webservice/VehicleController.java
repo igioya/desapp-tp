@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -36,7 +37,7 @@ public class VehicleController {
    @GET
    @Path("/{id}")
    @Produces("application/json")
-   public Vehicle getVehicle(@RequestParam("id") int id){
+   public Vehicle getVehicle(@PathParam("id") int id){
 	   return this.vehicleService.findById(id);
    }
    
@@ -60,7 +61,7 @@ public class VehicleController {
    @Path("/{id}")
    @Produces("application/json")
    @Consumes("application/json")
-   public void deleteVehicle(@RequestParam("id") int id){
+   public void deleteVehicle(@PathParam("id") int id){
 	   Vehicle v = this.vehicleService.findById(id);
 	   this.vehicleService.delete(v);
    }
