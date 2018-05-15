@@ -31,17 +31,4 @@ export class VehicleService {
   deleteVehicle(id):Observable<any> {
     return this.http.delete(this.url+id)
   }
-
-  //***************************************************************//
-  getVehicleToEdit():Vehicle{
-    let copy = this.vechicleToEdit;
-    //this.vechicleToEdit = null; 
-    return copy;
-  }
-
-  setVehicleToEdit(vehicle:Vehicle):void {
-    this.vechicleToEdit = vehicle;
-  }
-  //***************************************************************//
-
 }
