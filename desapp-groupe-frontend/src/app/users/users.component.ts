@@ -32,8 +32,7 @@ export class UsersComponent implements OnInit {
    }
 
   editUser(user : User){
-    this.userService.setUserToEdit(user);
-    this.router.navigate(['editUser']);
+    this.router.navigate(['editUser',user.id]);
   }
 
 }

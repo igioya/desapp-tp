@@ -7,7 +7,6 @@ import {User} from '../../model/user';
 export class UserService {
 
   url:string = '/rest/users/';
-  userToEdit:User;
 
   constructor(private http: HttpClient) { }
 
@@ -30,15 +29,4 @@ export class UserService {
   deleteUser(id, user):Observable<any> {
     return this.http.delete(this.url+id,user);
   }
-
-  //***************************************************************//
-  getUserToEdit():User{
-    return this.userToEdit;
-  }
-
-  setUserToEdit(user:User):void {
-    this.userToEdit = user;
-  }
-  //***************************************************************//
-
 }

@@ -45,6 +45,15 @@ public class UserController {
 		return Response.ok(users).build();
 	}
 	
+	@GET
+    @Path("/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getUser(@PathParam("id") int id){
+		User user = userService.findById(id);
+		return Response.ok(user).build();
+	}
+	
 	public void setUserService(final UserService userService) {
 		this.userService = userService;
     }
