@@ -18,4 +18,24 @@ NOTES:
 * Algunos nombres de test estan en español
 
 KNOWN ISSUES:
-* Validator - metodo isValidTelephone() 
+* Validator - metodo isValidTelephone()
+
+----------------------------------------------------------------------------------------------------------------------
+Release 2.0 - Tag Entrega2
+----------------------------------------------------------------------------------------------------------------------
+NEW FEATURES:
+
+* Build corriendo (Heroku) - https://desapp-unq-groupe-backend.herokuapp.com/
+* Utilizar HSQLDB para persistir datos
+* Entrega 2	Datos "fake" para probar la aplicación
+* I18n- EN_ES
+* Pantalla prototipo del uso de la API de gmaps
+* Tests unitarios
+
+NOTES:
+
+* Algunos nombres de test estan en español
+
+KNOWN ISSUES:
+* Validator - metodo isValidTelephone()
+* ABM Publicaciones [No incluido en esta entrega]
