@@ -2,6 +2,7 @@ package persistence;
 
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,11 +16,14 @@ public class UserHibernateTest extends HibernateTest{
 	@Autowired	
     private HibernateUserDAO userDAO;
 	
+	@Before
+	public void setUp(){
+	}
+	
 	@After
 	public void tearDown() {
-        System.out.println("/////////////// AFTER ///////////////");
     }
-/*
+
     @Test
     public void testDadoUnUsuarioLoPersistoYCuandoPidoTodosLosUsersMeDevuelveUnListadoConEseUser() {
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
@@ -43,9 +47,6 @@ public class UserHibernateTest extends HibernateTest{
     	userDAO.save(user);
     	
     	User userRetrieved = userDAO.findById(1);
-    	System.out.println("#################################################");
-    	System.out.println(userRetrieved.getMyPublications());
-    	System.out.println("#################################################");
     	Publication publication = userRetrieved.getMyPublications().get(0);
     	
     	Assert.assertEquals(1,userRetrieved.getMyPublications().size());
@@ -97,5 +98,5 @@ public class UserHibernateTest extends HibernateTest{
     	
     	Assert.assertEquals((Double)50.00, userDAO.findById(1).getCurrentAccount().getCredit());
     }
-*/
+
 }
