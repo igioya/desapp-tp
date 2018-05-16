@@ -39,3 +39,4 @@ NOTES:
 KNOWN ISSUES:
 * Validator - metodo isValidTelephone()
 * ABM Publicaciones [No incluido en esta entrega]
+* Deploy Heroku
