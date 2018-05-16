@@ -9,7 +9,7 @@
 	<name>desapp-groupe-backend Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	
-	<build>
+	<build> <!--
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -28,7 +28,7 @@
 				</configuration>
 			</plugin>
 
-		</plugins>
+		</plugins> -->
 	</build>
 
 	<dependencies>
