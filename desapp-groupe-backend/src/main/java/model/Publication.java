@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.GeneratedValue;
@@ -10,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.LocalDateTime;
 
 import model.exceptions.DateNotAvailableException;
@@ -17,26 +17,33 @@ import utils.DateRange;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 @Entity
 public class Publication{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected int id;
+	public int id;
+	
+	@JsonProperty("retireAddress")
+	private String retireAddress;
+	@JsonProperty("returnAddress")
+	private String returnAddress;
+	@JsonProperty("telephone")
+	private String telephone;
+	@JsonProperty("costPerHour")
+	private Double costPerHour;
+	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private Vehicle vehicle;
-	private String retireAddress;
-	private String returnAddress;
-	private String telephone;
-	private Double costPerHour;
-	@OneToMany(cascade = {CascadeType.ALL})
-	private List<Reservation> reservations;
+	@OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+	private Set<Reservation> reservations;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private User owner;
 
 	public Publication() {
-		this.reservations = new ArrayList<Reservation>();
+		this.reservations = new HashSet<Reservation>();
 	}
 
 	public Publication(Vehicle vehicle, String retireAddress, String returnAddress, String telephone, Double costPerHour, User owner) {
@@ -45,7 +52,7 @@ public class Publication{
 		this.returnAddress = returnAddress;
 		this.telephone = telephone;
 		this.costPerHour = costPerHour;
-		this.reservations = new ArrayList<Reservation>();
+		this.reservations = new HashSet<Reservation>();
 		this.owner = owner;
 	}
 	
@@ -82,7 +89,7 @@ public class Publication{
 		return a || b;
 	}
 
-	public List<Reservation> getReservations() {
+	public Set<Reservation> getReservations() {
 		return reservations;
 	}
 

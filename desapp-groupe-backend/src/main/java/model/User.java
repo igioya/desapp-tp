@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import model.exceptions.UnableToDoTransactionException;
 import model.states.user.ActiveState;
@@ -37,22 +39,22 @@ public class User {
 	@OneToOne(cascade = {CascadeType.ALL})
 	private CurrentAccount currentAccount;	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Vehicle> myVehicles;
+	private Set<Vehicle> myVehicles;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Publication> myPublications;
+	private Set<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Reservation> myReservations;
+	private Set<Reservation> myReservations;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private UserState state;
 	
 	public User() {
 		this.currentAccount = new CurrentAccount();
-		this.myVehicles = new ArrayList<Vehicle>();
-		this.myPublications = new ArrayList<Publication>();
+		this.myVehicles = new HashSet<Vehicle>();
+		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new ArrayList<Reservation>();
+		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();		
 	}
 	
@@ -63,10 +65,10 @@ public class User {
 		this.address = address;
 		this.email = email;
 		this.currentAccount = new CurrentAccount();
-		this.myVehicles = new ArrayList<Vehicle>();
-		this.myPublications = new ArrayList<Publication>();
+		this.myVehicles = new HashSet<Vehicle>();
+		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new ArrayList<Reservation>();
+		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();
 	}
 
@@ -118,11 +120,11 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Vehicle> getMyVehicles() {
+	public Set<Vehicle> getMyVehicles() {
 		return myVehicles;
 	}
 
-	public void setMyVehicles(List<Vehicle> myVehicles) {
+	public void setMyVehicles(Set<Vehicle> myVehicles) {
 		this.myVehicles = myVehicles;
 	}
 	
@@ -130,11 +132,11 @@ public class User {
 		this.myVehicles.add(newVehicle);
 	}
 	
-	public List<Publication> getMyPublications() {
+	public Set<Publication> getMyPublications() {
 		return myPublications;
 	}
 
-	public void setMyPublications(List<Publication> myPublications) {
+	public void setMyPublications(Set<Publication> myPublications) {
 		this.myPublications = myPublications;
 	}
 	
@@ -146,7 +148,7 @@ public class User {
 		return rating.getCurrentRating();
 	}
 
-	public List<Reservation> getReservations() {
+	public Set<Reservation> getReservations() {
 		return this.myReservations;
 	}
 

@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,8 +34,16 @@ public class PublicationController {
 	   @GET
 	   @Path("/{id}")
 	   @Produces("application/json")
-	   public Publication getPublication(@RequestParam("id") int id){
+	   public Publication getPublication(@PathParam("id") int id){
 		   return this.publicationService.findById(id);
+	   }
+	   
+	   @GET
+	   @Path("/find/{text}")
+	   @Produces("application/json")
+	   public List<Publication> findPublications(@PathParam("text") String text) {
+	       List<Publication> all = this.publicationService.find(text);
+	       return all;
 	   }
 	   
 	   @POST
@@ -44,20 +53,20 @@ public class PublicationController {
 		   this.publicationService.save(publication);
 	   }
 	   
-	   @PUT
-	   @Path("/edit/{id}")
-	   @Produces("application/json")
-	   public void updatePublication(@RequestBody Publication publication){
-		   this.publicationService.update(publication);
-	   }
+//	   @PUT
+//	   @Path("/edit/{id}")
+//	   @Produces("application/json")
+//	   public void updatePublication(@RequestBody Publication publication){
+//		   this.publicationService.update(publication);
+//	   }
 	   
-	   @DELETE
-	   @Path("/{id}")
-	   @Produces("application/json")
-	   public void deletePublication(@RequestParam("id") int id){
-		   Publication vehicle = this.publicationService.findById(id);
-		   this.publicationService.delete(vehicle);
-	   }
+//	   @DELETE
+//	   @Path("/{id}")
+//	   @Produces("application/json")
+//	   public void deletePublication(@RequestParam("id") int id){
+//		   Publication vehicle = this.publicationService.findById(id);
+//		   this.publicationService.delete(vehicle);
+//	   }
 	   
 	   public void setPublicationService(final PublicationService publicatioService) {
 		   this.publicationService = publicatioService;
