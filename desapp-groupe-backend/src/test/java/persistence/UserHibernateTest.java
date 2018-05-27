@@ -1,5 +1,8 @@
 package persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -47,7 +50,9 @@ public class UserHibernateTest extends HibernateTest{
     	userDAO.save(user);
     	
     	User userRetrieved = userDAO.findById(1);
-    	Publication publication = userRetrieved.getMyPublications().get(0);
+    	//Se convierte el set a array
+    	List<Publication> publicationsArray = new ArrayList<Publication>(userRetrieved.getMyPublications()); 
+    	Publication publication = publicationsArray.get(0);
     	
     	Assert.assertEquals(1,userRetrieved.getMyPublications().size());
     	Assert.assertEquals(vehicle.getClass(), publication.getVehicle().getClass());
