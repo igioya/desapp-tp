@@ -51,6 +51,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         redirectTo: '/publications', 
         pathMatch: 'full' 
       },
+      { 
+        path: 'home', 
+        redirectTo: '/publications', 
+        pathMatch: 'full' 
+      },
       {
         path:'publications',
         component:PublicationsComponent
