@@ -32,7 +32,7 @@ public class UserHibernateTest extends HibernateTest{
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
     	
     	userDAO.save(user);
-    	User userRetrieved = userDAO.findById(1);
+    	User userRetrieved = userDAO.findByCuil(user.getCuil());
     	
         Assert.assertEquals(user.getCuil(), userRetrieved.getCuil());
         Assert.assertEquals(user.getName(), userRetrieved.getName());
@@ -81,7 +81,7 @@ public class UserHibernateTest extends HibernateTest{
     public void testDadoUnUsuarioActivoLoPersistoYCuandoLoRecuperoSuEstadoEsActiveState(){
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
     	userDAO.save(user);
-    	Assert.assertEquals(ActiveState.class, userDAO.findById(1).getState().getClass());
+    	Assert.assertEquals(ActiveState.class, userDAO.findByCuil(user.getCuil()).getState().getClass());
     }
     
     @Test 
@@ -89,7 +89,7 @@ public class UserHibernateTest extends HibernateTest{
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
     	user.giveScore(1);
     	userDAO.save(user);
-    	Assert.assertEquals(BannedState.class, userDAO.findById(1).getState().getClass());
+    	Assert.assertEquals(BannedState.class, userDAO.findByCuil(user.getCuil()).getState().getClass());
     }
     
     @Test 
@@ -97,11 +97,11 @@ public class UserHibernateTest extends HibernateTest{
     	User user = new User("20658774580","Carlos","Dominguez","Calle falsa 123","email.false@gmail.com");
     	userDAO.save(user);
     	
-    	User userRetrieved = userDAO.findById(1);
+    	User userRetrieved = userDAO.findByCuil(user.getCuil());
     	userRetrieved.addCredit(50.00);
     	userDAO.update(userRetrieved);
     	
-    	Assert.assertEquals((Double)50.00, userDAO.findById(1).getCurrentAccount().getCredit());
+    	Assert.assertEquals((Double)50.00, userDAO.findByCuil(user.getCuil()).getCurrentAccount().getCredit());
     }
 
 }
