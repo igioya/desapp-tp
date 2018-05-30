@@ -12,37 +12,32 @@ import { Router } from '@angular/router';
 
 export class PublicationsComponent implements OnInit {
 
-	publications = PUBLICATIONS
+	publications;
 
   constructor(private publicationService: PublicationService,
               private router: Router) { 
   }
 
   ngOnInit() {
+    this.getPublications();
+  }
 
-    //this.getPublications();
+  editPublication(publication : Publication){
+    //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
+    this.router.navigate(['editPublication']);
+  }
 
-    }
-
-    editPublication(publication : Publication){
-      //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-      this.router.navigate(['editPublication']);
-    }
-  
-    deletePublication(id:number)
-    {
-      this.publicationService.deletePublication(id);
-    }
+  deletePublication(id:number){
+    this.publicationService.deletePublication(id);
+  }
   
 
   getPublications() {
-      this.publicationService.getAllPublications().subscribe(
-        
-         data => { this.publications = data
-          console.log(data)},
-         err => console.error(err),
-         () => console.log('done loading publications')
-       );
-     }
+    this.publicationService.getAllPublications().subscribe(
+       data => { this.publications = data
+        console.log(data)},
+       err => console.error(err),
+       () => console.log('done loading vehicles')
+    );
 
 }
