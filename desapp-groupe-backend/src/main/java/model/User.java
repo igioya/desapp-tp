@@ -21,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Entity
@@ -40,8 +41,9 @@ public class User {
 	private CurrentAccount currentAccount;	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private Set<Vehicle> myVehicles;
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private Set<Publication> myPublications;
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//	private Set<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
@@ -52,7 +54,7 @@ public class User {
 	public User() {
 		this.currentAccount = new CurrentAccount();
 		this.myVehicles = new HashSet<Vehicle>();
-		this.myPublications = new HashSet<Publication>();
+//		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
 		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();		
@@ -66,7 +68,7 @@ public class User {
 		this.email = email;
 		this.currentAccount = new CurrentAccount();
 		this.myVehicles = new HashSet<Vehicle>();
-		this.myPublications = new HashSet<Publication>();
+//		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
 		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();
@@ -132,17 +134,17 @@ public class User {
 		this.myVehicles.add(newVehicle);
 	}
 	
-	public Set<Publication> getMyPublications() {
-		return myPublications;
-	}
-
-	public void setMyPublications(Set<Publication> myPublications) {
-		this.myPublications = myPublications;
-	}
-	
-	public void addPublication(Publication newPublication) {
-		this.myPublications.add(newPublication);
-	}
+//	public Set<Publication> getMyPublications() {
+//		return myPublications;
+//	}
+//
+//	public void setMyPublications(Set<Publication> myPublications) {
+//		this.myPublications = myPublications;
+//	}
+//	
+//	public void addPublication(Publication newPublication) {
+//		this.myPublications.add(newPublication);
+//	}
 
 	public Double getRating() {
 		return rating.getCurrentRating();
@@ -173,7 +175,7 @@ public class User {
 	public Publication createNewPublication(Vehicle vehicle, String retireAddress, String returnAddress, String telephone, Double costPerHour) {
 		
 		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, telephone, costPerHour, this);
-		this.myPublications.add(newPublication);		
+//		this.myPublications.add(newPublication);		
 		return newPublication;
 	}
 

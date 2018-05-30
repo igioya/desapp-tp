@@ -12,15 +12,15 @@ import model.exceptions.DateNotAvailableException;
 
 public class PublicationTest {
 
-	@Test
-	public void cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
-		User publicationOwner = new User();
-		
-		//Se convierte el set a array
-		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), "retireAddress","returnAddress", "", 100.00);
-		List<Publication> publicationsArray = new ArrayList<Publication>(publicationOwner.getMyPublications());
-		assertEquals(publicationsArray.get(0), newPublication);
-	}
+//	@Test
+//	public void cuandoUnUsuarioCreaUnaPublicacionSeGuardaEnSuListaDePublicaciones() throws DateNotAvailableException {
+//		User publicationOwner = new User();
+//		
+//		//Se convierte el set a array
+//		Publication newPublication = publicationOwner.createNewPublication(new Vehicle(), "retireAddress","returnAddress", "", 100.00);
+//		List<Publication> publicationsArray = new ArrayList<Publication>(publicationOwner.getMyPublications());
+//		assertEquals(publicationsArray.get(0), newPublication);
+//	}
 	
 	@Test
 	public void dadaUnaPublicacionCuandoUnUsuarioRealizaUnaReservaQuedaGuardadaEnLaListaDeReservasDeLaPublicacion() throws DateNotAvailableException {
