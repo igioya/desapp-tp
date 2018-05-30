@@ -14,11 +14,13 @@
 
 	<bean id="services.person" class="ar.edu.unq.services.PersonService">
 		<property name="repository" ref="persistence.personrepository" />
-	</bean>
-
-	<bean id="services.car" class="ar.edu.unq.services.CarService">
-		<property name="repository" ref="persistence.carrepository" />
 	</bean>-->
+	
+	<bean id="services.initializer" class="service.InitalFakeData" init-method="init">
+		<property name="userDAO" ref="persistence.userrepository" />
+		<property name="vehicleDAO" ref="persistence.vehiclerepository" />
+		<property name="publicationDAO" ref="persistence.publicationrepository" />
+	</bean>
 	
 	<bean id="service.user" class="service.UserService">
 		<property name="repository" ref="persistence.userrepository" />
