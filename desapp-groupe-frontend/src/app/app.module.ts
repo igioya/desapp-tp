@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { VehicleService } from './services/vehicle.service';
 import { PublicationService } from './services/publication.service';
+import { AuthService } from './services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UsersComponent } from './users/users.component';
@@ -47,6 +48,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot([
       { 
         path: '', 
+        redirectTo: '/publications', 
+        pathMatch: 'full' 
+      },
+      { 
+        path: 'home', 
         redirectTo: '/publications', 
         pathMatch: 'full' 
       },
@@ -106,6 +112,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserService,
     VehicleService,
     PublicationService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
