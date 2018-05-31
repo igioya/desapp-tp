@@ -29,10 +29,10 @@ public class InitalFakeData {
 		user2.addVehicle(truck1);
 		
 
-		Publication publictionCar1 = new Publication(car1, "", "", "01142241818", 25d, user1);
-		Publication publictionCar2 = new Publication(car2, "", "", "01142249999", 50d, user2);
-		Publication publictionTruck1 = new Publication(truck1, "", "", "01142249999", 75d, user2);
-		Publication publictionMotorbike1 = new Publication(motorbike1, "", "", "01142241818", 5d, user1);
+		Publication publictionCar1 = new Publication(car1, "Quilmes, Gaboto 649, Quilmes, Buenos Aires", "Quilmes, Gaboto 649, Quilmes, Buenos Aires", "01142241818", 25d, user1);
+		Publication publictionCar2 = new Publication(car2, "Bernal, Saenz Peña 600, Buenos Aires", "Bernal, Saenz Peña 600, Buenos Aires", "01142249999", 50d, user2);
+		Publication publictionTruck1 = new Publication(truck1, "Wilde, Av. Mitre 220, BuenosAires", "Wilde, Av. Mitre 220, BuenosAires", "01142249999", 75d, user2);
+		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user1);
 		
 		//PERSISTENCE
 		userDAO.save(user1);
