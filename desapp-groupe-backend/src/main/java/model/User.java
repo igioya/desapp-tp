@@ -11,6 +11,7 @@ import model.states.user.BannedState;
 import model.states.user.UserState;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
 	
+	@Column(unique = true)
 	private String cuil;
 	private String name;
 	private String surname;
