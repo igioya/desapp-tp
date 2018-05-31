@@ -3,6 +3,15 @@
 </div>
 <ul class="list-inline" >
   <div class="row">
+    <div class="col-md-10">
+      <input #box (keyup.enter)="setSearchTerm($event,box.value)" class="form-control">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-info" (click)="search()"> {{ 'Buscar' | translate }} </button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
     <li class="list-group-item" *ngFor="let publication of publications">
       <div class="card">
 	       <img class="card-img-top" src="{{publication.vehicle.photo}}" alt="Card image cap" height="150px" width="250px">

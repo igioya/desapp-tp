@@ -13,9 +13,10 @@ import { Router } from '@angular/router';
 export class PublicationsComponent implements OnInit {
 
 	publications;
+  searchTerm:String = "";
 
   constructor(private publicationService: PublicationService,
-              private router: Router) { 
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -30,7 +31,24 @@ export class PublicationsComponent implements OnInit {
   deletePublication(id:number){
     this.publicationService.deletePublication(id);
   }
+
+  setSearchTerm(event, term){
+    this.searchTerm = term;
+    if(event.key === "Enter"){this.search()};      
+  }
   
+  search(){
+    if(!(this.searchTerm.trim() === "")){
+      this.publicationService.filterPublications(this.searchTerm).subscribe(
+         data => { this.publications = data
+          console.log(data)},
+         err => console.error(err),
+         () => console.log('done loading vehicles')
+      );
+    } else {
+      this.getPublications();
+    }
+  }
 
   getPublications() {
     this.publicationService.getAllPublications().subscribe(
@@ -39,5 +57,6 @@ export class PublicationsComponent implements OnInit {
        err => console.error(err),
        () => console.log('done loading vehicles')
     );
+  }
 
 }
