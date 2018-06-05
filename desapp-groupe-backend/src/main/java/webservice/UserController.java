@@ -3,7 +3,6 @@ package webservice;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -17,7 +16,7 @@ import service.UserService;
 
 @Path("/users")
 public class UserController {
-	
+		
 	private UserService userService;
 	
 	@POST
@@ -40,7 +39,7 @@ public class UserController {
     @Path("/")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response getAll(){
+	public Response getAllUser(){
 		List<User> users = userService.retriveAll();
 		return Response.ok(users).build();
 	}
@@ -49,9 +48,31 @@ public class UserController {
     @Path("/{id}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response getUser(@PathParam("id") int id){
+	public Response getUserUser(@PathParam("id") int id){
 		User user = userService.findById(id);
 		return Response.ok(user).build();
+	}
+	
+	@PUT
+    @Path("/{id}/add/{credit}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addCreditUser(@PathParam("id") int id, @PathParam("credit") float credit, User user){
+		//User user = userService.findById(id);
+		user.addCredit(credit);
+		userService.update(user);
+		return Response.ok().build();
+	}
+	
+	@PUT
+    @Path("/{id}/retire/{credit}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response retireCreditUser(@PathParam("id") int id, @PathParam("credit") float credit, User user){
+		//User user = userService.findById(id);
+		user.retireCredit(credit);
+		userService.update(user);
+		return Response.ok().build();
 	}
 	
 	public void setUserService(final UserService userService) {

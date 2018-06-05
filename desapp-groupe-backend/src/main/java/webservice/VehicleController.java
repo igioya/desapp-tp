@@ -29,7 +29,7 @@ public class VehicleController {
    @GET
    @Path("/")
    @Produces("application/json")
-   public List<Vehicle> getAllVehicles() {
+   public List<Vehicle> getAllVehicle() {
        List<Vehicle> all = this.vehicleService.retriveAll();
        return all;
    }

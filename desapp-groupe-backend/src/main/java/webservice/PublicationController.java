@@ -26,7 +26,7 @@ public class PublicationController {
 	   @GET
 	   @Path("/")
 	   @Produces("application/json")
-	   public List<Publication> getAllPublications() {
+	   public List<Publication> getAllPublication() {
 	       List<Publication> all = this.publicationService.retriveAll();
 	       return all;
 	   }
@@ -41,7 +41,7 @@ public class PublicationController {
 	   @GET
 	   @Path("/find/{text}")
 	   @Produces("application/json")
-	   public List<Publication> findPublications(@PathParam("text") String text) {
+	   public List<Publication> findPublication(@PathParam("text") String text) {
 	       List<Publication> all = this.publicationService.find(text);
 	       return all;
 	   }
