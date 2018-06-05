@@ -15,8 +15,8 @@ public class InitalFakeData {
 		User user1 = new User("20250010028", "Jose", "Lopez", "Lavalle 45, Quilmes", "jlopez@gmail.com");
 		User user2 = new User("20300010025", "Pablo" , "Perez", "Andrade 500, Bernal", "pppp@gmail.com");
 		
-		user1.addCredit(500d);
-		user2.addCredit(1000d);	
+		user1.addCredit(500f);
+		user2.addCredit(1000f);	
 		
 		Vehicle car1 = new Vehicle("Fiat 500", VehicleType.Car, 4, "Color rosa","https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114__340.jpg");
 		Vehicle car2 = new Vehicle("Mercedes-Benz",VehicleType.Car, 5, "Color gris","https://cdn.pixabay.com/photo/2018/04/04/08/20/car-3289143_960_720.jpg");

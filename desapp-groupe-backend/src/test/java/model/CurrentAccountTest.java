@@ -16,8 +16,8 @@ public class CurrentAccountTest {
 
 		CurrentAccount account = new CurrentAccount();
 
-		account.addCredit(500.5);
-		assertTrue(account.getCredit().equals(500.5));
+		account.addCredit(500.5f);
+		assertTrue(account.getCredit() == (500.5f));
 		assertTrue(account.getMovements().contains("Se acreditaron $500.5 en tu cuenta"));
 	}
 
@@ -26,13 +26,13 @@ public class CurrentAccountTest {
 
 		User vehicleOwner = mock(User.class);
 		CurrentAccount account = new CurrentAccount();
-		account.addCredit(500.5);
+		account.addCredit(500.5f);
 
-		account.transferCreditTo(250.3, vehicleOwner);
+		account.transferCreditTo(250.3f, vehicleOwner);
 
-		verify(vehicleOwner, atLeastOnce()).addCredit(250.3);
+		verify(vehicleOwner, atLeastOnce()).addCredit(250.3f);
 
-		assertTrue(account.getCredit().equals(250.2));
+		assertTrue(account.getCredit() == (250.2f));
 		assertTrue(account.getMovements().contains("Se debitaron $250.3 de tu cuenta"));
 	}
 
@@ -42,9 +42,9 @@ public class CurrentAccountTest {
 
 		User vehicleOwner = mock(User.class);
 		CurrentAccount account = new CurrentAccount();
-		account.addCredit(100.5);
+		account.addCredit(100.5f);
 
-		account.transferCreditTo(250.3, vehicleOwner);
+		account.transferCreditTo(250.3f, vehicleOwner);
 
 	}
 

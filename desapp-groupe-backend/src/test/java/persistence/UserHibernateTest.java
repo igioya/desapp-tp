@@ -98,10 +98,10 @@ public class UserHibernateTest extends HibernateTest{
     	userDAO.save(user);
     	
     	User userRetrieved = userDAO.findByCuil(user.getCuil());
-    	userRetrieved.addCredit(50.00);
+    	userRetrieved.addCredit(50f);
     	userDAO.update(userRetrieved);
     	
-    	Assert.assertEquals((Double)50.00, userDAO.findByCuil(user.getCuil()).getCurrentAccount().getCredit());
+    	Assert.assertEquals(50f, userDAO.findByCuil(user.getCuil()).getCurrentAccount().getCredit());
     }
 
 }

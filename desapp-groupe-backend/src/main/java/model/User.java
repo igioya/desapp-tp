@@ -1,14 +1,7 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
-import model.exceptions.UnableToDoTransactionException;
-import model.states.user.ActiveState;
-import model.states.user.BannedState;
-import model.states.user.UserState;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,11 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import model.exceptions.UnableToDoTransactionException;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
+import model.states.user.UserState;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -161,11 +157,20 @@ public class User {
 		
 	}
 
-	public void addCredit(Double credit) {
+	public void addCredit(float credit) {
 		this.currentAccount.addCredit(credit);
 	}
 	
-	public void trasnferCreditTo(Double transfer, User vehicleOwner) {
+	public void retireCredit(float credit) {
+		try {
+		this.currentAccount.retireCredit(credit);
+		} catch (UnableToDoTransactionException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
+	}
+	
+	public void trasnferCreditTo(float transfer, User vehicleOwner) {
 		try {
 			this.currentAccount.transferCreditTo(transfer, vehicleOwner);
 		} catch (UnableToDoTransactionException e) {

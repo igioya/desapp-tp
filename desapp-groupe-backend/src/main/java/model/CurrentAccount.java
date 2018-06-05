@@ -17,16 +17,16 @@ public class CurrentAccount {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
-	private Double credit;
+	private float credit;
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> movements;
 
 	public CurrentAccount() {
-		this.credit = 0.0;
+		this.credit = 0f;
 		this.movements = new ArrayList<String>();
 	}
 	
-	public Double getCredit() {
+	public float getCredit() {
 		return credit;
 	}
 
@@ -34,19 +34,23 @@ public class CurrentAccount {
 		return movements;
 	}
 
-	public void addCredit(Double moreCredit) {
+	public void addCredit(float moreCredit) {
 		this.credit += moreCredit;
 		String movement = "Se acreditaron $" + moreCredit + " en tu cuenta";
 		this.movements.add(movement);
 	}
-
-	public void transferCreditTo(Double transfer, User vehicleOwner) throws UnableToDoTransactionException {
-		if (transfer <= this.credit) {
-			this.credit -= transfer;
-			String movement = "Se debitaron $" + transfer + " de tu cuenta";
+	
+	public void retireCredit(float lessCredit) throws UnableToDoTransactionException {
+		if (lessCredit <= this.credit) {
+			this.credit -= lessCredit;
+			String movement = "Se debitaron $" + lessCredit + " de tu cuenta";
 			this.movements.add(movement);
-			vehicleOwner.addCredit(transfer);
 		} else
 			throw new UnableToDoTransactionException();
+	}
+
+	public void transferCreditTo(float transfer, User vehicleOwner) throws UnableToDoTransactionException {
+			this.retireCredit(transfer);
+			vehicleOwner.addCredit(transfer);
 	}
 }
