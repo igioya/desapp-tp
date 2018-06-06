@@ -3,9 +3,6 @@ package security;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -16,11 +13,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 public class SecurityFilter implements Filter {
@@ -37,13 +33,12 @@ public class SecurityFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
-
+		
 		HttpServletResponse httpResponse = (HttpServletResponse)servletResponse;
 		HttpServletRequest httpRequest = (HttpServletRequest)servletRequest;
 		String accessToken = httpRequest.getHeader("Authorization");
 
 		if(accessToken != null){
-			
 			try {
 				GoogleIdToken idToken = verifier.verify(accessToken);
 				if (idToken != null) {
@@ -58,22 +53,18 @@ public class SecurityFilter implements Filter {
 
 					  // Use or store profile information
 					  // ...
-
+					  filterChain.doFilter(servletRequest, servletResponse);
 					} else {
 					  System.out.println("Invalid ID token.");
 					}
 			} catch (GeneralSecurityException e) {
 				e.printStackTrace();
 			}
-			
 		} else {
-			httpResponse.sendError(401);
+			httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 		}
-		
-		filterChain.doFilter(servletRequest, httpResponse);
-		
 	}
-
+	
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 //		CLIENT_ID = "1095548920097-gqcq4996i28jqbdciqr6bpuue7uk4eu0.apps.googleusercontent.com";
