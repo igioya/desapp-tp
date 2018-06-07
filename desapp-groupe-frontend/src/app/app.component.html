@@ -49,15 +49,15 @@
     <div>
         <button
         class="btn btn-primary btn-margin"
-        *ngIf="!auth.isAuthenticated()"
-        (click)="auth.login()">
+        *ngIf="!(authenticationService.userLoguedIn())"
+        (click)="authenticationService.signInWithGoogle()">
           Log In
       </button>
   
       <button
         class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()">
+        *ngIf="authenticationService.userLoguedIn()"
+        (click)="authenticationService.signOut()">
           Log Out
       </button>
     </div>
