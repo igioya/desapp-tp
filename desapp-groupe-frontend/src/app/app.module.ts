@@ -22,8 +22,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { TokenInterceptor } from './services/token.interceptor';
+import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+import { LoginComponent } from './login/login.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,7 +54,8 @@ export function provideConfig() {
     EditPublicationComponent,
     EditUserComponent,
     EditVehicleComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,10 @@ export function provideConfig() {
         path: 'home', 
         redirectTo: 'publications', 
         pathMatch: 'full' 
+      },
+      { 
+        path: 'login', 
+        component:LoginComponent 
       },
       {
         path:'publications',
@@ -131,6 +138,11 @@ export function provideConfig() {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
       multi: true
     },
     {
