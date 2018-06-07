@@ -11,7 +11,6 @@ import { AuthService } from "angularx-social-login";
 export class AuthenticationService {
 
   userLogued:SocialUser
-  isLogued:boolean
 
   constructor(public router:Router ,public authService:AuthService){}
 
@@ -19,9 +18,8 @@ export class AuthenticationService {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
         this.userLogued = userData;
-        this.isLogued = true;
         localStorage.setItem('id_token', userData.idToken);
-        this.router.navigate(['publications']);
+        this.router.navigate(['']);
       }
     );
   }
@@ -29,8 +27,7 @@ export class AuthenticationService {
   signOut(): void {
     this.authService.signOut();
     localStorage.removeItem('id_token');
-    this.isLogued = false;
-    this.router.navigate(['publications']);
+    this.router.navigate(['']);
   }
 
   setUser(user:SocialUser){
