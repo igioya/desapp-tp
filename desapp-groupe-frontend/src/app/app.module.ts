@@ -62,12 +62,12 @@ export function provideConfig() {
     RouterModule.forRoot([
       { 
         path: '', 
-        redirectTo: '/publications', 
+        redirectTo: 'publications', 
         pathMatch: 'full' 
       },
       { 
         path: 'home', 
-        redirectTo: '/publications', 
+        redirectTo: 'publications', 
         pathMatch: 'full' 
       },
       {
