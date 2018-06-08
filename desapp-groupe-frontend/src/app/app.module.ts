@@ -28,6 +28,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLogi
 import { LoginComponent } from './login/login.component';
 import { AddCreditComponent } from './add-credit/add-credit.component';
 import { RetireCreditComponent } from './retire-credit/retire-credit.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,6 +67,7 @@ export function provideConfig() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     RouterModule.forRoot([
       { 
         path: '', 

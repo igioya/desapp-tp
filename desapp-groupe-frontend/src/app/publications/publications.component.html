@@ -12,7 +12,7 @@
   </div>
   <br>
   <div class="row">
-    <li class="list-group-item" *ngFor="let publication of publications">
+    <li class="list-group-item" *ngFor="let publication of publications | paginate: { itemsPerPage: 20, currentPage: p }">
       <div class="card">
 	       <img class="card-img-top" src="{{publication.vehicle.photo}}" alt="Card image cap" height="150px" width="250px">
             <div class="card-body">
@@ -33,3 +33,4 @@
     </li>
   </div>
 </ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

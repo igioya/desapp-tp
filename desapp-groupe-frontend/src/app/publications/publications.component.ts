@@ -14,6 +14,7 @@ export class PublicationsComponent implements OnInit {
 
 	publications;
   searchTerm:String = "";
+  p: number = 1;
 
   constructor(private publicationService: PublicationService,
               private router: Router) {
