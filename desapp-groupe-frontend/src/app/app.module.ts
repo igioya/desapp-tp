@@ -27,6 +27,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 import { LoginComponent } from './login/login.component';
 import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
+import { MakeReservationComponent } from './make-reservation/make-reservation.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -57,7 +58,8 @@ export function provideConfig() {
     EditVehicleComponent,
     GoogleMapsComponent,
     LoginComponent,
-    PublicationDetailComponent
+    PublicationDetailComponent,
+    MakeReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +116,10 @@ export function provideConfig() {
       {
         path:'editPublication',
         component:EditPublicationComponent
+      },
+      {
+        path:'publicationDetail/:id',
+        component:PublicationDetailComponent
       },
       {
         path:'googleMaps',
