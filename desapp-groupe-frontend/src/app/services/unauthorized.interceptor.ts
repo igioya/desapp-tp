@@ -11,6 +11,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 		console.log("FSDDSFSDFGFDFSDFB")
 	}
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	    	console.log("AKA SI");
 		return next.handle(request).do((response: HttpEvent<any>) => {
 	    	if (response instanceof HttpResponse) {
 	    		return response;
@@ -18,6 +19,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 	    }, (err: any) => {
 	    	if (err instanceof HttpErrorResponse) {
 	    		if (err.status === 401) {
+	    			console.log("AKA NO");
 	    			this.router.navigate(['login'])
 	    		}
 	    	}

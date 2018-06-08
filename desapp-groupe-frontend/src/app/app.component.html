@@ -48,21 +48,22 @@
     </div>
 
     <div>
-        <button
-        class="btn btn-primary btn-margin"
-        *ngIf="!(authenticationService.userLoguedIn())"
-        (click)="authenticationService.signInWithGoogle()">
-          Log In
-      </button>
-  
       <button
-        class="btn btn-primary btn-margin"
-        *ngIf="authenticationService.userLoguedIn()"
-        (click)="authenticationService.signOut()">
+      class="btn btn-primary btn-margin"
+      *ngIf="authenticationService.userLoguedIn()"
+      (click)="authenticationService.signOut()">
           Log Out
       </button>
     </div>
 
+  </div>
+  <div>
+    <button
+      class="btn btn-primary btn-margin pull-right"
+      *ngIf="!(authenticationService.userLoguedIn())"
+      (click)="authenticationService.signInWithGoogle()">
+        Log In
+    </button>
   </div>
 </nav>
 <!--
