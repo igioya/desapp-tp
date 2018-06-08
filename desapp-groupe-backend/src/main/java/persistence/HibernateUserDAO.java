@@ -35,5 +35,18 @@ public class HibernateUserDAO extends HibernateGenericDAO<User> implements Gener
 
         });
     }
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+    public User getByEmail(String email) {
+        return (User) this.getHibernateTemplate().execute(new HibernateCallback() {
+            public User doInHibernate(final Session session) throws HibernateException {
+            	Criteria criteria = session.createCriteria(User.class);
+            	User user = (User) criteria.add(Restrictions.eq("email", email))
+            	                             .uniqueResult();
+            	return user;
+            }
+
+        });
+    }
 
 }

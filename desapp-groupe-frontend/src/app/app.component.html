@@ -5,7 +5,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent"
+  *ngIf="(authenticationService.userLoguedIn())">
     <ul class="navbar-nav mr-auto"> <!--
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -47,21 +48,22 @@
     </div>
 
     <div>
-        <button
-        class="btn btn-primary btn-margin"
-        *ngIf="!auth.isAuthenticated()"
-        (click)="auth.login()">
-          Log In
-      </button>
-  
       <button
-        class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()">
+      class="btn btn-primary btn-margin"
+      *ngIf="authenticationService.userLoguedIn()"
+      (click)="authenticationService.signOut()">
           Log Out
       </button>
     </div>
 
+  </div>
+  <div>
+    <button
+      class="btn btn-primary btn-margin pull-right"
+      *ngIf="!(authenticationService.userLoguedIn())"
+      (click)="authenticationService.signInWithGoogle()">
+        Log In
+    </button>
   </div>
 </nav>
 <!--

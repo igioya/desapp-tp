@@ -39,12 +39,14 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<jaxrs:providers>
 			<ref bean="jaxbProvider" />
 			<ref bean="jacksonProvider" />
+<!-- 			<ref bean="security.filter"/> -->
 		</jaxrs:providers>
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
 
+	<bean id="security.filter" class="security.SecurityFilter"></bean>
 	
 	<bean id="service.user" class="service.UserService" />
 	<bean id="userController" class="webservice.UserController">

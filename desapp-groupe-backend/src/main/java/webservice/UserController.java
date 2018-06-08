@@ -53,6 +53,15 @@ public class UserController {
 		return Response.ok(user).build();
 	}
 	
+	@GET
+    @Path("/byemail/{email}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response haveFullProfile(@PathParam("email") String email){
+		boolean havefullProfile = userService.haveFullProfile(email);
+		return Response.ok(havefullProfile).build();
+	}
+	
 	@PUT
     @Path("/{id}/add/{credit}")
 	@Consumes("application/json")

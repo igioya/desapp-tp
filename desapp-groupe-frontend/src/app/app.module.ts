@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { VehicleService } from './services/vehicle.service';
 import { PublicationService } from './services/publication.service';
-import { AuthService } from './services/auth.service';
+import { AuthenticationService } from './services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UsersComponent } from './users/users.component';
@@ -21,9 +21,25 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
+import { TokenInterceptor } from './services/token.interceptor';
+import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+import { LoginComponent } from './login/login.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("742198362537-437c5bp4k8c1kjdctnd5obucvu396drr.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
 }
 
 @NgModule({
@@ -38,7 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditPublicationComponent,
     EditUserComponent,
     EditVehicleComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -48,13 +65,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot([
       { 
         path: '', 
-        redirectTo: '/publications', 
+        redirectTo: 'publications', 
         pathMatch: 'full' 
       },
       { 
         path: 'home', 
-        redirectTo: '/publications', 
+        redirectTo: 'publications', 
         pathMatch: 'full' 
+      },
+      { 
+        path: 'login', 
+        component:LoginComponent 
       },
       {
         path:'publications',
@@ -106,13 +127,28 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM'//Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
-    })
+    }),
+    SocialLoginModule.initialize(config)
   ],
   providers: [
     UserService,
     VehicleService,
     PublicationService,
-    AuthService,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
   ],
   bootstrap: [AppComponent]
 })

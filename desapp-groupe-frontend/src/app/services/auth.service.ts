@@ -2,13 +2,60 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
+import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from "angularx-social-login";
+import { AuthService } from "angularx-social-login";
+import { UserService } from './user.service';
 
 (window as any).global = window;
 
 @Injectable()
-export class AuthService {
+export class AuthenticationService {
 
-  auth0 = new auth0.WebAuth({
+  userLogued:SocialUser
+  haveFullProfile:boolean
+  token:string;
+
+  constructor(public router:Router, public authService:AuthService, public userService:UserService){}
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        this.userLogued = userData;
+        this.token = userData.idToken;
+        localStorage.setItem('id_token', userData.idToken);
+      }
+    ).then(()=>{
+      this.verifyFullProfile(this.userLogued);
+      this.router.navigate(['home']);   
+    });
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+    this.token = null;
+    localStorage.removeItem('id_token');
+    this.router.navigate(['login']);
+  }
+
+  setUser(user:SocialUser){
+    this.userLogued = user;
+  }
+
+  userLoguedIn(){
+    return this.userLogued;
+  }
+
+  verifyFullProfile(user:SocialUser){
+    console.log("ENTRO")
+    this.userService.getUserByEmail(user.email).subscribe(haveFullProfile => { 
+        this.haveFullProfile = haveFullProfile;
+        console.log("haveFullProfile: ", haveFullProfile)
+    }, err => console.error(err),
+       () => console.log('nana')
+    );
+  }
+
+  /*auth0 = new auth0.WebAuth({
     clientID: 'LWZztUWgI1nmZb7t4j5jQDCWC5tY4dg2',
     domain: 'desapp-unq-grupoe.auth0.com',
     responseType: 'token id_token',
@@ -28,9 +75,9 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/home']);
+        //this.router.navigate(['home']);
       } else if (err) {
-        this.router.navigate(['/home']);
+        //this.router.navigate(['home']);
         console.log(err);
       }
     });
@@ -50,7 +97,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
   }
 
   public isAuthenticated(): boolean {
@@ -58,6 +105,6 @@ export class AuthService {
     // Access Token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
     return new Date().getTime() < expiresAt;
-  }
+  }*/
 
 }
