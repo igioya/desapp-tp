@@ -101,7 +101,7 @@ public class UserHibernateTest extends HibernateTest{
     	userRetrieved.addCredit(50f);
     	userDAO.update(userRetrieved);
     	
-    	Assert.assertEquals(50f, userDAO.findByCuil(user.getCuil()).getCurrentAccount().getCredit());
+    	Assert.assertEquals(50f, userDAO.findByCuil(user.getCuil()).getCurrentAccount().getCredit(),0.001);
     }
 
 }
