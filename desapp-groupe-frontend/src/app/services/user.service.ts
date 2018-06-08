@@ -29,4 +29,8 @@ export class UserService {
   deleteUser(id, user):Observable<any> {
     return this.http.delete(this.url+id,user);
   }
+
+  getUserByEmail(email):Observable<any> {
+    return this.http.get(this.url + "byemail/" + email);
+  }
 }

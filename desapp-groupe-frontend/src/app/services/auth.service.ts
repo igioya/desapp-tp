@@ -4,6 +4,7 @@ import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
+import { UserService } from './user.service';
 
 (window as any).global = window;
 
@@ -11,9 +12,10 @@ import { AuthService } from "angularx-social-login";
 export class AuthenticationService {
 
   userLogued:SocialUser
+  haveFullProfile:boolean
   token:string;
 
-  constructor(public router:Router ,public authService:AuthService){}
+  constructor(public router:Router, public authService:AuthService, public userService:UserService){}
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
@@ -21,9 +23,11 @@ export class AuthenticationService {
         this.userLogued = userData;
         this.token = userData.idToken;
         localStorage.setItem('id_token', userData.idToken);
-        this.router.navigate(['home']);
       }
-    );
+    ).then(()=>{
+      this.verifyFullProfile(this.userLogued);
+      this.router.navigate(['home']);   
+    });
   }
 
   signOut(): void {
@@ -39,6 +43,16 @@ export class AuthenticationService {
 
   userLoguedIn(){
     return this.userLogued;
+  }
+
+  verifyFullProfile(user:SocialUser){
+    console.log("ENTRO")
+    this.userService.getUserByEmail(user.email).subscribe(haveFullProfile => { 
+        this.haveFullProfile = haveFullProfile;
+        console.log("haveFullProfile: ", haveFullProfile)
+    }, err => console.error(err),
+       () => console.log('nana')
+    );
   }
 
   /*auth0 = new auth0.WebAuth({
