@@ -37,6 +37,7 @@ public class User {
 	private String name;
 	private String surname;
 	private String address;
+	@Column(unique = true)
 	private String email;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
