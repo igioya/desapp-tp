@@ -33,4 +33,12 @@ export class UserService {
   getUserByEmail(email):Observable<any> {
     return this.http.get(this.url + "byemail/" + email);
   }
+
+  addCredit(id, credit, user):Observable<any> {
+    return this.http.put(this.url+id+'/add/'+credit,user);
+  }
+
+  retireCredit(id, credit, user):Observable<any> {
+    return this.http.put(this.url+id+'/retire/'+credit,user);
+  }
 }

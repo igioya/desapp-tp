@@ -63,7 +63,15 @@
 
 	"Editar Usuario": "Edit User",
 	"Editar Vehiculo": "Edit Vehicle",
-	"Editar Publicacion": "Edit Publication"
+	"Editar Publicacion": "Edit Publication",
+
+	"Mi credito": "My credit",
+	"Agregar": "Add",
+	"Retirar": "Retire",
+	"Cantidad a agregar:": "Amount to add:",
+	"Cantidad a retirar:": "Amount to retire:",
+	"Tus creditos actuales son:": "Your current credits are:",
+	"Movimientos de cuenta:": "Account movements:"
 
 	
 }

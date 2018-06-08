@@ -26,6 +26,8 @@ import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 import { LoginComponent } from './login/login.component';
+import { AddCreditComponent } from './add-credit/add-credit.component';
+import { RetireCreditComponent } from './retire-credit/retire-credit.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +57,9 @@ export function provideConfig() {
     EditUserComponent,
     EditVehicleComponent,
     GoogleMapsComponent,
-    LoginComponent
+    LoginComponent,
+    AddCreditComponent,
+    RetireCreditComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +116,14 @@ export function provideConfig() {
       {
         path:'editPublication',
         component:EditPublicationComponent
+      },
+      {
+        path:'addCredit',
+        component:AddCreditComponent
+      },
+      {
+        path:'retireCredit',
+        component:RetireCreditComponent
       },
       {
         path:'googleMaps',

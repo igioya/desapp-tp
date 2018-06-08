@@ -1,0 +1,16 @@
+   <div>
+      <h3> {{ 'Tus creditos actuales son:' | translate }} {{ credit }}</h3>
+   </div>
+   <br>
+   <div>
+      <label for="retireC"> {{ 'Cantidad a retirar:' | translate }} </label>
+      <input type="number" min="0" max={{credit}} id="retireC" >
+      <a class="btn btn-success" (click)="retireCredit()" > {{ 'Retirar' | translate }} </a>
+  </div>
+  <br>
+   <div>
+       <h5> {{ 'Movimientos de cuenta:' | translate }} </h5>
+           <li class="list-group-item" *ngFor="let m of movements">
+             <a>{{m}}</a>
+           </li>
+   </div>

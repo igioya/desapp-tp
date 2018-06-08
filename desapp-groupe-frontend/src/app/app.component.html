@@ -47,16 +47,27 @@
         <button (click)="switchLanguage('es')">es</button>
     </div>
 
+    <div *ngIf="authenticationService.userLoguedIn()">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ 'Mi credito' | translate }} 
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link" routerLink="/addCredit"> {{ 'Agregar' | translate }} </a>
+              <a class="nav-link" routerLink="/retireCredit"> {{ 'Retirar' | translate }} </a>
+          </div>
+        </li>
+    </div>
+      
     <div>
-      <button
+    <button
       class="btn btn-primary btn-margin"
       *ngIf="authenticationService.userLoguedIn()"
       (click)="authenticationService.signOut()">
           Log Out
       </button>
     </div>
-
-  </div>
+</div>
   <div>
     <button
       class="btn btn-primary btn-margin pull-right"

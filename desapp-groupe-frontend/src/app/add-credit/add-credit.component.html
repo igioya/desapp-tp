@@ -1,0 +1,16 @@
+  <div>
+     <h3> {{ 'Tus creditos actuales son:' | translate }} {{ account.credit }}</h3>
+  </div>
+  <br>
+  <div>
+       <label for="addC"> {{ 'Cantidad a agregar:' | translate }} </label>
+       <input type="number" min="1" id="addC" >
+           <a class="btn btn-success" (click)="addCredit()" > {{ 'Agregar' | translate }} </a>
+  </div>
+  <br>
+  <div>
+      <h5> {{ 'Movimientos de cuenta:' | translate }} </h5>
+          <li class="list-group-item" *ngFor="let mov of account.movements">
+            <a>{{mpv}}</a>
+          </li>
+  </div>
