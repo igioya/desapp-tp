@@ -26,6 +26,7 @@ import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 import { LoginComponent } from './login/login.component';
+import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +56,8 @@ export function provideConfig() {
     EditUserComponent,
     EditVehicleComponent,
     GoogleMapsComponent,
-    LoginComponent
+    LoginComponent,
+    PublicationDetailComponent
   ],
   imports: [
     BrowserModule,
