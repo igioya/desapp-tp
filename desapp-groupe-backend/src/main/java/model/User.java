@@ -49,8 +49,8 @@ public class User {
 //	private Set<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private Set<Reservation> myReservations;
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//	private Set<Reservation> myReservations;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private UserState state;
 	
@@ -59,7 +59,7 @@ public class User {
 		this.myVehicles = new HashSet<Vehicle>();
 //		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new HashSet<Reservation>();
+//		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();		
 	}
 	
@@ -73,7 +73,7 @@ public class User {
 		this.myVehicles = new HashSet<Vehicle>();
 //		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new HashSet<Reservation>();
+//		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();
 	}
 
@@ -153,14 +153,14 @@ public class User {
 		return rating.getCurrentRating();
 	}
 
-	public Set<Reservation> getReservations() {
-		return this.myReservations;
-	}
-
-	public void addReservation(Reservation newReservation) {
-		this.myReservations.add(newReservation);
-		
-	}
+//	public Set<Reservation> getReservations() {
+//		return this.myReservations;
+//	}
+//
+//	public void addReservation(Reservation newReservation) {
+//		this.myReservations.add(newReservation);
+//		
+//	}
 
 	public void addCredit(Double credit) {
 		this.currentAccount.addCredit(credit);

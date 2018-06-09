@@ -2,16 +2,17 @@ package webservice;
 
 import java.util.List;
 
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Publication;
 import service.PublicationService;
@@ -26,31 +27,40 @@ public class PublicationController {
 	   @GET
 	   @Path("/")
 	   @Produces("application/json")
-	   public List<Publication> getAllPublications() {
+	   public Response getAllPublications() throws JsonProcessingException {
 	       List<Publication> all = this.publicationService.retriveAll();
-	       return all;
+	       String serialized = new ObjectMapper().writeValueAsString(all);
+	       return Response.ok(serialized).build();
 	   }
 	   
 	   @GET
 	   @Path("/{id}")
 	   @Produces("application/json")
-	   public Publication getPublication(@PathParam("id") int id){
-		   return this.publicationService.findById(id);
+	   public Response getPublication(@PathParam("id") int id) throws JsonProcessingException{
+		   Publication publication = this.publicationService.findById(id);
+		   String serialized = new ObjectMapper().writeValueAsString(publication);
+	       return Response.ok(serialized).build();
 	   }
 	   
 	   @GET
 	   @Path("/find/{text}")
 	   @Produces("application/json")
-	   public List<Publication> findPublications(@PathParam("text") String text) {
+	   public Response findPublications(@PathParam("text") String text) throws JsonProcessingException {
 	       List<Publication> all = this.publicationService.find(text);
-	       return all;
+	       System.out.println("##################################################");
+	       System.out.println(all);
+	       String serialized = new ObjectMapper().writeValueAsString(all);
+	       System.out.println("##################################################");
+	       System.out.println(serialized);
+	       return Response.ok(serialized).build();
 	   }
 	   
 	   @POST
 	   @Path("/new")
 	   @Produces("application/json")
-	   public void newPublication(@RequestBody Publication publication){
+	   public Response newPublication(@RequestBody Publication publication){
 		   this.publicationService.save(publication);
+		   return Response.ok().build();
 	   }
 	   
 //	   @PUT

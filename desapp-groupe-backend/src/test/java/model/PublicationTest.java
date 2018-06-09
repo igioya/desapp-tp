@@ -37,17 +37,17 @@ public class PublicationTest {
 		assertEquals(reservationsArray.get(0), newReservation);
 	}
 	
-	@Test
-	public void dadaUnaPublicacionCuandoUnClienteHaceUnaReservaSeAgregaEsaReservaASuListaDeReservas() throws DateNotAvailableException{
-		Publication publication = new Publication();
-		User client = new User();
-		
-		//Se convierte el set a array
-		Reservation newReservation = publication.makeReservation(client, new LocalDateTime(), new LocalDateTime());
-		List<Reservation>reservationsArray = new ArrayList<Reservation>(client.getReservations());
-		assertEquals(reservationsArray.get(0), newReservation);		
-	}
-	
+//	@Test
+//	public void dadaUnaPublicacionCuandoUnClienteHaceUnaReservaSeAgregaEsaReservaASuListaDeReservas() throws DateNotAvailableException{
+//		Publication publication = new Publication();
+//		User client = new User();
+//		
+//		//Se convierte el set a array
+//		Reservation newReservation = publication.makeReservation(client, new LocalDateTime(), new LocalDateTime());
+//		List<Reservation>reservationsArray = new ArrayList<Reservation>(client.getReservations());
+//		assertEquals(reservationsArray.get(0), newReservation);		
+//	}
+//	
 	@Test(expected = DateNotAvailableException.class)
 	public void dadaUnaPublicacionConUnaReservaCuandoSeIntentaHacerOtraReservaQueSeSuperponeNoLoPermite() throws DateNotAvailableException{
 		LocalDateTime fromDate1 = new LocalDateTime().minusDays(2);

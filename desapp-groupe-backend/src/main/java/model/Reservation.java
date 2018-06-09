@@ -72,6 +72,8 @@ public class Reservation {
 		this.timer = new Timer();
 	}
 	
+	public Reservation(){}
+	
 	public User getClient() {
 		return client;
 	}
