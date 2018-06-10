@@ -15,9 +15,8 @@ public class ServiceAuditorAspect {
 
     private static Logger logger = Logger.getLogger(ServiceAuditorAspect.class);
 
-   // @Before("execution(public * *User(..)) && within(service..*)")
-    @Before( "execution(* *User(..) && within(webservice..*)")
-    //@Before("execution(* *(..))")
+    //@Before("execution(* *User(..) && within(service..*))")
+    @Before( "execution(* *User(..))")
     public void logBeforeUser(JoinPoint joinPoint){
 
         logger.info("<timestamp="+ LocalDateTime.now()+
