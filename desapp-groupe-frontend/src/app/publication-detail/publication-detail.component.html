@@ -1,3 +1,29 @@
-<p>
-  publication-detail works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6" style="margin-top: 5%;">
+			<div>
+				<img [src]="publication.vehicle.photo" style="max-width: 80%;max-height: 80%;">
+			</div>
+		</div>
+		<div class="col-md-6" style="margin-top: 5%;">
+			<div style="text-align: left;">
+				<span>Modelo: {{publication.vehicle.model}}</span>
+				<br>
+				<span>Cantidad de pasajeros: {{publication.vehicle.numberOfPassengers}}</span>
+				<br>
+				<span>Direccion de retiro: {{publication.retireAddress}}</span>
+				<br>
+				<span>Direccion de retorno: {{publication.returnAddress}}</span>
+				<br>
+				<span>Costo por hora: $ {{publication.costPerHour}}</span>
+				<br>
+				<span>Dueño: {{publication.owner.name}} {{publication.owner.surname}}</span>
+				<br>
+				<span>Telefono de contacto: {{publication.telephone}}</span>
+				<br>
+				<button class="btn btn-success" (click)="makeReservation()" >Alquilar</button>
+			</div>
+		</div>
+		
+	</div>
+</div>

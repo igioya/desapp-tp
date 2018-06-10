@@ -30,7 +30,11 @@ export class UserService {
     return this.http.delete(this.url+id,user);
   }
 
-  getUserByEmail(email):Observable<any> {
+  haveFullProfile(email):Observable<any> {
     return this.http.get(this.url + "byemail/" + email);
+  }
+
+  getUserByEmail(email):Observable<any> {
+    return this.http.get(this.url + "getbyemail/" + email);
   }
 }

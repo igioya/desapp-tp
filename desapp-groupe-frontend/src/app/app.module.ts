@@ -28,6 +28,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLogi
 import { LoginComponent } from './login/login.component';
 import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
 import { MakeReservationComponent } from './make-reservation/make-reservation.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -122,6 +123,10 @@ export function provideConfig() {
         component:PublicationDetailComponent
       },
       {
+        path:'publicationDetail/:id/makeReservation',
+        component:MakeReservationComponent
+      },
+      {
         path:'googleMaps',
         component:GoogleMapsComponent
       },
@@ -136,7 +141,8 @@ export function provideConfig() {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM'//Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
     }),
-    SocialLoginModule.initialize(config)
+    SocialLoginModule.initialize(config),
+    NgbModule.forRoot(),
   ],
   providers: [
     UserService,

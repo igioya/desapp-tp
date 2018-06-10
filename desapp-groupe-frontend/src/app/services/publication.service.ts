@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Publication } from '../../model/publication';
+import { Reservation } from '../../model/reservation';
 
 @Injectable()
 export class PublicationService {
@@ -32,6 +33,10 @@ export class PublicationService {
 
   filterPublications(term):Observable<any> {
     return this.httpClient.get(this.url + 'find/' + term);
+  }
+
+  newReservation(reservation:Reservation, idPublication):Observable<any> {
+    return this.httpClient.put(this.url + idPublication + '/newReservation', reservation);
   }   
 
 }

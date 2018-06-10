@@ -5,6 +5,7 @@ import * as auth0 from 'auth0-js';
 import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
 import { UserService } from './user.service';
+import {User} from '../../model/user';
 
 (window as any).global = window;
 
@@ -12,6 +13,7 @@ import { UserService } from './user.service';
 export class AuthenticationService {
 
   userLogued:SocialUser
+  modelUserLogued:User
   haveFullProfile:boolean
   token:string;
 
@@ -41,17 +43,34 @@ export class AuthenticationService {
     this.userLogued = user;
   }
 
+  getModelUserLogued(){
+    return this.modelUserLogued;
+  }
+
   userLoguedIn(){
     return this.userLogued;
   }
 
   verifyFullProfile(user:SocialUser){
     console.log("ENTRO")
-    this.userService.getUserByEmail(user.email).subscribe(haveFullProfile => { 
+    this.userService.haveFullProfile(user.email).subscribe(haveFullProfile => { 
         this.haveFullProfile = haveFullProfile;
-        console.log("haveFullProfile: ", haveFullProfile)
-    }, err => console.error(err),
+        console.log("haveFullProfile: ", haveFullProfile);
+        if(this.haveFullProfile){
+          this.findModelUser();
+        }        
+    }
+    , err => console.error(err),
        () => console.log('nana')
+    );
+  }
+
+  findModelUser(){
+    this.userService.getUserByEmail(this.userLogued.email).subscribe(user => { 
+      this.modelUserLogued = new User(user.cuil,user.name,user.surname,user.address,user.email,user.id);
+      console.log("this.modelUserLogued: ",this.modelUserLogued);
+    }, err => console.error(err),
+       () => console.log("error")
     );
   }
 
