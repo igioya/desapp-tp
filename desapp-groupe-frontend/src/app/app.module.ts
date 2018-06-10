@@ -26,6 +26,9 @@ import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 import { LoginComponent } from './login/login.component';
+import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
+import { MakeReservationComponent } from './make-reservation/make-reservation.component';
+import { MyDatePickerModule } from 'mydatepicker';
 import { AddCreditComponent } from './add-credit/add-credit.component';
 import { RetireCreditComponent } from './retire-credit/retire-credit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -58,6 +61,8 @@ export function provideConfig() {
     EditUserComponent,
     EditVehicleComponent,
     GoogleMapsComponent,
+    PublicationDetailComponent,
+    MakeReservationComponent
     LoginComponent,
     AddCreditComponent,
     RetireCreditComponent
@@ -120,6 +125,14 @@ export function provideConfig() {
         component:EditPublicationComponent
       },
       {
+        path:'publicationDetail/:id',
+        component:PublicationDetailComponent
+      },
+      {
+        path:'publicationDetail/:id/makeReservation',
+        component:MakeReservationComponent
+      },
+      {
         path:'addCredit',
         component:AddCreditComponent
       },
@@ -142,7 +155,8 @@ export function provideConfig() {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM'//Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
     }),
-    SocialLoginModule.initialize(config)
+    SocialLoginModule.initialize(config),
+    MyDatePickerModule
   ],
   providers: [
     UserService,

@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.authenticationService.setUser(user);
     });
+    console.log("APPCOMPONENR ACAAA")
   }
 
   switchLanguage(language: string) {

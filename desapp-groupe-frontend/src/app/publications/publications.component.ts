@@ -29,6 +29,10 @@ export class PublicationsComponent implements OnInit {
     this.router.navigate(['editPublication']);
   }
 
+  publicationDetail(publication : Publication){
+    this.router.navigate(['publicationDetail',publication.id]);
+  }
+
   deletePublication(id:number){
     this.publicationService.deletePublication(id);
   }

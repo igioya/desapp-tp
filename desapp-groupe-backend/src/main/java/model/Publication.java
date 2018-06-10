@@ -3,6 +3,9 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,15 +15,16 @@ import javax.persistence.OneToMany;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.LocalDateTime;
 
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import model.exceptions.DateNotAvailableException;
 import utils.DateRange;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import webservice.serialization.PublicationSerializer;
 
 @Entity
-public class Publication{
+@JsonSerialize(using = PublicationSerializer.class)
+public class Publication {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
@@ -60,7 +64,7 @@ public class Publication{
 		this.validateReservationDate(fromDate, toDate);
 		Reservation newReservation = new Reservation(client, fromDate, toDate);		
 		this.reservations.add(newReservation);
-		client.addReservation(newReservation);
+//		client.addReservation(newReservation);
 		return newReservation;
 	}
 	

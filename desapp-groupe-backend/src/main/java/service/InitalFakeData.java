@@ -1,9 +1,12 @@
 package service;
 
+import org.joda.time.LocalDateTime;
+
 import model.Publication;
 import model.User;
 import model.Vehicle;
 import model.VehicleType;
+import model.exceptions.DateNotAvailableException;
 import persistence.GenericRepository;
 
 public class InitalFakeData {
@@ -11,9 +14,10 @@ public class InitalFakeData {
 	private GenericRepository<Vehicle> vehicleDAO;
 	private GenericRepository<Publication> publicationDAO;
 	
-	public void init(){
+	public void init() throws DateNotAvailableException{
 		User user1 = new User("20250010028", "Jose", "Lopez", "Lavalle 45, Quilmes", "jlopez@gmail.com");
 		User user2 = new User("20300010025", "Pablo" , "Perez", "Andrade 500, Bernal", "pppp@gmail.com");
+		User user3 = new User("20323018025", "Robert" , "Hardy", "Zapiola 4321, Quilmes Oeste", "desapp.unq.grupoe@gmail.com");
 		
 		user1.addCredit(500f);
 		user2.addCredit(1000f);	
@@ -34,9 +38,12 @@ public class InitalFakeData {
 		Publication publictionTruck1 = new Publication(truck1, "Wilde, Av. Mitre 220, BuenosAires", "Wilde, Av. Mitre 220, BuenosAires", "01142249999", 75d, user2);
 		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user1);
 		
+		publictionCar1.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
+		
 		//PERSISTENCE
 		userDAO.save(user1);
 		userDAO.save(user2);
+		userDAO.save(user3);
 		
 		vehicleDAO.save(car1);
 		vehicleDAO.save(car2);
