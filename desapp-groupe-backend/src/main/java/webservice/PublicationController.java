@@ -1,9 +1,11 @@
 package webservice;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -11,10 +13,14 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Publication;
+import model.Reservation;
+import model.exceptions.DateNotAvailableException;
 import service.PublicationService;
 
 
@@ -47,11 +53,7 @@ public class PublicationController {
 	   @Produces("application/json")
 	   public Response findPublications(@PathParam("text") String text) throws JsonProcessingException {
 	       List<Publication> all = this.publicationService.find(text);
-	       System.out.println("##################################################");
-	       System.out.println(all);
 	       String serialized = new ObjectMapper().writeValueAsString(all);
-	       System.out.println("##################################################");
-	       System.out.println(serialized);
 	       return Response.ok(serialized).build();
 	   }
 	   
@@ -60,6 +62,18 @@ public class PublicationController {
 	   @Produces("application/json")
 	   public Response newPublication(@RequestBody Publication publication){
 		   this.publicationService.save(publication);
+		   return Response.ok().build();
+	   }
+	   
+	   @PUT
+	   @Path("/{idPublication}/newReservation")
+	   @Produces("application/json")
+	   public Response newReservation(@RequestBody String reservationString, @PathParam("idPublication") int idPublication) throws JsonParseException, JsonMappingException, IOException, DateNotAvailableException{
+		   ObjectMapper mapper = new ObjectMapper();
+		   System.out.println("11111111111111111111111111111111111111111111111111");
+		   Reservation reservation = mapper.readValue(reservationString, Reservation.class);
+		   System.out.println("LASSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+		   this.publicationService.newReservation(reservation, idPublication);
 		   return Response.ok().build();
 	   }
 	   

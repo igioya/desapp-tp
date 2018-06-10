@@ -8,6 +8,7 @@ import { User } from '../../model/user';
 import { SocialUser } from "angularx-social-login";
 import { Location } from '@angular/common'
 import { AuthService } from "angularx-social-login";
+import {IMyDpOptions} from 'mydatepicker';
 
 
 @Component({
@@ -17,10 +18,15 @@ import { AuthService } from "angularx-social-login";
 })
 export class MakeReservationComponent implements OnInit {
 
-	datepickerFromDate
+	datepickerFromDate 
 	datepickerToDate
 	publicationId
 	userLogued:SocialUser
+	public myDatePickerOptions: IMyDpOptions = {
+        // other options...
+        dateFormat: 'dd.mm.yyyy',
+    };
+
 
   	constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -28,6 +34,7 @@ export class MakeReservationComponent implements OnInit {
               private location: Location,
               private authService:AuthService,
               private authenticationService: AuthenticationService) { 
+  		this.datepickerFromDate = { date: { year: 2018, month: 10, day: 9 } };
   	}
 
 	ngOnInit() {
@@ -37,6 +44,8 @@ export class MakeReservationComponent implements OnInit {
 
 	reserve(){
 		//Validar que las fechas no sean iguals y que toDate > fromDate
+		this.datepickerFromDate = this.datepickerFromDate.date;
+		this.datepickerToDate = this.datepickerToDate.date;
 		let newFromDate = this.formatDateToLocalDate(this.datepickerFromDate);
 		let newToDate = this.formatDateToLocalDate(this.datepickerToDate);
 		let client = this.authenticationService.getModelUserLogued();
@@ -53,5 +62,7 @@ export class MakeReservationComponent implements OnInit {
 	formatDateToLocalDate(date){
 		return date.year + "-" + date.month + "-" + date.day;
 	}
+
+
 
 }

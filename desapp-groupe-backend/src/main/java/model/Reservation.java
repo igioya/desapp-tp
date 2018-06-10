@@ -15,7 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.apache.cxf.jaxrs.model.wadl.ElementClass;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.joda.time.LocalDateTime;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import model.states.reservation.ReservationConfirmedState;
 import model.states.reservation.ReservationNotConfirmedState;
@@ -27,6 +31,8 @@ import model.states.reservation.ReturnConfirmedByOwnerState;
 import model.states.reservation.ReturnConfirmedState;
 import model.states.reservation.State;
 import utils.DateRange;
+import webservice.serialization.ReservationDeserializer;
+import webservice.serialization.ReservationSerializer;
 
 /**
  * States management:
@@ -48,12 +54,15 @@ import utils.DateRange;
  * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
  **/
 @Entity
+@JsonSerialize(using = ReservationSerializer.class)
+@JsonDeserialize(using = ReservationDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	public int id;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	private User client;
 	private LocalDateTime fromDate;
 	private LocalDateTime toDate;

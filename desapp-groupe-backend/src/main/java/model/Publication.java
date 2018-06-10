@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import model.exceptions.DateNotAvailableException;
 import utils.DateRange;
+import webservice.serialization.PublicationSerializer;
 
 @Entity
 @JsonSerialize(using = PublicationSerializer.class)

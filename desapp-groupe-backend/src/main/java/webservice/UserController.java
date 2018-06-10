@@ -63,6 +63,15 @@ public class UserController {
 		return Response.ok(havefullProfile).build();
 	}
 	
+	@GET
+    @Path("/getbyemail/{email}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getUserByEmail(@PathParam("email") String email){
+		User user = userService.getUserByEmail(email);
+		return Response.ok(user).build();
+	}
+	
 	public void setUserService(final UserService userService) {
 		this.userService = userService;
     }

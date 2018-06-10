@@ -15,5 +15,11 @@ public class UserService extends GenericService<User> {
 		User user = repository.getByEmail(email);
 		return user != null; 
 	}
+	
+	public User getUserByEmail(String email) {
+		HibernateUserDAO repository = (HibernateUserDAO) this.getRepository();
+		User user = repository.getByEmail(email);
+		return user; 
+	}
 
 }

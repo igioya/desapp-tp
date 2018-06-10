@@ -1,4 +1,4 @@
-package model;
+package webservice.serialization;
 
 import java.io.IOException;
 
@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+
+import model.Publication;
 
 public class PublicationSerializer extends StdSerializer<Publication>{
 	/**
@@ -34,6 +36,7 @@ public class PublicationSerializer extends StdSerializer<Publication>{
         jgen.writeObjectField("vehicle", value.getVehicle());
         jgen.writeStringField("telephone", value.getTelephone());
         jgen.writeNumberField("costPerHour", value.getCostPerHour());
+        jgen.writeObjectField("reservations", value.getReservations());
         jgen.writeEndObject();
     }
 }

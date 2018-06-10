@@ -17,6 +17,7 @@ public class InitalFakeData {
 	public void init() throws DateNotAvailableException{
 		User user1 = new User("20250010028", "Jose", "Lopez", "Lavalle 45, Quilmes", "jlopez@gmail.com");
 		User user2 = new User("20300010025", "Pablo" , "Perez", "Andrade 500, Bernal", "pppp@gmail.com");
+		User user3 = new User("20323018025", "Robert" , "Hardy", "Zapiola 4321, Quilmes Oeste", "desapp.unq.grupoe@gmail.com");
 		
 		user1.addCredit(500d);
 		user2.addCredit(1000d);	
@@ -42,6 +43,7 @@ public class InitalFakeData {
 		//PERSISTENCE
 		userDAO.save(user1);
 		userDAO.save(user2);
+		userDAO.save(user3);
 		
 		vehicleDAO.save(car1);
 		vehicleDAO.save(car2);
