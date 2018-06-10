@@ -29,6 +29,9 @@ import { LoginComponent } from './login/login.component';
 import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
 import { MakeReservationComponent } from './make-reservation/make-reservation.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import { ReservationService } from './services/reservation.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,7 +63,9 @@ export function provideConfig() {
     GoogleMapsComponent,
     LoginComponent,
     PublicationDetailComponent,
-    MakeReservationComponent
+    MakeReservationComponent,
+    UserProfileComponent,
+    UserReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -130,6 +135,14 @@ export function provideConfig() {
         path:'googleMaps',
         component:GoogleMapsComponent
       },
+      {
+        path:'userProfile',
+        component:UserProfileComponent
+      },
+      {
+        path:'userReservations',
+        component:UserReservationsComponent
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -149,6 +162,7 @@ export function provideConfig() {
     VehicleService,
     PublicationService,
     AuthenticationService,
+    ReservationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

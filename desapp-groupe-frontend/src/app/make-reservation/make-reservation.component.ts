@@ -54,7 +54,7 @@ export class MakeReservationComponent implements OnInit {
 		console.log("newReservation: ",newReservation);
 		this.publicationService.newReservation(newReservation,this.publicationId
 		).subscribe(publication => {
-	    	this.location.back()
+	    	this.router.navigate(['userReservations']);
 	    });
 
 	}

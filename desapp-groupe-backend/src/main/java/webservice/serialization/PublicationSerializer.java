@@ -36,7 +36,7 @@ public class PublicationSerializer extends StdSerializer<Publication>{
         jgen.writeObjectField("vehicle", value.getVehicle());
         jgen.writeStringField("telephone", value.getTelephone());
         jgen.writeNumberField("costPerHour", value.getCostPerHour());
-        jgen.writeObjectField("reservations", value.getReservations());
+        //jgen.writeObjectField("reservations", value.getReservations());
         jgen.writeEndObject();
     }
 }

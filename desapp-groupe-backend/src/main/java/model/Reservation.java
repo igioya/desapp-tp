@@ -59,11 +59,14 @@ import webservice.serialization.ReservationSerializer;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Reservation {
 	@Id
+	@Column(unique = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
 	
 	@ManyToOne(cascade = {CascadeType.MERGE})
 	private User client;
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	private Publication publication;
 	private LocalDateTime fromDate;
 	private LocalDateTime toDate;
 	@ManyToOne(cascade = {CascadeType.ALL})
@@ -184,4 +187,14 @@ public class Reservation {
 		Reservation.MINUTES = minutes;
 		
 	}
+
+	public Publication getPublication() {
+		return publication;
+	}
+
+	public void setPublication(Publication publication) {
+		this.publication = publication;
+	}
+	
+	
 }
