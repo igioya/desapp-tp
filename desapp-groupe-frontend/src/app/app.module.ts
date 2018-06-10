@@ -62,7 +62,7 @@ export function provideConfig() {
     EditVehicleComponent,
     GoogleMapsComponent,
     PublicationDetailComponent,
-    MakeReservationComponent
+    MakeReservationComponent,
     LoginComponent,
     AddCreditComponent,
     RetireCreditComponent
