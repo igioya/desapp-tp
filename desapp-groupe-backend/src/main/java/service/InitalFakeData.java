@@ -30,13 +30,17 @@ public class InitalFakeData {
 		user1.addVehicle(car1);
 		user1.addVehicle(motorbike1);
 		user2.addVehicle(car2);
-		user2.addVehicle(truck1);
+		user3.addVehicle(truck1);
 		
-
-		Publication publictionCar1 = new Publication(car1, "Quilmes, Gaboto 649, Quilmes, Buenos Aires", "Quilmes, Gaboto 649, Quilmes, Buenos Aires", "01142241818", 25d, user1);
+		user1.newRating(4);
+		user1.newRating(5);
+		user2.newRating(5);
+		user3.newRating(5);
+		
+		Publication publictionCar1 = new Publication(car1, "Quilmes, Gaboto 649, Buenos Aires", "Quilmes, Gaboto 649, Buenos Aires", "01142241818", 25d, user1);
 		Publication publictionCar2 = new Publication(car2, "Bernal, Saenz Peña 600, Buenos Aires", "Bernal, Saenz Peña 600, Buenos Aires", "01142249999", 50d, user2);
 		Publication publictionTruck1 = new Publication(truck1, "Wilde, Av. Mitre 220, BuenosAires", "Wilde, Av. Mitre 220, BuenosAires", "01142249999", 75d, user2);
-		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user1);
+		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user3);
 		
 		publictionCar1.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
 		

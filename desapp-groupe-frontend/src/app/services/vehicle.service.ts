@@ -20,7 +20,6 @@ export class VehicleService {
   }
 
   newVehicle(vehicle):Observable<any> {
-    //console.log(vehicle);
     return this.http.post(this.url+'new',vehicle)
   }
 

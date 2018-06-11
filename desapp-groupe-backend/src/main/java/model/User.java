@@ -148,6 +148,10 @@ public class User {
 	public Double getRating() {
 		return rating.getCurrentRating();
 	}
+	
+	public void newRating(Integer rat) {
+		this.rating.addNewRating(new Rating(rat));
+	}
 
 //	public Set<Reservation> getReservations() {
 //		return this.myReservations;
