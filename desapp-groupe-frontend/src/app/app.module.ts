@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PublicationsComponent } from './publications/publications.component';
@@ -192,6 +192,10 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: LOCALE_ID, 
+      useValue: 'en-US'
     },
   ],
   bootstrap: [AppComponent]

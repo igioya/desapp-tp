@@ -3,6 +3,7 @@ import { Publication } from '../../model/publication';
 import { PUBLICATIONS } from '../../model/data';
 import { PublicationService } from '../services/publication.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-publications',
@@ -17,7 +18,8 @@ export class PublicationsComponent implements OnInit {
   p: number = 1;
 
   constructor(private publicationService: PublicationService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -62,6 +64,11 @@ export class PublicationsComponent implements OnInit {
        err => console.error(err),
        () => console.log('done loading vehicles')
     );
+  }
+
+  isMyPublication(email:string){
+    let em = this.authService.getUserLoggedIn().email;
+    return em == email;
   }
 
 }

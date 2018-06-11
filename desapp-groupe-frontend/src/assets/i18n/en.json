@@ -60,6 +60,8 @@
 	"por hora": "per hour",
 	"Eliminar": "Delete",
 	"Editar": "Edit",
+	"Mas info": "More info",
+	"Alquilar": "Rent",
 
 	"Editar Usuario": "Edit User",
 	"Editar Vehiculo": "Edit Vehicle",
@@ -71,7 +73,10 @@
 	"Cantidad a agregar:": "Amount to add:",
 	"Cantidad a retirar:": "Amount to retire:",
 	"Tus creditos actuales son:": "Your current credits are:",
-	"Movimientos de cuenta:": "Account movements:"
+	"Movimientos de cuenta:": "Account movements:",
+
+	"Next": "Next",
+    "Previous": "Previous"
 
 	
 }

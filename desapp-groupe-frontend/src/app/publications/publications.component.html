@@ -16,21 +16,25 @@
       <div class="card">
 	       <img class="card-img-top" src="{{publication.vehicle.photo}}" alt="Card image cap" height="150px" width="250px">
             <div class="card-body">
-              <p class="card-text"><small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}}</small></p>
-              <h4 class="card-title">${{publication.costPerHour}} {{ 'por hora' | translate }} </h4>
+              <p class="card-text"><small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}} [{{publication.owner.rating}}]</small></p>
+              <h4 class="card-title">{{publication.costPerHour | currency}} {{ 'por hora' | translate }} </h4>
               <p class="card-text"> {{publication.vehicle.description}}</p>
               <p class="card-text"><small class="text-muted">{{publication.retireAddress}}</small></p>
             </div>
-          <div class="row">
-            <div class="col-md-6">
+        <div class="row">   
+            <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
               <a class="btn btn-danger" (click)="deletePublication(publication.id)" > {{ 'Eliminar' | translate }} </a>
             </div>
-            <div class="col-md-6">
-              <a class="btn btn-success" (click)="publicationDetail(publication)" > {{ 'Ver' | translate }} </a>
+            <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
+              <a class="btn btn-primary" (click)="publicationDetail(publication)" > {{ 'Editar' | translate }} </a>
+            </div>
+            <div class="col-md-4">
+              <a class="btn btn-success" (click)="publicationDetail(publication)" > {{ 'Mas info' | translate }} </a>
             </div>
           </div>
       </div>
     </li>
   </div>
 </ul>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<pagination-controls previousLabel="{{ 'Previous' | translate }}"
+nextLabel="{{ 'Next' | translate }}" (pageChange)="p = $event"></pagination-controls>
