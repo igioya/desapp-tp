@@ -20,12 +20,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("this.authService.authState: ",this.authService.authState)
-    this.authService.authState.subscribe((user) => {
-      console.log("SOCIAL USER: ",user )
-      this.authenticationService.setUser(user);
-    });
-    console.log("APPCOMPONENR ACAAA")
+    //console.log("this.authService.authState: ",this.authService.authState)
+    //this.authService.authState.subscribe((user) => {
+    //  console.log("SOCIAL USER: ",user )
+    //  this.authenticationService.setUser(user);
+    //});
+    //console.log("APPCOMPONENR ACAAA")
   }
 
   switchLanguage(language: string) {

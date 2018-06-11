@@ -5,73 +5,71 @@ import * as auth0 from 'auth0-js';
 import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
 import { UserService } from './user.service';
-import {User} from '../../model/user';
+import { User } from '../../model/user';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 (window as any).global = window;
 
 @Injectable()
 export class AuthenticationService {
 
-  userLogued:SocialUser
-  modelUserLogued:User
-  haveFullProfile:boolean
-  token:string;
 
   constructor(public router:Router, public authService:AuthService, public userService:UserService){}
+  buildedUser
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
-        this.userLogued = userData;
-        this.token = userData.idToken;
+        this.buildedUser = new User().fromSocialUser(userData);
         localStorage.setItem('id_token', userData.idToken);
       }
     ).then(()=>{
-      this.verifyFullProfile(this.userLogued);
-      this.router.navigate(['home']);   
+      //Verify if have full profile
+      this.userService.haveFullProfile(this.buildedUser.email).subscribe(haveFullProfile => { 
+          this.buildedUser.haveFullProfile = haveFullProfile;
+          if(this.buildedUser.haveFullProfile){
+            //Fetch User Id
+            this.userService.getUserByEmail(this.buildedUser.email).subscribe(user => { 
+                this.buildedUser.id = user.id;
+                this.setCookie('user', this.buildedUser);
+                this.router.navigate(['home']);   
+            }, err => console.error(err),
+               () => console.log('ioioo')
+            );
+          } else {
+            this.router.navigate(['home']);   
+          }
+      }, err => console.error(err),
+         () => console.log('nana')
+      );
     });
   }
 
   signOut(): void {
     this.authService.signOut();
-    this.token = null;
     localStorage.removeItem('id_token');
+    this.deleteCookie('user');
     this.router.navigate(['login']);
   }
 
-  setUser(user:SocialUser){
-    this.userLogued = user;
+  setCookie(properyName:string, object:any){
+    Cookie.set(properyName, JSON.stringify(object));
   }
 
-  getModelUserLogued(){
-    return this.modelUserLogued;
+  getCookie(properyName:string){
+    return Cookie.get(properyName);
   }
 
-  userLoguedIn(){
-    return this.userLogued;
+  deleteCookie(properyName:string){
+    Cookie.delete(properyName);
   }
 
-  verifyFullProfile(user:SocialUser){
-    console.log("ENTRO")
-    this.userService.haveFullProfile(user.email).subscribe(haveFullProfile => { 
-        this.haveFullProfile = haveFullProfile;
-        console.log("haveFullProfile: ", haveFullProfile);
-        if(this.haveFullProfile){
-          this.findModelUser();
-        }        
-    }
-    , err => console.error(err),
-       () => console.log('nana')
-    );
+  isLoggedIn(){
+    return (JSON.parse(this.getCookie('user'))) ? true : false;
   }
 
-  findModelUser(){
-    this.userService.getUserByEmail(this.userLogued.email).subscribe(user => { 
-      this.modelUserLogued = new User(user.cuil,user.name,user.surname,user.address,user.email,user.id);
-      console.log("this.modelUserLogued: ",this.modelUserLogued);
-    }, err => console.error(err),
-       () => console.log("error")
-    );
+  getUserLoggedIn():User{
+    return JSON.parse(this.getCookie('user'));
   }
 
   /*auth0 = new auth0.WebAuth({
