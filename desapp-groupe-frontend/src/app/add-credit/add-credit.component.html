@@ -1,10 +1,10 @@
   <div>
-     <h3> {{ 'Tus creditos actuales son:' | translate }} {{ account.credit }}</h3>
+     <h3> {{ 'Tus creditos actuales son:' | translate }} {{ account.credit | currency }}</h3>
   </div>
   <br>
   <div>
        <label for="addC"> {{ 'Cantidad a agregar:' | translate }} </label>
-       <input [(ngModel)]="addC" type="number" min="1" id="addC">
+       <input [(ngModel)]="addC" type="number" step="0.05" min="1" id="addC">
            <a class="btn btn-success" (click)="addCredit()" > {{ 'Agregar' | translate }} </a>
   </div>
   <br>
