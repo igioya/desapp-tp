@@ -57,7 +57,7 @@ public class UserController {
     @Path("/byemail/{email}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response haveFullProfile(@PathParam("email") String email){
+	public Response haveFullProfileUser(@PathParam("email") String email){
 		boolean havefullProfile = userService.haveFullProfile(email);
 		return Response.ok(havefullProfile).build();
 	}
@@ -66,30 +66,26 @@ public class UserController {
     @Path("/getbyemail/{email}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response getUserByEmail(@PathParam("email") String email){
+	public Response getByEmailUser(@PathParam("email") String email){
 		User user = userService.getUserByEmail(email);
 		return Response.ok(user).build();
 	}
 	
 	@PUT
     @Path("/{id}/add/{credit}")
-	@Consumes("application/json")
+	//@Consumes("application/json")
 	@Produces("application/json")
-	public Response addCreditUser(@PathParam("id") int id, @PathParam("credit") float credit, User user){
-		//User user = userService.findById(id);
-		user.addCredit(credit);
-		userService.update(user);
+	public Response addCreditUser(@PathParam("id") final int id, @PathParam("credit") final float credit){
+		this.userService.addCredits(id, credit);
 		return Response.ok().build();
 	}
-	
+
 	@PUT
     @Path("/{id}/retire/{credit}")
-	@Consumes("application/json")
+	//@Consumes("application/json")
 	@Produces("application/json")
-	public Response retireCreditUser(@PathParam("id") int id, @PathParam("credit") float credit, User user){
-		//User user = userService.findById(id);
-		user.retireCredit(credit);
-		userService.update(user);
+	public Response retireCreditUser(@PathParam("id") final int id, @PathParam("credit") final float credit){
+		this.userService.retireCredits(id, credit);
 		return Response.ok().build();
 	}
 	

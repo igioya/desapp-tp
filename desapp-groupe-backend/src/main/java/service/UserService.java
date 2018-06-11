@@ -1,5 +1,7 @@
 package service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import model.User;
 import persistence.HibernateUserDAO;
 
@@ -20,6 +22,20 @@ public class UserService extends GenericService<User> {
 		HibernateUserDAO repository = (HibernateUserDAO) this.getRepository();
 		User user = repository.getByEmail(email);
 		return user; 
+	}
+	
+	@Transactional
+	public void addCredits(int id, float credit) {
+		User user = this.findById(id);
+		user.addCredit(credit);
+		this.update(user);
+	}
+	
+	@Transactional
+	public void retireCredits(int id, float credit) {
+		User user = this.findById(id);
+		user.retireCredit(credit);
+		this.update(user);
 	}
 
 }

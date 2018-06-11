@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +37,16 @@ public class CurrentAccount {
 
 	public void addCredit(float moreCredit) {
 		this.credit += moreCredit;
-		String movement = "Se acreditaron $" + moreCredit + " en tu cuenta";
+		LocalDateTime date = LocalDateTime.now();
+		String movement = "[" + date + "] - Se acreditaron $" + moreCredit + " en tu cuenta";
 		this.movements.add(movement);
 	}
 	
 	public void retireCredit(float lessCredit) throws UnableToDoTransactionException {
 		if (lessCredit <= this.credit) {
 			this.credit -= lessCredit;
-			String movement = "Se debitaron $" + lessCredit + " de tu cuenta";
+			LocalDateTime date = LocalDateTime.now();
+			String movement = "[" + date + "] - Se debitaron $" + lessCredit + " de tu cuenta";
 			this.movements.add(movement);
 		} else
 			throw new UnableToDoTransactionException();

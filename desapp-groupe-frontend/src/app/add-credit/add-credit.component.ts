@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from "angularx-social-login";
+import { AuthenticationService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-add-credit',
@@ -16,24 +19,26 @@ export class AddCreditComponent implements OnInit {
 
   constructor(private userService: UserService, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
-    //this.activatedRoute.params.subscribe(params => {
-      //let idUser = params.id;
-      this.userService.getUser(1).subscribe(user => {
+
+      let email = this.authService.getModelUserLogued().email;
+      this.userService.getUserByEmail(email).subscribe(user => {
         console.log(user);
         this.u = user;
-        console.log(this.u);
         this.account = user['currentAccount'];
         console.log(this.account);
       });
-  //});
   }
 
   addCredit() {
-    this.userService.addCredit(this.u.id,this.addC,this.u);
+    console.log(this.u.id)
     console.log(this.addC)
-    this.router.navigate(['home']);    
+    this.userService.addCredit(this.u.id,this.addC).subscribe(
+      res => { this.router.navigate(["home"])},
+      error => console.log(error)
+    )
   }
+
 }

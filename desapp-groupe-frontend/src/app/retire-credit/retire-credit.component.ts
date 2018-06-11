@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-retire-credit',
@@ -17,25 +18,24 @@ export class RetireCreditComponent implements OnInit {
 
   constructor(private userService: UserService, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
-    //this.activatedRoute.params.subscribe(params => {
-      //let idUser = params.id;
-      this.userService.getUser(1).subscribe(user => {
-        console.log(user);
-        this.u = user;
-        console.log(this.u);
-        this.account = user['currentAccount'];
-        console.log(this.account);
-      });
-  //});
+
+    let email = this.authService.getModelUserLogued().email;
+    this.userService.getUserByEmail(email).subscribe(user => {
+      console.log(user);
+      this.u = user;
+      this.account = user['currentAccount'];
+      console.log(this.account);
+    });
 }
 
   retireCredit(){
-    this.userService.retireCredit(this.u.id,this.retireC,this.u);
-    console.log(this.retireC);
-    this.router.navigate(['home']);
+    this.userService.retireCredit(this.u.id,this.retireC).subscribe(
+      res => { this.router.navigate(["home"])},
+      error => console.log(error)
+    )
   }
 
 }

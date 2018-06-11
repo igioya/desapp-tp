@@ -38,11 +38,11 @@ export class UserService {
     return this.http.get(this.url + "getbyemail/" + email);
   }
 
-  addCredit(id, credit, user):Observable<any> {
-    return this.http.put(this.url+id+'/add/'+credit,user);
+  addCredit(id, credit):Observable<any> {
+    return this.http.put(this.url+id+'/add/'+credit, {});
   }
 
-  retireCredit(id, credit, user):Observable<any> {
-    return this.http.put(this.url+id+'/retire/'+credit,user);
+  retireCredit(id, credit):Observable<any> {
+    return this.http.put(this.url+id+'/retire/'+credit, {});
   }
 }
