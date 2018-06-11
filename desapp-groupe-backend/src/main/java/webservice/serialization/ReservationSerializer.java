@@ -33,6 +33,7 @@ public class ReservationSerializer extends StdSerializer<Reservation>{
         jgen.writeObjectField("client", value.getClient());
         jgen.writeObjectField("fromDate", value.getFromDate());
         jgen.writeObjectField("toDate", value.getToDate());
+        jgen.writeObjectField("publication", value.getPublication());
         jgen.writeEndObject();
     }
 }

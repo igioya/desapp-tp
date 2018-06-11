@@ -29,6 +29,9 @@ import { LoginComponent } from './login/login.component';
 import { PublicationDetailComponent } from './publication-detail/publication-detail.component';
 import { MakeReservationComponent } from './make-reservation/make-reservation.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import { ReservationService } from './services/reservation.service';
 import { AddCreditComponent } from './add-credit/add-credit.component';
 import { RetireCreditComponent } from './retire-credit/retire-credit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -64,6 +67,10 @@ export function provideConfig() {
     PublicationDetailComponent,
     MakeReservationComponent,
     LoginComponent,
+    PublicationDetailComponent,
+    MakeReservationComponent,
+    UserProfileComponent,
+    UserReservationsComponent
     AddCreditComponent,
     RetireCreditComponent
   ],
@@ -144,6 +151,14 @@ export function provideConfig() {
         path:'googleMaps',
         component:GoogleMapsComponent
       },
+      {
+        path:'userProfile',
+        component:UserProfileComponent
+      },
+      {
+        path:'userReservations',
+        component:UserReservationsComponent
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -163,6 +178,7 @@ export function provideConfig() {
     VehicleService,
     PublicationService,
     AuthenticationService,
+    ReservationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

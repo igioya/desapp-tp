@@ -1,0 +1,26 @@
+<div>
+  <h3 translate class="title">{{'Mis Reservas' | translate}}</h3>
+</div>
+<div class="user-table">
+  <table class="table">
+    <thead>
+      <th> {{ 'Desde' | translate }} </th>
+      <th> {{ 'Hasta' | translate }} </th>
+      <th> {{ 'Vehiculo' | translate }} </th>
+      <th> {{ 'Email del dueño' | translate }} </th>
+      <th> {{ 'Telefono del dueño' | translate }} </th>
+      <th> {{ 'Costo por hora' | translate }} </th>
+    </thead>
+    <tbody >
+      <tr *ngFor="let reservation of reservations">
+        <td> {{reservation.fromDate}} </td>
+        <td> {{reservation.toDate}} </td>
+        <td> {{reservation.publication.vehicle.model}} </td>
+        <td> {{reservation.publication.owner.email}} </td>
+        <td> {{reservation.publication.telephone}} </td>
+        <td> $ {{reservation.publication.costPerHour}} </td>        
+        <td> <a class="btn btn-success" (click)="editUser(user)" > {{ 'Editar' | translate }} </a> </td>
+      </tr>    
+    </tbody>
+  </table>
+</div>

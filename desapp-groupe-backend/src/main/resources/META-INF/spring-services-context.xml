@@ -35,6 +35,10 @@
 		<property name="userRepository" ref="persistence.userrepository" />
 		
 	</bean>
+	
+	<bean id="service.reservation" class="service.ReservationService">
+		<property name="repository" ref="persistence.reservationrepository" />
+	</bean>
 
 
 </beans>
