@@ -70,7 +70,7 @@ export function provideConfig() {
     PublicationDetailComponent,
     MakeReservationComponent,
     UserProfileComponent,
-    UserReservationsComponent
+    UserReservationsComponent,
     AddCreditComponent,
     RetireCreditComponent
   ],
