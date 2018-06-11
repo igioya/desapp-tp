@@ -76,7 +76,17 @@
 	"Movimientos de cuenta:": "Account movements:",
 
 	"Next": "Next",
-    "Previous": "Previous"
+	"Previous": "Previous",
+	
+	"Hacer reserva": "Make reservation",
+	"Seleccione la fecha en la que quisiera retirar el vehiculo": "Select the date that you would like to retire the vehicle",
+	"Seleccione la fecha en la que quisiera devolver el vehiculo": "Select the date that you would like to return the vehicle",
+	"Reservar": "Reserve",
+
+	"Desde": "Since",
+    "Hasta": "Until",
+    "Email del dueño": "Owner's email",
+    "Telefono del dueño": "Owner's telephone"
 
 	
 }

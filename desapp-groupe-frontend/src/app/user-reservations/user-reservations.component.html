@@ -1,5 +1,5 @@
 <div>
-  <h3 translate class="title">{{'Mis Reservas' | translate}}</h3>
+  <h3 translate class="title">Mis Reservas</h3>
 </div>
 <div class="user-table">
   <table class="table">
@@ -13,13 +13,12 @@
     </thead>
     <tbody >
       <tr *ngFor="let reservation of reservations">
-        <td> {{reservation.fromDate}} </td>
-        <td> {{reservation.toDate}} </td>
+        <td> {{reservation.fromDate | date}} </td>
+        <td> {{reservation.toDate | date}} </td>
         <td> {{reservation.publication.vehicle.model}} </td>
         <td> {{reservation.publication.owner.email}} </td>
         <td> {{reservation.publication.telephone}} </td>
-        <td> $ {{reservation.publication.costPerHour}} </td>        
-        <td> <a class="btn btn-success" (click)="editUser(user)" > {{ 'Editar' | translate }} </a> </td>
+        <td> {{reservation.publication.costPerHour | currency}} </td>        
       </tr>    
     </tbody>
   </table>
