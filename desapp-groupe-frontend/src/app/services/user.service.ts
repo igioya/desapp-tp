@@ -45,4 +45,8 @@ export class UserService {
   retireCredit(id, credit):Observable<any> {
     return this.http.put(this.url+id+'/retire/'+credit, {});
   }
+
+  getMyVehicles(email):Observable<any> {
+    return this.http.get(this.url + "myVehicles/" + email);
+  }
 }

@@ -27,8 +27,8 @@ export class PublicationsComponent implements OnInit {
   }
 
   editPublication(publication : Publication){
-    //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-    this.router.navigate(['editPublication']);
+    console.log(publication);
+    this.router.navigate(['editPublication', publication.id]);
   }
 
   publicationDetail(publication : Publication){

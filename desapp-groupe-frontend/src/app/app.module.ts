@@ -128,7 +128,7 @@ export function provideConfig() {
         component:EditVehicleComponent
       },
       {
-        path:'editPublication',
+        path:'editPublication/:id',
         component:EditPublicationComponent
       },
       {

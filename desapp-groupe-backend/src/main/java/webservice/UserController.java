@@ -89,6 +89,15 @@ public class UserController {
 		return Response.ok().build();
 	}
 	
+	@GET
+    @Path("/myVehicles/{email}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response getMyVehiclesUser(@PathParam("email") String email){
+		User user = userService.getUserByEmail(email);
+		return Response.ok(user.getMyVehicles()).build();
+	}
+	
 	public void setUserService(final UserService userService) {
 		this.userService = userService;
     }

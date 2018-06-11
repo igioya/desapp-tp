@@ -6,35 +6,46 @@ import { VEHICLES, PUBLICATIONS, USERS } from '../../model/data';
 import { Vehicle } from '../../model/vehicle';
 import { User } from '../../model/user';
 import { PublicationService } from '../services/publication.service';
+import { AuthenticationService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-publication-form',
   templateUrl: './publication-form.component.html',
   styleUrls: ['./publication-form.component.css']
 })
-export class PublicationFormComponent {
+export class PublicationFormComponent implements OnInit {
 
   vehicle = Object.keys(Vehicle);
-  vehicles = VEHICLES.slice(this.vehicle.length/2); //cambiar por getAll de vehiculos
+  vehicles;
 
-  owner = Object.keys(User);
-  users = USERS.slice(this.owner.length/2); //cambiar por getAll de users
+  owner;
 
   publication : FormGroup = this.formBuilder.group({
     vehicle : new FormControl('',Validators.required),
     retireAddress: new FormControl('',Validators.required),
     returnAddress: new FormControl('',Validators.required),
-    telephone: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
+    telephone: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(13)]),
     costPerHour: new FormControl('',Validators.required),
-    owner: new FormControl('',Validators.required),
+    owner: new FormControl(''),
   });
 
   constructor(private formBuilder: FormBuilder, 
               private publicationService: PublicationService, 
-              private router: Router) 
+              private router: Router,
+              private userService: UserService,
+              private vehicleService: VehicleService,
+              private authService: AuthenticationService) 
     { }
 
+    ngOnInit() {
+      this.getOwner();
+      this.getMyVehicles();
+  }
+
   newPublication() {
+    this.publication.get('owner').setValue(this.owner);
     console.log(this.publication);
     this.publicationService.newPublication(this.publication);
     this.router.navigate(['']);
@@ -42,6 +53,20 @@ export class PublicationFormComponent {
 
   cancel(){
     this.router.navigate(['publications']);
+  }
+
+  getOwner() {
+    let email = this.authService.getUserLoggedIn().email;
+    this.userService.getUserByEmail(email).subscribe(user => {
+      this.owner = user;
+    });
+  }
+
+  getMyVehicles() {
+    let email = this.authService.getUserLoggedIn().email;
+    this.userService.getMyVehicles(email).subscribe(data => {
+      this.vehicles = data;
+    });
   }
 
 }

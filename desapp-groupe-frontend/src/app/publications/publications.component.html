@@ -26,7 +26,7 @@
               <a class="btn btn-danger" (click)="deletePublication(publication.id)" > {{ 'Eliminar' | translate }} </a>
             </div>
             <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
-              <a class="btn btn-primary" (click)="publicationDetail(publication)" > {{ 'Editar' | translate }} </a>
+              <a class="btn btn-primary" (click)="editPublication(publication)" > {{ 'Editar' | translate }} </a>
             </div>
             <div class="col-md-4">
               <a class="btn btn-success" (click)="publicationDetail(publication)" > {{ 'Mas info' | translate }} </a>
