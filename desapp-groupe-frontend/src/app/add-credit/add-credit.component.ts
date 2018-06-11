@@ -22,8 +22,7 @@ export class AddCreditComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit() {
-
-      let email = this.authService.getModelUserLogued().email;
+      let email = this.authService.getUserLoggedIn().email;
       this.userService.getUserByEmail(email).subscribe(user => {
         console.log(user);
         this.u = user;
