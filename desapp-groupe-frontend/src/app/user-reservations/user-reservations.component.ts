@@ -14,12 +14,12 @@ export class UserReservationsComponent implements OnInit {
 				public reservationService: ReservationService) { }
 
 	ngOnInit() {
-		console.log(" USER: ", this.authenticationService.userLoguedIn())
+		console.log(" USER: ", this.authenticationService.getUserLoggedIn());
 		this.getMyReservations();
 	}
 	
 	getMyReservations() {
-	    this.reservationService.getReservationsByEmail(this.authenticationService.userLoguedIn().email)
+	    this.reservationService.getReservationsByEmail(this.authenticationService.getUserLoggedIn().email)
 		    .subscribe(reservations => { 
 		    	this.reservations = this.reservationsWithDatesFormatted(reservations);
 		        console.log(reservations)

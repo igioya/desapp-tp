@@ -48,9 +48,12 @@ export class MakeReservationComponent implements OnInit {
 		this.datepickerToDate = this.datepickerToDate.date;
 		let newFromDate = this.formatDateToLocalDate(this.datepickerFromDate);
 		let newToDate = this.formatDateToLocalDate(this.datepickerToDate);
-		let client = this.authenticationService.getModelUserLogued();
+		let client = this.authenticationService.getUserLoggedIn();
+		console.log("!$%&/&&/(%$#&%/&$%#&%:", client);
+		delete client.haveFullProfile;
 		let newReservation:Reservation = new Reservation(client, newFromDate, newToDate);
-		console.log("this.authenticationService.getUSerLogued(): ",this.authenticationService.getModelUserLogued());
+		console.log("!$%&/&&/(%$#&%/&$%#&%: ", newReservation.client);
+		console.log("this.authenticationService.getUSerLogued(): ",this.authenticationService.getUserLoggedIn());
 		console.log("newReservation: ",newReservation);
 		this.publicationService.newReservation(newReservation,this.publicationId
 		).subscribe(publication => {
