@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 export class VehicleService {
 
   url:string = '/rest/vehicles/';
-  vechicleToEdit:Vehicle;
 
   constructor(private http: HttpClient) { }
 
@@ -20,14 +19,14 @@ export class VehicleService {
   }
 
   newVehicle(vehicle):Observable<any> {
-    return this.http.post(this.url+'new',vehicle)
+    return this.http.post(this.url+'new',vehicle);
   }
 
   updateVehicle(vehicle):Observable<any> {
-    return this.http.put(this.url+'edit/',vehicle)
+    return this.http.put(this.url+'edit/',vehicle);
   }
 
   deleteVehicle(id):Observable<any> {
-    return this.http.delete(this.url+id)
+    return this.http.delete(this.url+id);
   }
 }

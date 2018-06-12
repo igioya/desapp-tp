@@ -20,15 +20,15 @@ export class PublicationService {
   }
 
   newPublication(publication):Observable<any> {
-    return this.httpClient.post(this.url+'new',publication)
+    return this.httpClient.post(this.url+'new',publication);
   }
 
   updatePublication(id, publication):Observable<any> {
-    return this.httpClient.put(this.url+'edit/'+id,publication)
+    return this.httpClient.put(this.url+'edit/'+id,publication);
   }
 
   deletePublication(id):Observable<any> {
-    return this.httpClient.delete(this.url+id)
+    return this.httpClient.delete(this.url+id);
   }
 
   filterPublications(term):Observable<any> {

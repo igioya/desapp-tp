@@ -23,7 +23,7 @@ public class InitalFakeData {
 		user2.addCredit(1000f);	
 		
 		Vehicle car1 = new Vehicle("Fiat 500", VehicleType.Car, 4, "Color rosa","https://cdn.pixabay.com/photo/2018/04/04/08/04/car-3289114__340.jpg");
-		Vehicle car2 = new Vehicle("Mercedes-Benz",VehicleType.Car, 5, "Color gris","https://cdn.pixabay.com/photo/2018/04/04/08/20/car-3289143_960_720.jpg");
+		Vehicle car2 = new Vehicle("Mercedes-Benz",VehicleType.Car, 5, "Color gris","https://cdn.pixabay.com/photo/2017/03/05/15/29/aston-2118857_960_720.jpg");
 		Vehicle truck1 = new Vehicle("Camion",VehicleType.Truck, 3, "Color amarillo","https://cdn.pixabay.com/photo/2018/03/08/14/58/usa-3208827__340.jpg");
 		Vehicle motorbike1 = new Vehicle("Moto",VehicleType.Motorbike, 2, "Color rojo","https://cdn.pixabay.com/photo/2018/04/03/08/15/motorbike-3286222__340.jpg");
 		
@@ -35,6 +35,8 @@ public class InitalFakeData {
 		user1.newRating(4);
 		user1.newRating(5);
 		user2.newRating(5);
+		user2.newRating(4);
+		user2.newRating(4);
 		user3.newRating(5);
 		
 		Publication publictionCar1 = new Publication(car1, "Quilmes, Gaboto 649, Buenos Aires", "Quilmes, Gaboto 649, Buenos Aires", "01142241818", 25d, user1);
