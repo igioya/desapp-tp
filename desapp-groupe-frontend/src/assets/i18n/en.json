@@ -86,7 +86,15 @@
 	"Desde": "Since",
     "Hasta": "Until",
     "Email del dueño": "Owner's email",
-    "Telefono del dueño": "Owner's telephone"
+	"Telefono del dueño": "Owner's telephone",
 
-	
+	"Iniciar sesion": "Log in",
+	"Mi usuario": "My user",
+	"Mi perfil": "My profile",
+	"Mis publicaciones": "My publications",
+	"Mis reservas": "My reservations",
+	"Agregar credito":"Add credit",
+	"Retirar credito": "Retire credit",
+	"Cerrar sesion": "Log out"
+
 }

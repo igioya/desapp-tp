@@ -35,6 +35,7 @@ import { ReservationService } from './services/reservation.service';
 import { AddCreditComponent } from './add-credit/add-credit.component';
 import { RetireCreditComponent } from './retire-credit/retire-credit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { UserPublicationsComponent } from './user-publications/user-publications.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,7 +73,8 @@ export function provideConfig() {
     UserProfileComponent,
     UserReservationsComponent,
     AddCreditComponent,
-    RetireCreditComponent
+    RetireCreditComponent,
+    UserPublicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +156,10 @@ export function provideConfig() {
       {
         path:'userProfile',
         component:UserProfileComponent
+      },
+      {
+        path:'userPublications',
+        component:UserPublicationsComponent
       },
       {
         path:'userReservations',

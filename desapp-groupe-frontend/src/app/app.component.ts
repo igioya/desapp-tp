@@ -1,4 +1,4 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from './services/auth.service';
 import { AuthService } from "angularx-social-login";
@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'Carpnd';
-  
+
   constructor(private translate: TranslateService,
-              public authenticationService: AuthenticationService,
-              public authService: AuthService,
-              private router: Router) {
+    public authenticationService: AuthenticationService,
+    public authService: AuthService,
+    private router: Router) {
     translate.setDefaultLang('es');
   }
 
@@ -31,13 +31,13 @@ export class AppComponent implements OnInit {
   switchLanguage(language: string) {
     this.translate.use(language);
   }
-
-  goToMyProfile(){
-    this.router.navigate(['userProfile/']);
-  }
-
-  goToMyReservations(){
-    this.router.navigate(['userReservations/']);
-  }
-
+  /*
+    goToMyProfile(){
+      this.router.navigate(['userProfile/']);
+    }
+  
+    goToMyReservations(){
+      this.router.navigate(['userReservations/']);
+    }
+  */
 }
