@@ -1,14 +1,11 @@
 package persistence;
 
-import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.HibernateCallback;
 
-import model.Publication;
 import model.User;
 
 public class HibernateUserDAO extends HibernateGenericDAO<User> implements GenericRepository<User> {

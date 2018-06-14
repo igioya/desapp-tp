@@ -1,11 +1,9 @@
 package service;
 
-import java.util.List;
 import java.util.Set;
 
 import model.Publication;
 import model.Reservation;
-import model.User;
 import model.exceptions.DateNotAvailableException;
 import persistence.HibernatePublicationDAO;
 import persistence.HibernateUserDAO;

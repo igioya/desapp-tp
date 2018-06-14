@@ -11,7 +11,8 @@
             <a class="dropdown-item" href="javascript:void(0)" (click)="goToMyProfile()">{{ 'Mi perfil' | translate }}</a>
             <a class="dropdown-item" href="javascript:void(0)" (click)="goToMyReservations()">{{ 'Mis reservas' | translate }}</a>
             <a class="dropdown-item" href="javascript:void(0)" (click)="goToMyPublications()">{{ 'Mis publicaciones' | translate }}</a>
-            <a class="dropdown-item" href="javascript:void(0)" (click)="goTo()">{{ 'Mi cuenta corriente' | translate }}</a>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="goToAddCredit()">{{ 'Agregar credito' | translate }}</a>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="goToRetireCredit()">{{ 'Retirar credito' | translate }}</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="javascript:void(0)">
               <a href="javascript:void(0)" (click)="switchLanguage('es')">
@@ -102,17 +103,9 @@
     </button>
   </div>
 
-
-
-
 </nav>
 <div class="container">
-<!--
-  <h1>
-    {{ title }}  - Pick and Drive
-  </h1>
-  <img width="300" alt="Carpnd Logo" src="assets/logo_carpnd.png">
--->
+
   <router-outlet></router-outlet>
   
 </div>

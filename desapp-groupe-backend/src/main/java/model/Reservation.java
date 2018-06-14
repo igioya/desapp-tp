@@ -3,7 +3,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Supplier;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.apache.cxf.jaxrs.model.wadl.ElementClass;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.joda.time.LocalDateTime;
 

@@ -20,7 +20,6 @@ import { EditVehicleComponent } from './edit-vehicle/edit-vehicle.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
-import { AgmCoreModule } from '@agm/core';
 import { TokenInterceptor } from './services/token.interceptor';
 import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

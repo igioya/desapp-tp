@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.LocalDateTime;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import model.exceptions.DateNotAvailableException;

@@ -44,4 +44,12 @@ export class AppComponent implements OnInit {
     this.router.navigate(['userPublications/']);
   }
 
+  goToAddCredit(){
+    this.router.navigate(['addCredit/']);
+  }
+
+  goToRetireCredit(){
+    this.router.navigate(['retireCredit/']);
+  }
+
 }
