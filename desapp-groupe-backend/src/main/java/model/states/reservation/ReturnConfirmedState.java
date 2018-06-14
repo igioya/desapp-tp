@@ -4,5 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class ReturnConfirmedState extends State {
-	public ReturnConfirmedState(){}
+	public ReturnConfirmedState(){
+		this.order = 5;
+	}
 }

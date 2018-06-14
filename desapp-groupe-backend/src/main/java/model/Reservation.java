@@ -3,7 +3,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Supplier;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.apache.cxf.jaxrs.model.wadl.ElementClass;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.joda.time.LocalDateTime;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import model.states.reservation.ReservationConfirmedState;
 import model.states.reservation.ReservationNotConfirmedState;
@@ -27,6 +28,8 @@ import model.states.reservation.ReturnConfirmedByOwnerState;
 import model.states.reservation.ReturnConfirmedState;
 import model.states.reservation.State;
 import utils.DateRange;
+import webservice.serialization.ReservationDeserializer;
+import webservice.serialization.ReservationSerializer;
 
 /**
  * States management:
@@ -48,13 +51,19 @@ import utils.DateRange;
  * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
  **/
 @Entity
+@JsonSerialize(using = ReservationSerializer.class)
+@JsonDeserialize(using = ReservationDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Reservation {
 	@Id
+	@Column(unique = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	public int id;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	private User client;
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	private Publication publication;
 	private LocalDateTime fromDate;
 	private LocalDateTime toDate;
 	@ManyToOne(cascade = {CascadeType.ALL})
@@ -68,6 +77,11 @@ public class Reservation {
 		this.client = client;	
 		this.fromDate = fromDate;
 		this.toDate = toDate;
+		this.state = new ReservationNotConfirmedState();
+		this.timer = new Timer();
+	}
+	
+	public Reservation(){
 		this.state = new ReservationNotConfirmedState();
 		this.timer = new Timer();
 	}
@@ -173,4 +187,14 @@ public class Reservation {
 		Reservation.MINUTES = minutes;
 		
 	}
+
+	public Publication getPublication() {
+		return publication;
+	}
+
+	public void setPublication(Publication publication) {
+		this.publication = publication;
+	}
+	
+	
 }

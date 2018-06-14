@@ -1,14 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import model.exceptions.UnableToDoTransactionException;
-import model.states.user.ActiveState;
-import model.states.user.BannedState;
-import model.states.user.UserState;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,10 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import model.exceptions.UnableToDoTransactionException;
+import model.states.user.ActiveState;
+import model.states.user.BannedState;
+import model.states.user.UserState;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,31 +28,34 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
 	
+	@Column(unique = true)
 	private String cuil;
 	private String name;
 	private String surname;
 	private String address;
+	@Column(unique = true)
 	private String email;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
 	private CurrentAccount currentAccount;	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Vehicle> myVehicles;
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Publication> myPublications;
+	private Set<Vehicle> myVehicles;
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//	private Set<Publication> myPublications;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private RatingCalculator rating;
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	private List<Reservation> myReservations;
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//	private Set<Reservation> myReservations;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private UserState state;
 	
 	public User() {
 		this.currentAccount = new CurrentAccount();
-		this.myVehicles = new ArrayList<Vehicle>();
-		this.myPublications = new ArrayList<Publication>();
+		this.myVehicles = new HashSet<Vehicle>();
+//		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new ArrayList<Reservation>();
+//		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();		
 	}
 	
@@ -63,10 +66,10 @@ public class User {
 		this.address = address;
 		this.email = email;
 		this.currentAccount = new CurrentAccount();
-		this.myVehicles = new ArrayList<Vehicle>();
-		this.myPublications = new ArrayList<Publication>();
+		this.myVehicles = new HashSet<Vehicle>();
+//		this.myPublications = new HashSet<Publication>();
 		this.rating = new RatingCalculator();
-		this.myReservations = new ArrayList<Reservation>();
+//		this.myReservations = new HashSet<Reservation>();
 		this.state = new ActiveState();
 	}
 
@@ -118,11 +121,11 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Vehicle> getMyVehicles() {
+	public Set<Vehicle> getMyVehicles() {
 		return myVehicles;
 	}
 
-	public void setMyVehicles(List<Vehicle> myVehicles) {
+	public void setMyVehicles(Set<Vehicle> myVehicles) {
 		this.myVehicles = myVehicles;
 	}
 	
@@ -130,36 +133,49 @@ public class User {
 		this.myVehicles.add(newVehicle);
 	}
 	
-	public List<Publication> getMyPublications() {
-		return myPublications;
-	}
-
-	public void setMyPublications(List<Publication> myPublications) {
-		this.myPublications = myPublications;
-	}
-	
-	public void addPublication(Publication newPublication) {
-		this.myPublications.add(newPublication);
-	}
+//	public Set<Publication> getMyPublications() {
+//		return myPublications;
+//	}
+//
+//	public void setMyPublications(Set<Publication> myPublications) {
+//		this.myPublications = myPublications;
+//	}
+//	
+//	public void addPublication(Publication newPublication) {
+//		this.myPublications.add(newPublication);
+//	}
 
 	public Double getRating() {
 		return rating.getCurrentRating();
 	}
-
-	public List<Reservation> getReservations() {
-		return this.myReservations;
+	
+	public void newRating(Integer rat) {
+		this.rating.addNewRating(new Rating(rat));
 	}
 
-	public void addReservation(Reservation newReservation) {
-		this.myReservations.add(newReservation);
-		
-	}
+//	public Set<Reservation> getReservations() {
+//		return this.myReservations;
+//	}
+//
+//	public void addReservation(Reservation newReservation) {
+//		this.myReservations.add(newReservation);
+//		
+//	}
 
-	public void addCredit(Double credit) {
+	public void addCredit(float credit) {
 		this.currentAccount.addCredit(credit);
 	}
 	
-	public void trasnferCreditTo(Double transfer, User vehicleOwner) {
+	public void retireCredit(float credit) {
+		try {
+		this.currentAccount.retireCredit(credit);
+		} catch (UnableToDoTransactionException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
+	}
+	
+	public void trasnferCreditTo(float transfer, User vehicleOwner) {
 		try {
 			this.currentAccount.transferCreditTo(transfer, vehicleOwner);
 		} catch (UnableToDoTransactionException e) {
@@ -171,7 +187,7 @@ public class User {
 	public Publication createNewPublication(Vehicle vehicle, String retireAddress, String returnAddress, String telephone, Double costPerHour) {
 		
 		Publication newPublication = new Publication(vehicle, retireAddress, returnAddress, telephone, costPerHour, this);
-		this.myPublications.add(newPublication);		
+//		this.myPublications.add(newPublication);		
 		return newPublication;
 	}
 

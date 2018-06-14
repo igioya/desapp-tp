@@ -3,6 +3,7 @@ import { Publication } from '../../model/publication';
 import { PUBLICATIONS } from '../../model/data';
 import { PublicationService } from '../services/publication.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-publications',
@@ -12,37 +13,62 @@ import { Router } from '@angular/router';
 
 export class PublicationsComponent implements OnInit {
 
-	publications = PUBLICATIONS
+	publications;
+  searchTerm:String = "";
+  p: number = 1;
 
   constructor(private publicationService: PublicationService,
-              private router: Router) { 
+              private router: Router,
+              private authService: AuthenticationService) {
   }
 
   ngOnInit() {
+    this.getPublications();
+  }
 
-    //this.getPublications();
+  editPublication(publication : Publication){
+    console.log(publication);
+    this.router.navigate(['editPublication', publication.id]);
+  }
 
-    }
+  publicationDetail(publication : Publication){
+    this.router.navigate(['publicationDetail',publication.id]);
+  }
 
-    editPublication(publication : Publication){
-      //VER COMO SE PASA EL PARAMETRO AL OTRO COMPONENTE
-      this.router.navigate(['editPublication']);
-    }
+  deletePublication(id:number){
+    this.publicationService.deletePublication(id);
+  }
+
+  setSearchTerm(event, term){
+    this.searchTerm = term;
+    if(event.key === "Enter"){this.search()};      
+  }
   
-    deletePublication(id:number)
-    {
-      this.publicationService.deletePublication(id);
-    }
-  
-
-  getPublications() {
-      this.publicationService.getAllPublications().subscribe(
-        
+  search(){
+    if(!(this.searchTerm.trim() === "")){
+      this.publicationService.filterPublications(this.searchTerm).subscribe(
          data => { this.publications = data
           console.log(data)},
          err => console.error(err),
-         () => console.log('done loading publications')
-       );
-     }
+         () => console.log('done loading vehicles')
+      );
+    } else {
+      this.getPublications();
+    }
+  }
+
+  getPublications() {
+    this.publicationService.getAllPublications().subscribe(
+       data => { this.publications = data;
+        console.log(this.publications)},
+       err => console.error(err),
+       () => console.log('done loading vehicles')
+    );
+  }
+
+  isMyPublication(email:string){
+    let em = this.authService.getUserLoggedIn().email;
+    return em == email;
+  }
 
 }

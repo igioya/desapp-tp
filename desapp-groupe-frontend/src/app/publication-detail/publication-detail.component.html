@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div>
+				<img [src]="publication.vehicle.photo" style="max-width: 80%;max-height: 80%;">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div style="text-align: left;" translate="">
+				<label> {{'Modelo' | translate}}: {{publication.vehicle.model}}</label>
+				<br>
+				<label> {{ 'Capacidad de pasajeros' | translate }}: {{publication.vehicle.numberOfPassengers}}</label>
+				<br>
+				<label> {{ 'Direccion de retiro' | translate }}: {{publication.retireAddress}}</label>
+				<br>
+				<label> {{ 'Direccion de devolucion' | translate }}: {{publication.returnAddress}}</label>
+				<br>
+				<label> {{ 'Costo por hora' | translate }}: {{publication.costPerHour | currency}}</label>
+				<br>
+				<label> {{ 'Dueño' | translate }}: {{publication.owner.name}} {{publication.owner.surname}}</label>
+				<br>
+				<label> {{ 'Telefono' | translate }}: {{publication.telephone}}</label>
+				<br>
+				<button class="btn btn-success" (click)="makeReservation()" > {{ 'Alquilar' | translate }} </button>
+			</div>
+		</div>
+	</div>
+</div>

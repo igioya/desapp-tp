@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Vehicle;
 import service.VehicleService;
@@ -29,7 +28,7 @@ public class VehicleController {
    @GET
    @Path("/")
    @Produces("application/json")
-   public List<Vehicle> getAllVehicles() {
+   public List<Vehicle> getAllVehicle() {
        List<Vehicle> all = this.vehicleService.retriveAll();
        return all;
    }

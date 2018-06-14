@@ -29,4 +29,24 @@ export class UserService {
   deleteUser(id, user):Observable<any> {
     return this.http.delete(this.url+id,user);
   }
+
+  haveFullProfile(email):Observable<any> {
+    return this.http.get(this.url + "byemail/" + email);
+  }
+
+  getUserByEmail(email):Observable<any> {
+    return this.http.get(this.url + "getbyemail/" + email);
+  }
+
+  addCredit(id, credit):Observable<any> {
+    return this.http.put(this.url+id+'/add/'+credit, {});
+  }
+
+  retireCredit(id, credit):Observable<any> {
+    return this.http.put(this.url+id+'/retire/'+credit, {});
+  }
+
+  getMyVehicles(email):Observable<any> {
+    return this.http.get(this.url + "myVehicles/" + email);
+  }
 }

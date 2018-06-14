@@ -4,6 +4,17 @@ h1 {
   font-size: 250%;
 }
 
-    
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
 
 

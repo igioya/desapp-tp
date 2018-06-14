@@ -31,6 +31,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<ref bean="userController" />
 			<ref bean="vehicleController" />
 			<ref bean="publicationController" />
+			<ref bean="reservationController" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -39,12 +40,14 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<jaxrs:providers>
 			<ref bean="jaxbProvider" />
 			<ref bean="jacksonProvider" />
+<!-- 			<ref bean="security.filter"/> -->
 		</jaxrs:providers>
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
 
+	<bean id="security.filter" class="security.SecurityFilter"></bean>
 	
 	<bean id="service.user" class="service.UserService" />
 	<bean id="userController" class="webservice.UserController">
@@ -59,6 +62,11 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="service.publication" class="service.PublicationService" />
 	<bean id="publicationController" class="webservice.PublicationController">
 		<property name="publicationService" ref="service.publication" />
+	</bean>
+	
+	<bean id="service.reservation" class="service.ReservationService" />
+	<bean id="reservationController" class="webservice.ReservationController">
+		<property name="reservationService" ref="service.reservation" />
 	</bean>
 
 </beans>

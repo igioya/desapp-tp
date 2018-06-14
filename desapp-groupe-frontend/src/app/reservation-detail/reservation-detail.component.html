@@ -1,0 +1,93 @@
+<div class="container">
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-md-6">
+			<span style="text-align: left;"><h2>Reserva #{{reservation.id}}</h2></span>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6" style="margin-top: 5%;">
+			<span style="text-align: left;"> <h5>Cliente: {{reservation.client.name}} {{reservation.client.surname}}</h5></span><br>
+			<span> Desde: {{reservation.fromDate}} </span><br>
+			<span> Hasta: {{reservation.toDate}}</span><br>
+			<span> Dueño: {{reservation.publication.owner.name}} {{reservation.publication.owner.surname}}</span><br>
+			<span> Telefono de contacto: {{reservation.publication.telephone}}</span><br>
+			<span> Modelo del auto: {{reservation.publication.vehicle.model}}</span><br>
+			<span> Cantidad de pasajeros: {{reservation.publication.vehicle.numberOfPassengers}}</span><br>
+			<span> Estado de la reserva: {{reservation.state.name}}</span><br>
+		</div>
+		<div class="col-md-6" style="margin-top: 5%;">
+			<img [src]="reservation.publication.vehicle.photo" style="max-width: 80%;max-height: 80%;"/>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div *ngIf="!isReservationMakedByLoguedUser()">	
+		<button *ngIf="canConfirmRetireByClient()" type="button" class="btn btn-default" (click)="confirmRetireByClient()" >Confirmar retiro (CLIENT)</button>
+			<button *ngIf="canConfirmReturnByClient()" type="button" class="btn btn-default" (click)="confirmReturnByClient()">Confirmar retorno (CLIENT)</button>
+		</div>
+		
+		<div *ngIf="isReservationMakedByLoguedUser()">
+			<button *ngIf="canConfirmReservationByOwner()" type="button" class="btn btn-default" (click)="confirmReservationByOwner()">Confirmar reserva (OWNER)</button>
+			<button *ngIf="canConfirmRetireByOwner()" type="button" class="btn btn-default" (click)="confirmRetireByOwner()" >Confirmar retiro (OWNER)</button>
+			<button *ngIf="canConfirmReturnByOwner()" type="button" class="btn btn-default" (click)="confirmReturnByOwner()">Confirmar retorno (OWNER)</button>
+		</div>
+
+	</div>
+
+	<div style="margin-top: 5%;">
+		<div class="row"> 
+			<div class="col-md-6">
+				<span style="text-align: left;"><h5>Estado de la reserva</h5> </span>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<aw-wizard>
+				  <aw-wizard-step stepTitle="Not accepted by Owner">
+				    Esperando que el dueño del vehiculo acepte la reserva.
+				  </aw-wizard-step>
+
+				  <aw-wizard-step stepTitle="Accepted by Owner">
+				    El dueño del vehiculo acepto la reserva. A la espera del retiro del vehiculo por parte del cliente.
+				  </aw-wizard-step>
+
+				  <aw-wizard-step stepTitle="Retire confirmed">
+				    Se confirmo el retiro del vehiculo.
+				  </aw-wizard-step>
+
+				  <aw-wizard-step stepTitle="Return confirmed">
+				    Se confirmo el retorno del vehiculo. La reserva queda cerrada.
+				  </aw-wizard-step>
+
+				  <aw-wizard-completion-step stepTitle="Finalized">
+				  	Alquiler cerrado
+				  </aw-wizard-completion-step>
+				</aw-wizard>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<!--/**
+ * States management:
+ * 
+ * 	  ReservationNotConfirmedState: when the client requested a reservation. 
+ * 				 |
+ * 		ReservationConfirmedState: when publication owner accepted the reservation. 
+ * 				 |
+ * 	   RetireConfirmedByClientState: when the client confirmed that the vehicle has been retired, but not the owner.
+ * 				 o
+ * 	    RetireConfirmedByOwnerState: when the publication owner confirmed that the vehicle has been retired, but not the client.
+ * 				 |
+ * 	      RetireConfirmedState: when the client and the owner confirmed that the vehicle has been retired.
+ * 				 |
+ * 	 ConfirmedReturnByOwnerState: when publication owner confirmed that the client return the vehicle, but not the client.
+ * 				 o
+ * 	 ConfirmedReturnByClientState: when client confirmed that returned the vehicle,but not the owner
+ * 				 |
+ * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
+ **/-->

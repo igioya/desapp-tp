@@ -1,5 +1,6 @@
 {
 	"Agregar...": "Add...",
+	"Buscar": "Search",
 	"Ver...": "View...",
 	"Usuario": "User",
 	"Vehiculo": "Vehicle",
@@ -7,6 +8,7 @@
 	"Usuarios": "Users",
 	"Vehiculos": "Vehicles",
 	"Publicaciones": "Publications",
+	"Ver": "View",
 
 	"Registrarse": "Sign in",
 	"Nombre": "Name",
@@ -41,14 +43,14 @@
 	"Guardar": "Save",
 
 	"Nueva Publicacion": "New Publication",
-	"Precio": "Cost",
+	"Costo por hora": "Cost per hour",
 	"Direccion de retiro": "Retire address",
 	"Direccion de devolucion": "Return address",
 	"Telefono": "Telephone",
 	"Dueño": "Owner",
 	"Publicar": "Publish",
 	"El vehiculo es requerido.": "The vehicle is required.",
-	"El costo es requerido.": "The cost is required.",
+	"El costo por hora es requerido.": "The cost per hour is required.",
 	"La direccion de retiro es requerida.": "The retire address is required.",
 	"La direccion de devolucion es requerida.": "The return address is required.",
 	"El telefono es requerido.": "The telephone is required.",
@@ -59,10 +61,40 @@
 	"por hora": "per hour",
 	"Eliminar": "Delete",
 	"Editar": "Edit",
+	"Mas info": "More info",
+	"Alquilar": "Rent",
 
 	"Editar Usuario": "Edit User",
 	"Editar Vehiculo": "Edit Vehicle",
-	"Editar Publicacion": "Edit Publication"
+	"Editar Publicacion": "Edit Publication",
 
+	"Mi credito": "My credit",
+	"Agregar": "Add",
+	"Retirar": "Retire",
+	"Cantidad a agregar:": "Amount to add:",
+	"Cantidad a retirar:": "Amount to retire:",
+	"Tus creditos actuales son:": "Your current credits are:",
+	"Movimientos de cuenta:": "Account movements:",
+
+	"Next": "Next",
+	"Previous": "Previous",
 	
+	"Hacer reserva": "Make reservation",
+	"Seleccione la fecha en la que quisiera retirar el vehiculo": "Select the date that you would like to retire the vehicle",
+	"Seleccione la fecha en la que quisiera devolver el vehiculo": "Select the date that you would like to return the vehicle",
+	"Reservar": "Reserve",
+
+	"Desde": "Since",
+    "Hasta": "Until",
+    "Email del dueño": "Owner's email",
+	"Telefono del dueño": "Owner's telephone",
+
+	"Iniciar sesion": "Log in",
+	"Mi usuario": "My user",
+	"Mi perfil": "My profile",
+	"Mis publicaciones": "My publications",
+	"Mis reservas": "My reservations",
+	"Agregar credito":"Add credit",
+	"Retirar credito": "Retire credit",
+	"Cerrar sesion": "Log out"
 }
