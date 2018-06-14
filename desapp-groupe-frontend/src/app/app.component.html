@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img width="20" height="20" src="favicon.ico"> <a class="navbar-brand" href="#">Carpnd</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-bottom: 10px;">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -14,8 +13,6 @@
             <a class="dropdown-item" href="javascript:void(0)" (click)="goToMyPublications()">{{ 'Mis publicaciones' | translate }}</a>
             <a class="dropdown-item" href="javascript:void(0)" (click)="goTo()">{{ 'Mi cuenta corriente' | translate }}</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript:void(0)" (click)="authenticationService.signOut()">{{ 'Cerrar sesion' | translate }}</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="javascript:void(0)">
               <a href="javascript:void(0)" (click)="switchLanguage('es')">
                 <img class="flag rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/es.svg" style="width: 20%;height: 20%;">
@@ -24,6 +21,8 @@
                 <img class="flag rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/um.svg" style="width: 20%;height: 20%;">
               </a>
             </a>  
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="authenticationService.signOut()">{{ 'Cerrar sesion' | translate }}</a>
 
           </div>
         </div>
