@@ -75,9 +75,9 @@ export function provideConfig() {
     UserProfileComponent,
     UserReservationsComponent,
     ReservationDetailComponent,
-    UserPublicationsComponent
+    UserPublicationsComponent,
     AddCreditComponent,
-    RetireCreditComponent,
+    RetireCreditComponent
   ],
   imports: [
     BrowserModule,

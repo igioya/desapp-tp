@@ -13,14 +13,13 @@
   <br>
     <!--<li class="list-group-item" *ngFor="let publication of publications" style="width: 35%;height:35%">-->
   <hr class="col-md-12">
-  <div class="row" *ngFor="let publication of publications" style="margin-top: 10px;">
+  <div class="row" *ngFor="let publication of publications | paginate: { itemsPerPage: 20, currentPage: p }" style="margin-top: 10px;">
     <div class="col-md-3">
       <img class="card-img-top" src="{{publication.vehicle.photo}}"/>
     </div>
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-6">
-    <li class="list-group-item" *ngFor="let publication of publications | paginate: { itemsPerPage: 20, currentPage: p }">
             <div class="card-body">
               <p class="card-text"><small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}} [{{publication.owner.rating}}]</small></p>
               <h4 class="card-title">{{publication.costPerHour | currency}} {{ 'por hora' | translate }} </h4>
