@@ -39,4 +39,8 @@ export class PublicationService {
     return this.httpClient.put(this.url + idPublication + '/newReservation', reservation);
   }   
 
+  getPublicationsByEmail(email):Observable<any> {
+    return this.httpClient.get<Publication[]>(this.url +'byemail/' + email);
+  }
+
 }

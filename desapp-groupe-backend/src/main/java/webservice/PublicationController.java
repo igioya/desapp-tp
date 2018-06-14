@@ -2,6 +2,7 @@ package webservice;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -51,8 +52,8 @@ public class PublicationController {
 	   @GET
 	   @Path("/find/{text}")
 	   @Produces("application/json")
-	   public Response findPublication(@PathParam("text") String text) throws JsonProcessingException {
-	       List<Publication> all = this.publicationService.find(text);
+	   public Response findPublications(@PathParam("text") String text) throws JsonProcessingException {
+	       Set<Publication> all = this.publicationService.find(text);
 	       String serialized = new ObjectMapper().writeValueAsString(all);
 	       return Response.ok(serialized).build();
 	   }
@@ -75,6 +76,15 @@ public class PublicationController {
 		   System.out.println("LASSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 		   this.publicationService.newReservation(reservation, idPublication);
 		   return Response.ok().build();
+	   }
+	   
+	   @GET
+	   @Path("/byemail/{email}")
+	   @Produces("application/json")
+	   public Response getPublicationsByEmail(@PathParam("email") String email) throws JsonProcessingException{
+		   Set<Publication> publications = this.publicationService.getPublicationsByEmail(email);
+		   String serialized = new ObjectMapper().writeValueAsString(publications);
+		   return Response.ok(serialized).build();
 	   }
 	   
 //	   @PUT

@@ -170,4 +170,17 @@ public class ReservationTest {
 		
 		assertEquals(ReservationConfirmedState.class, newReservation.getState().getClass());		
 	}
+	
+	@Test
+	public void dadaUnaReservaEnRetieConfirmedByClientCuandoPasan30minQuedaEnReservationConfirmedState() throws DateNotAvailableException, InterruptedException{
+		User client = new User();
+		
+		Reservation newReservation = new Reservation(client, new LocalDateTime(), new LocalDateTime());
+		newReservation.confirmRetireByClient();
+		newReservation.setMINUTES(3.00 * 0.0166667);//0.5 minute, for testing 
+		
+		TimeUnit.SECONDS.sleep(5);
+		
+		assertEquals(ReservationConfirmedState.class, newReservation.getState().getClass());		
+	}
 }

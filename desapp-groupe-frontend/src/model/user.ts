@@ -7,6 +7,7 @@ export class User {
     public surname:string;
     public address:string ;
     public email:string ;
+    public imgProfile:string ;
     public haveFullProfile:boolean;
     
     constructor(
@@ -31,6 +32,7 @@ export class User {
         this.surname = socialUser.lastName;
         this.email = socialUser.email;
         this.haveFullProfile = false;
+        this.imgProfile = socialUser.photoUrl;
 
         return this;
     }

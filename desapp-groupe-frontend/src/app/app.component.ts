@@ -31,13 +31,17 @@ export class AppComponent implements OnInit {
   switchLanguage(language: string) {
     this.translate.use(language);
   }
-  /*
-    goToMyProfile(){
-      this.router.navigate(['userProfile/']);
-    }
-  
-    goToMyReservations(){
-      this.router.navigate(['userReservations/']);
-    }
-  */
+
+  goToMyProfile(){
+    this.router.navigate(['userProfile/']);
+  }
+
+  goToMyReservations(){
+    this.router.navigate(['userReservations/']);
+  }
+
+  goToMyPublications(){
+    this.router.navigate(['userPublications/']);
+  }
+
 }

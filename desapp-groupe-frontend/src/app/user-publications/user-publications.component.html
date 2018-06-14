@@ -1,3 +1,49 @@
-<p>
-  user-publications works!
-</p>
+<div class="container">
+	<div style="margin-top: 5%;">
+	  <h3 translate class="title">{{'Mis Publicaciones' | translate}}</h3>
+	</div>
+	<table class="table">
+		<thead>
+		  <th> {{'ID de publicacion' | translate}} </th>
+		  <th> {{ 'Costo por hora' | translate }} </th>
+		  <th> {{ 'Modelo del auto' | translate }} </th>
+		  <th> {{ 'Tipo' | translate }} </th>
+		  <th> {{ 'Cantidad de pasajeros' | translate }} </th>
+		  <th></th>
+		  <th></th>
+		</thead>
+		<tbody >
+		  <tr *ngFor="let publication of publications">
+		    <td> {{publication.id}} </td>
+		    <td> {{publication.costPerHour}} </td>
+		    <td> {{publication.vehicle.model}} </td>
+		    <td> {{publication.vehicle.type}} </td>
+		    <td> {{publication.vehicle.numberOfPassengers}} </td>
+		    <td> <a class="btn btn-success" (click)="show(publication)" > {{ 'Ver' | translate }} </a> </td>
+		    <td> <a class="btn btn-danger" (click)="delete(publication)" > {{ 'Eliminar' | translate }} </a> </td>
+		  </tr>    
+		</tbody>
+	</table>
+
+	<div style="margin-top: 5%;">
+	  <h3 translate class="title">{{'Reservas que me hicieron' | translate}}</h3>
+	</div>
+	<table class="table">
+		<thead>
+		  <th> {{'ID de publicacion' | translate}} </th>
+		  <th> {{ 'Desde' | translate }} </th>
+		  <th> {{ 'Hasta' | translate }} </th>
+		  <th> {{ 'Estado' | translate }} </th>
+		  <th></th>
+		</thead>
+		<tbody >
+		  <tr *ngFor="let reservation of reservations">
+		    <td> {{reservation.publication.id}} </td>
+		    <td> {{reservation.toDate}} </td>
+		    <td> {{reservation.fromDate}} </td>
+		    <td> {{reservation.state.name}} </td>
+		    <td> <a class="btn btn-success" (click)="showReservation(reservation)" > {{ 'Ver' | translate }} </a> </td>
+		  </tr>    
+		</tbody>
+	</table>
+</div>

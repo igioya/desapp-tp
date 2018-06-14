@@ -35,7 +35,9 @@ import { ReservationService } from './services/reservation.service';
 import { AddCreditComponent } from './add-credit/add-credit.component';
 import { RetireCreditComponent } from './retire-credit/retire-credit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ReservationDetailComponent } from './reservation-detail/reservation-detail.component';
 import { UserPublicationsComponent } from './user-publications/user-publications.component';
+import { ArchwizardModule, WizardState, WizardComponent } from 'angular-archwizard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,9 +74,10 @@ export function provideConfig() {
     MakeReservationComponent,
     UserProfileComponent,
     UserReservationsComponent,
+    ReservationDetailComponent,
+    UserPublicationsComponent
     AddCreditComponent,
     RetireCreditComponent,
-    UserPublicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -165,6 +168,14 @@ export function provideConfig() {
         path:'userReservations',
         component:UserReservationsComponent
       },
+      {
+        path:'userReservations/:id',
+        component:ReservationDetailComponent
+      },
+      {
+        path:'userPublications',
+        component:UserPublicationsComponent
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -174,7 +185,8 @@ export function provideConfig() {
       }
     }),
     SocialLoginModule.initialize(config),
-    MyDatePickerModule
+    MyDatePickerModule,
+    ArchwizardModule
   ],
   providers: [
     UserService,
@@ -200,6 +212,7 @@ export function provideConfig() {
       provide: LOCALE_ID, 
       useValue: 'en-US'
     },
+    WizardState,
   ],
   bootstrap: [AppComponent]
 })

@@ -84,7 +84,10 @@ public class Reservation {
 		this.timer = new Timer();
 	}
 	
-	public Reservation(){}
+	public Reservation(){
+		this.state = new ReservationNotConfirmedState();
+		this.timer = new Timer();
+	}
 	
 	public User getClient() {
 		return client;

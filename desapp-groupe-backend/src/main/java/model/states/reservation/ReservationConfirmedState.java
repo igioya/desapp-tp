@@ -4,5 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class ReservationConfirmedState extends State {
-	public ReservationConfirmedState(){}
+	public ReservationConfirmedState(){
+		this.order = 1; 
+	}
 }

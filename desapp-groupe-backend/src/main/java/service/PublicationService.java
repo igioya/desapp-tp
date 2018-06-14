@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Set;
 
 import model.Publication;
 import model.Reservation;
@@ -18,9 +19,14 @@ public class PublicationService extends GenericService<Publication> {
 	
 	private HibernateUserDAO userRepository;
 	
-	public List<Publication> find(final String text) {
+	public Set<Publication> find(final String text) {
 		HibernatePublicationDAO repository = (HibernatePublicationDAO) this.getRepository();
 		return repository.filter(text);
+	}
+	
+	public Set<Publication> getPublicationsByEmail(final String email) {
+		HibernatePublicationDAO repository = (HibernatePublicationDAO) this.getRepository();
+		return repository.getPublicationsByEmail(email);
 	}
 	
 	public void newReservation(Reservation reservation, int idPublication) throws DateNotAvailableException {

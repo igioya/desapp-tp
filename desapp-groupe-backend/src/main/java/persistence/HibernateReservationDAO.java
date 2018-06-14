@@ -31,5 +31,19 @@ public class HibernateReservationDAO extends HibernateGenericDAO<Reservation> im
 
         });
     }
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Set<Reservation> getReservationsOfPublicationsByEmail(String email) {
+		return (Set<Reservation>) this.getHibernateTemplate().execute(new HibernateCallback() {
+            public Set<Reservation> doInHibernate(final Session session) throws HibernateException {
+            	Criteria criteria = session.createCriteria(Reservation.class)
+            							   .createAlias("publication", "pub")
+            							   .createAlias("pub.owner", "ow")
+            							   .add(Restrictions.eq("ow.email", email));
+            	return new HashSet<Reservation>(criteria.list());
+            }
+
+        });
+	}
 
 }
