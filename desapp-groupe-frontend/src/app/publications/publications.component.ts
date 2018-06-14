@@ -59,8 +59,8 @@ export class PublicationsComponent implements OnInit {
 
   getPublications() {
     this.publicationService.getAllPublications().subscribe(
-       data => { this.publications = data
-        console.log(data)},
+       data => { this.publications = data;
+        console.log(this.publications)},
        err => console.error(err),
        () => console.log('done loading vehicles')
     );

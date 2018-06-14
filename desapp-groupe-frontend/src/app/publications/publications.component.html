@@ -6,49 +6,50 @@
     <div class="input-group col-md-10">
       <input type="text" #box (keyup.enter)="setSearchTerm($event,box.value)" class="form-control">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button class="btn btn-outline-secondary" type="button"> {{ 'Buscar' | translate }} </button>
       </div>
     </div>
   </div>
   <br>
-    <!--<li class="list-group-item" *ngFor="let publication of publications" style="width: 35%;height:35%">-->
   <hr class="col-md-12">
   <div class="row" *ngFor="let publication of publications | paginate: { itemsPerPage: 20, currentPage: p }" style="margin-top: 10px;">
     <div class="col-md-3">
-      <img class="card-img-top" src="{{publication.vehicle.photo}}"/>
+      <img class="card-img-top" src="{{publication.vehicle.photo}}" />
     </div>
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-6">
-            <div class="card-body">
-              <p class="card-text"><small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}} [{{publication.owner.rating}}]</small></p>
-              <h4 class="card-title">{{publication.costPerHour | currency}} {{ 'por hora' | translate }} </h4>
-              <p class="card-text"> {{publication.vehicle.description}}</p>
-              <p class="card-text"><small class="text-muted">{{publication.retireAddress}}</small></p>
-  </div>
-    <hr class="col-md-12">
-    </div>
-      </div>
-        </div>
-            <a class="btn btn-outline-secondary" style="margin-top: 18%;" (click)="publicationDetail(publication)" > {{ 'Ver' | translate }} </a>
-        <div class="col-md-6">
-        </div>
-            </div>            
-            </div>
-        <div class="row">   
-            <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
-              <a class="btn btn-danger" (click)="deletePublication(publication.id)" > {{ 'Eliminar' | translate }} </a>
-            </div>
-            <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
-              <a class="btn btn-primary" (click)="editPublication(publication)" > {{ 'Editar' | translate }} </a>
-            </div>
-            <div class="col-md-4">
-              <a class="btn btn-success" (click)="publicationDetail(publication)" > {{ 'Mas info' | translate }} </a>
-            </div>
+          <div class="card-body">
+            <p class="card-text">
+              <small class="text-muted">{{publication.owner.name}} {{publication.owner.surname}} [{{publication.owner.rating}}]</small>
+            </p>
+            <h4 class="card-title">{{publication.costPerHour | currency}} {{ 'por hora' | translate }} </h4>
+            <p class="card-text"> {{publication.vehicle.description}}</p>
+            <p class="card-text">
+              <small class="text-muted">{{publication.retireAddress}}</small>
+            </p>
           </div>
-      </div>-->
-    <!--</li>-->
+          <a class="btn btn-outline-secondary" style="margin-top: 18%;" (click)="publicationDetail(publication)"> {{ 'Ver' | translate }} </a>
+          <hr class="col-md-12">
+        </div>
+      </div>
+    </div>
   </div>
-</ul>
-<pagination-controls previousLabel="{{ 'Previous' | translate }}"
-nextLabel="{{ 'Next' | translate }}" (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- 
+<div class="row">
+  <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
+    <a class="btn btn-danger" (click)="deletePublication(publication.id)"> {{ 'Eliminar' | translate }} </a>
+  </div>
+  <div class="col-md-4" *ngIf="isMyPublication(publication.owner.email)">
+    <a class="btn btn-primary" (click)="editPublication(publication)"> {{ 'Editar' | translate }} </a>
+  </div>
+  <div class="col-md-4">
+    <a class="btn btn-success" (click)="publicationDetail(publication)"> {{ 'Mas info' | translate }} </a>
+  </div>
+</div>
+ </div>
+    </li>
+  </div>
+</ul>-->
+<pagination-controls previousLabel="{{ 'Previous' | translate }}" nextLabel="{{ 'Next' | translate }}" (pageChange)="p = $event"></pagination-controls>

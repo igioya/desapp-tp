@@ -8,6 +8,7 @@
 	"Usuarios": "Users",
 	"Vehiculos": "Vehicles",
 	"Publicaciones": "Publications",
+	"Ver": "View",
 
 	"Registrarse": "Sign in",
 	"Nombre": "Name",
@@ -96,5 +97,4 @@
 	"Agregar credito":"Add credit",
 	"Retirar credito": "Retire credit",
 	"Cerrar sesion": "Log out"
-
 }
