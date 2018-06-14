@@ -57,10 +57,14 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     -->
-    <div>
-        <button (click)="switchLanguage('en')">en</button>
+    <div class="col-md-6 pull-right">
+        <a  href="javascript:void(0)" (click)="switchLanguage('en')">
+          <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/es.svg" style="width: 6%;height: 6%;">
+        </a>  
 
-        <button (click)="switchLanguage('es')">es</button>
+        <a href="javascript:void(0)" (click)="switchLanguage('es')">
+          <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/um.svg" style="width: 6%;height: 6%;">
+        </a>
     </div>
 
     <!--<div>
