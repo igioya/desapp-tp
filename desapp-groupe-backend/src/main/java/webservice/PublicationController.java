@@ -52,7 +52,7 @@ public class PublicationController {
 	   @GET
 	   @Path("/find/{text}")
 	   @Produces("application/json")
-	   public Response findPublications(@PathParam("text") String text) throws JsonProcessingException {
+	   public Response findPublication(@PathParam("text") String text) throws JsonProcessingException {
 	       Set<Publication> all = this.publicationService.find(text);
 	       String serialized = new ObjectMapper().writeValueAsString(all);
 	       return Response.ok(serialized).build();
@@ -81,7 +81,7 @@ public class PublicationController {
 	   @GET
 	   @Path("/byemail/{email}")
 	   @Produces("application/json")
-	   public Response getPublicationsByEmail(@PathParam("email") String email) throws JsonProcessingException{
+	   public Response getByEmailPublication(@PathParam("email") String email) throws JsonProcessingException{
 		   Set<Publication> publications = this.publicationService.getPublicationsByEmail(email);
 		   String serialized = new ObjectMapper().writeValueAsString(publications);
 		   return Response.ok(serialized).build();

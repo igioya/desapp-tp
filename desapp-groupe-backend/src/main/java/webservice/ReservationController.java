@@ -24,7 +24,7 @@ public class ReservationController {
 	@GET
 	@Path("/byemail/{email}")
 	@Produces("application/json")
-	public Response getReservationsByEmail(@PathParam("email") String email) throws JsonProcessingException{
+	public Response getByEmailReservation(@PathParam("email") String email) throws JsonProcessingException{
 		Set<Reservation> reservations = this.reservationService.getReservationsByEmail(email);
 		String serialized = new ObjectMapper().writeValueAsString(reservations);
 	    return Response.ok(serialized).build();
@@ -33,7 +33,7 @@ public class ReservationController {
 	@GET
 	@Path("/reservationsOfPublicationsByemail/{email}")
 	@Produces("application/json")
-	public Response getReservationsOfPublicationsByEmail(@PathParam("email") String email) throws JsonProcessingException{
+	public Response getOfPublicationsByEmailReservation(@PathParam("email") String email) throws JsonProcessingException{
 		Set<Reservation> reservations = this.reservationService.getReservationsOfPublicationsByEmail(email);
 		String serialized = new ObjectMapper().writeValueAsString(reservations);
 	    return Response.ok(serialized).build();
@@ -42,7 +42,7 @@ public class ReservationController {
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
-	public Response getReservationsByIdl(@PathParam("id") int id) throws JsonProcessingException{
+	public Response getByIdReservation(@PathParam("id") int id) throws JsonProcessingException{
 		Reservation reservation = this.reservationService.findById(id);
 		String serialized = new ObjectMapper().writeValueAsString(reservation);
 	    return Response.ok(serialized).build();
@@ -51,7 +51,7 @@ public class ReservationController {
 	@PUT
 	@Path("/confirmReservationByOwner")
 	@Produces("application/json")
-	public Response confirmReservationByOwner(@RequestBody Integer id) throws JsonProcessingException{
+	public Response confirmByOwnerReservation(@RequestBody Integer id) throws JsonProcessingException{
 		this.reservationService.confirmReservationByOwner(id);
 	    return Response.ok().build();
 	}
@@ -60,7 +60,7 @@ public class ReservationController {
 	@PUT
 	@Path("/confirmRetireByClient")
 	@Produces("application/json")
-	public Response confirmRetireByClient(@RequestBody Integer id) throws JsonProcessingException{
+	public Response confirmRetireByClientReservation(@RequestBody Integer id) throws JsonProcessingException{
 		this.reservationService.confirmRetireByClient(id);
 	    return Response.ok().build();
 	}
@@ -68,7 +68,7 @@ public class ReservationController {
 	@PUT
 	@Path("/confirmReturnByClient")
 	@Produces("application/json")
-	public Response confirmReturnByClient(@RequestBody Integer id) throws JsonProcessingException{
+	public Response confirmReturnByClientReservation(@RequestBody Integer id) throws JsonProcessingException{
 		this.reservationService.confirmReturnByClient(id);
 	    return Response.ok().build();
 	}
@@ -76,7 +76,7 @@ public class ReservationController {
 	@PUT
 	@Path("/confirmRetireByOwner")
 	@Produces("application/json")
-	public Response confirmRetireByOwner(@RequestBody Integer id) throws JsonProcessingException{
+	public Response confirmRetireByOwnerReservation(@RequestBody Integer id) throws JsonProcessingException{
 		this.reservationService.confirmRetireByOwner(id);
 	    return Response.ok().build();
 	}
@@ -84,7 +84,7 @@ public class ReservationController {
 	@PUT
 	@Path("/confirmReturnByOwner")
 	@Produces("application/json")
-	public Response confirmReturnByOwner(@RequestBody Integer id) throws JsonProcessingException{
+	public Response confirmReturnByOwnerReservation(@RequestBody Integer id) throws JsonProcessingException{
 		this.reservationService.confirmReturnByOwner(id);
 	    return Response.ok().build();
 	}

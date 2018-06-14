@@ -45,4 +45,14 @@ public class ServiceAuditorAspect {
                 ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
         );
     }
+    
+    @Before( "execution(* *Reservation(..))")
+    public void logBeforeReservation(JoinPoint joinPoint){
+
+        logger.info("<timestamp="+ LocalDateTime.now()+
+                ", user=?????" +
+                ", operacion/metodo=" + joinPoint.getSignature().getName()+
+                ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
+        );
+    }
 }
