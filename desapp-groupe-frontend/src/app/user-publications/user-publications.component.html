@@ -19,8 +19,8 @@
 		    <td> {{publication.vehicle.model}} </td>
 		    <td> {{publication.vehicle.type}} </td>
 		    <td> {{publication.vehicle.numberOfPassengers}} </td>
-		    <td> <a class="btn btn-success" (click)="show(publication)" > {{ 'Ver' | translate }} </a> </td>
-		    <td> <a class="btn btn-danger" (click)="delete(publication)" > {{ 'Eliminar' | translate }} </a> </td>
+		    <td> <a class="btn btn-outline-secondary" (click)="show(publication)" > {{ 'Ver' | translate }} </a> </td>
+		    <td> <a class="btn btn-outline-danger" (click)="delete(publication)" > {{ 'Eliminar' | translate }} </a> </td>
 		  </tr>    
 		</tbody>
 	</table>
@@ -42,7 +42,7 @@
 		    <td> {{reservation.toDate}} </td>
 		    <td> {{reservation.fromDate}} </td>
 		    <td> {{reservation.state.name}} </td>
-		    <td> <a class="btn btn-success" (click)="showReservation(reservation)" > {{ 'Ver' | translate }} </a> </td>
+		    <td> <a class="btn btn-outline-secondary" (click)="showReservation(reservation)" > {{ 'Ver' | translate }} </a> </td>
 		  </tr>    
 		</tbody>
 	</table>

@@ -6,7 +6,7 @@
     <div class="input-group col-md-10">
       <input type="text" #box (keyup.enter)="setSearchTerm($event,box.value)" class="form-control">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button class="btn btn-outline-secondary" type="button">{{ 'Buscar' | translate }}</button>
       </div>
     </div>
   </div>
