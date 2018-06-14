@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/auth.service';
 import { ReservationService } from '../services/reservation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-reservations',
@@ -11,7 +12,8 @@ export class UserReservationsComponent implements OnInit {
 
 	reservations
 	constructor(public authenticationService: AuthenticationService,
-				public reservationService: ReservationService) { }
+				public reservationService: ReservationService,
+				public router: Router) { }
 
 	ngOnInit() {
 		console.log(" USER: ", this.authenticationService.getUserLoggedIn());
@@ -37,6 +39,10 @@ export class UserReservationsComponent implements OnInit {
 		}); 
 
 		return reservations;	
+	}
+
+	show(reservation){
+		this.router.navigate(['userReservations/',reservation.id])
 	}
 
 }

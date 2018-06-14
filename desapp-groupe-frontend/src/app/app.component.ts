@@ -40,4 +40,8 @@ export class AppComponent implements OnInit {
     this.router.navigate(['userReservations/']);
   }
 
+  goToMyPublications(){
+    this.router.navigate(['userPublications/']);
+  }
+
 }

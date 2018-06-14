@@ -19,7 +19,7 @@
         <td> {{reservation.publication.owner.email}} </td>
         <td> {{reservation.publication.telephone}} </td>
         <td> $ {{reservation.publication.costPerHour}} </td>        
-        <td> <a class="btn btn-success" (click)="editUser(user)" > {{ 'Editar' | translate }} </a> </td>
+        <td> <a class="btn btn-success" (click)="show(reservation)" > {{ 'Ver' | translate }} </a> </td>
       </tr>    
     </tbody>
   </table>

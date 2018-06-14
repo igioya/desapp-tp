@@ -1,6 +1,7 @@
 package persistence;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -19,10 +20,10 @@ public class HibernatePublicationDAO extends HibernateGenericDAO<Publication> im
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-    public List<Publication> filter(final String pattern) {
+    public Set<Publication> filter(final String pattern) {
     	
-        return (List<Publication>) this.getHibernateTemplate().execute(new HibernateCallback() {
-            public List<Publication> doInHibernate(final Session session) throws HibernateException {
+        return (Set<Publication>) this.getHibernateTemplate().execute(new HibernateCallback() {
+            public Set<Publication> doInHibernate(final Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(Publication.class);
                 criteria.add(
                 		Restrictions.disjunction()
@@ -30,9 +31,20 @@ public class HibernatePublicationDAO extends HibernateGenericDAO<Publication> im
                 					.add(Restrictions.like("returnAddress", "%" + pattern + "%").ignoreCase())
                 );
                 
-                List<Publication> p = criteria.list();
-                log.info("Retornando FilterPublications con el patron: "+ pattern);
-                return criteria.list();
+                return new HashSet<Publication>(criteria.list());
+            }
+
+        });
+    }
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Set<Publication> getPublicationsByEmail(final String email){
+        return (Set<Publication>) this.getHibernateTemplate().execute(new HibernateCallback() {
+            public Set<Publication> doInHibernate(final Session session) throws HibernateException {
+            	Criteria criteria = session.createCriteria(Publication.class)
+            							   .createAlias("owner", "ow")
+            							   .add(Restrictions.eq("ow.email", email));
+            	return new HashSet<Publication>(criteria.list());
             }
 
         });

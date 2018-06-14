@@ -4,12 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public abstract class State {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected int id;
+	protected int id;	
+	@Transient
+	protected Integer order;
+	
 	public Boolean retireConfirmedByOwner() {
 		return false;
 	}
@@ -24,6 +28,16 @@ public abstract class State {
 
 	public boolean returnConfirmedByOwner() {
 		return false;
+	}
+	
+	public Integer getOrder(){
+		return this.order;
+	}
+	
+	@Override
+	public String toString(){
+		return this.getClass().getSimpleName();
+		
 	}
 
 }

@@ -29,11 +29,19 @@ public class ReservationSerializer extends StdSerializer<Reservation>{
       throws IOException, JsonProcessingException {
   
         jgen.writeStartObject();
-        jgen.writeNumberField("id", value.id);
-        jgen.writeObjectField("client", value.getClient());
-        jgen.writeObjectField("fromDate", value.getFromDate());
-        jgen.writeObjectField("toDate", value.getToDate());
-        jgen.writeObjectField("publication", value.getPublication());
+        {
+        	jgen.writeNumberField("id", value.id);
+            jgen.writeObjectField("client", value.getClient());
+            jgen.writeObjectField("fromDate", value.getFromDate());
+            jgen.writeObjectField("toDate", value.getToDate());
+            jgen.writeObjectField("publication", value.getPublication());
+            jgen.writeObjectFieldStart("state");
+            {
+            	jgen.writeObjectField("name", value.getState().toString());
+            	jgen.writeObjectField("order", value.getState().getOrder());
+            }
+            jgen.writeEndObject();           
+        }        
         jgen.writeEndObject();
     }
 }

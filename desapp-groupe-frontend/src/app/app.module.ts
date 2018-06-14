@@ -32,6 +32,9 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { ReservationService } from './services/reservation.service';
+import { ReservationDetailComponent } from './reservation-detail/reservation-detail.component';
+import { UserPublicationsComponent } from './user-publications/user-publications.component';
+import { ArchwizardModule, WizardState, WizardComponent } from 'angular-archwizard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,7 +68,9 @@ export function provideConfig() {
     PublicationDetailComponent,
     MakeReservationComponent,
     UserProfileComponent,
-    UserReservationsComponent
+    UserReservationsComponent,
+    ReservationDetailComponent,
+    UserPublicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -143,6 +148,14 @@ export function provideConfig() {
         path:'userReservations',
         component:UserReservationsComponent
       },
+      {
+        path:'userReservations/:id',
+        component:ReservationDetailComponent
+      },
+      {
+        path:'userPublications',
+        component:UserPublicationsComponent
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -155,7 +168,8 @@ export function provideConfig() {
       apiKey: 'AIzaSyDSPDpkFznGgzzBSsYvTq_sj0T0QCHRgwM'//Se uso la del tutorial por no estar activada la nuestra //'AIzaSyAzaSxsKDUNelh_OQcOyNOPJExOqJetn70'
     }),
     SocialLoginModule.initialize(config),
-    MyDatePickerModule
+    MyDatePickerModule,
+    ArchwizardModule
   ],
   providers: [
     UserService,
@@ -177,6 +191,7 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
+    WizardState,
   ],
   bootstrap: [AppComponent]
 })
