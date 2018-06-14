@@ -1,5 +1,6 @@
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ar.edu.unq.desapp.grupoe</groupId>
@@ -8,19 +9,20 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>desapp-groupe-backend Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
-	<build> 
-<!--	  <plugins>
-		<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.2</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>       
-		</plugin>
-	
+
+	<build>
+		<plugins>
+<!--		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -28,6 +30,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -37,46 +40,47 @@
 					<downloadSources>true</downloadSources>
 				</configuration>
 			</plugin>
- -->
-  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.3</version>
-        <executions>
-            <execution>
-                <phase>package</phase>
-                <goals><goal>copy</goal></goals>
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>com.github.jsimone</groupId>
-                            <artifactId>webapp-runner</artifactId>
-                            <version>8.5.11.3</version>
-                            <destFileName>webapp-runner.jar</destFileName>
-                        </artifactItem>
-                    </artifactItems>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-		</plugins> 
+-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.github.jsimone</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>8.5.11.3</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
-		
+
 		<dependency>
-		  <groupId>joda-time</groupId>
-		  <artifactId>joda-time</artifactId>
-		  <version>2.9.9</version>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20180130</version>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
 		</dependency>
-				
-		
+
 		<!-- commons -->
 
 		<dependency>
@@ -96,13 +100,13 @@
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- Service -->
 
 		<dependency>
@@ -110,7 +114,6 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.2</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -152,7 +155,6 @@
 			</exclusions>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -163,11 +165,10 @@
 			<artifactId>cglib</artifactId>
 			<version>2.1_3</version>
 		</dependency>
-		
+
 		<!-- /Service -->
 
 		<!-- /Spring -->
-
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -187,7 +188,6 @@
 			<version>1.5.6</version>
 		</dependency>
 
-
 		<!-- Test -->
 
 		<dependency>
@@ -203,14 +203,13 @@
 			<version>4.9</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-    		<groupId>com.tngtech.archunit</groupId>
-    		<artifactId>archunit</artifactId>
-    		<version>0.8.1</version>
-    		<scope>test</scope>
+			<groupId>com.tngtech.archunit</groupId>
+			<artifactId>archunit</artifactId>
+			<version>0.8.1</version>
+			<scope>test</scope>
 		</dependency>
-		
 
 		<!-- Support for testing Spring applications with tools such as JUnit and 
 			TestNG This artifact is generally always defined with a 'test' scope for 
@@ -234,11 +233,11 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 
- 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-       			<version>${org.springframework.version}</version>
-        </dependency>       
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
 		<!-- /Test -->
 
 		<!-- CXF -->
@@ -299,7 +298,7 @@
 		</dependency>
 
 		<!-- /Jackson -->
-		
+
 		<!-- Persistence -->
 
 		<dependency>
@@ -308,34 +307,36 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -355,9 +356,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- <dependency> <groupId>org.log4jdbc</groupId> <artifactId>log4jdbc</artifactId> 
-			<version>4.1.2</version> </dependency> -->
-
+		<!-- <dependency> 
+		<groupId>org.log4jdbc</groupId> 
+		<artifactId>log4jdbc</artifactId> 
+			<version>4.1.2</version> 
+		</dependency> -->
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.log4jdbc</groupId> -->
@@ -392,7 +395,6 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
@@ -434,40 +436,40 @@
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>com.google.api-client</groupId>
-		    <artifactId>google-api-client</artifactId>
-		    <version>1.22.0</version>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.22.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.5</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
 		</dependency>
-				
-	
-	<!-- Aspects -->
+
+
+		<!-- Aspects -->
 		<dependency>
-	        <groupId>org.aspectj</groupId>
-	        <artifactId>aspectjrt</artifactId>
-	        <version>1.6.2</version>
-	    </dependency>
-	    
-	    <dependency>
-	        <groupId>org.aspectj</groupId>
-	        <artifactId>aspectjtools</artifactId>
-	        <version>1.6.6</version>
-	    </dependency>
-	    
-	    <dependency>
-	        <groupId>cglib</groupId>
-	        <artifactId>cglib</artifactId>
-	        <version>2.1_3</version>
-	    </dependency>
-	    
-	<!-- /Aspects -->
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+
+		<!-- /Aspects -->
 
 	</dependencies>
 
