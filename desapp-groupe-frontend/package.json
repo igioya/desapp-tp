@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@agm/core": "^1.0.0-beta.2",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -25,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^2.1.0",
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^3.0.1",
+    "@types/googlemaps": "^3.30.9",
     "angularx-social-login": "^1.2.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
