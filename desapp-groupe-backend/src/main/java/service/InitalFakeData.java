@@ -28,9 +28,9 @@ public class InitalFakeData {
 		Vehicle motorbike1 = new Vehicle("Moto",VehicleType.Motorbike, 2, "Color rojo","https://cdn.pixabay.com/photo/2018/04/03/08/15/motorbike-3286222__340.jpg");
 		
 		user1.addVehicle(car1);
-		user1.addVehicle(motorbike1);
 		user2.addVehicle(car2);
-		user3.addVehicle(truck1);
+		user2.addVehicle(truck1);
+		user3.addVehicle(motorbike1);
 		
 		user1.newRating(4);
 		user1.newRating(5);
@@ -45,8 +45,8 @@ public class InitalFakeData {
 		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user3);
 		
 		publictionCar1.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
-		publictionCar2.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
-		publictionMotorbike1.makeReservation(user3, new LocalDateTime(), new LocalDateTime().plusDays(3));
+		publictionCar2.makeReservation(user3, new LocalDateTime(), new LocalDateTime().plusDays(3));
+		publictionMotorbike1.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
 		
 		//PERSISTENCE
 		userDAO.save(user1);
