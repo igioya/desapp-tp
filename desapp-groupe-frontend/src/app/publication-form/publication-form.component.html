@@ -6,8 +6,8 @@
 
     <div class="form-group">
       <label for="vehicle"> {{ 'Vehiculo' | translate }} </label>
-      <select class="form-control" id="vehicle" formControlName="vehicle" required >
-        <option *ngFor="let v of vehicles" [value]="v">{{v.model}}</option>
+      <select class="form-control" id="vehicle" formControlName="vehicle" required>
+        <option *ngFor="let v of vehicles" [ngValue]="v">{{v.model}}</option>
       </select>
       <div *ngIf="publication.get('vehicle').errors && publication.get('vehicle').dirty">
           <p *ngIf="publication.get('vehicle').hasError('required')" style="white-space: normal; color:red"> {{ 'El vehiculo es requerido.' | translate }} </p>

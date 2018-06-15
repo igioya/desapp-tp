@@ -8,6 +8,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
@@ -87,20 +89,21 @@ public class PublicationController {
 		   return Response.ok(serialized).build();
 	   }
 	   
-//	   @PUT
-//	   @Path("/edit/{id}")
-//	   @Produces("application/json")
-//	   public void updatePublication(@RequestBody Publication publication){
-//		   this.publicationService.update(publication);
-//	   }
+	   @PUT
+	   @Path("/edit/{id}")
+	   @Produces("application/json")
+	   public void updatePublication(@RequestBody Publication publication){
+		   this.publicationService.update(publication);
+	   }
 	   
-//	   @DELETE
-//	   @Path("/{id}")
-//	   @Produces("application/json")
-//	   public void deletePublication(@RequestParam("id") int id){
-//		   Publication vehicle = this.publicationService.findById(id);
-//		   this.publicationService.delete(vehicle);
-//	   }
+	   @DELETE
+	   @Path("/{id}")
+	   @Produces("application/json")
+	   @Consumes("application/json")
+	   public void deletePublication(@PathParam("id") int id){
+		   Publication publication = this.publicationService.findById(id);
+		   this.publicationService.delete(publication);
+	   }
 	   
 	   public void setPublicationService(final PublicationService publicatioService) {
 		   this.publicationService = publicatioService;

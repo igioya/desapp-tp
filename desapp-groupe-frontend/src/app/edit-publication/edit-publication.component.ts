@@ -62,7 +62,7 @@ export class EditPublicationComponent implements OnInit {
       });
     }
   
-    updateUser() {
+    updatePublication() {
       let obj = this.publication.getRawValue();
       this.publicationService.updatePublication(this.p.id, obj).subscribe(
         data => { 

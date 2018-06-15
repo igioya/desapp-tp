@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PublicationService } from '../services/publication.service';
 import { Publication } from '../../model/publication';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-publication-detail',
@@ -9,10 +10,11 @@ import { Publication } from '../../model/publication';
   styleUrls: ['./publication-detail.component.css']
 })
 export class PublicationDetailComponent implements OnInit {
-	publication: Publication
+	publication: Publication;
 	constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private publicationService: PublicationService) { }
+			  private publicationService: PublicationService,
+			  private authService: AuthenticationService ) { }
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe(params => {
@@ -29,5 +31,22 @@ export class PublicationDetailComponent implements OnInit {
 		//Chequear que el usuario tenga fullProfile.
 		this.router.navigate([this.router.url + '/makeReservation'])
 	}
+
+	isMyPublication(email:string){
+		let em = this.authService.getUserLoggedIn().email;
+		return em == email;
+	  }
+
+	  editPublication(publication : Publication){
+		console.log(publication);
+		this.router.navigate(['editPublication', publication.id]);
+	  }
+
+	  deletePublication(id:number){
+		this.publicationService.deletePublication(id);
+		this.router.navigate(['']);
+
+
+	  }
 
 }

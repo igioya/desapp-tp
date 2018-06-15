@@ -37,12 +37,12 @@ public class Publication {
 	@JsonProperty("costPerHour")
 	private Double costPerHour;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.MERGE})@JsonProperty("vehicle")
 	private Vehicle vehicle;
 	@OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
 	private Set<Reservation> reservations;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.ALL})@JsonProperty("owner")
 	private User owner;
 
 	public Publication() {

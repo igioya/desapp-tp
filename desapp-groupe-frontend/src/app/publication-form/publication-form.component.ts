@@ -4,11 +4,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Publication } from '../../model/publication';
 import { VEHICLES, PUBLICATIONS, USERS } from '../../model/data';
 import { Vehicle } from '../../model/vehicle';
-import { User } from '../../model/user';
 import { PublicationService } from '../services/publication.service';
 import { AuthenticationService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-publication-form',
@@ -18,8 +16,7 @@ import { VehicleService } from '../services/vehicle.service';
 export class PublicationFormComponent implements OnInit {
 
   vehicle = Object.keys(Vehicle);
-  vehicles;
-
+  vehicles = this.vehicle.slice(this.vehicle.length/2)
   owner;
 
   publication : FormGroup = this.formBuilder.group({
@@ -29,13 +26,13 @@ export class PublicationFormComponent implements OnInit {
     telephone: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(13)]),
     costPerHour: new FormControl('',Validators.required),
     owner: new FormControl(''),
+   
   });
 
   constructor(private formBuilder: FormBuilder, 
               private publicationService: PublicationService, 
               private router: Router,
               private userService: UserService,
-              private vehicleService: VehicleService,
               private authService: AuthenticationService) 
     { }
 
@@ -46,9 +43,11 @@ export class PublicationFormComponent implements OnInit {
 
   newPublication() {
     this.publication.get('owner').setValue(this.owner);
-    console.log(this.publication);
-    this.publicationService.newPublication(this.publication);
-    this.router.navigate(['']);
+    let pub = this.publication.getRawValue();
+    this.publicationService.newPublication(pub).subscribe(
+      data => { this.router.navigate(['']); },
+      err => console.error(err)
+    );
   }
 
   cancel(){
@@ -66,8 +65,9 @@ export class PublicationFormComponent implements OnInit {
     let email = this.authService.getUserLoggedIn().email;
     this.userService.getMyVehicles(email).subscribe(data => {
       this.vehicles = data;
+      console.log(data);
+      console.log(this.vehicles);
     });
   }
 
 }
-
