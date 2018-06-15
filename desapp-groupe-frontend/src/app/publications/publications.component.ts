@@ -43,6 +43,12 @@ export class PublicationsComponent implements OnInit {
     this.searchTerm = term;
     if(event.key === "Enter"){this.search()};      
   }
+
+  setSearchTermm(term){
+    this.searchTerm = term;
+    console.log(this.searchTerm);
+    this.search();      
+  }
   
   search(){
     if(!(this.searchTerm.trim() === "")){

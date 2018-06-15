@@ -4,9 +4,10 @@
   </div>
   <div class="row" style="margin-top: 3%;">
     <div class="input-group col-md-10">
-      <input type="text" #box (keyup.enter)="setSearchTerm($event,box.value)" class="form-control">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">{{ 'Buscar' | translate }}</button>
+       <input type="text" #box (keyup.enter)="setSearchTerm($event,box.value)" class="form-control">
+       <div class="input-group-append">
+         <button class="btn btn-outline-secondary" (click)="setSearchTermm(box.value)" type="button">{{ 'Buscar' | translate }}</button>
+        </div>
       </div>
     </div>
   </div>
