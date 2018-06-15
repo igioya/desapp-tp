@@ -51,6 +51,7 @@ export class MakeReservationComponent implements OnInit {
 		let client = this.authenticationService.getUserLoggedIn();
 		console.log("!$%&/&&/(%$#&%/&$%#&%:", client);
 		delete client.haveFullProfile;
+		delete client.imgProfile;
 		let newReservation:Reservation = new Reservation(client, newFromDate, newToDate);
 		console.log("!$%&/&&/(%$#&%/&$%#&%: ", newReservation.client);
 		console.log("this.authenticationService.getUSerLogued(): ",this.authenticationService.getUserLoggedIn());
