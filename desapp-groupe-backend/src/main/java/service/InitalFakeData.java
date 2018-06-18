@@ -17,7 +17,7 @@ public class InitalFakeData {
 	public void init() throws DateNotAvailableException{
 		User user1 = new User("20250010028", "Jose", "Lopez", "Lavalle 45, Quilmes", "jlopez@gmail.com");
 		User user2 = new User("20300010025", "Ignacio" , "Gioya", "Andrade 500, Bernal", "ignacio.gioya@gmail.com");
-		User user3 = new User("20323018025", "Grupo" , "E", "Zapiola 4321, Quilmes Oeste", "desapp.unq.grupoe@gmail.com");
+		User user3 = new User("20323018025", "Grupo" , "E", "Viejo Bueno 1020, Bernal Oeste, Buenos Aires", "desapp.unq.grupoe@gmail.com");
 		
 		user1.addCredit(500f);
 		user2.addCredit(1000f);	
@@ -39,10 +39,10 @@ public class InitalFakeData {
 		user2.newRating(4);
 		user3.newRating(5);
 		
-		Publication publictionCar1 = new Publication(car1, "Quilmes, Gaboto 649, Buenos Aires", "Quilmes, Gaboto 649, Buenos Aires", "01142241818", 25d, user1);
-		Publication publictionCar2 = new Publication(car2, "Bernal, Saenz Peña 600, Buenos Aires", "Bernal, Saenz Peña 600, Buenos Aires", "01142249999", 50d, user2);
-		Publication publictionTruck1 = new Publication(truck1, "Wilde, Av. Mitre 220, BuenosAires", "Wilde, Av. Mitre 220, BuenosAires", "01142249999", 75d, user2);
-		Publication publictionMotorbike1 = new Publication(motorbike1, "Florencio Varela, Mitre 1650, Buenos Aires", "Florencio Varela, Mitre 1650, Buenos Aires", "01142241818", 5d, user3);
+		Publication publictionCar1 = new Publication(car1, "Lavalle 45, Quilmes", "Lavalle 45, Quilmes", "01142241818", 25d, user1);
+		Publication publictionCar2 = new Publication(car2, "Andrade 500, Bernal", "Andrade 500, Bernal", "01142249999", 50d, user2);
+		Publication publictionTruck1 = new Publication(truck1, "Av. Calchaquí 1699, Quilmes Oeste, Buenos Aires", "Av. Calchaquí 1699, Quilmes Oeste, Buenos Aires", "01142249999", 75d, user2);
+		Publication publictionMotorbike1 = new Publication(motorbike1, "Blanco 1098, Quilmes Oeste, Buenos Aires", "Blanco 1098, Quilmes Oeste, Buenos Aires", "01142241818", 5d, user3);
 		
 		publictionCar1.makeReservation(user2, new LocalDateTime(), new LocalDateTime().plusDays(3));
 		publictionCar2.makeReservation(user3, new LocalDateTime(), new LocalDateTime().plusDays(3));
