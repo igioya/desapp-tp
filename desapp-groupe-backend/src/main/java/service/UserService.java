@@ -3,6 +3,7 @@ package service;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.User;
+import model.Vehicle;
 import persistence.HibernateUserDAO;
 
 public class UserService extends GenericService<User> {
@@ -38,4 +39,11 @@ public class UserService extends GenericService<User> {
 		this.update(user);
 	}
 
+	@Transactional
+	public void addVehicle(String email, Vehicle vehicle) {
+		User user = this.getUserByEmail(email);
+		user.addVehicle(vehicle);
+		this.update(user);
+	}
+	
 }

@@ -49,4 +49,8 @@ export class UserService {
   getMyVehicles(email):Observable<any> {
     return this.http.get(this.url + "myVehicles/" + email);
   }
+
+  addVehicle(email, vehicle):Observable<any> {
+    return this.http.put(this.url+'newVehicle/'+ email, vehicle);;
+  }
 }
