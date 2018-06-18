@@ -37,6 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ReservationDetailComponent } from './reservation-detail/reservation-detail.component';
 import { UserPublicationsComponent } from './user-publications/user-publications.component';
 import { ArchwizardModule, WizardState, WizardComponent } from 'angular-archwizard';
+import { UserVehiclesComponent } from './user-vehicles/user-vehicles.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -76,7 +77,8 @@ export function provideConfig() {
     ReservationDetailComponent,
     UserPublicationsComponent,
     AddCreditComponent,
-    RetireCreditComponent
+    RetireCreditComponent,
+    UserVehiclesComponent
   ],
   imports: [
     BrowserModule,
@@ -174,6 +176,10 @@ export function provideConfig() {
       {
         path:'userPublications',
         component:UserPublicationsComponent
+      },
+      {
+        path:'userVehicles',
+        component:UserVehiclesComponent
       },
     ]),
     TranslateModule.forRoot({
