@@ -97,5 +97,11 @@
 	"Mis reservas": "My reservations",
 	"Agregar credito":"Add credit",
 	"Retirar credito": "Retire credit",
-	"Cerrar sesion": "Log out"
+	"Cerrar sesion": "Log out",
+
+	"Filtrar por categoria:": "Filter by category:",
+	"Auto": "Car",
+	"Moto": "Motorbike",
+	"Camion" : "Truck"
+
 }

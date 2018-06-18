@@ -13,7 +13,8 @@ import { AuthenticationService } from '../services/auth.service';
 
 export class PublicationsComponent implements OnInit {
 
-	publications;
+  publications;
+  pubs;
   searchTerm:String = "";
   p: number = 1;
 
@@ -54,7 +55,7 @@ export class PublicationsComponent implements OnInit {
     if(!(this.searchTerm.trim() === "")){
       this.publicationService.filterPublications(this.searchTerm).subscribe(
          data => { this.publications = data
-          console.log(data)},
+          },
          err => console.error(err),
          () => console.log('done loading vehicles')
       );
@@ -66,7 +67,8 @@ export class PublicationsComponent implements OnInit {
   getPublications() {
     this.publicationService.getAllPublications().subscribe(
        data => { this.publications = data;
-        console.log(this.publications)},
+        console.log(this.publications)
+      this.pubs = this.publications;},
        err => console.error(err),
        () => console.log('done loading vehicles')
     );
@@ -77,4 +79,18 @@ export class PublicationsComponent implements OnInit {
     return em == email;
   }
 
+  filterCars(){
+    this.pubs = this.publications;
+    this.pubs = this.publications.filter(p => p.vehicle.type === "Car");
+  }
+
+  filterMotos(){
+    this.pubs = this.publications;
+    this.pubs = this.publications.filter(p => p.vehicle.type === "Motorbike");
+  }
+
+  filterTrucks(){
+  this.pubs = this.publications;
+  this.pubs = this.publications.filter(p => p.vehicle.type === "Truck");
+}
 }
