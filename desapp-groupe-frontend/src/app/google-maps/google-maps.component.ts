@@ -67,5 +67,4 @@ export class GoogleMapsComponent implements OnInit {
       });
     });
   }
-
 }
