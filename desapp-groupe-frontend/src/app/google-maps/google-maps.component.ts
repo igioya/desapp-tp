@@ -28,7 +28,7 @@ export class GoogleMapsComponent implements OnInit {
   initMap(){
     var mapProp = {
       center: new google.maps.LatLng(-34.7064781 , -58.2716504),
-      zoom: 15,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     

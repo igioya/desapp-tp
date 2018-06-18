@@ -11,7 +11,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import model.User;
+import model.Vehicle;
 import service.UserService;
 
 @Path("/users")
@@ -96,6 +99,15 @@ public class UserController {
 	public Response getMyVehiclesUser(@PathParam("email") String email){
 		User user = userService.getUserByEmail(email);
 		return Response.ok(user.getMyVehicles()).build();
+	}
+	
+	@PUT
+	@Path("/newVehicle/{email}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response newVehiclesUser(@PathParam("email") String email, @RequestBody Vehicle vehicle){
+		this.userService.addVehicle(email, vehicle);
+		return Response.ok().build();
 	}
 	
 	public void setUserService(final UserService userService) {

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Vehicle, VehicleType } from '../../model/vehicle';
 import { VEHICLES } from '../../model/data';
 import { VehicleService } from '../services/vehicle.service';
+import { AuthenticationService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -25,17 +27,19 @@ export class VehicleFormComponent {
 
   constructor(private formBuilder: FormBuilder, 
               private vehicleService: VehicleService, 
-              private router: Router) 
+              private router: Router,
+              private authService: AuthenticationService,
+              private userService: UserService) 
     { }
 
   newVehicle() {
-    let vehicleObj = this.vehicle.getRawValue();
-    this.vehicleService.newVehicle(vehicleObj).subscribe(data => { 
-      this.router.navigate(['vehicles']);
-    },err => console.error(err),
+      let vehicleObj = this.vehicle.getRawValue();
+      let owner = this.authService.getUserLoggedIn().email;
+      this.userService.addVehicle(owner, vehicleObj).subscribe(data => { 
+        this.router.navigate(['vehicles']); },
+        err => console.error(err),
        () => console.log('done loading vehicles')
-    );
-    
+      );
   }
 
   cancel(){

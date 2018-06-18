@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { USERS } from '../../model/data';
 import { User } from '../../model/user';
 import { UserService } from '../services/user.service';
-
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +15,9 @@ export class UsersComponent implements OnInit {
   users;
 
   constructor(private userService: UserService, 
-              private router: Router) { }
+              private router: Router,
+              private authService: AuthenticationService) 
+              { }
 
   ngOnInit() {
     this.getAllUsers();
@@ -35,4 +37,8 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['editUser',user.id]);
   }
 
+  isMyUser(email:string){
+    let em = this.authService.getUserLoggedIn().email;
+    return em == email;
+  }
 }

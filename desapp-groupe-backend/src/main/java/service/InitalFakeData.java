@@ -53,11 +53,6 @@ public class InitalFakeData {
 		userDAO.save(user2);
 		userDAO.save(user3);
 		
-		vehicleDAO.save(car1);
-		vehicleDAO.save(car2);
-		vehicleDAO.save(motorbike1);
-		vehicleDAO.save(truck1);
-		
 		publicationDAO.save(publictionCar1);
 		publicationDAO.save(publictionCar2);
 		publicationDAO.save(publictionTruck1);
