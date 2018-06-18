@@ -18,7 +18,7 @@ export class GoogleMapsComponent implements OnInit {
 
   constructor(private publicationService: PublicationService,
               private authService: AuthenticationService,
-              public router: Router
+              public router: Router,
               private location: Location) { }
 
   ngOnInit() {
@@ -67,10 +67,4 @@ export class GoogleMapsComponent implements OnInit {
       });
     });
   }
-
-  ver(){
-    console.log("HOLA")
-    this.router.navigate(['publicationDetail',publicationId]);
-  }
-
 }
