@@ -42,7 +42,7 @@ public class Publication {
 	@OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
 	private Set<Reservation> reservations;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})@JsonProperty("owner")
+	@ManyToOne(cascade = {CascadeType.MERGE})@JsonProperty("owner")
 	private User owner;
 
 	public Publication() {
