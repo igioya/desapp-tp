@@ -1,5 +1,5 @@
 <div>
-  <h3 translate class="title">Vehiculos</h3>
+  <h3 translate class="title">Mis vehiculos</h3>
 </div>
 <ul>
     <div>
@@ -13,6 +13,8 @@
                 <p class="card-text"> {{ 'Descripcion' | translate }}: {{vehicle.description}}</p>
                 <p class="card-text"><small class="text-muted"> {{ 'Capacidad de pasajeros' | translate }}: {{vehicle.numberOfPassengers}}</small></p>
                 <p class="card-text"><small class="text-muted"> {{ 'Tipo de vehiculo' | translate }}: {{vehicle.type}}</small></p> 
+                <a class="btn btn-danger" (click)="deleteVehicle(vehicle.id)" > {{ 'Eliminar' | translate }} </a>
+                <a class="btn btn-success" (click)="editVehicle(vehicle)" > {{ 'Editar' | translate }} </a>
             </div>
           </div>
       </li>

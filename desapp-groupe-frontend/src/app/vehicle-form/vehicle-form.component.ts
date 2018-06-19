@@ -36,13 +36,13 @@ export class VehicleFormComponent {
       let vehicleObj = this.vehicle.getRawValue();
       let owner = this.authService.getUserLoggedIn().email;
       this.userService.addVehicle(owner, vehicleObj).subscribe(data => { 
-        this.router.navigate(['vehicles']); },
+        this.router.navigate(['userVehicles']); },
         err => console.error(err),
        () => console.log('done loading vehicles')
       );
   }
 
   cancel(){
-    this.router.navigate(['vehicles']);
+    this.router.navigate(['userVehicles']);
   }
 }

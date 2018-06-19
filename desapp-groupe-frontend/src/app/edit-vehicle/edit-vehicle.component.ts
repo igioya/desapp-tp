@@ -56,14 +56,14 @@ export class EditVehicleComponent implements OnInit{
   updateVehicle() {
     let vehicleObj = this.vehicle.getRawValue();
     this.vehicleService.updateVehicle(vehicleObj).subscribe(data => { 
-      this.router.navigate(['vehicles'])},
+      this.router.navigate(['userVehicles'])},
     err => console.error(err),
       () => console.log('()')
     );
   }
 
   cancel(){
-    this.router.navigate(['vehicles']);
+    this.router.navigate(['userVehicles']);
   }
 
 }

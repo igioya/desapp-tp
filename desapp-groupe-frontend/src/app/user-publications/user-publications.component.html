@@ -1,21 +1,21 @@
 <div class="container">
 	<div style="margin-top: 5%;">
-	  <h3 translate class="title">{{'Mis Publicaciones' | translate}}</h3>
+	  <h3 translate class="title">{{'Mis publicaciones' | translate}}</h3>
 	</div>
 	<table class="table">
 		<thead>
 		  <th> {{'ID de publicacion' | translate}} </th>
 		  <th> {{ 'Costo por hora' | translate }} </th>
-		  <th> {{ 'Modelo del auto' | translate }} </th>
-		  <th> {{ 'Tipo' | translate }} </th>
-		  <th> {{ 'Cantidad de pasajeros' | translate }} </th>
+		  <th> {{ 'Modelo' | translate }} </th>
+		  <th> {{ 'Tipo de vehiculo' | translate }} </th>
+		  <th> {{ 'Capacidad de pasajeros' | translate }} </th>
 		  <th></th>
 		  <th></th>
 		</thead>
 		<tbody >
 		  <tr *ngFor="let publication of publications">
 		    <td> {{publication.id}} </td>
-		    <td> {{publication.costPerHour}} </td>
+		    <td> {{publication.costPerHour | currency}} </td>
 		    <td> {{publication.vehicle.model}} </td>
 		    <td> {{publication.vehicle.type}} </td>
 		    <td> {{publication.vehicle.numberOfPassengers}} </td>

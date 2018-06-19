@@ -44,6 +44,10 @@ export class AppComponent implements OnInit {
     this.router.navigate(['userPublications/']);
   }
 
+  goToMyVehicles(){
+    this.router.navigate(['userVehicles/']);
+  }
+
   goToAddCredit(){
     this.router.navigate(['addCredit/']);
   }
