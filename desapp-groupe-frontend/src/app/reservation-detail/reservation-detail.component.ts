@@ -103,24 +103,24 @@ export class ReservationDetailComponent implements OnInit {
 	}
 
 	canConfirmRetireByClient():boolean{
-		return (this.reservation.state.name === "RetireConfirmedByOwnerState"
+		return this.reservation.state.name !== "RetireConfirmedByClientState" && (this.reservation.state.name === "RetireConfirmedByOwnerState"
 				|| (this.reservation.state.order <= 2 && this.reservation.state.order >= 1));  
 	}
 
 	canConfirmRetireByOwner():boolean{
-		return (this.reservation.state.name === "RetireConfirmedByClientState"
+		return this.reservation.state.name !== "RetireConfirmedByOwnerState" && (this.reservation.state.name === "RetireConfirmedByClientState"
 				|| (this.reservation.state.order <= 2 && this.reservation.state.order >= 1));
 	}
 
 	canConfirmReturnByClient():boolean{
 		//return this.reservation.state.order === 3 || this.reservation.state.order === 4;
-		return (this.reservation.state.name === "ReturnConfirmedByOwnerState"
+		return this.reservation.state.name !== "ReturnConfirmedByClientState" && (this.reservation.state.name === "ReturnConfirmedByOwnerState"
 				|| (this.reservation.state.order <= 4 && this.reservation.state.order >= 3)); 
 	}
 
 	canConfirmReturnByOwner():boolean{
 		//return this.reservation.state.order === 3 || this.reservation.state.order === 4;
-		return (this.reservation.state.name === "ReturnConfirmedByClientState"
+		return this.reservation.state.name !== "ReturnConfirmedByOwnerState" && (this.reservation.state.name === "ReturnConfirmedByClientState"
 				|| (this.reservation.state.order <= 4 && this.reservation.state.order >= 3));
 	}
 
