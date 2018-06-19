@@ -16,6 +16,8 @@ public class Rating {
 	public Rating(Integer value) {
 		this.value = value;
 	}
+	
+	public Rating() {}
 
 	public Integer getValue() {
 		return value;
