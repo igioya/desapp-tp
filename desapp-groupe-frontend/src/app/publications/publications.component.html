@@ -11,26 +11,31 @@
       </div>
     </div>
   <div>
-    <ul class="row">
-        <li class="list-group-item">
-        <label> {{ 'Filtrar por categoria:' | translate }} </label>
-        </li>
-      <li class="list-group-item">
-        <label [class.selected]="r1.checked">
-          <input #r1 type="radio" name="r" value="one" (change)="filterCars(r1)"> {{ 'Auto' | translate }}
-        </label>
-      </li>
-      <li class="list-group-item">
-      <label [class.selected]="r2.checked">
-        <input #r2 type="radio" name="r" value="two" (change)="filterMotos(r2)"> {{ 'Moto' | translate }}
+  <ul class="row">
+    <li class="list-group-item">
+      <label> {{ 'Filtrar por categoria:' | translate }} </label>
+    </li>
+    <li class="list-group-item">
+      <label [class.selected]="r0.checked">
+        <input #r0 type="radio" name="r" value="zero" (change)="filterAll(r0)"> {{ 'Todo' | translate }}
       </label>
-      </li>
-      <li class="list-group-item">
-        <label [class.selected]="r1.checked">
-          <input #r3 type="radio" name="r" value="three" (change)="filterTrucks(r3)"> {{ 'Camion' | translate }}
-        </label>
-      </li>
-    </ul>
+    </li>
+    <li class="list-group-item">
+      <label [class.selected]="r1.checked">
+        <input #r1 type="radio" name="r" value="one" (change)="filterCars(r1)"> {{ 'Auto' | translate }}
+      </label>
+    </li>
+    <li class="list-group-item">
+    <label [class.selected]="r2.checked">
+      <input #r2 type="radio" name="r" value="two" (change)="filterMotos(r2)"> {{ 'Moto' | translate }}
+    </label>
+    </li>
+    <li class="list-group-item">
+      <label [class.selected]="r1.checked">
+        <input #r3 type="radio" name="r" value="three" (change)="filterTrucks(r3)"> {{ 'Camion' | translate }}
+      </label>
+    </li>
+  </ul>
   </div>
   <hr class="col-md-12">
   <div class="row" *ngFor="let publication of pubs | paginate: { itemsPerPage: 20, currentPage: p }" style="margin-top: 10px;">

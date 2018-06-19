@@ -79,6 +79,10 @@ export class PublicationsComponent implements OnInit {
     return em == email;
   }
 
+  filterAll(){
+    this.pubs = this.publications;
+  }
+
   filterCars(){
     this.pubs = this.publications;
     this.pubs = this.publications.filter(p => p.vehicle.type === "Car");
@@ -90,7 +94,7 @@ export class PublicationsComponent implements OnInit {
   }
 
   filterTrucks(){
-  this.pubs = this.publications;
-  this.pubs = this.publications.filter(p => p.vehicle.type === "Truck");
-}
+    this.pubs = this.publications;
+    this.pubs = this.publications.filter(p => p.vehicle.type === "Truck");
+  }
 }
