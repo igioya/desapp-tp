@@ -53,10 +53,10 @@ export class PublicationsComponent implements OnInit {
   
   search(){
     if(!(this.searchTerm.trim() === "")){
-      this.publicationService.filterPublications(this.searchTerm).subscribe(
-         data => { this.publications = data
-          },
-         err => console.error(err),
+      this.publicationService.filterPublications(this.searchTerm).subscribe(data => { 
+        this.publications = data;
+        this.pubs = this.publications;
+      }, err => console.error(err),
          () => console.log('done loading vehicles')
       );
     } else {
