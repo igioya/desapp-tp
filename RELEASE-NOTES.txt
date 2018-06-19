@@ -40,3 +40,37 @@ KNOWN ISSUES:
 * Validator - metodo isValidTelephone()
 * ABM Publicaciones [No incluido en esta entrega]
 * Deploy Heroku
+
+----------------------------------------------------------------------------------------------------------------------
+Release 3.0 - Tag Entrega3
+----------------------------------------------------------------------------------------------------------------------
+NEW FEATURES:
+* Build en "verde"
+* AM de publicaciones
+* Formatters de fecha y moneda según LOCALE
+* Grilla de publicaciones con paginación client side
+* Adaptada la aplicación Responsive web design
+* Creado un test de arquitectura
+* Auditoria de servicios. Loguear <timestamp,user,operación/metodo, parámetros> de los servicios
+* Autenticar la aplicación con Google
+* Alta de creditos
+* Retiro de creditos
+* Busqueda de publicaciones - Lista
+* Busqueda de publicaciones - Mapa
+* Filtrado de publicaciones por categoria
+* Reservar un vehículo
+* Confirmación de un vehículo
+
+NOTES:
+* Algunos nombres de test estan en español
+* Sorting de publicaciones segun criterios
+
+KNOWN ISSUES:
+* Validator - metodo isValidTelephone()
+* Delete de vehiculos
+* Delete de publicaciones
+* Deploy Heroku
+
+
+
+
