@@ -4,11 +4,11 @@
 	"Ver...": "View...",
 	"Usuario": "User",
 	"Vehiculo": "Vehicle",
-	"Publicacion": "Publication",
+	"Publicacion": "Post",
 	"Usuarios": "Users",
 	"Vehiculos": "Vehicles",
-	"Publicaciones": "Publications",
-	"Publicaciones (mapa)": "Publications (map)",
+	"Publicaciones": "Posts",
+	"Publicaciones (mapa)": "Posts (map)",
 	"Ver": "View",
 
 	"Registrarse": "Sign in",
@@ -43,7 +43,7 @@
 	"La imagen es requerida.": "The picture is required.",
 	"Guardar": "Save",
 
-	"Nueva Publicacion": "New Publication",
+	"Nueva Publicacion": "New Post",
 	"Costo por hora": "Cost per hour",
 	"Direccion de retiro": "Retire address",
 	"Direccion de devolucion": "Return address",
@@ -67,7 +67,7 @@
 
 	"Editar Usuario": "Edit User",
 	"Editar Vehiculo": "Edit Vehicle",
-	"Editar Publicacion": "Edit Publication",
+	"Editar Publicacion": "Edit Post",
 
 	"Mi credito": "My credit",
 	"Agregar": "Add",
@@ -93,7 +93,7 @@
 	"Iniciar sesion": "Log in",
 	"Mi usuario": "My user",
 	"Mi perfil": "My profile",
-	"Mis publicaciones": "My publications",
+	"Mis publicaciones": "My posts",
 	"Mis reservas": "My reservations",
 	"Mis vehiculos": "My vehicles",
 	"Agregar credito":"Add credit",
