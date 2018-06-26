@@ -48,7 +48,12 @@ export class UserPublicationsComponent implements OnInit {
 	}
 
 	delete(publication){
-
+		console.log(publication.id)
+		this.publicationService.deletePublication(publication.id).subscribe(data => { 
+			this.getMyPublications();
+	  	}, err => console.error(err),
+	       () => console.log('done loading userPublications')
+	    );
 	}
 
 	reservationsWithDatesFormatted(reservations){
