@@ -3,6 +3,7 @@ import { User } from '../../model/user';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-form',
@@ -21,8 +22,9 @@ export class UserFormComponent  {
 
   constructor(private formBuilder: FormBuilder, 
               private userService: UserService, 
-              private router: Router) 
-    { }
+              private router: Router,
+              private authService: AuthenticationService) 
+    {this.user.get('email').setValue(this.authService.getUserLoggedIn().email); console.log(this.user)}
 
   newUser() {
     let userObj = this.user.getRawValue();

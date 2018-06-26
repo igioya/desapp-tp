@@ -46,7 +46,7 @@
 
   <div class="form-group">
     <label for="email"> Email </label>
-    <input type="email" class="form-control" id="email" formControlName="email" required >
+    <input type="email" class="form-control" id="email" formControlName="email" required disabled>
     <div *ngIf="user.get('email').errors && user.get('email').dirty">
         <p *ngIf="user.get('email').hasError('required')" style="white-space: normal; color:red"> {{ 'El email es requerido.' | translate }} </p>
         <p *ngIf="user.get('email').hasError('email')" style="white-space: normal; color:red"> {{ 'El email indicado no es valido.' | translate }} </p></div> 
