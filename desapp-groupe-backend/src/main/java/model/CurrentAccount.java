@@ -1,8 +1,8 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -20,25 +20,26 @@ public class CurrentAccount {
 	public int id;
 	private float credit;
 	@ElementCollection(fetch = FetchType.EAGER)
-	private List<String> movements;
+	private Set<String> movements;
 
 	public CurrentAccount() {
 		this.credit = 0f;
-		this.movements = new ArrayList<String>();
+		this.movements = new HashSet<String>();
 	}
 	
 	public float getCredit() {
 		return credit;
 	}
 
-	public List<String> getMovements() {
+	public Set<String> getMovements() {
 		return movements;
 	}
 
 	public void addCredit(float moreCredit) {
 		this.credit += moreCredit;
 		LocalDateTime date = LocalDateTime.now();
-		String movement = "[" + date + "] - Se acreditaron $" + moreCredit + " en tu cuenta";
+		String movement = "[" + date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear()+" - " +date.getHour()+":"+date.getMinute()+":"+date.getSecond()+ 
+						  "] - Se acreditaron $" + moreCredit + " en tu cuenta.";
 		this.movements.add(movement);
 	}
 	
@@ -46,7 +47,8 @@ public class CurrentAccount {
 		if (lessCredit <= this.credit) {
 			this.credit -= lessCredit;
 			LocalDateTime date = LocalDateTime.now();
-			String movement = "[" + date + "] - Se debitaron $" + lessCredit + " de tu cuenta";
+			String movement = "[" + date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear()+" - " +date.getHour()+":"+date.getMinute()+":"+date.getSecond()+
+							  "] - Se debitaron $" + lessCredit + " de tu cuenta.";
 			this.movements.add(movement);
 		} else
 			throw new UnableToDoTransactionException();
