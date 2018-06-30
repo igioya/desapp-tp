@@ -28,3 +28,6 @@ hs_err_pid*
 .project
 
 desapp-groupe-backend/logs/
+/node_modules
+package-lock.json
+desapp-groupe-backend/logapp.log*
