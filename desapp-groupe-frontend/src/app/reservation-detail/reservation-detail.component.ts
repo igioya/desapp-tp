@@ -13,12 +13,37 @@ import { WizardComponent, FreeNavigationMode, WizardState } from 'angular-archwi
 export class ReservationDetailComponent implements OnInit {
 
 	reservation
-	@ViewChild(WizardComponent)
-	public wizard: WizardComponent;
-
+	statesInfo
+	progress
+	progressStyle
 	constructor(private activatedRoute: ActivatedRoute,
 				public reservationService: ReservationService,
-				public authenticationService: AuthenticationService) { }
+				public authenticationService: AuthenticationService) { 
+		this.statesInfo = {
+			ReservationNotConfirmedState:"Esperando la confirmacion del dueño",
+			ReservationConfirmedState:"El dueño acepto la reserva",
+			RetireConfirmedByClientState:"El cliente confirmo el retiro del vehiculo",
+			RetireConfirmedByOwnerState:"El dueño confirmo el retiro del vehiculo",
+			RetireConfirmedState:"El auto fue retirado",
+			ReturnConfirmedByClientState:"El cliente confirmo el retorno del vehiculo",
+			ReturnConfirmedByOwnerState:"El owner confirmo el retorno del vehiculo",
+			ReturnConfirmedState:"El auto fue devuelto con exito, alquiler terminado",
+		}
+
+		this.stateProgressInfo = {
+			ReservationNotConfirmedState:0,
+			ReservationConfirmedState:20,
+			RetireConfirmedByClientState:40,
+			RetireConfirmedByOwnerState:40,
+			RetireConfirmedState:40,
+			ReturnConfirmedByClientState:80,
+			ReturnConfirmedByOwnerState:80,
+			ReturnConfirmedState:100,
+		}
+
+		this.progressStyle = {'width':'0%'}
+
+	}
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe(params => {
@@ -27,23 +52,12 @@ export class ReservationDetailComponent implements OnInit {
 		});
 	} 
 
-	initWizard(initialOrder,initOrderState){
-		this.wizard.navigation.canGoToStep(initialOrder).then((can1)=>{
-			this.wizard.navigation.goToStep(initialOrder);	
-			if(!(initialOrder===initOrderState)){
-				this.initWizard(initialOrder+1,initOrderState);
-			}
-		})	
-	}
-	
-	ngAfterViewInit(){
-		let initOrderState = this.reservation.state.order;
-		if(initOrderState !==0){
-			this.initWizard(1, initOrderState);
-		}
+	getStateInfo(){
+		return this.statesInfo[this.reservation.state.name];
 	}
 
-	show(){
+	refreshProgressStyle(){
+		this.progressStyle = {'width': this.stateProgressInfo[this.reservation.state.name]+'%'}
 	}
 
 	isReservationMakedByLoguedUser(){
@@ -52,51 +66,52 @@ export class ReservationDetailComponent implements OnInit {
 
 	confirmReservationByOwner(){
 		this.reservationService.confirmReservationByOwner(this.reservation.id).subscribe(data => {
-			this.getReservation(this.reservation.id)
-			this.goToStep(this.reservation.state.order);
+			this.getReservation(this.reservation.id);
+			this.progress = this.progress + 20;
+			this.refreshProgressStyle();
 		});
 	}
 
 	confirmRetireByClient(){
 		this.reservationService.confirmRetireByClient(this.reservation.id).subscribe(data => {
-			this.getReservation(this.reservation.id)
-			this.goToStep(this.reservation.state.order);
+			this.getReservation(this.reservation.id);
+			this.progress = this.progress + 20;
+			this.refreshProgressStyle();				
 		});
 	}
 
 	confirmReturnByClient(){
 		this.reservationService.confirmReturnByClient(this.reservation.id).subscribe(data => {
-			this.getReservation(this.reservation.id)
-			this.goToStep(this.reservation.state.order);
+			this.getReservation(this.reservation.id);
+			this.progress = this.progress + 20;
+			this.refreshProgressStyle();				
 		});
 	}
 
 	confirmRetireByOwner(){
 		this.reservationService.confirmRetireByOwner(this.reservation.id).subscribe(data => {
-			this.getReservation(this.reservation.id)
-			this.goToStep(this.reservation.state.order);
+			this.getReservation(this.reservation.id);
+			this.progress = this.progress + 20;
+			this.refreshProgressStyle();
 		});
 	}
 
 	confirmReturnByOwner(){
 		this.reservationService.confirmReturnByOwner(this.reservation.id).subscribe(data => {
-			this.getReservation(this.reservation.id)
-			this.goToStep(this.reservation.state.order);			
+			this.getReservation(this.reservation.id);
+			this.progress = this.progress + 20;
+			this.refreshProgressStyle();
 		});
 	}
 
 	getReservation(id){
 		this.reservationService.getReservation(id).subscribe(reservation => {
 			this.reservation = this.reservationsWithDatesFormatted(reservation);
+			this.refreshProgressStyle();
 			console.log(reservation);
 		});
 	}
 
-	goToStep(stepIndex){
-		this.wizard.navigation.canGoToStep(stepIndex).then((can)=>{
-			this.wizard.navigation.goToStep(stepIndex);	
-		})
-	}
 
 	canConfirmReservationByOwner():boolean{
 		return this.reservation.state.order === 0; 

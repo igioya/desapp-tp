@@ -21,73 +21,28 @@
 		</div>
 	</div>
 	<hr>
-	<div class="row">
+
+	<div class="col-md-12">
+		<div class="progress" style="height: 95px,">
+		  <div class="progress-bar  bg-info" role="progressbar" [ngStyle]="progressStyle" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>		
+		<br>
+		<div class="alert alert-primary" role="alert">
+		  {{getStateInfo()}}
+		</div>
+		
 		<div *ngIf="!isReservationMakedByLoguedUser()">	
-		<button *ngIf="canConfirmRetireByClient()" type="button" class="btn btn-default" (click)="confirmRetireByClient()" >Confirmar retiro (CLIENT)</button>
-			<button *ngIf="canConfirmReturnByClient()" type="button" class="btn btn-default" (click)="confirmReturnByClient()">Confirmar retorno (CLIENT)</button>
+		<button *ngIf="canConfirmRetireByClient()" type="button" class="btn btn-outline-info" (click)="confirmRetireByClient()" >Confirmar retiro</button>
+			<button *ngIf="canConfirmReturnByClient()" type="button" class="btn btn-outline-info" (click)="confirmReturnByClient()">Confirmar retorno</button>
 		</div>
 		
 		<div *ngIf="isReservationMakedByLoguedUser()">
-			<button *ngIf="canConfirmReservationByOwner()" type="button" class="btn btn-default" (click)="confirmReservationByOwner()">Confirmar reserva (OWNER)</button>
-			<button *ngIf="canConfirmRetireByOwner()" type="button" class="btn btn-default" (click)="confirmRetireByOwner()" >Confirmar retiro (OWNER)</button>
-			<button *ngIf="canConfirmReturnByOwner()" type="button" class="btn btn-default" (click)="confirmReturnByOwner()">Confirmar retorno (OWNER)</button>
+			<button *ngIf="canConfirmReservationByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReservationByOwner()">Confirmar reserva</button>
+			<button *ngIf="canConfirmRetireByOwner()" type="button" class="btn btn-outline-info" (click)="confirmRetireByOwner()" >Confirmar retiro</button>
+			<button *ngIf="canConfirmReturnByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReturnByOwner()">Confirmar retorno</button>
 		</div>
-
 	</div>
+	<div class="col-md-12" style="margin-bottom: 10%;"></div>
 
-	<!--<div style="margin-top: 5%;">
-		<div class="row"> 
-			<div class="col-md-6">
-				<span style="text-align: left;"><h5>Estado de la reserva</h5> </span>
-			</div>
-			<div class="col-md-6"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<aw-wizard>
-				  <aw-wizard-step stepTitle="Not accepted by Owner">
-				    Esperando que el dueño del vehiculo acepte la reserva.
-				  </aw-wizard-step>
-
-				  <aw-wizard-step stepTitle="Accepted by Owner">
-				    El dueño del vehiculo acepto la reserva. A la espera del retiro del vehiculo por parte del cliente.
-				  </aw-wizard-step>
-
-				  <aw-wizard-step stepTitle="Retire confirmed">
-				    Se confirmo el retiro del vehiculo.
-				  </aw-wizard-step>
-
-				  <aw-wizard-step stepTitle="Return confirmed">
-				    Se confirmo el retorno del vehiculo. La reserva queda cerrada.
-				  </aw-wizard-step>
-
-				  <aw-wizard-completion-step stepTitle="Finalized">
-				  	Alquiler cerrado
-				  </aw-wizard-completion-step>
-				</aw-wizard>
-			</div>
-		</div>
-	</div>-->
 
 </div>
-
-
-<!--/**
- * States management:
- * 
- * 	  ReservationNotConfirmedState: when the client requested a reservation. 
- * 				 |
- * 		ReservationConfirmedState: when publication owner accepted the reservation. 
- * 				 |
- * 	   RetireConfirmedByClientState: when the client confirmed that the vehicle has been retired, but not the owner.
- * 				 o
- * 	    RetireConfirmedByOwnerState: when the publication owner confirmed that the vehicle has been retired, but not the client.
- * 				 |
- * 	      RetireConfirmedState: when the client and the owner confirmed that the vehicle has been retired.
- * 				 |
- * 	 ConfirmedReturnByOwnerState: when publication owner confirmed that the client return the vehicle, but not the client.
- * 				 o
- * 	 ConfirmedReturnByClientState: when client confirmed that returned the vehicle,but not the owner
- * 				 |
- * 		ConfirmedReturnState:	when the client and the owner confirmed that the vehicle has been returned.
- **/-->
