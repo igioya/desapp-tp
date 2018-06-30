@@ -21,6 +21,10 @@ export class RetireCreditComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(){
     let email = this.authService.getUserLoggedIn().email;
     this.userService.getUserByEmail(email).subscribe(user => {
       console.log(user);
@@ -28,11 +32,11 @@ export class RetireCreditComponent implements OnInit {
       this.account = user['currentAccount'];
       console.log(this.account);
     });
-}
+  } 
 
   retireCredit(){
     this.userService.retireCredit(this.u.id,this.retireC).subscribe(
-      res => { this.router.navigate(["home"])},
+      res => { this.getUser()},
       error => console.log(error)
     )
   }

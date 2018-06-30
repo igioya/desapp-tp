@@ -22,6 +22,10 @@ export class AddCreditComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(){
       let email = this.authService.getUserLoggedIn().email;
       this.userService.getUserByEmail(email).subscribe(user => {
         console.log(user);
@@ -35,7 +39,7 @@ export class AddCreditComponent implements OnInit {
     console.log(this.u.id)
     console.log(this.addC)
     this.userService.addCredit(this.u.id,this.addC).subscribe(
-      res => { this.router.navigate(["home"])},
+      res => { this.getUser()},
       error => console.log(error)
     )
   }
