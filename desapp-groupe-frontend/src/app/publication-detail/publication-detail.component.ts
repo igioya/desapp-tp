@@ -29,7 +29,12 @@ export class PublicationDetailComponent implements OnInit {
 	makeReservation(){
 		//Checkear que la la publicacion que se quiere reservar no sea una publicacion del usuario logueado.
 		//Chequear que el usuario tenga fullProfile.
-		this.router.navigate([this.router.url + '/makeReservation'])
+		let haveFullProfile = this.authService.getUserLoggedIn().haveFullProfile;
+		if(haveFullProfile){
+			this.router.navigate([this.router.url + '/makeReservation'])			
+		} else {
+			this.router.navigate(['/userProfile'])
+		}
 	}
 
 	isMyPublication(email:string){

@@ -37,6 +37,13 @@ export class User {
         return this;
     }
 
+    merge(user:User){
+        this.id = user.id;
+        this.cuil = user.cuil;
+        this.address = user.address;
+        return this;
+    }
+
     setHaveFullProfile(boolean:boolean){
         this.haveFullProfile = boolean;
     }

@@ -20,25 +20,28 @@ export class AuthenticationService {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       (userData) => {
-        this.buildedUser = new User().fromSocialUser(userData);
         localStorage.setItem('id_token', userData.idToken);
+        return userData;
       }
-    ).then(()=>{
+    ).then((userData)=>{
       //Verify if have full profile
-      this.userService.haveFullProfile(this.buildedUser.email).subscribe(haveFullProfile => { 
+      this.userService.haveFullProfile(userData.email).subscribe(haveFullProfile => { 
+          console.log("userData",userData)
+          this.buildedUser = new User().fromSocialUser(userData);
           this.buildedUser.haveFullProfile = haveFullProfile;
           if(this.buildedUser.haveFullProfile){
             //Fetch User Id
             this.userService.getUserByEmail(this.buildedUser.email).subscribe(user => { 
-                this.buildedUser.id = user.id;
-                this.setCookie('user', this.buildedUser);
-                this.router.navigate(['home']);   
+                this.buildedUser = this.buildedUser.merge(user);
+                console.log("this.buildedUser",this.buildedUser)
             }, err => console.error(err),
                () => console.log('ioioo')
             );
           } else {
             this.router.navigate(['home']);   
           }
+          this.setCookie('user', this.buildedUser);
+          this.router.navigate(['home']);   
       }, err => console.error(err),
          () => console.log('nana')
       );
@@ -70,6 +73,10 @@ export class AuthenticationService {
 
   getUserLoggedIn():User{
     return JSON.parse(this.getCookie('user'));
+  }
+
+  setUserLoggedIn(user:User){
+    return this.setCookie('user',user);
   }
 
   /*auth0 = new auth0.WebAuth({
