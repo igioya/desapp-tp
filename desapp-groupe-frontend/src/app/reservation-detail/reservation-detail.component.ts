@@ -16,6 +16,7 @@ export class ReservationDetailComponent implements OnInit {
 	statesInfo
 	progress
 	progressStyle
+	stateProgressInfo
 	constructor(private activatedRoute: ActivatedRoute,
 				public reservationService: ReservationService,
 				public authenticationService: AuthenticationService) { 
