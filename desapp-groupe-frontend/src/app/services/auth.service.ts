@@ -35,13 +35,16 @@ export class AuthenticationService {
                 this.buildedUser = this.buildedUser.merge(user);
                 console.log("this.buildedUser",this.buildedUser)
             }, err => console.error(err),
-               () => console.log('ioioo')
+               () => {
+                this.setCookie('user', this.buildedUser);
+                this.router.navigate(['home']);   
+                
+               }
             );
           } else {
             this.router.navigate(['home']);   
           }
-          this.setCookie('user', this.buildedUser);
-          this.router.navigate(['home']);   
+          console.log("FALALALA",this.buildedUser)
       }, err => console.error(err),
          () => console.log('nana')
       );
