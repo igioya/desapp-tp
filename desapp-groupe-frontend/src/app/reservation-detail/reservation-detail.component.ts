@@ -25,10 +25,10 @@ export class ReservationDetailComponent implements OnInit {
 			ReservationConfirmedState:"El dueño acepto la reserva",
 			RetireConfirmedByClientState:"El cliente confirmo el retiro del vehiculo",
 			RetireConfirmedByOwnerState:"El dueño confirmo el retiro del vehiculo",
-			RetireConfirmedState:"El auto fue retirado",
+			RetireConfirmedState:"El vehiculo fue retirado",
 			ReturnConfirmedByClientState:"El cliente confirmo el retorno del vehiculo",
 			ReturnConfirmedByOwnerState:"El dueño confirmo el retorno del vehiculo",
-			ReturnConfirmedState:"El auto fue devuelto con exito, alquiler terminado",
+			ReturnConfirmedState:"El vehiculo fue devuelto con exito, alquiler terminado",
 		}
 
 		this.stateProgressInfo = {

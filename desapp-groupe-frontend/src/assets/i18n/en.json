@@ -116,4 +116,13 @@
 	"Confirmar retiro": "Confirm retire",
 	"Confirmar retorno": "Confirm return",
 
+	"Esperando la confirmacion del dueño": "Waiting for confirmation from the owner",
+	"El dueño acepto la reserva": "The owner accepted the reservation",
+	"El cliente confirmo el retiro del vehiculo": "The customer confirmed the retire of the vehicle",
+	"El dueño confirmo el retiro del vehiculo": "The owner confirmed the retire of the vehicle",
+	"El vehiculo fue retirado": "The vehicle was retired",
+	"El cliente confirmo el retorno del vehiculo": "The customer confirmed the return of the vehicle",
+	"El dueño confirmo el retorno del vehiculo": "The owner confirmed the return of the vehicle",
+	"El vehiculo fue devuelto con exito, alquiler terminado": "The vehicle was successfully returned, rent finished"
+
 }
