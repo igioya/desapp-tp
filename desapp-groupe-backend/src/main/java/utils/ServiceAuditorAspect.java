@@ -20,7 +20,7 @@ public class ServiceAuditorAspect {
     public void logBeforeUser(JoinPoint joinPoint){
 
         logger.info("<timestamp="+ LocalDateTime.now()+
-                ", user=?????" +
+                ", user=Unknown" +
                 ", operacion/metodo=" + joinPoint.getSignature().getName()+
                 ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
         );
@@ -30,7 +30,7 @@ public class ServiceAuditorAspect {
     public void logBeforeVehicle(JoinPoint joinPoint){
 
         logger.info("<timestamp="+ LocalDateTime.now()+
-                ", user=?????" +
+                ", user=Unknown" +
                 ", operacion/metodo=" + joinPoint.getSignature().getName()+
                 ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
         );
@@ -40,7 +40,7 @@ public class ServiceAuditorAspect {
     public void logBeforePublication(JoinPoint joinPoint){
 
         logger.info("<timestamp="+ LocalDateTime.now()+
-                ", user=?????" +
+                ", user=Unknown" +
                 ", operacion/metodo=" + joinPoint.getSignature().getName()+
                 ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
         );
@@ -50,7 +50,7 @@ public class ServiceAuditorAspect {
     public void logBeforeReservation(JoinPoint joinPoint){
 
         logger.info("<timestamp="+ LocalDateTime.now()+
-                ", user=?????" +
+                ", user=Unknown" +
                 ", operacion/metodo=" + joinPoint.getSignature().getName()+
                 ", parametros=" + Arrays.toString(joinPoint.getArgs()) + ">"
         );

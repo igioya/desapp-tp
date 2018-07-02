@@ -103,6 +103,10 @@
 	"Filtrar por categoria:": "Filter by category:",
 	"Auto": "Car",
 	"Moto": "Motorbike",
-	"Camion" : "Truck"
+	"Camion" : "Truck",
+
+	"Reservas que me hicieron": "Reservations that made me",
+	"ID de publicacion": "Post ID",
+	"Estado": "State"
 
 }
