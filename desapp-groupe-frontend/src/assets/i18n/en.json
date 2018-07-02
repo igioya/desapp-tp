@@ -107,6 +107,13 @@
 
 	"Reservas que me hicieron": "Reservations that made me",
 	"ID de publicacion": "Post ID",
-	"Estado": "State"
+	"Estado": "State",
+
+	"Reserva": "Reservation",
+	"Cliente": "Client",
+	"Seguimiento del alquiler": "Rental tracking",
+	"Confirmar reserva": "Confirm reservation",
+	"Confirmar retiro": "Confirm retire",
+	"Confirmar retorno": "Confirm return",
 
 }

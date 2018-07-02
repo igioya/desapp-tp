@@ -27,7 +27,7 @@ export class ReservationDetailComponent implements OnInit {
 			RetireConfirmedByOwnerState:"El dueño confirmo el retiro del vehiculo",
 			RetireConfirmedState:"El auto fue retirado",
 			ReturnConfirmedByClientState:"El cliente confirmo el retorno del vehiculo",
-			ReturnConfirmedByOwnerState:"El owner confirmo el retorno del vehiculo",
+			ReturnConfirmedByOwnerState:"El dueño confirmo el retorno del vehiculo",
 			ReturnConfirmedState:"El auto fue devuelto con exito, alquiler terminado",
 		}
 

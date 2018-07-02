@@ -1,20 +1,20 @@
 <div class="container">
 	<div class="row" style="margin-top: 3%;">
 		<div class="col-md-6">
-			<span style="text-align: left;"><h2>Reserva #{{reservation.id}}</h2></span>
+			<span style="text-align: left;"><h2> {{ 'Reserva' | translate }} #{{reservation.id}}</h2></span>
 		</div>
 	</div>
 	<hr>
 	<div class="row">
 		<div class="col-md-6" style="margin-top: 5%;">
-			<span style="text-align: left;"> <h5>Cliente: {{reservation.client.name}} {{reservation.client.surname}}</h5></span><br>
-			<span> Desde: {{reservation.fromDate}} </span><br>
-			<span> Hasta: {{reservation.toDate}}</span><br>
-			<span> Dueño: {{reservation.publication.owner.name}} {{reservation.publication.owner.surname}}</span><br>
-			<span> Telefono de contacto: {{reservation.publication.telephone}}</span><br>
-			<span> Modelo del auto: {{reservation.publication.vehicle.model}}</span><br>
-			<span> Cantidad de pasajeros: {{reservation.publication.vehicle.numberOfPassengers}}</span><br>
-			<span> Estado de la reserva: {{reservation.state.name}}</span><br>
+			<span style="text-align: left;"> <h5>{{ 'Cliente' | translate }}: {{reservation.client.name}} {{reservation.client.surname}}</h5></span><br>
+			<span> {{ 'Desde' | translate }}: {{reservation.fromDate}} </span><br>
+			<span> {{ 'Hasta' | translate }}: {{reservation.toDate}}</span><br>
+			<span> {{ 'Dueño' | translate }}: {{reservation.publication.owner.name}} {{reservation.publication.owner.surname}}</span><br>
+			<span> {{ 'Telefono' | translate }}: {{reservation.publication.telephone}}</span><br>
+			<span> {{ 'Modelo' | translate }}: {{reservation.publication.vehicle.model}}</span><br>
+			<span> {{ 'Capacidad de pasajeros' | translate }}: {{reservation.publication.vehicle.numberOfPassengers}}</span><br>
+			<span> {{ 'Estado' | translate }}: {{reservation.state.name}}</span><br>
 		</div>
 		<div class="col-md-6" style="margin-top: 5%;">
 			<img [src]="reservation.publication.vehicle.photo" style="max-width: 80%;max-height: 80%;"/>
@@ -29,18 +29,18 @@
 		</div>		
 		<br>
 		<div class="alert alert-primary" role="alert">
-		  {{getStateInfo()}}
+		{{ getStateInfo() | translate}}
 		</div>
 		
 		<div *ngIf="!isReservationMakedByLoguedUser()">	
-		<button *ngIf="canConfirmRetireByClient()" type="button" class="btn btn-outline-info" (click)="confirmRetireByClient()" >Confirmar retiro</button>
-			<button *ngIf="canConfirmReturnByClient()" type="button" class="btn btn-outline-info" (click)="confirmReturnByClient()">Confirmar retorno</button>
+		<button *ngIf="canConfirmRetireByClient()" type="button" class="btn btn-outline-info" (click)="confirmRetireByClient()" >{{ 'Confirmar retiro' | translate}}</button>
+			<button *ngIf="canConfirmReturnByClient()" type="button" class="btn btn-outline-info" (click)="confirmReturnByClient()">{{ 'Confirmar retorno' | translate}}</button>
 		</div>
 		
 		<div *ngIf="isReservationMakedByLoguedUser()">
-			<button *ngIf="canConfirmReservationByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReservationByOwner()">Confirmar reserva</button>
-			<button *ngIf="canConfirmRetireByOwner()" type="button" class="btn btn-outline-info" (click)="confirmRetireByOwner()" >Confirmar retiro</button>
-			<button *ngIf="canConfirmReturnByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReturnByOwner()">Confirmar retorno</button>
+			<button *ngIf="canConfirmReservationByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReservationByOwner()">{{ 'Confirmar reserva' | translate}}</button>
+			<button *ngIf="canConfirmRetireByOwner()" type="button" class="btn btn-outline-info" (click)="confirmRetireByOwner()" >{{ 'Confirmar retiro' | translate}}</button>
+			<button *ngIf="canConfirmReturnByOwner()" type="button" class="btn btn-outline-info" (click)="confirmReturnByOwner()">{{ 'Confirmar retorno' | translate}}</button>
 		</div>
 	</div>
 	<div class="col-md-12" style="margin-bottom: 10%;"></div>

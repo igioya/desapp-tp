@@ -39,8 +39,8 @@
 		<tbody >
 		  <tr *ngFor="let reservation of reservations">
 		    <td> {{reservation.publication.id}} </td>
-		    <td> {{reservation.toDate}} </td>
-		    <td> {{reservation.fromDate}} </td>
+		    <td> {{reservation.toDate | date}} </td>
+		    <td> {{reservation.fromDate | date}} </td>
 		    <td> {{reservation.state.name}} </td>
 		    <td> <a class="btn btn-outline-secondary" (click)="showReservation(reservation)" > {{ 'Ver' | translate }} </a> </td>
 		  </tr>    
