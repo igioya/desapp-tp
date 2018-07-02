@@ -34,19 +34,21 @@ export class AuthenticationService {
             this.userService.getUserByEmail(this.buildedUser.email).subscribe(user => { 
                 this.buildedUser = this.buildedUser.merge(user);
                 console.log("this.buildedUser",this.buildedUser)
-            }, err => console.error(err),
-               () => {
                 this.setCookie('user', this.buildedUser);
                 this.router.navigate(['home']);   
-                
+            }, err => console.error(err),
+               () => {
                }
             );
           } else {
+            this.setCookie('user', this.buildedUser);
             this.router.navigate(['home']);   
           }
           console.log("FALALALA",this.buildedUser)
       }, err => console.error(err),
-         () => console.log('nana')
+         () => {
+
+         }
       );
     });
   }
