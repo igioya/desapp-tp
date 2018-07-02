@@ -29,7 +29,7 @@
 		</div>		
 		<br>
 		<div class="alert alert-primary" role="alert">
-		{{getStateInfo()}}
+		{{getStateInfo() | translate}}
 		</div>
 		
 		<div *ngIf="!isReservationMakedByLoguedUser()">	
