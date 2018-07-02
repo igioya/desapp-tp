@@ -28,6 +28,7 @@ import model.states.reservation.ReturnConfirmedByOwnerState;
 import model.states.reservation.ReturnConfirmedState;
 import model.states.reservation.State;
 import utils.DateRange;
+import utils.EmailSenderService;
 import webservice.serialization.ReservationDeserializer;
 import webservice.serialization.ReservationSerializer;
 
@@ -70,6 +71,8 @@ public class Reservation {
 	private State state;
 	@Transient
 	private Timer timer;
+//	@Transient
+//	EmailSenderService sender;
 	private LocalDateTime timeRemaing;
 	private static Double MINUTES = 30.00;
 
@@ -79,11 +82,13 @@ public class Reservation {
 		this.toDate = toDate;
 		this.state = new ReservationNotConfirmedState();
 		this.timer = new Timer();
+//		this.sender = new EmailSenderService();
 	}
 	
 	public Reservation(){
 		this.state = new ReservationNotConfirmedState();
 		this.timer = new Timer();
+//		this.sender = new EmailSenderService();
 	}
 	
 	public User getClient() {
@@ -119,7 +124,9 @@ public class Reservation {
 	}
 	
 	public void confirmReservationByOwner() {
-		this.state = new ReservationConfirmedState();		
+		this.state = new ReservationConfirmedState();
+		
+//		sender.sendEmail("Confirmacion de reserva", "CONFIRMO RESERVA DUEÑO", this.client.getEmail());
 	}
 
 	public void confirmRetireByClient() {
@@ -130,6 +137,8 @@ public class Reservation {
 		);
 		
 		this.startTimer(new ReservationConfirmedState());
+		
+//		sender.sendEmail("Confirmacion de retiro por el cliente", "CONFIRMO RETIRO CLIENTE", this.publication.getOwner().getEmail());
 	}
 
 	public void confirmRetireByOwner() {
@@ -138,7 +147,9 @@ public class Reservation {
 				new RetireConfirmedState(), 
 				new RetireConfirmedByOwnerState()
 		);
-		startTimer(new RetireConfirmedState());		
+		startTimer(new RetireConfirmedState());
+		
+//		sender.sendEmail("Confirmacion de retiro por el dueño", "CONFIRMO RETIRO DUEÑO", this.client.getEmail());
 	}
 
 	private void startTimer(State state) {
@@ -164,6 +175,8 @@ public class Reservation {
 				new ReturnConfirmedState(), 
 				new ReturnConfirmedByOwnerState()
 		);
+		
+//		sender.sendEmail("Confirmacion de retorno por el dueño", "CONFIRMO RETORNO DUEÑO", this.client.getEmail());
 	}
 
 	public void confirmReturnByClient() {
@@ -172,6 +185,8 @@ public class Reservation {
 				new ReturnConfirmedState(), 
 				new ReturnConfirmedByClientState()
 		);
+		
+//		sender.sendEmail("Confirmacion de retorno por el cliente", "CONFIRMO RETORNO CLIENTE", this.publication.getOwner().getEmail());
 	}
 	
 	private void confirmAction(Supplier<Boolean> methodToRun, State stateToSet, State defaultStateToSet){
