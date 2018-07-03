@@ -49,7 +49,7 @@ export class PublicationFormComponent implements OnInit {
     this.publicationService.newPublication(pub).subscribe(data => { 
       this.notificationService.onSuccess("Guardada","La publicacion se guado con exito"); 
       this.router.navigate(['']); 
-    }, (err) => {
+    }, (error) => {
       this.notificationService.onError(error.statusText,error.message); 
     }
     );

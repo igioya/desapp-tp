@@ -71,7 +71,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
-			this.notificationService.onSuccess("Ok");
+			this.notificationService.onSuccess("Ok","");
 		});
 	}
 
@@ -80,7 +80,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();	
-			this.notificationService.onSuccess("Ok");			
+			this.notificationService.onSuccess("Ok","");			
 		});
 	}
 
@@ -89,7 +89,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
-			this.notificationService.onSuccess("Ok");				
+			this.notificationService.onSuccess("Ok","");				
 		});
 	}
 
@@ -98,7 +98,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
-			this.notificationService.onSuccess("Ok");
+			this.notificationService.onSuccess("Ok","");
 		});
 	}
 
@@ -107,7 +107,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
-			this.notificationService.onSuccess("Ok");
+			this.notificationService.onSuccess("Ok","");
 		});
 	}
 

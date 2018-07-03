@@ -40,7 +40,7 @@ export class VehicleFormComponent {
       this.userService.addVehicle(owner, vehicleObj).subscribe(data => { 
         this.notificationService.onSuccess("Guardado", "El vehiculo fue guardado con exito");
         this.router.navigate(['userVehicles']); 
-      },(err) => {
+      },(error) => {
         this.notificationService.onError(error.statusText,error.message);  
       },() => console.log('done loading vehicles')
       );
