@@ -7,6 +7,7 @@ import { Vehicle } from '../../model/vehicle';
 import { PublicationService } from '../services/publication.service';
 import { AuthenticationService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-publication-form',
@@ -33,7 +34,8 @@ export class PublicationFormComponent implements OnInit {
               private publicationService: PublicationService, 
               private router: Router,
               private userService: UserService,
-              private authService: AuthenticationService) 
+              private authService: AuthenticationService,
+              private notificationService: NotificationService) 
     { }
 
     ngOnInit() {
@@ -44,9 +46,12 @@ export class PublicationFormComponent implements OnInit {
   newPublication() {
     this.publication.get('owner').setValue(this.owner);
     let pub = this.publication.getRawValue();
-    this.publicationService.newPublication(pub).subscribe(
-      data => { this.router.navigate(['']); },
-      err => console.error(err)
+    this.publicationService.newPublication(pub).subscribe(data => { 
+      this.notificationService.onSuccess("Guardada","La publicacion se guado con exito"); 
+      this.router.navigate(['']); 
+    }, (err) => {
+      this.notificationService.onError(error.statusText,error.message); 
+    }
     );
   }
 
