@@ -1,7 +1,13 @@
 <div class="container"> 
   <div class="row" style="margin-top: 3%;">
-    <h1 translate class="title">Mis vehiculos</h1>
+    <div class="col-md-4">
+      <h1 translate class="title">Mis vehiculos</h1>
+    </div>
+    <div class="col-md-8" style="text-align: right;">
+      <button class="btn btn-outline-success" routerLink="/newVehicle">Nuevo</button>              
+    </div>
   </div>
+
   <ul style="margin-top: 3%;">
       <div>
         <li class="list-group-item" *ngFor="let vehicle of vehicles">

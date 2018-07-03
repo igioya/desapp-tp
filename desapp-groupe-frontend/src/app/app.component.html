@@ -33,28 +33,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent"
   *ngIf="(authenticationService.isLoggedIn())">
   <ul class="navbar-nav mr-auto">
-  <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdd" role="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        {{ 'Agregar...' | translate }}
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="nav-link" routerLink="/newUser"> {{ 'Usuario' | translate }} </a>
-        <a class="nav-link" routerLink="/newVehicle"> {{ 'Vehiculo' | translate }} </a>
-        <a class="nav-link" routerLink="/newPublication"> {{ 'Publicacion' | translate }} </a>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/newPublication"> {{ 'Publicacion' | translate }} </a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownView" role="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        {{ 'Ver...' | translate }}
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="nav-link" routerLink="/users"> {{ 'Usuarios' | translate }} </a>
-        <a class="nav-link" routerLink="/vehicles"> {{ 'Vehiculos' | translate }} </a>
-        <a class="nav-link" routerLink="/publications"> {{ 'Publicaciones' | translate }} </a>
+    <li class="nav-item">
         <a class="nav-link" routerLink="/googleMaps"> {{ 'Publicaciones (mapa)' | translate }} </a>
-      </div>
     </li>
   </ul>
 

@@ -18,8 +18,8 @@ export class UserProfileComponent implements OnInit {
   user : FormGroup = this.formBuilder.group({
     id : new FormControl(''), 
     cuil : new FormControl('',[Validators.required, Validators.minLength(11),Validators.maxLength(11)]),
-    name: new FormControl('',[Validators.required, Validators.minLength(3),Validators.maxLength(50)]),
-    surname: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(50)]),
+    name: new FormControl('',[Validators.required, Validators.minLength(1),Validators.maxLength(50)]),
+    surname: new FormControl('',[Validators.required, Validators.minLength(1),Validators.maxLength(50)]),
     address: new FormControl('',Validators.required),
     email: new FormControl('',[Validators.required, Validators.email]),
   });
