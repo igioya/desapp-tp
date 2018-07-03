@@ -25,10 +25,7 @@
 				<div *ngIf="!isMyPublication(publication.owner.email)">
 				<button class="btn btn-outline-secondary" (click)="makeReservation()" >{{ 'Alquilar' | translate }}</button>
 				</div>
-				<div class="row" style="margin-top: 3%;">
-					<div class="col-md-6" *ngIf="isMyPublication(publication.owner.email)">
-					  <a class="btn btn-outline-secondary" (click)="deletePublication(publication.id)"> {{ 'Eliminar' | translate }} </a>
-					</div>
+				<div class="row" style="margin-top: 3%;text-align: center">
 					<div class="col-md-6" *ngIf="isMyPublication(publication.owner.email)">
 					  <a class="btn btn-outline-primary" (click)="editPublication(publication)"> {{ 'Editar' | translate }} </a>
 					</div>
