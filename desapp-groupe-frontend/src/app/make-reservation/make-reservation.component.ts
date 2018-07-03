@@ -70,6 +70,8 @@ export class MakeReservationComponent implements OnInit {
 		).subscribe(publication => {
 			this.notificationService.onSuccess("Reserva realizada", "La reserva se realizo con exito");
 	    	this.router.navigate(['userReservations']);
+	    }, (error)=>{
+			this.notificationService.onError(error.statusText,error.message);  
 	    });
 
 	}
