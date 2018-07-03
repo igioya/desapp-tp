@@ -42,6 +42,7 @@
 	"El maximo de caracteres permitidos es 200.": "The maximun allowed characters is 200.",
 	"La imagen es requerida.": "The picture is required.",
 	"Guardar": "Save",
+	"Publicar vehiculo":"Post vehicle",
 
 	"Nueva Publicacion": "New Post",
 	"Costo por hora": "Cost per hour",
