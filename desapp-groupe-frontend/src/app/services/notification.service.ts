@@ -41,6 +41,10 @@ export class NotificationService {
 		};
 	}
 
+	getService(){
+		return this.snotifyService;
+	}
+
 	onSuccess(title,body) {
     	this.snotifyService.success(body, title, this.getConfig());
 	}

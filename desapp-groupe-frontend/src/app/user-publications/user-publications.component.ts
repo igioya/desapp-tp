@@ -52,15 +52,18 @@ export class UserPublicationsComponent implements OnInit {
 	delete(publication){
 		console.log(publication.id)
 		this.notificationService.onConfirmation("Confirmar","Desea eliminar la publicacion?",[
-	        {text: 'Si', action: (toast) => {this.confirmDelete(publication);this.notificationService.snotifyService.remove(toast.id);}},
-	        {text: 'Cancelar', action: (toast) => {this.notificationService.snotifyService.remove(toast.id); }, bold: true},
+	        {text: 'Si', action: (toast) => {this.confirmDelete(publication);this.notificationService.getService().remove(toast.id);}},
+	        {text: 'Cancelar', action: (toast) => {this.notificationService.getService().remove(toast.id); }, bold: true},
 	    ])
 	}
 
 	confirmDelete(publication){
 		this.publicationService.deletePublication(publication.id).subscribe(data => { 
+			this.notificationService.onSuccess("Eliminada", "Publicacion eliminada con exito")
 			this.getMyPublications();
-	  	}, err => console.error(err),
+	  	}, error => {
+	  		this.notificationService.onError(error.statusText,error.message)
+	  	},
 	       () => console.log('done loading userPublications')
 	    );
 	}
