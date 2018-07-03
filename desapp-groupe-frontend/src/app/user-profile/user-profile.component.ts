@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { UserService } from '../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../services/auth.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,7 +28,8 @@ export class UserProfileComponent implements OnInit {
               private userService: UserService, 
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private authenticationService: AuthenticationService) 
+              private authenticationService: AuthenticationService,
+              private notificationService: NotificationService) 
     { }
 
   ngOnInit(){

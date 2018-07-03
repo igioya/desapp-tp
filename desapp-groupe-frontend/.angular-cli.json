@@ -20,7 +20,10 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/ng-snotify/styles/simple.css",
+        "../node_modules/ng-snotify/styles/dark.css",
+        "../node_modules/ng-snotify/styles/material.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

@@ -38,6 +38,9 @@ import { ReservationDetailComponent } from './reservation-detail/reservation-det
 import { UserPublicationsComponent } from './user-publications/user-publications.component';
 import { ArchwizardModule, WizardState, WizardComponent } from 'angular-archwizard';
 import { UserVehiclesComponent } from './user-vehicles/user-vehicles.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { NotificationService } from './services/notification.service';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -191,7 +194,7 @@ export function provideConfig() {
     }),
     SocialLoginModule.initialize(config),
     MyDatePickerModule,
-    ArchwizardModule
+    SnotifyModule,
   ],
   providers: [
     UserService,
@@ -217,7 +220,9 @@ export function provideConfig() {
       provide: LOCALE_ID, 
       useValue: 'en-US'
     },
-    WizardState,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService,
+    NotificationService,
   ],
   bootstrap: [AppComponent]
 })
