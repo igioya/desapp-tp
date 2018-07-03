@@ -10,6 +10,7 @@ export class User {
     public imgProfile:string ;
     public haveFullProfile:boolean;
     public rating;
+    public state;
     
     constructor(
         cuil?: string,
