@@ -50,14 +50,14 @@ export class UserProfileComponent implements OnInit {
   updateUser() {
     let userObj = this.user.getRawValue();
     console.log("this.user",userObj)
-	  this.userService.newUser(userObj).subscribe(data =>{
-	  	this.userService.getUserByEmail(this.u.email).subscribe(user => {
-	  		console.log("2")
-	      	user.haveFullProfile = true;
-	      	user.imgProfile = this.u.imgProfile;
-	      	this.authenticationService.setUserLoggedIn(user)
-	  	});
-	  });  
+    this.userService.newUser(userObj).subscribe(data =>{
+      this.userService.getUserByEmail(this.u.email).subscribe(user => {
+          user.haveFullProfile = true;
+          user.imgProfile = this.u.imgProfile;
+          delete user.rating;
+          delete user.state;
+      });
+    });  
   }
 
 
