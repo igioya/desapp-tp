@@ -56,7 +56,14 @@ export class UserProfileComponent implements OnInit {
           user.imgProfile = this.u.imgProfile;
           delete user.rating;
           delete user.state;
+          this.authenticationService.setUserLoggedIn(user)
+          this.notificationService.onSuccess("Guardado", "El perfil fue completado");
+          this.ngOnInit();
+      }, (error)=>{
+          this.notificationService.onError(error.statusText,error.message);  
       });
+    },(error)=>{
+      this.notificationService.onError(error.statusText,error.message);
     });  
   }
 
