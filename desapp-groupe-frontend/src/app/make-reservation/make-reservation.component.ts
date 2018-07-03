@@ -8,7 +8,8 @@ import { User } from '../../model/user';
 import { SocialUser } from "angularx-social-login";
 import { Location } from '@angular/common'
 import { AuthService } from "angularx-social-login";
-import {IMyDpOptions} from 'mydatepicker';
+import { IMyDpOptions } from 'mydatepicker';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class MakeReservationComponent implements OnInit {
               private publicationService: PublicationService,
               private location: Location,
               private authService:AuthService,
-              private authenticationService: AuthenticationService) { 
+              private authenticationService: AuthenticationService,
+              private notificationService: NotificationService) { 
   		this.datepickerFromDate = { date: { year: 2018, month: 10, day: 9 } };
   	}
 
@@ -52,12 +54,14 @@ export class MakeReservationComponent implements OnInit {
 		console.log("!$%&/&&/(%$#&%/&$%#&%:", client);
 		delete client.haveFullProfile;
 		delete client.imgProfile;
+		delete client.rating
 		let newReservation:Reservation = new Reservation(client, newFromDate, newToDate);
 		console.log("!$%&/&&/(%$#&%/&$%#&%: ", newReservation.client);
 		console.log("this.authenticationService.getUSerLogued(): ",this.authenticationService.getUserLoggedIn());
 		console.log("newReservation: ",newReservation);
 		this.publicationService.newReservation(newReservation,this.publicationId
 		).subscribe(publication => {
+			this.notificationService.onSuccess("Reserva realizada", "La reserva se realizo con exito");
 	    	this.router.navigate(['userReservations']);
 	    });
 
