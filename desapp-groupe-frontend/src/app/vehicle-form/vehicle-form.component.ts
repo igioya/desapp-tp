@@ -6,6 +6,7 @@ import { VEHICLES } from '../../model/data';
 import { VehicleService } from '../services/vehicle.service';
 import { AuthenticationService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -29,16 +30,19 @@ export class VehicleFormComponent {
               private vehicleService: VehicleService, 
               private router: Router,
               private authService: AuthenticationService,
-              private userService: UserService) 
+              private userService: UserService,
+              private notificationService: NotificationService) 
     { }
 
   newVehicle() {
       let vehicleObj = this.vehicle.getRawValue();
       let owner = this.authService.getUserLoggedIn().email;
       this.userService.addVehicle(owner, vehicleObj).subscribe(data => { 
-        this.router.navigate(['userVehicles']); },
-        err => console.error(err),
-       () => console.log('done loading vehicles')
+        this.notificationService.onSuccess("Guardado", "El vehiculo fue guardado con exito");
+        this.router.navigate(['userVehicles']); 
+      },(err) => {
+        this.notificationService.onError(error.statusText,error.message);  
+      },() => console.log('done loading vehicles')
       );
   }
 
