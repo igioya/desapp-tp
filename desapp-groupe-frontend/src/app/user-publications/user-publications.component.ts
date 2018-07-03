@@ -3,6 +3,7 @@ import { AuthenticationService } from '../services/auth.service';
 import { PublicationService } from '../services/publication.service';
 import { ReservationService } from '../services/reservation.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-user-publications',
@@ -16,7 +17,8 @@ export class UserPublicationsComponent implements OnInit {
 	constructor(public authenticationService: AuthenticationService,
 			  public publicationService: PublicationService,
 			  public reservationService: ReservationService,
-			  public router: Router) { }
+			  public router: Router,
+			  private notificationService: NotificationService) { }
 
 	ngOnInit() {
 		this.getMyPublications();
@@ -49,6 +51,13 @@ export class UserPublicationsComponent implements OnInit {
 
 	delete(publication){
 		console.log(publication.id)
+		this.notificationService.onConfirmation("Confirmar","Desea eliminar la publicacion?",[
+	        {text: 'Si', action: (toast) => {this.confirmDelete(publication);this.notificationService.snotifyService.remove(toast.id);}},
+	        {text: 'Cancelar', action: (toast) => {this.notificationService.snotifyService.remove(toast.id); }, bold: true},
+	    ])
+	}
+
+	confirmDelete(publication){
 		this.publicationService.deletePublication(publication.id).subscribe(data => { 
 			this.getMyPublications();
 	  	}, err => console.error(err),

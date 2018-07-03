@@ -19,7 +19,7 @@ export class NotificationService {
 	titleMaxLength = 15;
 	bodyMaxLength = 80;
 
-	constructor(private snotifyService: SnotifyService) { }
+	constructor(public snotifyService: SnotifyService) { }
 
 	getConfig(): SnotifyToastConfig {
 		this.snotifyService.setDefaults({
@@ -119,19 +119,14 @@ export class NotificationService {
 	      }), config);
 	  }
 
-	onConfirmation() {
+	onConfirmation(title,body,buttons) {
 	    /*
 	    Here we pass an buttons array, which contains of 2 element of type SnotifyButton
 	     */
 	    const {timeout, closeOnClick, ...config} = this.getConfig(); // Omit props what i don't need
-	    this.snotifyService.confirm(this.body, this.title, {
+	    this.snotifyService.confirm(body, title, {
 	      ...config,
-	      buttons: [
-	        {text: 'Yes', action: () => console.log('Clicked: Yes'), bold: false},
-	        {text: 'No', action: () => console.log('Clicked: No')},
-	        {text: 'Later', action: (toast) => {console.log('Clicked: Later'); this.snotifyService.remove(toast.id); } },
-	        {text: 'Close', action: (toast) => {console.log('Clicked: Close'); this.snotifyService.remove(toast.id); }, bold: true},
-	      ]
+	      buttons: buttons
 	    });
 	}
 
