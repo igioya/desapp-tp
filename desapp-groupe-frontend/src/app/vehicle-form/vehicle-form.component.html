@@ -1,6 +1,7 @@
 <div class="container">
-    <div class="card">
-    <h1 translate>Cargar Vehiculo</h1>
+    <div class="row" style="margin-top: 3%;">
+      <h1 translate>Cargar Vehiculo</h1>      
+    </div>
     
     <form [formGroup]="vehicle">
 
@@ -49,13 +50,9 @@
       </div>
 
     <div class="row">
-    <div class="col-md-6">
-        <button type="button" class="btn btn-danger" (click)="cancel()"> {{ 'Cancelar' | translate }} </button>
-    </div>
-    <div class="col-md-6"> 
-        <button type="submit" class="btn btn-success" [disabled]="!vehicle.valid" (click)="newVehicle()"> {{ 'Guardar' | translate }} </button>
-    </div>
+      <div class="col-md-12" style="text-align: center;"> 
+          <button type="submit" class="btn btn-outline-success" [disabled]="!vehicle.valid" (click)="newVehicle()"> {{ 'Guardar' | translate }} </button>
+      </div>
     </div>
   </form>
-</div>
 </div>
