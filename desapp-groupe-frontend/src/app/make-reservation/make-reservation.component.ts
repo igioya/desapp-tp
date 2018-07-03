@@ -54,7 +54,9 @@ export class MakeReservationComponent implements OnInit {
 		console.log("!$%&/&&/(%$#&%/&$%#&%:", client);
 		delete client.haveFullProfile;
 		delete client.imgProfile;
-		delete client.rating
+		if(client.rating){
+			delete client.rating
+		}
 		let newReservation:Reservation = new Reservation(client, newFromDate, newToDate);
 		console.log("!$%&/&&/(%$#&%/&$%#&%: ", newReservation.client);
 		console.log("this.authenticationService.getUSerLogued(): ",this.authenticationService.getUserLoggedIn());
