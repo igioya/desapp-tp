@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  forFullProfile(ifcall,elsecall){
+  forFullProfile(ifcall){
     if(this.authenticationService.getUserLoggedIn().haveFullProfile){
       ifcall();
     } else {
