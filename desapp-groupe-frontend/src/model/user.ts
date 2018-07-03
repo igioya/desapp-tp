@@ -9,6 +9,7 @@ export class User {
     public email:string ;
     public imgProfile:string ;
     public haveFullProfile:boolean;
+    public rating;
     
     constructor(
         cuil?: string,
