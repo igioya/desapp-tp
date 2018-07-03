@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PublicationService } from '../services/publication.service';
 import { Publication } from '../../model/publication';
 import { AuthenticationService } from '../services/auth.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-publication-detail',
@@ -14,7 +15,8 @@ export class PublicationDetailComponent implements OnInit {
 	constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
 			  private publicationService: PublicationService,
-			  private authService: AuthenticationService ) { }
+			  private authService: AuthenticationService,
+			  private notificationService: NotificationService) { }
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe(params => {
@@ -33,6 +35,7 @@ export class PublicationDetailComponent implements OnInit {
 		if(haveFullProfile){
 			this.router.navigate([this.router.url + '/makeReservation'])			
 		} else {
+			this.notificationService.onError("Perfil incompleto","Para poder alquilar deberas completar tu perfil"); 
 			this.router.navigate(['/userProfile'])
 		}
 	}
