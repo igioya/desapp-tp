@@ -123,6 +123,7 @@
 	"El vehiculo fue retirado": "The vehicle was retired",
 	"El cliente confirmo el retorno del vehiculo": "The client confirmed the return of the vehicle",
 	"El dueño confirmo el retorno del vehiculo": "The owner confirmed the return of the vehicle",
-	"El vehiculo fue devuelto con exito, alquiler terminado": "The vehicle was successfully returned, rent finished"
+	"El vehiculo fue devuelto con exito, alquiler terminado": "The vehicle was successfully returned, rent finished",
 
+	"Calle N°, Ciudad, Provincia/Estado": "Street N°, City, Province/State"
 }
