@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { AuthenticationService } from '../services/auth.service';
-import { WizardComponent, FreeNavigationMode, WizardState } from 'angular-archwizard';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -19,7 +19,8 @@ export class ReservationDetailComponent implements OnInit {
 	stateProgressInfo
 	constructor(private activatedRoute: ActivatedRoute,
 				public reservationService: ReservationService,
-				public authenticationService: AuthenticationService) { 
+				public authenticationService: AuthenticationService,
+				private notificationService: NotificationService) { 
 		this.statesInfo = {
 			ReservationNotConfirmedState:"Esperando la confirmacion del dueño",
 			ReservationConfirmedState:"El dueño acepto la reserva",
@@ -70,6 +71,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
+			this.notificationService.onSuccess("Ok");
 		});
 	}
 
@@ -77,7 +79,8 @@ export class ReservationDetailComponent implements OnInit {
 		this.reservationService.confirmRetireByClient(this.reservation.id).subscribe(data => {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
-			this.refreshProgressStyle();				
+			this.refreshProgressStyle();	
+			this.notificationService.onSuccess("Ok");			
 		});
 	}
 
@@ -85,7 +88,8 @@ export class ReservationDetailComponent implements OnInit {
 		this.reservationService.confirmReturnByClient(this.reservation.id).subscribe(data => {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
-			this.refreshProgressStyle();				
+			this.refreshProgressStyle();
+			this.notificationService.onSuccess("Ok");				
 		});
 	}
 
@@ -94,6 +98,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
+			this.notificationService.onSuccess("Ok");
 		});
 	}
 
@@ -102,6 +107,7 @@ export class ReservationDetailComponent implements OnInit {
 			this.getReservation(this.reservation.id);
 			this.progress = this.progress + 20;
 			this.refreshProgressStyle();
+			this.notificationService.onSuccess("Ok");
 		});
 	}
 
