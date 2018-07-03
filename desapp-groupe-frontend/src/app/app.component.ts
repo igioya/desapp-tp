@@ -41,44 +41,44 @@ export class AppComponent implements OnInit {
   goToMyReservations(){
     this.forFullProfile(()=>{
       this.router.navigate(['userReservations/']);
-    })
+    }, {title:"Perfil incompleto",body:"Para poder ver tus reservas deberas completar tu perfil"})
   }
 
   goToMyPublications(){
     this.forFullProfile(()=>{
       this.router.navigate(['userPublications/']);
-    })
+    }, {title:"Perfil incompleto",body:"Para poder ver tus publicaciones deberas completar tu perfil"})
   }
 
   goToMyVehicles(){
     this.forFullProfile(()=>{
       this.router.navigate(['userVehicles/']);
-    })
+    }, {title:"Perfil incompleto",body:"Para poder ver vehiculos deberas completar tu perfil"})
   }
 
   goToAddCredit(){
     this.forFullProfile(()=>{
       this.router.navigate(['addCredit/']);
-    })
+    }, {title:"Perfil incompleto",body:"Para poder agregar crediro deberas completar tu perfil"})
   }
 
   goToRetireCredit(){
     this.forFullProfile(()=>{
       this.router.navigate(['retireCredit/']);
-    })
+    }, {title:"Perfil incompleto",body:"Para poder retirar crediro deberas completar tu perfil"})
   }
 
   goToNewPublication(){
     this.forFullProfile(()=>{
       this.router.navigate(['/newPublication'])
-    })
+    }, {title:"Perfil incompleto",body:"Para poder publicar deberas completar tu perfil"})
   }
 
-  forFullProfile(ifcall){
+  forFullProfile(ifcall,error){
     if(this.authenticationService.getUserLoggedIn().haveFullProfile){
       ifcall();
     } else {
-      this.notificationService.onError("Perfil incompleto","Para poder publicar deberas completar tu perfil"); 
+      this.notificationService.onError(error.title,error.body); 
       this.goToMyProfile();            
     }
   }
