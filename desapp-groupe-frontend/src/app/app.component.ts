@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from './services/auth.service';
 import { AuthService } from "angularx-social-login";
 import { Router } from '@angular/router';
+import { NotificationService } from './services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(private translate: TranslateService,
     public authenticationService: AuthenticationService,
     public authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private notificationService: NotificationService) {
     translate.setDefaultLang('es');
   }
 
@@ -37,23 +39,48 @@ export class AppComponent implements OnInit {
   }
 
   goToMyReservations(){
-    this.router.navigate(['userReservations/']);
+    this.forFullProfile(()=>{
+      this.router.navigate(['userReservations/']);
+    })
   }
 
   goToMyPublications(){
-    this.router.navigate(['userPublications/']);
+    this.forFullProfile(()=>{
+      this.router.navigate(['userPublications/']);
+    })
   }
 
   goToMyVehicles(){
-    this.router.navigate(['userVehicles/']);
+    this.forFullProfile(()=>{
+      this.router.navigate(['userVehicles/']);
+    })
   }
 
   goToAddCredit(){
-    this.router.navigate(['addCredit/']);
+    this.forFullProfile(()=>{
+      this.router.navigate(['addCredit/']);
+    })
   }
 
   goToRetireCredit(){
-    this.router.navigate(['retireCredit/']);
+    this.forFullProfile(()=>{
+      this.router.navigate(['retireCredit/']);
+    })
+  }
+
+  goToNewPublication(){
+    this.forFullProfile(()=>{
+      this.router.navigate(['/newPublication'])
+    })
+  }
+
+  forFullProfile(ifcall,elsecall){
+    if(this.authenticationService.getUserLoggedIn().haveFullProfile){
+      ifcall();
+    } else {
+      this.notificationService.onError("Perfil incompleto","Para poder publicar deberas completar tu perfil"); 
+      this.goToMyProfile();            
+    }
   }
 
 }
