@@ -34,52 +34,55 @@ export class AppComponent implements OnInit {
     this.translate.use(language);
   }
 
-  goToMyProfile(){
+  goToMyProfile(tryPath){
+    this.authenticationService.setCookie('tryPath',tryPath);
+    console.log("this.authenticationService.getCookie('tryPath')",this.authenticationService.getCookie('tryPath'))
     this.router.navigate(['userProfile/']);
   }
 
   goToMyReservations(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['userReservations/']);
-    }, {title:"Perfil incompleto",body:"Para poder ver tus reservas deberas completar tu perfil"})
+    this.forFullProfile(
+      'userReservations/',
+      {title:"Perfil incompleto",body:"Para poder ver tus reservas deberas completar tu perfil"})
   }
 
   goToMyPublications(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['userPublications/']);
-    }, {title:"Perfil incompleto",body:"Para poder ver tus publicaciones deberas completar tu perfil"})
+    this.forFullProfile(
+      'userPublications/',
+      {title:"Perfil incompleto",body:"Para poder ver tus publicaciones deberas completar tu perfil"})
   }
 
   goToMyVehicles(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['userVehicles/']);
-    }, {title:"Perfil incompleto",body:"Para poder ver vehiculos deberas completar tu perfil"})
+    this.forFullProfile(
+      'userVehicles/',
+      {title:"Perfil incompleto",body:"Para poder ver vehiculos deberas completar tu perfil"})
   }
 
   goToAddCredit(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['addCredit/']);
-    }, {title:"Perfil incompleto",body:"Para poder agregar crediro deberas completar tu perfil"})
+    this.forFullProfile(
+      'addCredit/',
+      {title:"Perfil incompleto",body:"Para poder agregar crediro deberas completar tu perfil"})
   }
 
   goToRetireCredit(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['retireCredit/']);
-    }, {title:"Perfil incompleto",body:"Para poder retirar crediro deberas completar tu perfil"})
+    this.forFullProfile(
+      'retireCredit/', 
+      {title:"Perfil incompleto",body:"Para poder retirar crediro deberas completar tu perfil"})
   }
 
   goToNewPublication(){
-    this.forFullProfile(()=>{
-      this.router.navigate(['/newPublication'])
-    }, {title:"Perfil incompleto",body:"Para poder publicar deberas completar tu perfil"})
+    this.forFullProfile(
+      '/newPublication', 
+      {title:"Perfil incompleto",body:"Para poder publicar deberas completar tu perfil"}
+    )
   }
 
-  forFullProfile(ifcall,error){
+  forFullProfile(tryPath,error){
     if(this.authenticationService.getUserLoggedIn().haveFullProfile){
-      ifcall();
+      this.router.navigate([tryPath])
     } else {
       this.notificationService.onError(error.title,error.body); 
-      this.goToMyProfile();            
+      this.goToMyProfile(tryPath);            
     }
   }
 

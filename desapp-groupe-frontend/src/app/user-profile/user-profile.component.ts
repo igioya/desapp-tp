@@ -60,7 +60,12 @@ export class UserProfileComponent implements OnInit {
           delete user.state;
           this.authenticationService.setUserLoggedIn(user)
           this.notificationService.onSuccess("Guardado", "El perfil fue completado");
+          let tryPath = JSON.parse(this.authenticationService.getCookie('tryPath'));
           this.ngOnInit();
+          if(tryPath){
+            console.log("tryPath",tryPath)
+            this.router.navigate([tryPath])
+          }
       }, (error)=>{
           this.notificationService.onError(error.statusText,error.message);  
       });
