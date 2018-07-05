@@ -32,8 +32,6 @@
 	
 	<bean id="service.publication" class="service.PublicationService">
 		<property name="repository" ref="persistence.publicationrepository" />
-		<property name="userRepository" ref="persistence.userrepository" />
-		
 	</bean>
 	
 	<bean id="service.reservation" class="service.ReservationService">

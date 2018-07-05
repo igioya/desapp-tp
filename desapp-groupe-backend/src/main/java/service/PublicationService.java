@@ -15,28 +15,24 @@ public class PublicationService extends GenericService<Publication> {
 	 */
 	private static final long serialVersionUID = -6300990314754071423L;
 	
-	private HibernateUserDAO userRepository;
+	private HibernatePublicationDAO repository;
 	
 	public Set<Publication> find(final String text) {
-		HibernatePublicationDAO repository = (HibernatePublicationDAO) this.getRepository();
 		return repository.filter(text);
 	}
 	
 	public Set<Publication> getPublicationsByEmail(final String email) {
-		HibernatePublicationDAO repository = (HibernatePublicationDAO) this.getRepository();
 		return repository.getPublicationsByEmail(email);
 	}
 	
 	public void newReservation(Reservation reservation, int idPublication) throws DateNotAvailableException {
-		//User client = this.userRepository.getByEmail(reservation.getClient().getEmail());
-		HibernatePublicationDAO repository = (HibernatePublicationDAO) this.getRepository();
 		Publication publication = repository.findById(idPublication);
 		publication.makeReservation(reservation.getClient(), reservation.getFromDate(), reservation.getToDate());
 		repository.update(publication);
 	}
 	
-	public void	setUserRepository(final HibernateUserDAO userRepository){
-		this.userRepository = userRepository;
+	public void	setPublicationRepository(final HibernatePublicationDAO publicationRepository){
+		this.repository = publicationRepository;
 	}
 
 }
